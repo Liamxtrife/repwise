@@ -64,16 +64,10 @@ select,input{width:100%;padding:10px;background:#090e19;border:1px solid #3b4962
 .stat{background:#131a2a;border:1px solid #344057;padding:12px}.stat b{font-size:1.4rem;display:block}.stat span{color:#b6bfd1;font-size:.8rem}
 .rk{font:5rem/1 Anton,Impact,sans-serif;width:96px;height:112px;display:grid;place-items:center;background:var(--rkc);flex:none;clip-path:polygon(0 0,100% 0,100% 86%,82% 100%,0 100%);box-shadow:4px 4px 0 var(--b)}
 .rk[data-r=E]{--rkc:#6f6f6f}.rk[data-r=D]{--rkc:#25a862}.rk[data-r=C]{--rkc:#2d8fe0}.rk[data-r=B]{--rkc:#8b4fea}.rk[data-r=A]{--rkc:#f08a12}.rk[data-r=S]{--rkc:#e8142b}
-/* ===== STATUS HERO (Persona 5 x Solo Leveling) ===== */
-.hero{position:relative;margin:8px 0 16px;filter:drop-shadow(7px 7px 0 #000) drop-shadow(-3px -3px 0 var(--a))}
-.hero-in{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 38%,#2a0711,#07070c 72%);clip-path:polygon(0 5%,7% 0,100% 3%,99% 94%,93% 100%,2% 97%);padding:22px 16px 20px;text-align:center}
-.hero-in::before{content:"";position:absolute;inset:-60%;z-index:0;background:repeating-conic-gradient(from 0deg at 50% 42%,rgba(240,43,79,.5) 0 6deg,transparent 6deg 14deg);animation:spin 50s linear infinite}
-.hero-in::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;z-index:0;pointer-events:none;background:radial-gradient(#000 1.6px,transparent 1.8px) 0 0/9px 9px;-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000);opacity:.7}
-.hero-in>*{position:relative;z-index:1}
-.hero .rk{position:absolute;top:10px;left:12px;width:58px;height:66px;font-size:2.7rem;z-index:3;box-shadow:3px 3px 0 #000;transform:rotate(-6deg)}
-.lvn{position:absolute;top:8px;right:14px;z-index:3;font:2.5rem/1 Anton,Impact,sans-serif;letter-spacing:.05em;transform:skew(-10deg);text-shadow:3px 3px 0 var(--a),6px 6px 0 #000}
-#avt{max-width:250px;margin:10px auto 0;filter:drop-shadow(0 6px 14px #000)}
-.plate{display:inline-block;margin-top:2px;background:#fff;color:#08090f;font:1.05rem Anton,Impact,sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:3px 18px 4px;transform:skew(-10deg);box-shadow:4px 4px 0 var(--a),7px 7px 0 #000}
+/* ===== STATUS HERO ===== */
+.hero-card{text-align:center;padding:18px 16px 20px}
+#avt{max-width:250px;margin:0 auto}
+.hero-sub{margin-top:6px;font-size:1.1rem;font-weight:600;color:#d6dced;letter-spacing:.02em}
 .xpl{display:flex;justify-content:space-between;align-items:flex-end;margin:16px 8px 4px;font:.95rem Anton,Impact,sans-serif;letter-spacing:.14em;text-shadow:2px 2px 0 #000}
 .xpl b{font-weight:400;background:var(--a);padding:0 10px;transform:skew(-10deg);box-shadow:3px 3px 0 #000}
 .xpb{height:24px;margin:0 8px;background:#000;border:3px solid #fff;transform:skew(-20deg);box-shadow:5px 5px 0 var(--a),8px 8px 0 #000;overflow:hidden}
@@ -198,15 +192,13 @@ section.enter{animation:wipe .35s ease-out}
 
 <section id="hero" class="hide">
   <h1>Status</h1>
-  <div class="hero"><div class="hero-in">
-    <div class="rk" id="rk" data-r="E">E</div>
-    <b class="lvn" id="lv">LV 1</b>
+  <div class="card cy hero-card">
     <div id="avt"></div>
-    <span class="plate"><span id="ttl"></span></span>
+    <div class="hero-sub" id="ttl"></div>
     <div class="xpl"><b>EXP</b><span id="xpp">0%</span></div>
     <div class="xpb"><i id="xpf"></i></div>
     <div class="xpt" id="xpt"></div>
-  </div></div>
+  </div>
   <div id="gatecard"></div>
   <h2 class="hd">Daily quests</h2><div id="quests"></div>
   <p class="sub">XP comes only from finishing quests, so the most you can earn is about 100 XP a day. You level up only when every quest of the day is done. Reaching S takes about a year of steady training. Skip a day and a penalty quest appears.</p>
@@ -414,7 +406,7 @@ function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classLis
 function render(){genQuests();checkBadges();const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
  $('top').textContent='LV '+l+' '+r;$('lockb').textContent='Rank Unlocks: '+(state.lock?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
  $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP</small>`;
- $('rk').textContent=r;$('rk').dataset.r=r;$('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';$('xpp').textContent=Math.floor(pct)+'%';
+ const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent='LV '+l+' · '+(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';$('xpp').textContent=Math.floor(pct)+'%';
  $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
  const tot=Object.values(state.hist).reduce((a,h)=>a+(h.reps||0),0);
  
