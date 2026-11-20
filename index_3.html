@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ASCEND – your evolution starts here</title>
+<meta name="theme-color" content="#08090f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ASCEND"><link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700&display=swap">
+<style>
+:root{--ink:#f5f7ff;--mute:#aab2c6;--line:#30394d;--a:#f02b4f;--b:#52d9ff;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 92% 4%,rgba(240,43,79,.19),transparent 34rem),radial-gradient(ellipse at 0 48%,rgba(82,217,255,.09),transparent 28rem),#08090f;background-attachment:fixed;color:var(--ink);font:400 16px/1.5 Sora,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:28px 28px}
+main{max-width:480px;margin:0 auto;padding:18px 18px 110px}
+h1,.hd,h3,.big,.logo,nav button,.lvchip{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.05em}
+h1{font-size:2rem;display:inline-block;transform:skew(-8deg);background:linear-gradient(105deg,#f02b4f,#b9143c);padding:2px 16px 4px;margin:6px 0 10px;box-shadow:5px 5px 0 var(--b);letter-spacing:.065em}
+h3{margin:0 0 6px;font-size:1.1rem}
+.sub{margin:0 0 14px;color:#b7bfd0;font-size:.9rem}
+small{color:var(--mute)}
+button,select,input{font:inherit;color:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #75e7ff;outline-offset:3px}
+.hide{display:none!important}
+.top{position:sticky;top:env(safe-area-inset-top,0);z-index:10;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;background:rgba(7,9,16,.93);border-bottom:1px solid rgba(82,217,255,.38);backdrop-filter:blur(14px)}
+.logo{font-size:1.5rem;letter-spacing:.19em}.logo i{color:#ff4263;font-style:normal}
+.btn,.lvchip,.chip{position:relative;isolation:isolate;border:0;background:none;font-weight:700;padding:11px 14px;min-height:44px;transition:color .12s}
+.btn::before,.lvchip::before,.chip::before{content:"";position:absolute;inset:0;z-index:-1;transform:skew(-12deg);background:linear-gradient(145deg,#182033,#101522);box-shadow:inset 0 0 0 1px #39445c,3px 3px 0 #05070c;transition:transform .14s cubic-bezier(.2,1.7,.4,1),background .12s,box-shadow .12s}
+.btn.red::before,.lvchip::before,.chip[aria-pressed=true]::before{background:linear-gradient(105deg,#f02b4f,#a80e35);box-shadow:3px 3px 0 var(--b)}
+/* Persona 5 style hover / press: button snaps white with black text, red + black offset shadow, tilts and pops */
+@media(hover:hover){
+ .btn:not(:disabled):hover,.chip:hover,.lvchip:hover{color:#08090f}
+ .btn:not(:disabled):hover::before,.chip:hover::before,.lvchip:hover::before{background:#fff;box-shadow:4px 4px 0 var(--a),8px 8px 0 #000;transform:skew(-12deg) scale(1.06) rotate(-1.4deg)}
+ .btn:not(:disabled):hover small,.chip:hover small{color:#444}
+}
+.btn:not(:disabled):active,.chip:active,.lvchip:active{color:#08090f}
+.btn:not(:disabled):active::before,.chip:active::before,.lvchip:active::before,.btn:focus-visible::before,.chip:focus-visible::before{background:#fff;box-shadow:4px 4px 0 var(--a),8px 8px 0 #000;transform:skew(-12deg) scale(1.06) rotate(-1.4deg)}
+.btn:not(:disabled):active small,.chip:active small{color:#444}
+.btn.red{width:100%;text-transform:uppercase;letter-spacing:.07em}
+.btn.sm{min-height:36px;padding:6px 12px;font-size:.85rem}
+.lvchip{padding:5px 16px;min-height:0;font-size:.95rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card{position:relative;background:linear-gradient(145deg,rgba(22,29,46,.98),rgba(12,16,27,.98));border-left:3px solid var(--a);border-top:1px solid #ffffff13;clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%);padding:14px 16px;margin-bottom:12px}
+.card::after{content:"";position:absolute;right:0;top:0;width:42px;height:3px;background:var(--b)}
+.card.cy{border-left-color:var(--b);box-shadow:inset 0 0 28px rgba(82,217,255,.05)}.card.ok{box-shadow:inset 0 0 0 1px #52d9ff66}
+/* Persona-style section headings */
+.hd{font-size:1.1rem;margin:22px 0 10px;display:flex;align-items:center;gap:10px;width:fit-content;min-width:55%;background:#fff;color:#08090f;padding:3px 18px 4px 14px;transform:skew(-8deg);box-shadow:5px 5px 0 var(--a),9px 9px 0 #000}
+.hd::before{display:none}
+.hd small{color:#555}
+.hud{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.hud b{font-family:Anton,Impact,sans-serif;font-weight:400;background:var(--a);padding:2px 12px;transform:skew(-10deg)}
+.hud span,.hud small{font-size:.8rem}
+.xp{height:13px;background:#080c16;border:1px solid #34435a;transform:skew(-20deg);overflow:hidden;flex:1}
+.xp i{display:block;height:100%;background:linear-gradient(90deg,var(--b),#a9deff);box-shadow:0 0 12px #52d9ff88;transition:width .4s}
+.stage{text-align:center;padding:20px 14px 16px}
+.ring{position:relative;width:210px;height:210px;margin:0 auto}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+#arc{filter:drop-shadow(0 0 9px #f02b4f);transition:stroke-dashoffset .25s}
+.ring .n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.big{font-size:5rem;line-height:1;transform:skew(-8deg);text-shadow:4px 4px 0 #a50d32}
+.big.pop{animation:pop .3s}@keyframes pop{0%{transform:skew(-8deg) scale(1.4)}100%{transform:skew(-8deg)}}
+.cam{position:relative;margin:14px auto 0;overflow:hidden;background:#000;aspect-ratio:4/3;border:1px solid #52d9ff77}
+.cam video,.cam canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.cam.rear video,.cam.rear canvas{transform:none}
+.readout{position:absolute;left:8px;bottom:8px;padding:3px 9px;background:#000c;color:#7ce8ff;font:.8rem Anton,Impact,sans-serif;letter-spacing:.06em;border-left:3px solid var(--b);z-index:3}
+.coach{margin:14px 0 4px;padding:12px 14px;background:linear-gradient(90deg,#080c16,#101827);border-left:3px solid var(--b);text-align:left;font-size:.92rem}
+.row{display:flex;gap:10px;margin-top:10px}.row>*{flex:1}
+select,input{width:100%;padding:10px;background:#090e19;border:1px solid #3b4962;border-radius:0;min-height:44px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border:0}.item b{display:block;font-size:.95rem}.item span{font-size:.8rem;color:var(--mute)}
+.tag{display:inline-block;font:.75rem Anton,Impact,sans-serif;letter-spacing:.1em;padding:1px 9px;margin-right:6px;transform:skew(-10deg);background:var(--b);color:#060a12}
+.tag.r{background:var(--a);color:#fff}.tag.g{background:#55e6b0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.stat{background:#131a2a;border:1px solid #344057;padding:12px}.stat b{font-size:1.4rem;display:block}.stat span{color:#b6bfd1;font-size:.8rem}
+/* ===== STATUS (minimalist) ===== */
+.idline{margin:4px 0 0;font-size:.95rem;color:#c3cadb;letter-spacing:.02em}
+.idline b{font-weight:600;color:#fff}
+#avt{max-width:250px;margin:0 auto}
+.xpb{height:18px;margin:12px 6px 0;background:#04070f;border:2px solid #fff;transform:skew(-20deg);box-shadow:4px 4px 0 var(--a),7px 7px 0 #000;overflow:hidden}
+.xpb i{display:block;height:100%;background:repeating-linear-gradient(115deg,#f02b4f 0 10px,#ff7a93 10px 14px);box-shadow:0 0 14px #f02b4f;transition:width .4s}
+.xpt{margin:14px 6px 2px;font-size:.82rem;color:#c3cadb;font-weight:600;letter-spacing:.04em}
+.srow{display:flex;align-items:center;gap:12px;padding:6px 0}.srow b{font:1rem Anton,Impact,sans-serif;width:44px}.srow span{min-width:50px;white-space:nowrap;text-align:right;font-weight:700}
+/* Shadow army */
+.shg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.shd{padding:9px 11px;background:#0a0d17;border:1px solid #29324a;opacity:.6}
+.shd b{display:block;font:.95rem Anton,Impact,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#7d86a0}
+.shd small{display:block;font-size:.72rem;line-height:1.3}
+.shd.on{opacity:1;border-color:#8b4fea;background:linear-gradient(145deg,#171028,#0a0d17);box-shadow:inset 0 0 16px rgba(139,79,234,.25)}
+.shd.on b{color:#c9a8ff;text-shadow:0 0 10px #8b4fea}
+.bars{display:flex;align-items:flex-end;gap:10px;height:140px;padding-top:12px}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;font-size:.75rem;color:var(--mute)}
+.bar i{display:block;width:100%;background:var(--a);min-height:4px}
+.danger{border-left-color:#ff9d00}
+.btn.dng{width:100%;color:#ff8a9c}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:12;background:rgba(6,8,14,.96);border-top:1px solid #52d9ff66;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0))}
+nav button{position:relative;flex:1;max-width:110px;border:0;background:none;padding:11px 2px;font-size:.88rem;color:#aab2c6;transition:transform .14s cubic-bezier(.2,1.7,.4,1),background .12s,color .12s,box-shadow .12s}
+@media(hover:hover){nav button:hover{color:#08090f;background:#fff;box-shadow:0 3px 0 var(--a),0 6px 0 #000;transform:skew(-12deg) translateY(-3px) scale(1.07)}}
+nav button:active{color:#08090f;background:#fff;box-shadow:0 3px 0 var(--a),0 6px 0 #000;transform:skew(-12deg) translateY(-3px) scale(1.07)}
+nav button[aria-selected=true]{color:#fff;background:linear-gradient(105deg,#ed254c,#a90f34);box-shadow:0 3px 0 var(--b);transform:skew(-12deg) translateY(-2px)}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0));transform:translateX(-50%);background:#101a2a;border:1px solid var(--b);padding:10px 16px;font-weight:600;font-size:.88rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:25;max-width:90%;text-align:center}
+.toast.on{opacity:1}
+
+/* Flaming Streak Effect Styles */
+.flame-streak {
+  position: relative;
+  display: inline-block;
+  color: #ffaa00;
+  text-shadow: 0 0 6px #ff4500, 0 0 12px #ff2200, 0 0 18px #ff0000;
+  animation: flicker 1.2s infinite alternate ease-in-out;
+}
+@keyframes flicker {
+  0% { transform: scale(1) skew(-8deg); text-shadow: 0 0 5px #ff4500, 0 0 10px #ff2200; }
+  50% { transform: scale(1.04) skew(-8deg); text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300, 0 0 30px #ff0000; }
+  100% { transform: scale(1) skew(-8deg); text-shadow: 0 0 6px #ff4500, 0 0 14px #ff2200; }
+}
+.flame-card {
+  border: 1px solid #ff5500 !important;
+  box-shadow: 0 0 15px rgba(255, 85, 0, 0.3);
+}
+
+.lu{--c:#f02b4f;--c2:#000;position:fixed;inset:0;z-index:30;background:var(--c);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.lu.on{display:flex;animation:luin .35s ease-out}
+@keyframes luin{from{transform:scale(1.15) skewX(-6deg);opacity:0}to{transform:none;opacity:1}}
+.lu[data-r=E]{--c:#6f6f6f}.lu[data-r=D]{--c:#25a862}.lu[data-r=C]{--c:#2d8fe0}.lu[data-r=B]{--c:#8b4fea}.lu[data-r=A]{--c:#f08a12}.lu[data-r=S]{--c:#e8142b;--c2:#1a0008}
+.lu .t,.lu .s,.lu .m{position:relative;z-index:2;font-family:Anton,Impact,sans-serif;transform:skew(-10deg);text-shadow:6px 6px 0 #000}
+.lu .t{font-size:4.2rem;line-height:1}.lu .s{font-size:2.2rem;margin-top:8px}.lu .m{font-size:.95rem;letter-spacing:.28em;margin-top:12px;padding:0 16px}
+.lu .burst{position:absolute;inset:-50%;background:repeating-conic-gradient(rgba(255,255,255,.2) 0 6deg,transparent 6deg 12deg);animation:spin 9s linear infinite}
+.lu .slash{position:absolute;inset:-20% -30%;background:var(--c2);transform:skewY(-18deg) translateY(48%)}
+.lu .pts{position:absolute;inset:0;pointer-events:none}
+.lu .rg{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px;border:4px solid #fff;border-radius:50%;opacity:0;animation:ring 1.8s ease-out infinite}
+.lu i:nth-of-type(2){animation-delay:.6s}.lu i:nth-of-type(3){animation-delay:1.2s}
+.lu .pt{position:absolute;bottom:-20px;width:8px;height:8px;background:#fff;opacity:0;animation:rise 2s ease-in infinite}
+.lu::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0}
+.lu[data-r=E] .rg{display:none}
+.lu[data-r=D] .pt{background:#c9ffe3}.lu[data-r=A] .pt{background:#ffe08a}.lu[data-r=S] .pt{background:#000}
+.lu[data-r=C]::before{background:#fff;animation:fl .6s steps(1) infinite}
+.lu[data-r=B] .burst{animation-duration:2s;animation-direction:reverse}.lu[data-r=B] .t{animation:glitch .25s steps(2) infinite}
+.lu[data-r=A]::before{background:linear-gradient(0deg,rgba(255,210,80,.75),transparent 65%);opacity:1;animation:pulse 1s ease-in-out infinite}
+.lu[data-r=S]::before{background:radial-gradient(circle,transparent 25%,#000 105%);opacity:1;animation:pulse 1.2s ease-in-out infinite}
+.lu[data-r=A] .t,.lu[data-r=S] .t{animation:shake .25s linear infinite}
+.lu[data-r=S] .burst{animation-duration:4s}.lu[data-r=S] .t{font-size:4.8rem;text-shadow:0 0 30px #fff,6px 6px 0 #000}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(22)}}
+@keyframes rise{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-110vh) rotate(180deg)}}
+@keyframes fl{0%,100%{opacity:0}10%{opacity:.9}18%{opacity:0}40%{opacity:.6}46%{opacity:0}}
+@keyframes pulse{50%{opacity:.5}}
+@keyframes shake{0%,100%{translate:0}25%{translate:-6px 4px}50%{translate:5px -5px}75%{translate:-4px -3px}}
+@keyframes glitch{0%{translate:-4px 0;text-shadow:6px 0 #0ff,-6px 0 #f0f}50%{translate:4px 0;text-shadow:-6px 0 #0ff,6px 0 #f0f}100%{translate:0}}
+.boot{position:fixed;inset:0;z-index:40;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.boot.on{display:flex}
+.b-s{position:absolute;left:-10%;right:-10%;top:42%;height:16%;background:var(--a);transform:skewY(-8deg);animation:bslash .5s ease-out both}
+.b-t{position:relative;font:3.4rem Anton,Impact,sans-serif;letter-spacing:.22em;text-shadow:4px 4px 0 #000;animation:bflick .9s steps(2,end) both}
+.b-u{position:relative;margin-top:8px;font-weight:600;letter-spacing:.2em}
+@keyframes bslash{from{transform:translateX(-100%) skewY(-8deg)}to{transform:skewY(-8deg)}}
+@keyframes bflick{0%{opacity:0}30%{opacity:1}40%{opacity:.2}55%{opacity:1}100%{opacity:1}}
+.flash{position:fixed;z-index:9999;pointer-events:none;width:36px;height:36px;margin:-18px 0 0 -18px;border:2px solid var(--b);transform:rotate(45deg);box-shadow:0 0 14px #52d9ff88;animation:imp .3s ease-out forwards}
+@keyframes imp{0%{opacity:.85;transform:rotate(45deg) scale(.8)}100%{opacity:0;transform:rotate(45deg) scale(1.2)}}
+section.enter{animation:wipe .35s ease-out}
+@keyframes wipe{from{clip-path:polygon(0 0,0 0,-30px 100%,0 100%);opacity:.3}to{clip-path:polygon(0 0,130% 0,100% 100%,0 100%);opacity:1}}
+.ham{width:44px;height:44px;border:0;background:none;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 10px}
+.ham i{display:block;height:3px;background:#fff;transform:skew(-12deg);box-shadow:2px 2px 0 var(--a)}
+.drawer{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.65);display:none}.drawer.on{display:block}
+.dp{width:78%;max-width:300px;height:100%;background:#0b0f1a;border-right:3px solid var(--a);padding:76px 16px 16px;display:flex;flex-direction:column;gap:14px;animation:slin .25s ease-out}
+@keyframes slin{from{transform:translateX(-100%)}}
+.branch{border-left:2px solid var(--b);padding-left:12px;margin:0 0 14px}.branch h3{color:var(--b)}
+.branch .chip{text-align:left;line-height:1.25}
+/* Collapsible sections (Rank ladder, Badges & titles) */
+.fold{margin:0}
+.fold summary{list-style:none;cursor:pointer;min-height:44px;user-select:none;-webkit-tap-highlight-color:transparent}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::after{content:"▾";margin-left:auto;color:var(--a);font-size:1.2rem;transition:transform .2s}
+.fold:not([open]) summary::after{transform:rotate(-90deg)}
+.fold summary small{font-family:Sora,system-ui,sans-serif;text-transform:none;letter-spacing:0}
+.fold[open]>summary{margin-bottom:10px}
+.btn:disabled{opacity:.5}
+.dp{overflow-y:auto}
+.sfx{position:fixed;inset:0;z-index:28;pointer-events:none;display:none;align-items:center;justify-content:center}.sfx.on{display:flex}
+.sfx .band{position:absolute;left:-10%;right:-10%;top:38%;height:24%;background:var(--a);transform:skewY(-8deg);box-shadow:0 8px 0 #000;animation:bslash .35s ease-out both,sfade .4s 1s forwards}
+.sfx .tx{position:relative;text-align:center;transform:skew(-8deg);animation:sfade .4s 1s forwards}
+.sfx #sfxt{font:3.2rem/1 Anton,Impact,sans-serif;text-shadow:5px 5px 0 #000;letter-spacing:.06em;text-transform:uppercase}.sfx small{color:#fff;font-weight:600;letter-spacing:.15em}
+@keyframes sfade{to{opacity:0}}
+.modal{position:fixed;inset:0;z-index:27;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px}.modal.on{display:flex}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== Form score: per-rep grade flash + combo chip ===== */
+.gr{position:absolute;right:10px;top:6px;z-index:3;font:3.6rem/1 Anton,Impact,sans-serif;transform:skew(-10deg);text-shadow:3px 3px 0 #000;opacity:0;pointer-events:none}
+.gr.on{animation:grp .9s ease-out}
+.gr[data-g=S]{color:#ff3a5c}.gr[data-g=A]{color:#ffb02e}.gr[data-g=B]{color:#52d9ff}.gr[data-g=C]{color:#9aa3b8}
+@keyframes grp{0%{opacity:0;transform:skew(-10deg) scale(1.9)}14%{opacity:1;transform:skew(-10deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:skew(-10deg) translateY(-12px)}}
+.cmbo{position:absolute;left:8px;top:8px;z-index:3;padding:3px 10px;background:#f02b4f;color:#fff;font:.85rem Anton,Impact,sans-serif;letter-spacing:.08em;transform:skew(-10deg);box-shadow:3px 3px 0 #000}
+/* ===== Shadow army v2 ===== */
+.shd .sk{float:right;font:.6rem Anton,Impact,sans-serif;letter-spacing:.14em;color:#8b4fea}
+.shd.boss.on{border-color:#f02b4f;background:linear-gradient(145deg,#2a0a14,#0a0d17);box-shadow:inset 0 0 16px rgba(240,43,79,.22)}
+.shd.boss.on b{color:#ff9bb0;text-shadow:0 0 10px #f02b4f}.shd.boss .sk{color:#f02b4f}
+.shd.elite.on{border-color:#52d9ff;background:linear-gradient(145deg,#0b1d2b,#0a0d17);box-shadow:inset 0 0 16px rgba(82,217,255,.2)}
+.shd.elite.on b{color:#9fefff;text-shadow:0 0 10px #52d9ff}.shd.elite .sk{color:#52d9ff}
+/* full-screen ARISE (reuses the level-up overlay) */
+.lu[data-r=SH]{--c:#3d1790;--c2:#07020f}
+.lu[data-r=SH]::before{background:radial-gradient(circle,transparent 18%,#000 112%);opacity:1;animation:pulse 1.4s ease-in-out infinite}
+.lu[data-r=SH] .burst{animation-duration:14s;background:repeating-conic-gradient(rgba(190,150,255,.16) 0 6deg,transparent 6deg 12deg)}
+.lu[data-r=SH] .pt{background:#c9a8ff;box-shadow:0 0 10px #8b4fea}
+.lu[data-r=SH] .t{font-size:5.2rem;letter-spacing:.1em;text-shadow:0 0 34px #b58cff,6px 6px 0 #000;animation:arise 1.1s ease-out both}
+.lu[data-r=SH] .s{color:#e4d3ff;text-shadow:0 0 18px #8b4fea,4px 4px 0 #000}
+@keyframes arise{0%{opacity:0;transform:skew(-10deg) scale(2);filter:blur(14px)}100%{opacity:1;transform:skew(-10deg);filter:none}}
+
+/* ===== v3: dungeon, all-out attack, calendar, body weight ===== */
+.dgt{font:2.6rem Anton,Impact,sans-serif;color:#ff8298;text-align:center;letter-spacing:.06em}
+.shd.rare.on{border-color:#ffd24a;background:linear-gradient(145deg,#2b2208,#0a0d17);box-shadow:inset 0 0 16px rgba(255,210,74,.22)}
+.shd.rare.on b{color:#ffe88a;text-shadow:0 0 10px #ffd24a}.shd.rare .sk{color:#ffd24a}
+.cal{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);grid-auto-columns:1fr;gap:4px;margin:10px 0 8px}
+.cd{display:block;aspect-ratio:1;border-radius:3px;background:#1a2133}.cd.f{background:transparent}
+.cd.l1{background:#5a1422}.cd.l2{background:#9a1d37}.cd.l3{background:#d42647}.cd.l4{background:#ff7b93}.cd.td{outline:2px solid #52d9ff;outline-offset:1px}
+.calk{display:flex;align-items:center;gap:4px;font-size:.7rem;color:var(--mute)}.calk .cd{width:12px;aspect-ratio:1}
+.bwsv{width:100%;height:auto;display:block;margin:10px 0 4px}
+.aoa{position:fixed;inset:0;z-index:34;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:repeating-linear-gradient(-14deg,#0a0a0a 0 46px,#1a0307 46px 92px);text-align:center;padding:20px}
+.aoa::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,transparent 30%,#000 120%);pointer-events:none}
+.aoa>*{position:relative}
+.aoa-t{font:3.2rem/1 Anton,Impact,sans-serif;color:#fff;letter-spacing:.06em;transform:skew(-10deg);text-shadow:5px 5px 0 #f02b4f,10px 10px 0 #000;animation:shake .3s infinite}
+.aoa-s{font:2.4rem Anton,Impact,sans-serif;color:#ffd24a;transform:skew(-10deg)}
+.aoa-b{width:min(64vw,250px);aspect-ratio:1;border-radius:50%;border:6px solid #fff;background:#f02b4f;color:#fff;font:3.4rem Anton,Impact,sans-serif;box-shadow:0 0 0 6px #000,0 0 40px #f02b4f;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.aoa-b:active{transform:scale(.93)}
+.aoa-m{width:min(80vw,320px);height:12px;background:#222;border:2px solid #fff;transform:skew(-10deg)}.aoa-m i{display:block;height:100%;background:#ffd24a}
+.aoa-r{font:2rem Anton,Impact,sans-serif;color:#fff;min-height:5rem}
+</style>
+</head>
+<body>
+<header class="top"><button class="ham" data-a="menu" aria-label="Open menu"><i></i><i></i><i></i></button><div class="logo">ASC<i>END</i></div><button class="lvchip" id="top" data-a="go" data-v="hero">LV 1 E</button></header>
+<main>
+<section id="train">
+  <h1>Train</h1>
+  <div class="hud" id="hud"></div>
+  <div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
+  <div class="card cy" id="today"></div>
+  <div class="card cy hide" id="rest" style="text-align:center"><small>REST</small><div class="big" id="restn" style="font-size:3rem">0:00</div><div style="display:flex"><div class="xp"><i id="restb2"></i></div></div><small id="restx"></small><br><button class="btn sm" style="margin-top:8px" data-a="skiprest">Skip rest</button></div>
+  <select id="exsel" aria-label="Pick any exercise"></select>
+  <div class="card stage" style="margin-top:12px">
+    <div class="ring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg>
+      <div class="n"><div class="big" id="cnt">0</div><small id="of">of 12 reps</small></div></div>
+    <div class="cam hide" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="readout" id="ro">LOADING…</div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div></div>
+    <div class="coach" id="coach"></div>
+    <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
+    <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
+    <div id="wsug"></div>
+    <div class="row"><button class="btn" id="restb" data-a="restc"></button><button class="btn" id="sensb" data-a="sens"></button></div>
+    <div class="row"><button class="btn" id="undob" data-a="undo">Undo last set</button></div>
+  </div>
+</section>
+
+<section id="hero" class="hide">
+  <h1>Status</h1>
+  <div class="card cy" style="text-align:center">
+    <div id="avt"></div>
+    <div class="idline"><b id="lv">LV 1</b> · <span id="ttl"></span></div>
+    <div class="xpb"><i id="xpf"></i></div>
+    <div class="xpt" id="xpt"></div>
+  </div>
+  <div id="gatecard"></div>
+  <details class="fold" id="fold-quests" open><summary class="hd">Daily quests</summary><div id="quests"></div>
+  <p class="sub">XP comes only from finishing quests, so the most you can earn is about 100 XP a day. You level up only when every quest of the day is done. Reaching S takes about a year of steady training. Skip a day and a penalty quest appears.</p>
+  </details>
+  <details class="fold" id="fold-ladder"><summary class="hd">Rank ladder</summary><div id="ladder"></div></details>
+  <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
+  <details class="fold" id="fold-shadows" open><summary class="hd">Shadow army <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
+  <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
+</section>
+
+<section id="plans" class="hide"><h1>Plans</h1><div id="plansbody"></div><div id="restcard"></div></section>
+
+<section id="checkin" class="hide"><h1>Check-in</h1>
+  <p class="sub">Camera not tracking well? Tick off today’s split exercises or mark quests done here. Manual sets count for quests and your streak, but not for boss damage or records. Quests give XP only once a day.</p>
+  <div id="cklist"></div>
+</section>
+
+<section id="skills" class="hide"><h1>Skill Tree</h1>
+  <p class="sub">Tap a skill or pick from the menu to watch the technique. Every rep you count ranks that skill up.</p>
+  <div class="row" style="margin-bottom:12px">
+    <select id="sksel" aria-label="Jump to skill" style="flex:1"></select>
+    <button class="btn" id="togpreview" data-a="togpreview" style="flex:none">Hide Preview</button>
+  </div>
+  <div class="card cy" id="skpreview" style="text-align:center;position:relative;box-shadow:0 10px 24px #08090f">
+    <h3 id="skn"></h3>
+    <div id="figslot"><svg id="fig" viewBox="0 0 200 160" style="width:100%;max-width:260px" aria-label="Animated stick figure"></svg></div>
+    <div style="display:flex;align-items:center;gap:8px;margin:6px 0"><div class="xp"><i id="skxp"></i></div><small id="skxpt"></small></div>
+    <small id="skc"></small>
+    <div class="chips" id="views" style="justify-content:center;margin-top:8px"></div>
+    <div class="row"><button class="btn red" id="trsk" data-a="trainsk">Train this skill</button></div>
+  </div>
+  <div class="chips" id="sktabs" style="margin-top:12px"></div>
+  <div id="tree"></div>
+</section>
+
+<section id="food" class="hide">
+  <h1>Food</h1>
+  <div class="card"><div class="grid" style="margin:0 0 10px"><div class="stat"><b id="fk">0</b><span>Calories eaten</span></div><div class="stat"><b id="fl">—</b><span>Remaining</span></div><div class="stat"><b id="fp">0 g</b><span>Protein</span></div><div class="stat"><b id="fw">0 / 8</b><span>Water glasses</span></div></div>
+    <label><small>Daily calorie goal</small><input id="fg" type="number" inputmode="numeric"></label>
+    <div class="row"><button class="btn" data-a="w" data-v="-1">− Water</button><button class="btn" data-a="w" data-v="1">+ Water</button></div></div>
+  <h2 class="hd">1-tap meals</h2><div class="grid" id="presets"></div>
+  <div class="card"><h3>Add food</h3><input id="fn" maxlength="60" placeholder="Food name"><div class="row"><input id="fc" type="number" inputmode="numeric" placeholder="kcal"><input id="fpr" type="number" inputmode="numeric" placeholder="protein g"></div><button class="btn red" style="margin-top:10px" data-a="addfood">Add</button></div>
+  <h2 class="hd">Today’s meals</h2><div id="flist"></div>
+</section>
+
+<section id="prog" class="hide">
+  <h1>Progress</h1>
+  <p class="sub">Everything is saved on this device.</p>
+  <div class="grid"><div class="stat"><b id="p1">0</b><span>Reps today</span></div><div class="stat"><b id="p2">0</b><span>Day streak</span></div><div class="stat"><b id="p3">0</b><span>Sets, last 7 days</span></div><div class="stat"><b id="p4">0 kg</b><span>Volume, last 7 days</span></div></div>
+  <div class="card"><h3>Daily reps</h3><div class="chips" id="rng"></div><div class="bars" id="bars"></div></div>
+  <div class="card"><h3>Training calendar</h3><div class="cal" id="cal"></div><small id="calt"></small><div class="calk" style="margin-top:6px">Less <i class="cd"></i><i class="cd l1"></i><i class="cd l2"></i><i class="cd l3"></i><i class="cd l4"></i> More</div></div>
+  <div class="card"><h3>Personal records</h3><div id="prl"></div></div>
+  <div class="card"><h3>Form</h3><div id="formc"></div></div>
+  <div class="card"><h3>Body weight</h3><div id="bwc"></div><div class="row" style="margin-top:10px"><input id="bwin" type="number" inputmode="decimal" step="0.1" placeholder="Weight"><button class="btn red" data-a="bwadd">Log</button></div><small style="display:block;margin-top:8px">Optional. Weight moves around day to day, so look at the long trend, not single days. Your rank and rewards never depend on it.</small><button class="btn sm" style="margin-top:8px" data-a="bwdel">Remove last entry</button></div>
+  <h2 class="hd">Data</h2>
+  <div class="row"><button class="btn" data-a="exp">Export</button><button class="btn" data-a="imp">Import</button></div>
+  <input type="file" id="impf" accept=".json" class="hide">
+  <h2 class="hd">Danger zone</h2>
+  <div class="card danger"><p class="sub" style="margin:0 0 10px">Erases your level, rank, program, history and food log.</p><button class="btn dng" data-a="reset">Reset everything</button></div>
+</section>
+</main>
+
+<nav aria-label="Main">
+<button data-a="go" data-v="train" aria-selected="true">Train</button><button data-a="go" data-v="hero">Status</button><button data-a="go" data-v="plans">Plans</button><button data-a="go" data-v="food">Food</button><button data-a="go" data-v="prog">Progress</button>
+</nav>
+<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="lockb" data-a="lock">Rank Unlocks: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small>ON: skills unlock as your rank rises (skills in your active program stay open). OFF: every skill is open.</small><button class="btn" data-a="menu">Close</button></div></div>
+<div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" style="width:100%"></i></div><div class="aoa-r" id="aoar"></div></div>
+<div class="sfx" id="sfx"><div class="band"></div><div class="tx"><div id="sfxt"></div><small id="sfxs"></small></div></div>
+<div class="modal" id="sum"><div class="card" id="sumb" style="width:100%;max-width:380px"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="lu" id="lu" data-r="E"><div class="burst"></div><div class="slash"></div><i class="rg"></i><i class="rg"></i><i class="rg"></i><div class="pts" id="pts"></div><div class="t" id="lut">LEVEL UP</div><div class="s" id="lun"></div><div class="m" id="lum"></div></div>
+<div class="boot" id="boot"><div class="b-s"></div><div class="b-t">ASCEND</div><div class="b-u">YOUR EVOLUTION STARTS HERE</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/pose.js" crossorigin="anonymous"></script>
+<script>
+const GRP=['Chest','Back','Legs','Shoulders','Arms','Core','Cardio'];
+const $=id=>document.getElementById(id),KEY='repwise_v4';
+const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const ago=n=>{const d=new Date();d.setDate(d.getDate()-n);return dk(d)};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',food:{date:dk(),log:[],water:0,goal:2200}});
+let state=(()=>{try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY))||{})}catch(e){return def()}})();
+if(!state.food||state.food.date!==dk())state.food=Object.assign(def().food,{goal:(state.food||{}).goal||2200});
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+/* older saves: the fixed rep/boss shadows became milestone shadows (every 500 reps, every boss) */
+(()=>{const mg={s3:'r500',s5:'r1000',s8:'r2500',s10:'r5000',s4:'b1',s9:'b5'};for(const o in mg)if(state.shadows[o]){if(!state.shadows[mg[o]])state.shadows[mg[o]]=state.shadows[o];delete state.shadows[o]}})();
+const fdT=()=>{if(state.fd.d!==dk())state.fd={d:dk(),S:0,A:0,B:0,C:0,bc:0};return state.fd};
+let cur=0,tracking=false,T={};
+/* ===== SOUND, HAPTICS, SCREEN EFFECTS ===== */
+let AC=null,restT=0,restI=null,undoSnap=null;
+const W=k=>state.unit==='lb'?Math.round(k*2.2046)+' lb':(Math.round(k*10)/10)+' kg';
+const needBk=()=>Object.keys(state.hist).length>=3&&(!state.lastBackup||(Date.now()-new Date(state.lastBackup+'T00:00:00'))/864e5>=7);
+function beep(f,d,t){if(state.snd==='off')return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const o=AC.createOscillator(),g=AC.createGain();o.type=t||'sine';o.frequency.value=f;g.gain.setValueAtTime(.18,AC.currentTime);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+d);o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+const vib=p=>{if(state.vib&&navigator.vibrate){try{navigator.vibrate(p)}catch(e){}}};
+function say(t){if(state.snd!=='voice'||!window.speechSynthesis)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t));u.rate=1.3;speechSynthesis.speak(u)}catch(e){}}
+function fx(t,sub){$('sfxt').textContent=t;$('sfxs').textContent=sub||'';const e=$('sfx');e.classList.remove('on');void e.offsetWidth;e.classList.add('on');clearTimeout(fx.h);fx.h=setTimeout(()=>e.classList.remove('on'),1500)}
+
+/* ===== REST TIMER ===== */
+function startRest(){if(!state.restS)return;restT=Date.now()+state.restS*1000;clearInterval(restI);restI=setInterval(tickRest,250);tickRest()}
+function tickRest(){const left=Math.ceil((restT-Date.now())/1000),e=$('rest');
+ if(left<=0){clearInterval(restI);restI=null;e.classList.add('hide');beep(880,.2);vib([100,50,100]);say('Next set');toast('Rest over. Next set!');return}
+ const pt=planToday();let nx='Same exercise again';
+ if(pt){const it=pt.items.find(i=>i.n===state.ex&&i.done<i.s)||pt.items.find(i=>i.done<i.s);nx=it?(it.n===state.ex?'Next: set '+(it.done+1)+' of '+it.n.replace(' (sec)',''):'Next: '+it.n.replace(' (sec)','')):'Workout complete'}
+ e.classList.remove('hide');$('restn').textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');$('restx').textContent=nx;$('restb2').style.width=(left/state.restS*100)+'%'}
+
+/* ===== STREAK, REST DAYS, FREEZES ===== */
+function gapMissed(){if(!state.last)return 0;let n=0;const d=new Date(state.last+'T00:00:00'),y=ago(1);d.setDate(d.getDate()+1);for(let i=0;i<90;i++){if(dk(d)>y)break;if(!state.restDays.includes(d.getDay()))n++;d.setDate(d.getDate()+1)}return n}
+function bump(){const t=dk();if(state.last===t)return;state.streak=state.last&&gapMissed()===0?state.streak+1:1;state.last=t;if(state.streak%7===0&&state.freeze<2){state.freeze++;toast('Streak freeze earned!')}}
+function renderRestCard(){$('restcard').innerHTML=cb?'':`<div class="card"><h3>Rest days</h3><p class="sub" style="margin:0 0 8px">Pick the days you rest. Resting never breaks your streak or triggers a penalty.</p><div class="chips">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map((n,i)=>`<button class="chip" aria-pressed="${state.restDays.includes(i)}" data-a="restday" data-v="${i}">${n}</button>`).join('')}</div><small>Streak freezes: ${'❄'.repeat(state.freeze)||'none'} (max 2). One is used automatically if you miss a training day. You earn one for every 7-day streak and every boss you defeat.</small></div><div class="card"><h3>Daily reminder</h3><p class="sub" style="margin:0 0 8px">A web page can’t ring your phone by itself, so this makes a calendar reminder on your training days.</p><div class="row"><input id="remt" type="time" value="${state.remt||'18:00'}"><button class="btn" data-a="ics">Add to calendar</button></div></div>`}
+$('restcard').addEventListener('change',e=>{if(e.target.id==='remt'){state.remt=e.target.value;save()}});
+
+/* ===== SPLIT AS QUESTS (manual tick-off) ===== */
+function planLines(){const pt=planToday();return pt?'<div style="margin-top:8px">'+pt.items.map(it=>`<small style="display:block">${it.done>=it.s?'☑':'☐'} ${esc(it.n.replace(' (sec)',''))} ${it.done}/${it.s}</small>`).join('')+'</div>':''}
+function manualSet(it){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0});h.reps+=it.r;h.sets++;h.volume+=it.r*state.kg;h.manual=(h.manual||0)+1;state.sk[it.n]=(state.sk[it.n]||0)+it.r;bump();
+ state.prog.sets[it.n]=(state.prog.sets[it.n]||0)+1;save();qProg('reps',it.r);qProg('sets',1);qProg('plan',1);
+ const pt=planToday();if(!state.prog.done&&pt.items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++;save();fx('Workout clear',pt.name);beep(784,.2);vib([60,40,60]);setTimeout(showSummary,1600)}}
+function splitCard(){const pt=planToday();if(!pt)return'';return`<div class="card cy"><h3>Today’s split · ${esc(pt.name)}</h3><small>Tap +1 set after each set you finish, or All for the whole exercise. Each tap asks you to confirm.</small>${pt.items.map((it,i)=>{const d=it.done>=it.s;return`<div class="item"><div style="flex:1"><b>${d?'✓ ':''}${esc(it.n.replace(' (sec)',''))}</b><span>${it.done}/${it.s} sets × ${it.r}${EX[it.n][1]==='hold'?' sec':' reps'}</span></div>${d?'':`<button class="btn sm" data-a="mset" data-v="${i}">${armQ==='m'+i?'Confirm':'+1 set'}</button><button class="btn sm" data-a="mset" data-v="${i}" data-all="1">${armQ==='m'+i+'a'?'Confirm':'All'}</button>`}</div>`}).join('')}</div>`}
+
+/* ===== WEEKLY BOSS ===== */
+const BOSSES=['Goblin Warden','Iron Golem','Shadow Knight','Frost Wyrm','Blood Monarch','Gate Keeper'];
+const monday=()=>{const d=new Date();d.setDate(d.getDate()-(d.getDay()+6)%7);return dk(d)};
+function syncBoss(){const w=monday();if(!state.boss||state.boss.wk!==w){const i=Math.floor(new Date(w+'T00:00:00')/6048e5)%BOSSES.length;state.boss={wk:w,name:BOSSES[i],hp:200+state.level*10,dmg:0,dead:false};save()}}
+function hitBoss(n){syncBoss();const b=state.boss;if(b.dead)return;b.dmg=Math.min(b.hp,b.dmg+n);if(b.dmg>=b.hp){b.dead=true;state.bossWins++;state.bn.push(b.name);state.xp+=100;state.freeze=Math.min(2,state.freeze+1);fx('BOSS DOWN',b.name);beep(880,.4,'square');vib([80,60,80,60,200]);toast('Boss defeated! +100 XP and a streak freeze');save();tryLevel()}}
+function renderBoss(){syncBoss();const b=state.boss,left=7-(new Date().getDay()+6)%7,rd=state.restDays.includes(new Date().getDay());
+ $('boss').innerHTML=(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><h3 style="margin-top:6px">${b.name}</h3><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at 5, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
+
+/* ===== RANK TRIALS (GATES) ===== */
+const TRIALS={11:['Push-ups',20],21:['Squats',40],31:['Push-ups',35],41:['Squats',60],51:['Push-ups',50]};
+function renderGate(){const t=state.trial,h=t?`<div class="card danger"><span class="tag r">RANK GATE</span><h3 style="margin-top:6px">Trial for ${rankOf(t.lv)}-Rank</h3><p class="sub" style="margin:0 0 10px">Do <b>${t.n} ${esc(t.ex)}</b> in one set with the camera to break through. Warm up first. If you fall short, rest and try again on another day.</p><button class="btn red" data-a="gate">Enter the gate</button></div>`:'';$('gate').innerHTML=h;$('gatecard').innerHTML=h}
+
+/* ===== BADGES & TITLES ===== */
+const tot=()=>{let r=0,s=0;for(const k in state.hist){r+=state.hist[k].reps||0;s+=state.hist[k].sets||0}return{reps:r,sets:s}};
+const BG=[['first','First Blood','Finish your first set',()=>tot().sets>=1],['r100','Warm Blood','Count 100 total reps',()=>tot().reps>=100],['r1000','Thousand Fist','Count 1,000 total reps',()=>tot().reps>=1000],['r10k','Ten-Thousand Monarch','Count 10,000 total reps',()=>tot().reps>=10000],
+['s3','Three Gates','Reach a 3-day streak',()=>state.streak>=3],['s7','Seven Day Vow','Reach a 7-day streak',()=>state.streak>=7],['s30','Unbreakable','Reach a 30-day streak',()=>state.streak>=30],
+['wo1','Workout Cleared','Finish a full program workout',()=>state.wo>=1],['wo10','Gate Crasher','Finish 10 program workouts',()=>state.wo>=10],
+['pr1','Record Breaker','Set a personal record',()=>Object.keys(state.hist).some(k=>state.hist[k].prs)],
+['boss1','Boss Slayer','Defeat a weekly boss',()=>state.bossWins>=1],['boss5','Raid Leader','Defeat 5 weekly bosses',()=>state.bossWins>=5],
+['gate1','Gate Breaker','Clear a rank trial',()=>Object.keys(state.gate).length>=1],['mast','Skill Master','Master a skill (500 reps)',()=>Object.values(state.sk).some(n=>n>=500)],
+['fS','Clean Form','Land 25 S-grade reps',()=>(state.fm.S||0)>=25],
+['rD','D-Rank Hunter','Reach D-Rank',()=>state.level>=11],['rC','C-Rank Hunter','Reach C-Rank',()=>state.level>=21],['rB','B-Rank Hunter','Reach B-Rank',()=>state.level>=31],['rA','A-Rank Hunter','Reach A-Rank',()=>state.level>=41],['rS','S-Rank Monarch','Reach S-Rank',()=>state.level>=51]];
+function checkBadges(){BG.forEach(b=>{if(!state.badges[b[0]]&&b[3]()){state.badges[b[0]]=dk();toast('Badge unlocked: '+b[1]);beep(1046,.2)}})}
+function renderBadges(){$('bgcount').textContent=Object.keys(state.badges).length+'/'+BG.length;$('badges').innerHTML='<div class="grid">'+BG.map(b=>{const o=!!state.badges[b[0]],w=state.title===b[0];return`<button class="btn" data-a="title" data-v="${b[0]}" style="text-align:left;${o?'':'opacity:.45'}"><b>${o?(w?'★ ':''):'🔒 '}${b[1]}</b><br><small>${b[2]}</small></button>`}).join('')+'</div>'}
+
+/* ===== SHADOW ARMY: lifetime milestones only (every 500 reps, every boss, elite feats). Never from one day's volume. ===== */
+const SHP=['Archer','Brute','Lancer','Mage','Phantom','Raider','Warden','Reaper','Titan','Monarch'],RN=['','','II','III','IV','V','VI','VII','VIII','IX','X'];
+const shName=k=>{const lap=Math.floor((k-1)/10);return'Shade '+SHP[(k-1)%10]+(lap?' '+(RN[lap+1]||lap+1):'')};
+const SHE=[['s1','Shade Scout','Count 100 total reps',()=>tot().reps>=100],
+['s2','Shade Hound','Count 250 total reps',()=>tot().reps>=250],
+['s6','Shade Wyvern','Finish 10 program workouts',()=>state.wo>=10],
+['s7','Shade Marshal','Reach a 14-day streak',()=>state.streak>=14],
+['f1','Shade Duelist','Land 100 S-grade reps',()=>(state.fm.S||0)>=100],
+['f2','Shade Sentinel','Hit a clean-rep combo of 20',()=>(state.bc||0)>=20]];
+function shDefs(){const a=[],K=Math.floor(tot().reps/500);
+ for(let k=1;k<=K;k++)a.push({id:'r'+k*500,k:'REP',n:shName(k),d:(k*500).toLocaleString()+' total reps'});
+ for(let i=1;i<=state.bossWins;i++)a.push({id:'b'+i,k:'BOSS',n:(state.bn[i-1]||BOSSES[(i-1)%BOSSES.length])+'’s Shade',d:'Boss defeated #'+i});
+ Object.keys(state.shadows).filter(k=>/^d\d+$/.test(k)).forEach(k=>{const n=+k.slice(1);a.push({id:k,k:'RARE',n:dgName(n),d:'Dropped by dungeon clear #'+n,ok:true})});
+ SHE.forEach(s=>a.push({id:s[0],k:'ELITE',n:s[1],d:s[2],ok:s[3]()}));
+ a.forEach(s=>{if(s.ok===undefined)s.ok=true});return a}
+function arise(list){const el=$('lu');if(el.classList.contains('on')&&el.dataset.r!=='SH'){setTimeout(()=>arise(list),3200);return}
+ const f=list.filter(x=>x.k==='BOSS').pop()||list[list.length-1];el.dataset.r='SH';$('lut').textContent='ARISE';$('lun').textContent=f.n+(list.length>1?'  +'+(list.length-1)+' more':'');
+ $('lum').textContent=f.k==='BOSS'?'A FALLEN BOSS SERVES YOU NOW':f.k==='ELITE'?'AN ELITE SHADOW ANSWERS':f.k==='RARE'?'A RARE SHADOW ANSWERS THE GATE':'A SHADOW SOLDIER JOINS YOUR ARMY';
+ $('pts').innerHTML=Array.from({length:34},()=>`<i class="pt" style="left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;animation-duration:${1.6+Math.random()*1.8}s"></i>`).join('');
+ el.classList.add('on');clearTimeout(luFx.h);luFx.h=setTimeout(()=>el.classList.remove('on'),3800);
+ beep(110,.5,'sawtooth');setTimeout(()=>beep(165,.4,'sawtooth'),180);setTimeout(()=>beep(330,.35),420);setTimeout(()=>say('Arise'),500);vib([90,60,90,60,220])}
+function checkShadows(){const nw=shDefs().filter(s=>s.ok&&!state.shadows[s.id]);if(!nw.length)return;nw.forEach(s=>state.shadows[s.id]=dk());save();arise(nw)}
+let shAll=false;
+function renderShadows(){const D=shDefs(),R=tot().reps,
+ got=D.filter(s=>state.shadows[s.id]).reverse().sort((a,b)=>state.shadows[b.id]<state.shadows[a.id]?-1:state.shadows[b.id]>state.shadows[a.id]?1:0),
+ nxt=[{k:'REP',d:(500-R%500)+' reps to the next soldier'},{k:'BOSS',d:'Defeat a weekly boss'},{k:'RARE',d:'Clear an Instant Dungeon for a rare drop'}].concat(D.filter(s=>!state.shadows[s.id]&&s.k==='ELITE')),
+ vis=shAll?got:got.slice(0,12),
+ card=(s,on)=>`<div class="shd ${on?'on ':''}${s.k.toLowerCase()}"><span class="sk">${s.k}</span><b>${on?esc(s.n):'???'}</b><small>${esc(s.d)}</small></div>`;
+ $('shcount').textContent=got.length+' soldier'+(got.length===1?'':'s');
+ $('shadows').innerHTML=(got.length?`<div class="shg">${vis.map(s=>card(s,1)).join('')}</div>`:'<small>No shadows yet. Count your first 100 reps to raise a Shade Scout.</small>')
+ +(got.length>12?`<button class="btn sm" style="margin-top:10px" data-a="shall">${shAll?'Show fewer':'Show all '+got.length}</button>`:'')
+ +`<small style="display:block;margin:14px 0 6px">NEXT TO RISE</small><div class="shg">${nxt.map(s=>card(s,0)).join('')}</div><small style="display:block;margin-top:10px">A soldier joins every 500 reps and every boss you defeat. Instant dungeons can drop rare ones. Army power: +${armyBonus()} boss damage per rep (+1 for every 10 shadows, max +3). Shadows come from lifetime totals, never from how much you do in one day. Train smart and rest when you need to.</small>`}
+
+/* ===== SHADOW ARMY POWER ===== */
+const armyBonus=()=>Math.min(3,Math.floor(Object.keys(state.shadows).length/10));
+
+/* ===== INSTANT DUNGEON: one optional timed gate per day ===== */
+const DGT=[['Goblin Nest',5,[['Push-ups',40],['Squats',30]]],['Orc Hall',6,[['Squats',50],['Crunches',30]]],['Spider Cave',5,[['Lunges',40],['Push-ups',25]]],['Frost Vault',6,[['Pike Push-ups',20],['Leg Raises',25],['Squats',30]]],['Iron Trial',6,[['Push-ups',30],['Lunges',30],['Crunches',30]]],['Ant Nest',6,[['Mountain Climbers',40],['Squats',30]]]];
+const DGP=['Goblin','Orc','Naga','Troll','Wraith','Drake','Golem','Lich'];
+const dgName=n=>{const lap=Math.floor((n-1)/DGP.length);return'Shade '+DGP[(n-1)%DGP.length]+(lap?' '+(RN[lap+1]||lap+1):'')};
+let dgI=0;
+function dgGen(){if(state.dg&&state.dg.d===dk())return;const f=state.level<10?.75:state.level<25?1:1.25,i=Math.floor(Date.now()/864e5)%DGT.length,t=DGT[i];
+ state.dg={d:dk(),i,st:'idle',t0:0,need:t[2].map(o=>Math.max(10,Math.round(o[1]*f/5)*5)),p:t[2].map(()=>0)};save()}
+const dgLeft=()=>DGT[state.dg.i][1]*60000-(Date.now()-state.dg.t0);
+const dgFmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+function dgTick(){const g=state.dg;if(!g||g.st!=='run'){clearInterval(dgI);dgI=0;return}const l=dgLeft();
+ if(l<=0){g.st='fail';save();clearInterval(dgI);dgI=0;fx('Gate closed','Time ran out');toast('The dungeon closed. A new gate opens tomorrow.');renderDungeon();return}
+ const e=$('dgt');if(e)e.textContent=dgFmt(l)}
+function renderDungeon(){dgGen();const g=state.dg,t=DGT[g.i],rest=state.restDays.includes(new Date().getDay());
+ if(g.st==='run'&&!dgI)dgI=setInterval(dgTick,500);
+ if(rest&&g.st==='idle'){$('dungeon').innerHTML='<div class="card"><span class="tag">INSTANT DUNGEON</span><p class="sub" style="margin:6px 0 0">Rest day. The gate stays closed. Recover well.</p></div>';return}
+ const obj=t[2].map((o,i)=>{const done=g.p[i]>=g.need[i];return`<div class="item"><div><b>${done?'✓ ':''}${esc(o[0])}</b><br><small>${g.p[i]}/${g.need[i]}</small></div>${g.st==='run'&&!done?`<button class="btn sm" data-a="load" data-v="${esc(o[0])}" data-r="${g.need[i]-g.p[i]}">Load</button>`:''}</div>`}).join('');
+ let b;
+ if(g.st==='idle')b=`<p class="sub" style="margin:6px 0 8px">A gate opened. Clear it within ${t[1]} minutes for +40 XP and a chance at a rare shadow. It is optional, and skipping costs nothing. Move with control and stop if anything hurts.</p>${obj}<button class="btn red" style="margin-top:10px" data-a="dgenter">Enter the dungeon</button>`;
+ else if(g.st==='run')b=`<div class="dgt" id="dgt">${dgFmt(dgLeft())}</div>${obj}<button class="btn sm" style="margin-top:10px" data-a="dgquit">Leave the dungeon</button>`;
+ else if(g.st==='clear')b='<p class="sub" style="margin:6px 0 0">Cleared. A new gate opens tomorrow.</p>';
+ else b='<p class="sub" style="margin:6px 0 0">The gate closed. A new one opens tomorrow.</p>';
+ $('dungeon').innerHTML=`<div class="card ${g.st==='run'?'danger':g.st==='clear'?'cy ok':''}"><span class="tag r">INSTANT DUNGEON</span> <small>${esc(t[0])}${g.st==='clear'?' · cleared':''}</small>${b}</div>`}
+function dgRep(){const g=state.dg;if(!g||g.st!=='run'||g.d!==dk())return;if(dgLeft()<=0){dgTick();return}
+ const t=DGT[g.i],i=t[2].findIndex((o,j)=>o[0]===state.ex&&g.p[j]<g.need[j]);if(i<0)return;g.p[i]++;
+ if(g.p.every((p,j)=>p>=g.need[j]))dgClear()}
+function dgAfter(){const g=state.dg;if(!g||g.st!=='run'||cur!==0)return;const t=DGT[g.i],c=t[2].findIndex(o=>o[0]===state.ex);
+ if(c<0||g.p[c]<g.need[c])return;const j=t[2].findIndex((o,k)=>g.p[k]<g.need[k]);if(j<0)return;
+ state.ex=t[2][j][0];state.target=g.need[j]-g.p[j];T={ready:T.ready};save();toast('Next: '+state.ex);renderTrain()}
+function dgClear(){const g=state.dg;g.st='clear';clearInterval(dgI);dgI=0;state.dgn=(state.dgn||0)+1;state.xp+=40;
+ let sh=null;if(state.dgn%5===0||Math.random()<.2){const id='d'+state.dgn;state.shadows[id]=dk();sh={id,k:'RARE',n:dgName(state.dgn)}}
+ save();fx('Dungeon cleared',DGT[g.i][0]);toast('Dungeon cleared! +40 XP'+(sh?' and a rare shadow':''));tryLevel();
+ if(sh)setTimeout(()=>arise([sh]),1600);renderDungeon()}
+
+/* ===== ALL-OUT ATTACK: finisher when the boss is under 20% HP ===== */
+let aoaI=0,aoaN=0,aoaT=0,aoaD=0;
+function aoaCard(){const b=state.boss;if(!b||b.dead||b.aoa||b.hp-b.dmg>b.hp*.2)return'';const h=state.hist[dk()],ok=!!(h&&h.sets>=1);
+ return`<div class="card danger"><span class="tag r">ALL-OUT ATTACK</span><p class="sub" style="margin:6px 0 10px">${esc(b.name)} is nearly down. ${ok?'Tap as fast as you can for 5 seconds to land the finisher.':'Finish one set today to charge the finisher.'}</p><button class="btn red" data-a="aoa" ${ok?'':'disabled'}>All-Out Attack</button></div>`}
+const aoaPer=()=>Math.max(3,Math.ceil(state.boss.hp*.012));
+function aoaOpen(){aoaN=0;aoaD=0;aoaT=Date.now()+5000;$('aoar').innerHTML='';$('aoas').textContent='0 HITS';$('aoam').style.width='100%';$('aoab').classList.remove('hide');$('aoa').classList.remove('hide');
+ say('All out attack');beep(150,.3,'sawtooth');vib([80,40,80]);clearInterval(aoaI);aoaI=setInterval(aoaTick,100)}
+function aoaTick(){const l=aoaT-Date.now();$('aoam').style.width=Math.max(0,l/50)+'%';if(l<=0){clearInterval(aoaI);aoaEnd()}}
+function aoaTap(){if(Date.now()>=aoaT)return;aoaN++;$('aoas').textContent=aoaN+' HIT'+(aoaN>1?'S':'');beep(260+(aoaN*23)%380,.04,'square');vib(10)}
+function aoaEnd(){const b=state.boss;$('aoab').classList.add('hide');aoaD=Math.max(0,Math.min(Math.ceil(b.hp*.2),aoaN*aoaPer(),b.hp-b.dmg));
+ $('aoar').innerHTML=aoaD?`${aoaD} DAMAGE<br><button class="btn red" style="margin-top:12px" data-a="aoaclose">Finish</button>`:`No hits landed<br><button class="btn" style="margin-top:12px" data-a="aoaclose">Close</button>`;
+ if(aoaD){beep(110,.4,'sawtooth');vib([60,40,200])}}
+
+/* ===== JOB CLASS: decided by your most-trained muscle groups ===== */
+const JC={Fighter:{g:['Chest','Shoulders','Arms'],s:'STR',t:['Fighter','Fighter','Warrior','Berserker','Blade Master','War Monarch']},
+ Assassin:{g:['Legs','Cardio'],s:'AGI',t:['Assassin','Assassin','Shadow Blade','Night Stalker','Phantom','Shadow Monarch']},
+ Tank:{g:['Back','Core'],s:'VIT',t:['Tank','Tank','Guardian','Bulwark','Iron Wall','Fortress Monarch']}};
+function jobClass(){const g={};let tt=0;for(const n in state.sk){const e=EX[n];if(e){g[e[0]]=(g[e[0]]||0)+state.sk[n];tt+=state.sk[n]}}
+ if(tt<100)return{ok:0,name:'Unclassed',cls:'',share:Math.min(100,tt),s:'',b:0};
+ const sh={};let best='',bv=-1;for(const c in JC){sh[c]=Math.round(JC[c].g.reduce((a,x)=>a+(g[x]||0),0)/tt*100);if(sh[c]>bv){bv=sh[c];best=c}}
+ const pc=state.cb;if(pc&&sh[pc]!==undefined&&sh[pc]>=35&&bv-sh[pc]<10)best=pc;
+ if(sh[best]<35)return{ok:1,name:'Hunter',cls:'Hunter',share:sh[best],s:'',b:0};
+ const i=RK.findIndex(x=>x[1]===rankOf(state.level));return{ok:1,name:JC[best].t[i],cls:best,share:sh[best],s:JC[best].s,b:3+i*2}}
+
+/* ===== WEIGHT SUGGESTIONS ===== */
+function wLog(ex,kg,r,gs){if(!(kg>0))return;state.wl=state.wl||{};const a=(state.wl[ex]=state.wl[ex]||[]);a.push({kg,r,p:gs&&gs.length?gs.reduce((x,y)=>x+y,0)/gs.length:null});while(a.length>3)a.shift()}
+function wSug(){const a=(state.wl&&state.wl[state.ex])||[];if(!(state.kg>0)||a.length<2)return null;
+ if(!a.slice(-2).every(e=>e.kg===state.kg&&e.r>=state.target&&(e.p===null||e.p>=2)))return null;
+ const st=state.unit==='lb'?5/2.2046:(state.kg<40?2.5:5);return Math.round((state.kg+st)*100)/100}
+function renderWsug(){const s=wSug();$('wsug').innerHTML=s==null?'':`<div class="card cy" style="margin-top:10px"><b>Ready for more</b><br><small>Two solid sets at ${W(state.kg)} × ${state.target}. Try ${W(s)} next.</small><br><button class="btn sm red" style="margin-top:8px" data-a="wapply">Use ${W(s)}</button></div>`}
+
+/* ===== TRAINING CALENDAR + BODY WEIGHT ===== */
+function renderCal(){const wk=15,dow=(new Date().getDay()+6)%7;let h='',n0=0;
+ for(let c=0;c<wk;c++)for(let r=0;r<7;r++){const n=(wk-1-c)*7+(dow-r);if(n<0){h+='<i class="cd f"></i>';continue}
+  const k=ago(n),rp=(state.hist[k]||{}).reps||0,l=rp>=150?4:rp>=75?3:rp>=25?2:rp>0?1:0;if(rp>0)n0++;h+=`<i class="cd l${l}${n===0?' td':''}" title="${k}: ${rp} reps"></i>`}
+ $('cal').innerHTML=h;$('calt').textContent=n0+' training day'+(n0===1?'':'s')+' in the last '+wk+' weeks'}
+function renderBW(){const a=state.bw||[],u=state.unit,cv=k=>u==='lb'?k*2.2046:k,f=k=>(Math.round(cv(k)*10)/10)+' '+u,last=a.slice(-30);let h='';
+ if(!a.length)h='<small>No entries yet.</small>';
+ else{h=`<b style="font:1.6rem Anton,Impact,sans-serif">${f(a[a.length-1].kg)}</b> <small>${a[a.length-1].d}</small>`;
+  if(last.length>=2){const v=last.map(x=>cv(x.kg)),mn=Math.min(...v),mx=Math.max(...v),pad=Math.max(.5,(mx-mn)*.25),lo=mn-pad,hi=mx+pad,
+   pts=v.map((y,i)=>(i/(v.length-1)*300).toFixed(1)+','+((1-(y-lo)/(hi-lo))*80+5).toFixed(1)).join(' '),d=Math.round((last[last.length-1].kg-last[0].kg)*cv(1)*10)/10;
+   h+=`<svg class="bwsv" viewBox="0 0 300 90" preserveAspectRatio="none" aria-label="Body weight trend"><polyline points="${pts}" fill="none" stroke="#52d9ff" stroke-width="3" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg><small>${last.length} entries · change ${d>0?'+':''}${d} ${u}</small>`}}
+ $('bwc').innerHTML=h}
+
+/* ===== WORKOUT SUMMARY ===== */
+function showSummary(){const h=state.hist[dk()]||{reps:0,sets:0,volume:0},qs=state.quests.filter(q=>!q.bonus),pt=planToday(),fd=fdT(),gn=fd.S+fd.A+fd.B+fd.C;
+ $('sumb').innerHTML=`<h3>Workout clear</h3><p class="sub">${pt?esc(pt.pr.name)+' · '+esc(pt.name):''}</p><div class="grid"><div class="stat"><b>${h.sets}</b><span>Sets today</span></div><div class="stat"><b>${h.reps}</b><span>Reps today</span></div><div class="stat"><b>${W(h.volume)}</b><span>Volume</span></div><div class="stat"><b>${h.prs||0}</b><span>New records</span></div><div class="stat"><b>${state.streak}</b><span>Day streak</span></div><div class="stat"><b>${qs.filter(q=>q.p>=q.t).length}/${qs.length}</b><span>Quests done</span></div><div class="stat"><b>${gn?Math.round((fd.S+fd.A)/gn*100)+'%':'—'}</b><span>Clean reps</span></div><div class="stat"><b>${fd.bc||0}</b><span>Best combo</span></div></div><button class="btn red" data-a="closesum">Continue</button>`;$('sum').classList.add('on')}
+
+
+/* ===== EXERCISES: [group, tracked joint, low angle, high angle, starts high?] ===== */
+const EX={
+'Push-ups':['Chest','elbow',100,150,1],'Incline Push-ups':['Chest','elbow',100,150,1],'Bench Press':['Chest','elbow',100,150,1],'Chest Dips':['Chest','elbow',100,150,1],
+'Pull-ups':['Back','elbow',100,150,1],'Barbell Rows':['Back','elbow',100,150,1],'Lat Pulldown':['Back','elbow',100,150,1],'Dumbbell Rows':['Back','elbow',100,150,1],
+'Squats':['Legs','knee',105,160,1],'Lunges':['Legs','knee',110,160,1],'Bulgarian Split Squats':['Legs','knee',110,160,1],'Romanian Deadlifts':['Legs','hip',110,160,1],
+'Overhead Press':['Shoulders','elbow',100,155,0],'Lateral Raises':['Shoulders','abd',35,70,0],'Pike Push-ups':['Shoulders','elbow',100,150,1],'Face Pulls':['Shoulders','elbow',100,150,1],
+'Bicep Curls':['Arms','elbow',70,145,1],'Hammer Curls':['Arms','elbow',70,145,1],'Tricep Pushdowns':['Arms','elbow',85,150,0],'Skull Crushers':['Arms','elbow',80,140,1],
+'Crunches':['Core','hip',105,125,1],'Leg Raises':['Core','hip',110,160,1],'Plank Hold (sec)':['Core','hold'],'Russian Twists':['Core','twist']};
+
+/* ===== PROGRAMS ===== */
+const D=(name,s)=>({name,ex:s.split(', ').map(x=>{const m=x.match(/^(.*) (\d+)x(\d+)$/);return{n:m[1],s:+m[2],r:+m[3]}})});
+const PROGS=[
+{id:'fb',name:'Full Body',lvl:'Beginner',blurb:'Whole body each session. The best place to start.',days:[D('Day A','Squats 3x10, Push-ups 3x10, Dumbbell Rows 3x10, Plank Hold (sec) 3x30'),D('Day B','Lunges 3x10, Incline Push-ups 3x12, Lat Pulldown 3x10, Leg Raises 3x10')]},
+{id:'bw',name:'Bodyweight Basics',lvl:'Beginner',blurb:'No equipment needed. Train anywhere.',days:[D('Day A','Squats 3x15, Push-ups 3x8, Crunches 3x15, Plank Hold (sec) 3x20'),D('Day B','Lunges 3x10, Incline Push-ups 3x10, Leg Raises 3x10, Russian Twists 3x20'),D('Day C','Squats 3x15, Pike Push-ups 3x8, Crunches 3x15, Plank Hold (sec) 3x30')]},
+{id:'ppl',name:'Push Pull Legs',lvl:'Intermediate',blurb:'Push, pull and legs on rotation. A popular muscle-building split.',days:[D('Push','Bench Press 4x8, Overhead Press 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12'),D('Pull','Pull-ups 4x8, Barbell Rows 4x8, Face Pulls 3x12, Bicep Curls 3x12'),D('Legs','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Leg Raises 3x12')]},
+{id:'ul',name:'Upper / Lower',lvl:'Intermediate',blurb:'Alternates upper and lower body over four sessions.',days:[D('Upper A','Bench Press 4x8, Barbell Rows 4x8, Overhead Press 3x10, Bicep Curls 3x12'),D('Lower A','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Crunches 3x15'),D('Upper B','Pull-ups 4x8, Chest Dips 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12'),D('Lower B','Bulgarian Split Squats 3x10, Squats 3x12, Leg Raises 3x12, Plank Hold (sec) 3x40')]},
+{id:'5x5',name:'5×5 Strength',lvl:'Intermediate',blurb:'Few lifts, heavy sets of five. Built for strength.',days:[D('Day A','Squats 5x5, Bench Press 5x5, Barbell Rows 5x5'),D('Day B','Squats 5x5, Overhead Press 5x5, Pull-ups 3x5')]},
+{id:'bro',name:'Bro Split',lvl:'Advanced',blurb:'One muscle group per day across five sessions.',days:[D('Chest','Bench Press 4x8, Incline Push-ups 3x12, Chest Dips 3x10'),D('Back','Pull-ups 4x8, Barbell Rows 4x8, Lat Pulldown 3x10'),D('Shoulders','Overhead Press 4x8, Lateral Raises 3x12, Face Pulls 3x12, Pike Push-ups 3x8'),D('Arms','Bicep Curls 3x12, Hammer Curls 3x12, Tricep Pushdowns 3x12, Skull Crushers 3x10'),D('Legs','Squats 4x8, Lunges 3x10, Romanian Deadlifts 3x10, Bulgarian Split Squats 3x10')]}];
+PROGS.push(
+{id:'pplul',name:'5-Day PPLUL Hybrid',lvl:'Intermediate',blurb:'Push, Pull, Legs, then Upper and Lower. Hits every muscle twice a week.',days:[D('Push','Bench Press 4x8, Dumbbell Shoulder Press 3x10, Incline Bench Press 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12'),D('Pull','Pull-ups 4x8, Barbell Rows 4x8, Seated Cable Rows 3x10, Face Pulls 3x12, Bicep Curls 3x12'),D('Legs','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Glute Bridges 3x15, Leg Raises 3x12'),D('Upper','Overhead Press 3x8, Chin-ups 3x8, Chest Dips 3x10, Dumbbell Rows 3x10, Hammer Curls 3x12'),D('Lower','Deadlifts 3x6, Bulgarian Split Squats 3x10, Hip Thrusts 3x10, Sumo Squats 3x12, Crunches 3x15')]},
+{id:'phul',name:'PHUL Power + Size',lvl:'Intermediate',blurb:'Two heavy days and two high-rep days. Strength and muscle together.',days:[D('Power Upper','Bench Press 4x5, Barbell Rows 4x5, Overhead Press 3x6, Pull-ups 3x6, Bicep Curls 2x8'),D('Power Lower','Squats 4x5, Deadlifts 3x5, Lunges 3x8, Hanging Leg Raises 3x10'),D('Size Upper','Incline Bench Press 4x12, Seated Cable Rows 4x12, Lateral Raises 4x15, Face Pulls 4x15, Tricep Pushdowns 3x12'),D('Size Lower','Goblet Squats 4x12, Romanian Deadlifts 4x12, Step-ups 3x12, Glute Bridges 3x15, Crunches 3x20')]},
+{id:'tl',name:'Torso / Limbs',lvl:'Intermediate',blurb:'Four days. Torso days for chest and back, limb days for legs and arms.',days:[D('Torso A','Bench Press 4x8, Barbell Rows 4x8, Overhead Press 3x10, Lat Pulldown 3x10'),D('Limbs A','Squats 4x8, Romanian Deadlifts 3x10, Bicep Curls 3x12, Tricep Pushdowns 3x12'),D('Torso B','Incline Bench Press 4x10, Pull-ups 4x8, Lateral Raises 3x15, Face Pulls 3x15'),D('Limbs B','Lunges 3x10, Hip Thrusts 3x10, Hammer Curls 3x12, Skull Crushers 3x12')]},
+{id:'arn',name:'Arnold Split',lvl:'Advanced',blurb:'Chest and back, shoulders and arms, legs. Run it twice a week for six sessions.',days:[D('Chest & Back','Bench Press 4x8, Pull-ups 4x8, Incline Bench Press 3x10, Barbell Rows 3x10, Chest Dips 3x10'),D('Shoulders & Arms','Arnold Press 4x10, Lateral Raises 4x12, Bicep Curls 3x12, Skull Crushers 3x12, Hammer Curls 3x12'),D('Legs & Abs','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Hanging Leg Raises 3x12, Crunches 3x15')]},
+{id:'fb3',name:'Minimalist Full Body',lvl:'Beginner',blurb:'Three short sessions a week built on the big lifts. Great with busy schedules.',days:[D('Day A','Squats 3x8, Bench Press 3x8, Barbell Rows 3x8, Plank Hold (sec) 2x40'),D('Day B','Deadlifts 3x5, Overhead Press 3x8, Chin-ups 3x6, Crunches 2x15'),D('Day C','Goblet Squats 3x10, Push-ups 3x12, Dumbbell Rows 3x10, Glute Bridges 3x15')]},
+{id:'glu',name:'Glute & Legs Focus',lvl:'Intermediate',blurb:'Two lower-body days built around bridges, thrusts and single-leg work.',days:[D('Day A','Hip Thrusts 4x10, Sumo Squats 4x12, Step-ups 3x12, Glute Bridges 3x15'),D('Day B','Romanian Deadlifts 4x8, Bulgarian Split Squats 3x10, Lunges 3x12, Leg Raises 3x12')]},
+{id:'cal',name:'Calisthenics Skills',lvl:'Advanced',blurb:'Push, pull and legs with hard bodyweight skills. No gym needed.',days:[D('Push','Archer Push-ups 4x6, Pike Push-ups 3x8, Diamond Push-ups 3x10, Handstand Push-ups 3x5'),D('Pull','Pull-ups 4x8, Chin-ups 3x8, Inverted Rows 3x10, Muscle-ups 3x3'),D('Legs','Pistol Squats 3x5, Bulgarian Split Squats 3x8, Jump Squats 3x10, Hanging Leg Raises 3x10')]},
+{id:'hiit',name:'HIIT & Core',lvl:'Beginner',blurb:'Short, fast sessions for conditioning and abs. About 20 minutes.',days:[D('Day A','Jumping Jacks 3x40, Mountain Climbers 3x30, Jump Squats 3x12, Plank Hold (sec) 3x30'),D('Day B','High Knees 3x40, Bicycle Crunches 3x20, Squats 3x15, Push-ups 3x10')]});
+const clone=o=>JSON.parse(JSON.stringify(o));
+function syncCustom(){const i=PROGS.findIndex(x=>x.id==='custom');if(i>=0)PROGS.splice(i,1);if(state.custom&&state.custom.days.length)PROGS.push({id:'custom',name:state.custom.name||'My Split',lvl:'Custom',blurb:'Your own split.',days:state.custom.days})}
+let cb=null;
+const prOf=()=>state.prog&&PROGS.find(p=>p.id===state.prog.id);
+function syncProg(){const p=state.prog,pr=prOf(),t=dk();if(!p||!pr){state.prog=null;return}if(p.sd!==t){if(p.done)p.day=(p.day+1)%pr.days.length;p.done=false;p.sets={};p.sd=t}}
+function planToday(){syncProg();const pr=prOf();if(!pr)return null;const d=pr.days[state.prog.day%pr.days.length];return{pr,name:d.name,items:d.ex.map(e=>({...e,done:state.prog.sets[e.n]||0}))}}
+
+/* ===== LEVELS: slow, and gated by finishing every quest ===== */
+const need=l=>150+20*l;
+const RK=[[1,'E'],[11,'D'],[21,'C'],[31,'B'],[41,'A'],[51,'S']];
+const rankOf=l=>RK.filter(r=>l>=r[0]).pop()[1];
+const allDone=()=>state.quests.length>0&&state.quests.filter(q=>!q.bonus).every(q=>q.p>=q.t);
+function tryLevel(){if(!allDone())return;const r0=rankOf(state.level);let up=0;
+ while(state.xp>=need(state.level)){const nx=state.level+1,tr=TRIALS[nx];
+  if(tr&&!state.gate[nx]){if(!state.trial||state.trial.lv!==nx){state.trial={lv:nx,ex:tr[0],n:tr[1]};fx('RANK GATE','A trial awaits');beep(220,.5,'sawtooth');vib([120,60,120])}break}
+  state.xp-=need(state.level);state.level++;up=1}
+ if(up)luFx(r0!==rankOf(state.level));save()}
+const MSG={E:'THE WEAKEST HUNTER RISES',D:'YOU ARE NO LONGER A BEGINNER',C:'THE GATE OPENS',B:'THE SHADOWS STIR',A:'NONE CAN STAND IN YOUR WAY',S:'ARISE. THE MONARCH AWAKENS'},PT={E:0,D:14,C:8,B:16,A:36,S:52};
+function luFx(promo){const r=rankOf(state.level),el=$('lu');el.dataset.r=r;$('lut').textContent=promo?'RANK UP':'LEVEL UP';$('lun').textContent='LV '+state.level+' · '+r+'-RANK';$('lum').textContent=MSG[r];
+ $('pts').innerHTML=Array.from({length:PT[r]},()=>`<i class="pt" style="left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;animation-duration:${1.4+Math.random()*1.6}s"></i>`).join('');
+ el.classList.add('on');clearTimeout(luFx.h);luFx.h=setTimeout(()=>el.classList.remove('on'),promo?4800:3000)}
+$('lu').addEventListener('click',()=>$('lu').classList.remove('on'));
+function genQuests(){const t=dk();if(state.qDate===t)return;state.qDate=t;syncProg();
+ let pen=false,fr=false;const miss=state.last&&state.last!==t?gapMissed():0;
+ if(miss>0){if(miss===1&&state.freeze>0){state.freeze--;state.last=ago(1);fr=true}else{state.streak=0;pen=true}}
+ const pt=planToday(),dn=Math.floor(Date.now()/864e5),Q1=[['Warm-up',20],['Volume',30],['Pace',25]][dn%3],
+ BON=[{n:'Bonus: new record',d:'Beat a personal record today',t:1,k:'pr'},{n:'Bonus: go heavy',d:'Finish a set with weight above 0 kg',t:1,k:'wt'},{n:'Bonus: new skill',d:'Finish a set of a skill you have never trained',t:1,k:'new'},{n:'Bonus: hydrate',d:'Drink 8 glasses of water',t:1,k:'water'},{n:'Bonus: eat smart',d:'Log a meal in the Food tab',t:1,k:'meal'}][dn%5];
+ state.quests=[{n:Q1[0],d:'Count '+Q1[1]+' reps',t:Q1[1],p:0,xp:15,k:'reps'},{n:'Iron discipline',d:'Finish 3 sets',t:3,p:0,xp:25,k:'sets'},
+ pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),p:0,xp:60,k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,p:0,xp:60,k:'sets'}];
+ if(pen)state.quests.push({n:'Penalty: recovery',d:'Count 60 reps to clear a missed day',t:60,p:0,xp:20,k:'reps',pen:1});
+ state.quests.push(Object.assign(BON,{p:0,xp:15,bonus:1}));save();if(fr)toast('Streak freeze used. Your streak is safe.')}
+function refreshQuests(){const q=state.quests[2];if(!q||q.p>=q.t)return;const pt=planToday();
+ Object.assign(q,pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,k:'sets'});q.p=Math.min(q.p,q.t-1);save()}
+function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q.t,q.p+n);if(q.p>=q.t){state.xp+=q.xp;toast('Quest done: '+q.n+' +'+q.xp+' XP')}}});save();tryLevel()}
+
+/* ===== UI ===== */
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
+const SEC=['train','hero','plans','food','prog','skills','checkin'];
+function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classList.add('enter');setTimeout(()=>$(s).classList.remove('enter'),400);document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===s));scrollTo(0,0);render();if(s==='hero')$('avt').appendChild($('fig'));else if(s==='skills')$('figslot').appendChild($('fig'));if((s==='skills'||s==='hero')&&!figOn){figOn=true;requestAnimationFrame(figLoop)}}
+function render(){genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
+ if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
+const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
+ $('top').textContent='LV '+l+' '+r;$('lockb').textContent='Rank Unlocks: '+(state.lock?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
+ $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP</small>`;
+ $('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(jc.ok&&jc.cls!=='Hunter'?' · '+jc.name:'')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';
+ $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
+ const tot=Object.values(state.hist).reduce((a,h)=>a+(h.reps||0),0);
+ 
+ const streakDisplay = state.streak > 0 ? `<span class="flame-streak">🔥 ${state.streak}d</span>` : `${state.streak}d`;
+
+ $('stats').innerHTML=`<div class="srow"><b>STR</b><div class="xp"><i style="width:${Math.min(100,l*2)}%"></i></div><span>${l}${bn('STR')}</span></div><div class="srow"><b>AGI</b><div class="xp"><i style="width:${Math.min(100,state.streak*5)}%"></i></div><span>${streakDisplay}${bn('AGI')}</span></div><div class="srow"><b>VIT</b><div class="xp"><i style="width:${Math.min(100,tot/200)}%"></i></div><span>${tot}${bn('VIT')}</span></div><div class="srow"><b>JOB</b><div class="xp"><i style="width:${jc.share}%"></i></div><span>${jc.ok?esc(jc.name):'Unclassed'}</span></div>`;
+ $('quests').innerHTML=state.quests.map(q=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}</div>`).join('');
+ $('ladder').innerHTML=RK.map((x,i)=>`<div class="card ${x[1]===r?'cy':''}" style="padding:10px 14px"><b style="font-family:Anton,Impact,sans-serif">${x[1]}-RANK</b> <small>Level ${x[0]}${RK[i+1]?'–'+(RK[i+1][0]-1):'+'}</small></div>`).join('');
+ renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows()}
+function renderToday(){const pt=planToday();
+ if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="go" data-v="plans">Choose a program</button>`;return}
+ const fin=state.prog.done;
+ $('today').innerHTML=`<h3>Today: ${pt.pr.name} · ${pt.name}</h3>${fin?'<span class="tag g">WORKOUT COMPLETE</span><small> Rest up. Next session tomorrow.</small>':''}<div class="chips" style="margin:10px 0 0">${pt.items.map(i=>`<button class="chip" aria-pressed="${i.n===state.ex}" data-a="load" data-v="${esc(i.n)}" data-r="${i.r}">${i.done>=i.s?'✓ ':''}${esc(i.n.replace(' (sec)',''))} ${i.done}/${i.s}</button>`).join('')}</div>`}
+function renderTrain(){buildSel();const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps');
+ $('arc').style.strokeDashoffset=641-641*Math.min(1,cur/state.target);$('kgb').textContent='Weight: '+W(state.kg);$('undob').disabled=!undoSnap;$('restb').textContent='Rest: '+(state.restS?state.restS+'s':'Off');$('sensb').textContent='Detect: '+['Easy','Normal','Strict'][state.sens];$('tgt').textContent='Target: '+state.target;$('exsel').value=state.ex;renderWsug();
+ if(!tracking)$('coach').innerHTML=`<b>${esc(state.ex)}</b>: 1) Prop your phone up. 2) Step back so your whole body is in frame. Front, side or back all work. 3) Tap Start tracking. Reps are counted by the camera only. Move with control, every rep is graded S to C on depth and tempo. Five clean reps in a row start a combo that multiplies boss damage. Stop if anything hurts.`}
+function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>`<option>${esc(n)}</option>`).join('')}</optgroup>`).join('');
+ $('plansbody').innerHTML=`<div class="card cy"><h3>Custom split</h3><label><small>Program name</small><input data-f="name" maxlength="30" value="${esc(cb.name)}"></label>
+ <small style="display:block;margin-top:10px">Your days</small><div class="chips" style="margin-top:6px">${cb.days.map((x,i)=>`<button class="chip" aria-pressed="${i===cb.d}" data-a="cbday" data-v="${i}">${esc(x.name)}</button>`).join('')}${cb.days.length<7?'<button class="chip" data-a="cbaddday">+ Day</button>':''}</div></div>
+ <div class="card"><label><small>Day name</small><input data-f="dname" data-d="${cb.d}" maxlength="24" value="${esc(d.name)}"></label>
+ ${d.ex.map((e,i)=>`<div class="item"><div style="flex:1"><b>${esc(e.n.replace(' (sec)',''))}</b><div class="row" style="margin-top:6px"><label><small>Sets</small><input data-f="s" data-d="${cb.d}" data-i="${i}" type="number" min="1" max="10" value="${e.s}"></label><label><small>${EX[e.n][1]==='hold'?'Seconds':'Reps'}</small><input data-f="r" data-d="${cb.d}" data-i="${i}" type="number" min="1" max="100" value="${e.r}"></label></div></div><button class="btn sm" data-a="cbrm" data-v="${i}" aria-label="Remove">✕</button></div>`).join('')||'<small>No exercises yet. Add one below.</small>'}
+ <div class="row"><select id="cbsel">${opts}</select><button class="btn red" style="flex:none;width:80px" data-a="cbadd">Add</button></div>
+ <button class="btn" style="width:100%;margin-top:10px" data-a="cbdelday">Delete this day</button></div>
+ <button class="btn red" data-a="cbsave">Save & start</button><button class="btn" style="width:100%;margin-top:10px" data-a="cbcancel">Cancel</button>`}
+['input','change'].forEach(ev=>$('plansbody').addEventListener(ev,e=>{const t=e.target,f=t.dataset.f;if(!cb||!f)return;
+ if(f==='name'){cb.name=t.value;return}const d=cb.days[+t.dataset.d];if(!d)return;
+ if(f==='dname')d.name=t.value.trim()||'Day '+(+t.dataset.d+1);else{const x=d.ex[+t.dataset.i];if(x)x[f]=Math.max(1,Math.min(f==='s'?10:100,+t.value||1))}}));
+function renderPlans(){renderRestCard();if(cb){renderBuilder();return}const p=state.prog,pr=prOf();
+ if(!pr){$('plansbody').innerHTML=`<p class="sub">Pick one program. Not sure? Choose <b>Full Body</b>.</p>`+(state.custom?'':'<div class="card"><span class="tag r">ADVANCED</span><h3 style="margin-top:6px">Build your own split</h3><p class="sub" style="margin:0 0 8px">Choose your days, exercises, sets and reps.</p><button class="btn red" data-a="cbnew">Create custom program</button></div>')+PROGS.map(x=>`<div class="card ${x.lvl==='Beginner'?'cy':''}"><span class="tag ${x.lvl==='Beginner'?'g':x.lvl==='Advanced'?'r':''}">${x.lvl.toUpperCase()}</span><small>${x.days.length}-day rotation</small><h3 style="margin-top:6px">${x.name}</h3><p class="sub" style="margin:0 0 8px">${x.blurb}</p><small>${x.days.map(d=>d.name).join(' → ')}</small><button class="btn red" style="margin-top:10px" data-a="start" data-v="${x.id}">Start this program</button>${x.id==='custom'?'<button class="btn" style="margin-top:8px;width:100%" data-a="cbedit">Edit split</button>':''}</div>`).join('');return}
+ const pt=planToday();
+ $('plansbody').innerHTML=`<div class="card cy"><span class="tag">ACTIVE</span><h3 style="margin-top:6px">${pr.name}</h3><small>Session ${p.day%pr.days.length+1} of ${pr.days.length}. The next one unlocks after you finish today.</small></div>
+ <div class="card"><h3>Today: ${pt.name}</h3>${pt.items.map(i=>`<div class="item"><div><b>${i.done>=i.s?'✓ ':''}${esc(i.n.replace(' (sec)',''))}</b><span>${i.s} sets × ${i.r}${EX[i.n][1]==='hold'?' sec':' reps'} · done ${i.done}/${i.s}</span></div><button class="btn sm" data-a="load" data-v="${esc(i.n)}" data-r="${i.r}">Go</button></div>`).join('')}</div>
+ ${pr.id==='custom'?'<button class="btn" style="width:100%;margin-bottom:10px" data-a="cbedit">Edit custom split</button>':''}<button class="btn" style="width:100%" data-a="swap">Change program</button>`}
+function renderProg(){const h=state.hist[dk()]||{reps:0},N=state.rng||7;$('p1').textContent=h.reps||0;$('p2').innerHTML=`<span class="flame-streak">🔥 ${state.streak}</span>`;let s=0,v=0,w=[],mx=50;
+ for(let i=N-1;i>=0;i--){const x=state.hist[ago(i)]||{};if(i<7){s+=x.sets||0;v+=x.volume||0}const r=x.reps||0;mx=Math.max(mx,r);const d=new Date(Date.now()-i*864e5);w.push([N>7?String(d.getDate()):d.toLocaleDateString([],{weekday:'short'}),r])}
+ $('p3').textContent=s;$('p4').textContent=W(v);$('bars').style.gap=N>7?'3px':'10px';
+ $('bars').innerHTML=w.map(x=>`<div class="bar"><span>${N>7?'':x[1]}</span><i style="height:${Math.max(6,x[1]/mx*100)}%"></i><span style="font-size:${N>7?'.6rem':'.75rem'}">${x[0]}</span></div>`).join('');
+ $('rng').innerHTML=[7,30].map(n=>`<button class="chip" aria-pressed="${N===n}" data-a="rng" data-v="${n}">${n} days</button>`).join('');
+ const e=Object.entries(state.pr);$('prl').innerHTML=e.length?e.map(([n,x])=>`<div class="item"><div><b>${esc(n.replace(' (sec)',''))}</b></div><span>${x.r}${EX[n]&&EX[n][1]==='hold'?' sec':' reps'}${x.kg?' × '+W(x.kg):''}</span></div>`).join(''):'<small>No records yet. Finish a set to set your first.</small>';renderForm();renderCal();renderBW()}
+function renderForm(){const f=state.fm,t=(f.S||0)+(f.A||0)+(f.B||0)+(f.C||0),col={S:'#f02b4f',A:'#ffb02e',B:'#52d9ff',C:'#9aa3b8'};
+ $('formc').innerHTML=t?['S','A','B','C'].map(l=>{const n=f[l]||0;return`<div class="srow"><b>${l}</b><div class="xp"><i style="width:${Math.round(n/t*100)}%;background:${col[l]};box-shadow:none"></i></div><span>${n}</span></div>`}).join('')+`<small style="display:block;margin-top:8px">Clean rate ${Math.round(((f.S||0)+(f.A||0))/t*100)}% · Best combo ${state.bc||0}</small>`:'<small>Start the camera and every rep gets graded S to C on depth and tempo.</small>'}
+const PRE=[['Chicken & Rice',450,38],['Eggs & Toast',320,18],['Protein Shake',220,30],['Oats & Banana',350,12]];
+$('presets').innerHTML=PRE.map((p,i)=>`<button class="btn" data-a="pre" data-v="${i}" style="text-align:left"><b>${p[0]}</b><br><small>${p[1]} kcal · ${p[2]}g P</small></button>`).join('');
+function renderFood(){const f=state.food,k=f.log.reduce((a,x)=>a+x.c,0),p=f.log.reduce((a,x)=>a+x.p,0);$('fk').textContent=k;$('fp').textContent=Math.round(p)+' g';$('fw').textContent=f.water+' / 8';$('fl').textContent=f.goal-k>=0?(f.goal-k)+' kcal':'+'+(k-f.goal)+' over';
+ if(document.activeElement!==$('fg'))$('fg').value=f.goal;
+ $('flist').innerHTML=f.log.length?f.log.map(x=>`<div class="card"><div class="item" style="border:0;padding:0"><div><b>${esc(x.n)}</b><span>${x.c} kcal · ${x.p}g protein</span></div><button class="btn sm" data-a="delfood" data-v="${x.id}">Delete</button></div></div>`).join(''):'<div class="card"><small>Nothing logged yet.</small></div>'}
+$('fg').addEventListener('input',e=>{state.food.goal=Math.max(0,+e.target.value||0);save();renderFood()});
+
+/* exercise picker */
+let selSig='';
+function buildSel(){const sg=state.lock+'|'+rIdx()+'|'+(state.prog?state.prog.id:'');if(sg===selSig)return;selSig=sg;
+ $('exsel').innerHTML=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>{const o=isOpen(n)||n===state.ex;return`<option value="${n}"${o?'':' disabled'}>${o?'':'🔒 '}${n}${o?'':' (unlocks at '+RK[REQ[n]][1]+')'}</option>`}).join('')}</optgroup>`).join('')}
+$('exsel').addEventListener('change',e=>{state.ex=e.target.value;cur=0;T={ready:T.ready};save();render()});
+
+/* ===== REP + SET LOGIC (camera only) ===== */
+const cmult=n=>n>=20?4:n>=10?3:n>=5?2:1;
+function repMsg(g){if(g.l==='S')return'Perfect control';if(g.l==='A')return g.d<2?'Clean. A bit deeper for S':'Clean. Slow the lowering for S';
+ if(g.l==='B')return g.d<2&&g.t<2?'Go deeper and slower':g.d<2?'Go a little deeper':'Slow the lowering down';return'Too fast and shallow. Slow down, go deeper'}
+function setCmb(){const e=$('cmb'),n=T.combo||0;e.classList.toggle('hide',n<2);e.textContent='COMBO '+n+(cmult(n)>1?' · x'+cmult(n):'')}
+function showGrade(g){const e=$('gr');e.textContent=g.l;e.dataset.g=g.l;e.classList.remove('on');void e.offsetWidth;e.classList.add('on');setCmb()}
+function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;const c=$('cnt');c.classList.add('pop');setTimeout(()=>c.classList.remove('pop'),300);
+ if(g){(T.gs=T.gs||[]).push(g.p);state.fm[g.l]=(state.fm[g.l]||0)+1;const f=fdT();f[g.l]++;
+  T.combo=(g.l==='S'||g.l==='A')?(T.combo||0)+1:g.l==='B'?(T.combo||0):0;
+  if(T.combo>(state.bc||0))state.bc=T.combo;if(T.combo>f.bc)f.bc=T.combo;
+  showGrade(g);$('coach').innerHTML='<b>'+g.l+' rep</b> · '+repMsg(g)+(T.combo>1?' · Combo '+T.combo+(cmult(T.combo)>1?' · x'+cmult(T.combo)+' damage':''):'')}
+ qProg('reps',1);hitBoss(cmult(T.combo||0)+armyBonus());if(state.snd==='voice')say(cur);else beep(660,.07);vib(15);
+  if(g&&T.gs.length>=6&&!T.fat){const m=a=>a.reduce((x,y)=>x+y,0)/a.length;if(m(T.gs.slice(0,3))-m(T.gs.slice(-3))>=1.2&&m(T.gs.slice(-3))<=2.4){T.fat=1;setTimeout(()=>{$('coach').innerHTML='<b>Form is fading.</b> Finish this set, then rest or lower the weight.';say('Form fading')},900)}}
+ dgRep();if(cur>=state.target)finishSet();dgAfter();renderTrain();renderBoss();renderDungeon()}
+function formLine(gs){const avg=gs.reduce((a,b)=>a+b,0)/gs.length,L=avg>=3.5?'S':avg>=2.75?'A':avg>=1.75?'B':'C',cl=Math.round(gs.filter(p=>p>=3).length/gs.length*100);return'Form '+L+' · '+cl+'% clean'}
+function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0}),ex=state.ex,gs=T.gs||[],fm=gs.length?formLine(gs):'';T.gs=[];T.combo=0;setCmb();
+ const isNew=!state.sk[ex],old=state.pr[ex],isPR=!!old&&(state.kg>old.kg||(state.kg===old.kg&&state.target>old.r));
+ h.reps+=state.target;h.sets++;h.volume+=state.target*state.kg;state.sk[ex]=(state.sk[ex]||0)+state.target;
+ if(!old||isPR)state.pr[ex]={kg:state.kg,r:state.target};if(isPR)h.prs=(h.prs||0)+1;
+ bump();wLog(ex,state.kg,state.target,gs);T.fat=0;let gateOk=false;
+ if(state.trial&&ex===state.trial.ex&&state.target>=state.trial.n){state.gate[state.trial.lv]=1;state.trial=null;gateOk=true}
+ cur=0;save();qProg('sets',1);if(isPR)qProg('pr',1);if(state.kg>0)qProg('wt',1);if(isNew)qProg('new',1);
+ beep(523,.1);setTimeout(()=>beep(784,.18),110);vib([60,40,60]);say('Set done');
+ const pt=planToday(),it=pt&&pt.items.find(i=>i.n===ex);let done=false;
+ if(it&&it.done<it.s){state.prog.sets[it.n]=it.done+1;save();qProg('plan',1);if(planToday().items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++;done=true}}
+ if(h.sets>=20&&!h.warn){h.warn=1;setTimeout(()=>toast('20 sets today. That is plenty. Rest and recover.'),1700)}
+ save();
+ if(gateOk)fx('Gate cleared','Rank trial passed');else if(done)fx('Workout clear',pt.name);else if(isPR)fx('New PR',ex.replace(' (sec)','')+' · '+state.target+(state.kg?' × '+state.kg+' kg':''));else fx('Set clear',fm);
+ if(done)setTimeout(showSummary,1600);else if(!(state.dg&&state.dg.st==='run'))startRest();
+ $('coach').innerHTML='Set done'+(fm?' · '+fm:'')+'. Rest, then keep going.';render()}
+
+/* ===== CAMERA TRACKER: Anti-Cheating & Improved Form Verification ===== */
+const TRI={elbow:[11,13,15],knee:[23,25,27],hip:[11,23,25],abd:[23,11,13],plank:[11,23,27]};
+const ang=(a,b,c)=>{const u=[a.x-b.x,a.y-b.y,a.z-b.z],v=[c.x-b.x,c.y-b.y,c.z-b.z],m=Math.hypot(...u)*Math.hypot(...v);return m?Math.acos(Math.max(-1,Math.min(1,(u[0]*v[0]+u[1]*v[1]+u[2]*v[2])/m)))*180/Math.PI:0};
+function measure(j,W,thr=.4){
+ if(j==='twist'){if([11,12,23,24].some(i=>W[i].visibility<thr))return null;const s=[W[12].x-W[11].x,W[12].z-W[11].z],h=[W[24].x-W[23].x,W[24].z-W[23].z];return Math.atan2(s[0]*h[1]-s[1]*h[0],s[0]*h[0]+s[1]*h[1])*180/Math.PI}
+ const mn=/min$/.test(j),t=TRI[j==='hold'?'plank':j.replace('min','')],vals=[];let sum=0,w=0;
+ for(const s of[0,1]){const i=t.map(x=>x+s),v=Math.min(...i.map(k=>W[k].visibility));if(v>thr){const a=ang(W[i[0]],W[i[1]],W[i[2]]);vals.push(a);sum+=a*v;w+=v}}
+ return w?(mn?Math.min(...vals):sum/w):null}
+/* POSTURE GATE: floor exercises only count when the body is actually horizontal and the legs are in frame. */
+const FLAT=new Set(['Push-ups','Incline Push-ups','Diamond Push-ups','Decline Push-ups','Archer Push-ups','Plank Hold (sec)']);
+function formOk(ex,W){
+ if(!FLAT.has(ex))return true;
+ const vis=i=>W[i].visibility,mid=(a,b)=>({x:(W[a].x+W[b].x)/2,y:(W[a].y+W[b].y)/2,z:(W[a].z+W[b].z)/2});
+ if(Math.min(vis(11),vis(12))<.5||Math.min(vis(23),vis(24))<.5)return false;
+ const ankles=Math.min(vis(27),vis(28))>=.5,knees=Math.min(vis(25),vis(26))>=.5;
+ if(!ankles&&!knees)return false;
+ const s=mid(11,12),h=mid(23,24),a=ankles?mid(27,28):mid(25,26);
+ const lim=(ex==='Incline Push-ups'||ex==='Decline Push-ups')?.75:.55;
+ const r=(p,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y,q.z-p.z);return d?Math.abs(q.y-p.y)/d:1};
+ return r(s,h)<lim&&r(h,a)<lim}
+/* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
+function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
+function feed(d,a,now){
+ const j=d[1];
+ if(j==='twist'){const s=a>20?1:a<-20?-1:0;if(s){if(T.side&&s!==T.side&&now-(T.t||0)>350){T.t=now;rep()}T.side=s}return}
+ if(j==='hold'){if(a>150){if(!T.t)T.t=now;if(now-T.t>=1000){T.t+=1000;rep()}}else T.t=0;return}
+
+ let [,,lo,hi,sh]=d;
+ if(hi-lo>40){const k=[12,0,-8][state.sens];lo+=k;hi-=k}
+ const v=sh?a:-a,hT=sh?hi:-lo,lT=sh?lo:-hi;
+
+ if(!T.lastRepTime) T.lastRepTime = 0;
+ if(T.armed||T.down){T.mn=T.mn==null?v:Math.min(T.mn,v)}
+
+ if(v>hT){
+   if(T.armed&&!T.down&&now-(T.cue||0)>2500){T.cue=now;cue('Go deeper')}
+   if(!T.down){T.mn=null;T.rs=0}
+   T.armed=1;
+   T.part=0;
+ }
+ if(T.armed&&!T.down&&v<hT-(hT-lT)*.45) {
+   T.part=1;
+   if(!T.rs)T.rs=now;
+ }
+ if(T.armed&&T.part&&v<lT){
+   T.down=1;
+   T.part=0;
+ }
+ if(T.down&&v>hT&&(now-T.lastRepTime>450)){
+   const g=gradeRep(T.mn,hT,lT,T.rs?now-T.rs:1000);
+   T.down=0;
+   T.armed=0;
+   T.lastRepTime=now;
+   T.t=now;
+   T.mn=null;T.rs=0;
+   rep(g);
+ }
+}
+const BONES=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[23,25],[25,27],[24,26],[26,28]];
+let pose=null,stream=null,busy=false;
+function onPose(r){const cv=$('ov'),x=cv.getContext('2d'),vd=$('vid');cv.width=vd.videoWidth||640;cv.height=vd.videoHeight||480;x.clearRect(0,0,cv.width,cv.height);
+ const L=r.poseLandmarks,W=r.poseWorldLandmarks,ro=$('ro');
+ if(!T.ready){x.save();x.setLineDash([10,8]);x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=3;x.strokeRect(cv.width*.18,cv.height*.04,cv.width*.64,cv.height*.92);x.restore()}
+ if(!L||!W){if(!T.ready)T.okc=0;T.okf=0;T.armed=0;T.down=0;T.part=0;ro.textContent='NO BODY FOUND. STEP BACK';T.sm=null;return}
+ x.strokeStyle='#52d9ff';x.lineWidth=4;x.beginPath();BONES.forEach(([a,b])=>{x.moveTo(L[a].x*cv.width,L[a].y*cv.height);x.lineTo(L[b].x*cv.width,L[b].y*cv.height)});x.stroke();
+ const d=EX[state.ex],m=measure(d[1],W,T.ready?.4:.6),fo=formOk(state.ex,W),now=performance.now();
+ if(!T.ready){if(!T.t0)T.t0=now;T.okc=(m==null||!fo)?0:(T.okc||0)+1;ro.textContent='FRAME CHECK '+Math.min(100,Math.round(T.okc/12*100))+'%'+(m==null?' · SHOW FULL BODY':!fo?' · GET INTO POSITION':'');
+  if(T.okc>=12||now-T.t0>8000){T.ready=true;T.sm=null;beep(660,.1);setTimeout(()=>beep(990,.15),110);vib(60);say('Ready');$('coach').innerHTML='Locked in. Go!'}return}
+ if(m==null){ro.textContent='SHOW YOUR FULL BODY';T.sm=null;T.okf=0;T.armed=0;T.down=0;T.part=0;return}
+ if(!fo){T.okf=0;T.armed=0;T.down=0;T.part=0;T.sm=null;T.t=0;ro.textContent='GET INTO POSITION · FULL BODY IN FRAME';if(now-(T.pc||0)>3500){T.pc=now;cue('Get into position')}return}
+ T.okf=(T.okf||0)+1;
+ if(T.okf<8){ro.textContent='HOLD POSITION…';T.sm=m;return}
+ T.sm=T.sm==null?m:T.sm*.5+m*.5;ro.textContent=d[1].toUpperCase()+' '+Math.round(T.sm)+'° · REPS '+cur+(T.combo>1?' · COMBO x'+T.combo:'');feed(d,T.sm,now)}
+async function loop(){if(!tracking)return;const v=$('vid');if(v.readyState>=2&&!busy){busy=true;try{await pose.send({image:v})}catch(e){}busy=false}requestAnimationFrame(loop)}
+let facing='user',WL=null;
+async function wl(on){try{if(on&&navigator.wakeLock){WL=await navigator.wakeLock.request('screen')}else if(WL){await WL.release();WL=null}}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&tracking)wl(1)});
+function cue(m){$('coach').innerHTML='<b>'+m+'</b>';say(m);vib(30)}
+async function startCam(){beep(20,.01);say('Tracking');
+ if(typeof Pose==='undefined'){$('coach').textContent='Tracker failed to load. Check your internet connection and reload.';return}
+ try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:640,height:480}})}catch(e){$('coach').textContent='Camera blocked. Allow camera access (the page must be on HTTPS or localhost).';return}
+ tracking=true;T={};wl(1);$('cam').classList.toggle('rear',facing!=='user');$('cam').classList.remove('hide');$('camb').textContent='Stop tracking';$('ro').textContent='LOADING MODEL…';
+ $('coach').innerHTML=`Tracking <b>${esc(state.ex)}</b>. Start in the starting position, then move through the full range. Facing the camera, sideways or turned away all work.`;
+ pose=new Pose({locateFile:f=>'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/'+f});
+ pose.setOptions({modelComplexity:1,smoothLandmarks:true,minDetectionConfidence:.4,minTrackingConfidence:.4});pose.onResults(onPose);
+ const v=$('vid');v.srcObject=stream;await v.play();loop()}
+function stopCam(){tracking=false;wl(0);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}if(pose){try{pose.close()}catch(e){}pose=null}$('vid').srcObject=null;$('cam').classList.add('hide');$('camb').textContent='Start tracking';T={}}
+
+/* ===== ACTIONS ===== */
+let armReset=0,armQ=-1,skGrp='All';
+const act={
+ go:b=>go(b.dataset.v),
+ flip:()=>{facing=facing==='user'?'environment':'user';$('flipb').textContent='Camera: '+(facing==='user'?'Front':'Rear');if(tracking){stopCam();startCam()}},
+ view:b=>{vi=+b.dataset.v;spin=0;views()},spin:()=>{spin=spin?0:1;views()},
+ lock:()=>{state.lock=!state.lock;save();toast(state.lock?'Rank unlocks ON':'All skills are open');render()},
+ checkin:()=>{$('drawer').classList.remove('on');go('checkin')},
+ qdone:b=>{const i=+b.dataset.v;if(armQ!==i){armQ=i;renderCheckin();setTimeout(()=>{if(armQ===i){armQ=-1;renderCheckin()}},3500);return}
+  armQ=-1;const q=state.quests[i];if(!q||q.p>=q.t){render();return}const t=dk();
+  bump();
+  if(q.k==='plan'){const pt=planToday();if(pt){pt.items.forEach(x=>state.prog.sets[x.n]=x.s);if(!state.prog.done)state.wo++;state.prog.done=true}}
+  q.p=q.t;state.xp+=q.xp;toast('Quest done: '+q.n+' +'+q.xp+' XP');save();tryLevel();render()},
+ cbnew:()=>{cb={name:'My Split',d:0,days:[{name:'Day 1',ex:[]}]};renderPlans()},
+ cbedit:()=>{cb=clone(state.custom);cb.d=0;renderPlans()},
+ cbday:b=>{cb.d=+b.dataset.v;renderPlans()},
+ cbaddday:()=>{cb.days.push({name:'Day '+(cb.days.length+1),ex:[]});cb.d=cb.days.length-1;renderPlans()},
+ cbdelday:()=>{if(cb.days.length<2){toast('Keep at least one day');return}cb.days.splice(cb.d,1);cb.d=Math.max(0,cb.d-1);renderPlans()},
+ cbadd:()=>{const n=$('cbsel').value;cb.days[cb.d].ex.push({n,s:3,r:EX[n][1]==='hold'?30:10});renderPlans()},
+ cbrm:b=>{cb.days[cb.d].ex.splice(+b.dataset.v,1);renderPlans()},
+ cbcancel:()=>{cb=null;renderPlans()},
+ cbsave:()=>{if(cb.days.some(x=>!x.ex.length)){toast('Every day needs at least one exercise');return}
+  state.custom={name:cb.name.trim()||'My Split',days:clone(cb.days)};syncCustom();
+  state.prog={id:'custom',day:0,sets:{},sd:dk(),done:false};cb=null;refreshQuests();save();toast('Custom program started');render()},
+ gate:()=>{const t=state.trial;if(!t)return;state.ex=t.ex;state.target=t.n;cur=0;T={ready:T.ready};save();toast('Gate: '+t.n+' '+t.ex);go('train')},
+ skiprest:()=>{clearInterval(restI);$('rest').classList.add('hide')},
+ restc:()=>{const a=[0,30,60,90,120];state.restS=a[(a.indexOf(state.restS)+1)%a.length];save();renderTrain()},
+ sens:()=>{state.sens=(state.sens+1)%3;save();renderTrain();toast('Detection: '+['Easy','Normal','Strict'][state.sens])},
+ snd:()=>{state.snd={voice:'beep',beep:'off',off:'voice'}[state.snd];save();render();beep(660,.1);if(state.snd==='voice')say('Voice on')},
+ vibr:()=>{state.vib=!state.vib;save();render();vib(40)},
+ restday:b=>{const i=+b.dataset.v,a=state.restDays,j=a.indexOf(i);if(j<0)a.push(i);else a.splice(j,1);save();renderRestCard()},
+ title:b=>{const id=b.dataset.v;if(!state.badges[id]){toast('Locked: '+BG.find(x=>x[0]===id)[2]);return}state.title=state.title===id?'':id;save();render()},
+ closesum:()=>$('sum').classList.remove('on'),
+ shall:()=>{shAll=!shAll;renderShadows()},
+ dgenter:()=>{const g=state.dg;if(!g||g.st!=='idle')return;g.st='run';g.t0=Date.now();g.p=g.p.map(()=>0);const t=DGT[g.i];state.ex=t[2][0][0];state.target=g.need[0];cur=0;T={ready:T.ready};save();
+  if(!dgI)dgI=setInterval(dgTick,500);toast('Dungeon entered. '+t[1]+' minutes. Go!');say('Dungeon entered');renderTrain();renderDungeon();if(!tracking)startCam()},
+ dgquit:()=>{if(!confirm('Leave the dungeon? Today’s gate will close.'))return;state.dg.st='fail';save();clearInterval(dgI);dgI=0;renderDungeon()},
+ aoa:()=>{const b=state.boss,h=state.hist[dk()];if(!b||b.dead||b.aoa||b.hp-b.dmg>b.hp*.2||!(h&&h.sets>=1))return;aoaOpen()},
+ aoaclose:()=>{clearInterval(aoaI);$('aoa').classList.add('hide');const b=state.boss;if(aoaD>0&&b&&!b.dead&&!b.aoa){b.aoa=1;hitBoss(aoaD)}aoaD=0;save();render()},
+ wapply:()=>{const s=wSug();if(s==null)return;state.kg=s;state.wl[state.ex]=[];save();renderTrain();toast('Weight set to '+W(s))},
+ bwadd:()=>{const v=parseFloat($('bwin').value);if(isNaN(v)){toast('Enter your weight');return}const kg=Math.round((state.unit==='lb'?v/2.2046:v)*100)/100;if(kg<20||kg>400){toast('That number looks off. Check it.');return}
+  const a=state.bw,t=dk();if(a.length&&a[a.length-1].d===t)a[a.length-1].kg=kg;else a.push({d:t,kg});if(a.length>400)a.shift();$('bwin').value='';save();renderBW();toast('Weight logged')},
+ bwdel:()=>{if(!state.bw.length)return;state.bw.pop();save();renderBW()},
+ mset:b=>{const i=+b.dataset.v,all=b.dataset.all==='1',key='m'+i+(all?'a':'');if(armQ!==key){armQ=key;renderCheckin();setTimeout(()=>{if(armQ===key){armQ=-1;renderCheckin()}},3500);return}
+  armQ=-1;const pt=planToday();if(!pt)return;const it=pt.items[i];if(!it||it.done>=it.s)return;const n=all?it.s-it.done:1;for(let k=0;k<n;k++)manualSet(it);toast(n+' set'+(n>1?'s':'')+' logged: '+it.n.replace(' (sec)',''));render()},
+ undo:()=>{if(!undoSnap)return;state=JSON.parse(undoSnap);undoSnap=null;cur=0;clearInterval(restI);$('rest').classList.add('hide');syncCustom();save();render();toast('Last set undone')},
+ unit:()=>{state.unit=state.unit==='kg'?'lb':'kg';save();render()},
+ rng:b=>{state.rng=+b.dataset.v;save();renderProg()},
+ ics:()=>{const t=($('remt').value||'18:00').split(':'),by=['SU','MO','TU','WE','TH','FR','SA'].filter((_,i)=>!state.restDays.includes(i)).join(',')||'MO',d=new Date(),z=n=>String(n).padStart(2,'0'),ds=d.getFullYear()+z(d.getMonth()+1)+z(d.getDate())+'T'+z(t[0])+z(t[1])+'00';
+  const txt=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ASCEND//EN','BEGIN:VEVENT','UID:ascend-'+Date.now()+'@ascend','DTSTAMP:'+ds,'DTSTART:'+ds,'DURATION:PT45M','RRULE:FREQ=WEEKLY;BYDAY='+by,'SUMMARY:ASCEND workout','DESCRIPTION:Time to train. Open ASCEND and clear today’s quests.','BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:ASCEND workout','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/calendar'}));a.download='ascend-reminder.ics';a.click();toast('Open the file to add the reminder')},
+ menu:()=>$('drawer').classList.toggle('on'),
+ skills:()=>{$('drawer').classList.remove('on');go('skills')},
+ togpreview:b=>{const p=$('skpreview'),h=p.classList.toggle('hide');b.textContent=h?'Show Preview':'Hide Preview'},
+ skill:b=>{sk=b.dataset.v;renderSkills()},
+ skgrp:b=>{skGrp=b.dataset.v;renderSkills()},
+ trainsk:()=>{if(!isOpen(sk))return;state.ex=sk;cur=0;T={ready:T.ready};save();go('train')},
+ cam:()=>{tracking?(stopCam(),render()):startCam()},
+ kg:()=>{const s=state.unit==='lb'?[0,10,25,35,45,55,70,95,135,185,225].map(l=>l/2.2046):[0,5,10,15,20,30,40,50,60,80,100];let i=0,m=1e9;s.forEach((v,j)=>{const d=Math.abs(v-state.kg);if(d<m){m=d;i=j}});state.kg=s[(i+1)%s.length];save();renderTrain()},
+ tgt:()=>{const s=[5,8,10,12,15,20,30,40,60];state.target=s[(s.indexOf(state.target)+1)%s.length];cur=0;save();renderTrain()},
+ load:b=>{state.ex=b.dataset.v;state.target=+b.dataset.r||state.target;cur=0;T={ready:T.ready};save();toast('Loaded '+state.ex);go('train')},
+ start:b=>{state.prog={id:b.dataset.v,day:0,sets:{},sd:dk(),done:false};refreshQuests();save();toast('Program started');render()},
+ swap:()=>{state.prog=null;refreshQuests();save();render()},
+ w:b=>{state.food.water=Math.max(0,Math.min(16,state.food.water+ +b.dataset.v));save();renderFood();if(state.food.water>=8&&+b.dataset.v>0)qProg('water',1)},
+ pre:b=>{const p=PRE[+b.dataset.v];state.food.log.push({id:Date.now(),n:p[0],c:p[1],p:p[2]});save();renderFood();toast('Logged '+p[0]);qProg('meal',1)},
+ addfood:()=>{const n=$('fn').value.trim(),c=parseFloat($('fc').value);if(!n||isNaN(c)||c<0){toast('Enter a name and calories');return}state.food.log.push({id:Date.now(),n,c,p:parseFloat($('fpr').value)||0});$('fn').value=$('fc').value=$('fpr').value='';save();renderFood();qProg('meal',1)},
+ delfood:b=>{state.food.log=state.food.log.filter(x=>String(x.id)!==b.dataset.v);save();renderFood()},
+ exp:()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.download='ascend_backup_'+dk()+'.json';a.click();state.lastBackup=dk();save();renderBoss()},
+ imp:()=>$('impf').click(),
+ reset:b=>{if(!armReset){armReset=1;b.textContent='Tap again to erase everything';setTimeout(()=>{armReset=0;b.textContent='Reset everything'},4000);return}
+  stopCam();try{localStorage.removeItem(KEY)}catch(e){}state=def();syncCustom();cur=0;armReset=0;b.textContent='Reset everything';render();go('train');toast('Everything was reset')}};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&act[b.dataset.a])act[b.dataset.a](b)});
+$('impf').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const p=JSON.parse(r.result);if(typeof p.level!=='number'||!p.hist)throw 0;state=Object.assign(def(),p);syncCustom();save();render();toast('Imported')}catch(x){toast('Invalid backup file')}};r.readAsText(f)});
+/* ===== SKILL TREE: stick figure demos with aura ===== */
+const ST=[100,28,100,46,100,88],LG=[100,116,100,146];
+const AR={
+squat:[[100,28,100,46,100,88,115,50,132,52,100,116,100,146],[108,52,102,70,86,108,118,70,136,72,122,112,100,146]],
+lunge:[[100,28,100,46,100,88,115,50,132,52,100,116,100,146,96,116,96,146],[104,48,102,66,96,104,118,70,134,74,126,112,126,146,84,132,62,146]],
+curl:[[100,28,100,46,100,88,101,68,102,90,100,116,100,146],[100,28,100,46,100,88,101,68,118,52,100,116,100,146]],
+press:[[100,28,100,46,100,88,112,58,108,38,100,116,100,146],[100,28,100,46,100,88,103,26,102,4,100,116,100,146]],
+row:[[127,60,115,66,80,90,118,88,118,114,88,118,92,146],[127,60,115,66,80,90,98,74,114,90,88,118,92,146]],
+hinge:[[100,28,100,46,100,88,101,68,102,90,100,116,100,146],[134,64,122,70,78,88,122,92,122,115,88,116,92,146]],
+abd:[[100,28,100,46,100,88,101,68,102,90,100,116,100,146],[100,28,100,46,100,88,122,48,142,46,100,116,100,146]],
+pushup:[[136,88,120,95,75,112,121,118,122,140,47,122,20,130],[136,116,120,123,75,128,100,132,122,140,47,133,20,134]],
+pull:[[100,36,100,52,100,92,100,30,100,8,100,120,100,148],[100,12,100,28,100,68,116,20,100,8,100,96,100,124]],
+dips:[[100,22,100,40,98,88,101,62,104,84,108,116,98,138],[100,40,100,58,98,106,86,70,104,84,108,134,98,156]],
+bench:[[46,100,60,100,110,104,60,70,60,40,138,92,142,128],[46,100,60,100,110,104,78,92,60,78,138,92,142,128]],
+pushdown:[[100,28,100,46,100,88,101,68,118,64,100,116,100,146],[100,28,100,46,100,88,101,68,106,92,100,116,100,146]],
+facepull:[[100,28,100,46,100,88,118,48,136,48,100,116,100,146],[100,28,100,46,100,88,94,50,116,40,100,116,100,146]],
+crunch:[[48,122,60,125,110,128,52,112,50,124,142,100,152,128],[66,100,74,108,110,128,62,100,54,106,142,100,152,128]],
+legraise:[[36,128,50,128,95,128,68,130,82,130,125,128,155,128],[36,128,50,128,95,128,68,130,82,130,95,96,95,64]],
+plank:[[134,100,118,108,75,122,118,134,142,134,50,129,20,135],[134,100,118,108,75,118,118,134,142,134,50,126,20,135]],
+twist:[[68,72,76,88,92,120,98,100,112,108,124,100,150,126],[68,72,76,88,92,120,88,108,74,120,124,100,150,126]]};
+Object.assign(AR,{
+bulgarian:[[100,28,100,46,96,88,115,50,132,52,118,116,122,146,80,114,60,116],[102,52,100,70,96,112,118,72,134,74,126,116,122,146,78,136,60,118]],
+incline:[[128,52,116,62,70,100,121,83,126,104,46,120,22,140],[130,76,118,84,70,112,104,98,126,104,46,126,22,140]],
+pike:[[112,104,118,94,90,60,124,118,130,142,70,101,50,142],[126,130,116,116,90,62,102,126,130,142,70,102,50,142]],
+skull:[[46,100,60,100,110,104,60,72,60,44,138,92,142,128],[46,100,60,100,110,104,60,72,46,86,138,92,142,128]],
+pulldown:[[100,50,100,68,100,118,108,44,114,22,130,114,132,146],[102,52,100,70,100,118,88,88,114,76,130,114,132,146]]});
+AR.idle=[[100,28,100,46,100,88,90,66,84,88,100,116,100,146,108,116,108,146],[100,26,100,44,100,86,92,62,86,84,100,114,100,144,108,114,108,144]];
+const EQ={pull:[[70,8,130,8]],bench:[[38,112,132,112]],skull:[[38,112,132,112]],dips:[[92,86,116,86]],bulgarian:[[38,120,72,120],[54,120,54,150]],incline:[[110,108,150,108],[130,108,130,146]],pulldown:[[84,122,116,122]]},FY={pushup:142,plank:141,crunch:132,legraise:132,bench:132,skull:132,incline:146};
+const SK={'Push-ups':['pushup',0,'Body in one line. Chest nearly touches the floor.'],'Incline Push-ups':['incline',0,'Hands on a raised bench. Body stays in one sloped line.'],'Bench Press':['bench',1,'Lower the bar to mid-chest, then press up.'],'Chest Dips':['dips',0,'Lean forward and lower until elbows reach 90°.'],
+'Pull-ups':['pull',0,'Start from a dead hang. Pull your chin over the bar.'],'Barbell Rows':['row',1,'Flat back. Pull the bar to your belly.','b'],'Lat Pulldown':['pulldown',1,'Sit tall. Pull the bar to your upper chest.'],'Dumbbell Rows':['dbrow',1,'One hand and knee on the bench. Pull the dumbbell to your hip.'],
+'Squats':['squat',0,'Chest up. Sit back until thighs are parallel.'],'Lunges':['lunge',0,'Step forward and drop the back knee.'],'Bulgarian Split Squats':['bulgarian',0,'Back foot on a bench. Lower straight down on the front leg.'],'Romanian Deadlifts':['hinge',1,'Push hips back. Keep the bar close to your legs.'],
+'Overhead Press':['press',1,'Press straight overhead with ribs down.'],'Lateral Raises':['abd',1,'Raise to shoulder height with soft elbows.'],'Pike Push-ups':['pike',0,'Hips high. Lower your head between your hands.'],'Face Pulls':['facepull',0,'Pull toward your face with elbows high.'],
+'Bicep Curls':['curl',1,'Elbows pinned to your sides.'],'Hammer Curls':['hammer',1,'Palms face in like holding a hammer. No swinging.','v'],'Tricep Pushdowns':['pushdown',0,'Elbows stay still. Push down and lock out.'],'Skull Crushers':['skull',1,'Lower the weight toward your forehead, then extend.'],
+'Crunches':['crunch',0,'Curl your ribs toward your hips.'],'Leg Raises':['legraise',0,'Lower slowly. Keep your lower back down.'],'Plank Hold (sec)':['plank',0,'Straight line from head to heels. Keep breathing.'],'Russian Twists':['twist',1,'Lean back and rotate your whole torso.']};
+const REQ={'Push-ups':0,'Incline Push-ups':0,'Squats':0,'Lunges':0,'Crunches':0,'Plank Hold (sec)':0,'Bicep Curls':0,'Leg Raises':0,'Dumbbell Rows':0,'Lat Pulldown':0,'Russian Twists':0,'Pike Push-ups':0,
+'Hammer Curls':1,'Lateral Raises':1,'Tricep Pushdowns':1,'Face Pulls':1,
+'Bench Press':2,'Overhead Press':2,'Barbell Rows':2,'Romanian Deadlifts':2,
+'Pull-ups':3,'Chest Dips':3,'Bulgarian Split Squats':3,'Skull Crushers':3};
+const rIdx=()=>RK.findIndex(x=>x[1]===rankOf(state.level));
+const inProg=n=>{const pr=prOf();return !!pr&&pr.days.some(d=>d.ex.some(e=>e.n===n))};
+const isOpen=n=>!state.lock||rIdx()>=REQ[n]||inProg(n);
+SK['__idle']=['idle',0,''];
+Object.assign(EX,{'Archer Push-ups':['Chest','elbowmin',100,150,1],'Pistol Squats':['Legs','kneemin',90,150,1],'Handstand Push-ups':['Shoulders','elbow',100,150,1],'Muscle-ups':['Back','elbow',85,150,1]});
+Object.assign(REQ,{'Archer Push-ups':4,'Pistol Squats':4,'Handstand Push-ups':5,'Muscle-ups':5});
+Object.assign(SK,{'Archer Push-ups':['archer',0,'Lower toward one hand while the other arm stays straight.'],'Pistol Squats':['pistol',0,'Squat on one leg with the other leg straight out front.'],'Handstand Push-ups':['handstand',0,'Against a wall. Lower your head to the floor, then press up.'],'Muscle-ups':['muscleup',0,'Pull explosively, turn over the bar, press to lockout.']});
+Object.assign(AR,{
+dbrow:[[127,60,115,66,80,90,118,88,118,114,88,118,92,146,84,120,80,146,122,88,126,108],[127,60,115,66,80,90,98,74,114,90,88,118,92,146,84,120,80,146,122,88,126,108]],
+archer:[[136,88,120,95,75,112,121,118,122,140,47,122,20,130,47,124,20,132,141,115,162,138],[140,118,126,122,75,128,106,134,122,140,47,133,20,134,47,135,20,136,146,130,166,140]],
+pistol:[[100,28,100,46,100,88,115,50,132,52,100,116,100,146,102,116,102,146],[108,66,102,84,86,120,120,82,138,84,120,110,100,146,120,122,152,124]],
+handstand:[[100,116,100,102,100,64,108,124,110,146,96,34,100,6],[100,140,100,126,100,88,124,138,110,146,96,58,100,30]],
+muscleup:[[100,68,100,84,100,120,110,62,100,40,100,140,100,158],[100,6,100,20,100,56,114,30,100,40,100,84,100,112]]});
+Object.assign(EQ,{dbrow:[[104,112,150,112],[127,112,127,146]],muscleup:[[70,40,130,40]]});FY.handstand=148;
+const add=(n,g,j,lo,hi,sh,an,pr,rq,ds)=>{EX[n]=[g,j,lo,hi,sh];SK[n]=[an,pr,ds];REQ[n]=rq};
+add('Diamond Push-ups','Chest','elbow',100,150,1,'diamond',0,1,'Hands form a diamond under your chest. Elbows brush your ribs.');
+add('Decline Push-ups','Chest','elbow',100,150,1,'decline',0,1,'Feet raised on a bench. Keep your body in one line.');
+add('Incline Bench Press','Chest','elbow',100,150,1,'inclinebench',1,2,'Bench at 30°. Press up and slightly back over your shoulders.');
+add('Chin-ups','Back','elbow',100,150,1,'chinup',0,2,'Palms facing you. Pull your chin over the bar.');
+add('Inverted Rows','Back','elbow',100,150,1,'invrow',0,1,'Under a low bar with a straight body. Pull your chest to the bar.');
+add('Seated Cable Rows','Back','elbow',100,150,1,'cablerow',0,1,'Sit tall. Pull the handle to your belly and squeeze.');
+add('Goblet Squats','Legs','knee',105,160,1,'goblet',1,0,'Hold a weight at your chest. Sit down between your knees.');
+add('Jump Squats','Legs','knee',105,160,1,'jumpsquat',0,2,'Dip into a squat, explode off the floor, and land softly back into the squat.');
+add('Sumo Squats','Legs','knee',105,160,1,'sumo',1,1,'Wide stance, toes out. Knees track over your toes.');
+add('Step-ups','Legs','knee',110,160,1,'stepup',0,1,'Drive through the front heel to stand on the step.');
+add('Glute Bridges','Legs','hip',120,160,0,'bridge',0,0,'Lie on your back. Drive your hips up and squeeze at the top.');
+add('Hip Thrusts','Legs','hip',120,160,0,'thrust',1,2,'Upper back on a bench. Thrust up until your body is flat.');
+add('Deadlifts','Legs','hip',105,165,1,'deadlift',1,3,'Flat back. Push the floor away and stand tall.');
+add('Dumbbell Shoulder Press','Shoulders','elbow',100,155,0,'dbpress',1,1,'Press both dumbbells overhead without arching your back.');
+add('Arnold Press','Shoulders','elbow',100,155,0,'arnold',1,2,'Rotate your palms as you press overhead.');
+add('Bench Dips','Arms','elbow',100,150,1,'benchdip',0,1,'Hands on a bench behind you. Lower until your elbows hit 90°.');
+add('Reverse Curls','Arms','elbow',70,145,1,'revcurl',1,1,'Palms down. Curl up with your wrists straight.');
+add('Bicycle Crunches','Core','twist',0,0,0,'bicycle',0,1,'Elbow to the opposite knee. Slow and controlled.');
+add('Hanging Leg Raises','Core','hip',110,160,1,'hangraise',0,3,'Hang from a bar and lift your legs without swinging.');
+SK['Reverse Curls'][3]='b';SK['Deadlifts'][3]='b';SK['Incline Bench Press'][3]='b';
+add('Mountain Climbers','Cardio','hipmin',80,150,1,'climber',0,0,'Plank position. Drive one knee in at a time, fast.');
+add('High Knees','Cardio','hipmin',90,155,1,'highknee',0,0,'Run in place and lift each knee to hip height.');
+add('Jumping Jacks','Cardio','abd',50,110,0,'jack',0,0,'Jump your feet apart as your arms swing overhead.');
+Object.assign(AR,{bridge:[[40,128,54,128,96,128,70,130,86,130,126,100,142,128],[40,128,54,128,98,102,70,130,86,130,126,98,142,128]],
+climber:[[134,100,118,108,75,122,118,134,142,134,50,129,20,135,50,129,20,135],[134,100,118,108,75,122,118,134,142,134,100,126,84,138,50,129,20,135]],
+highknee:[[100,28,100,46,100,88,101,68,102,90,100,116,100,146,100,116,100,146],[100,28,100,46,100,88,101,68,102,90,128,96,114,120,100,116,100,146]],
+hangraise:[[100,36,100,52,100,96,100,30,100,8,100,126,100,156],[100,36,100,52,100,96,100,30,100,8,132,98,162,98]],
+jack:[[100,28,100,46,100,88,100,68,100,90,100,116,100,146],[100,28,100,46,100,88,118,38,128,12,108,116,118,146]]});Object.assign(AR,{
+bicycle:[[50,108,58,112,96,128,82,104,66,98,126,122,156,116,108,100,124,118,60,92,48,100],[50,108,58,112,96,128,60,92,48,100,108,100,124,118,126,122,156,116,82,104,66,98]],
+stepup:[[110,32,108,48,106,92,108,70,108,92,130,104,128,128,100,122,92,146],[124,8,124,24,124,68,124,46,124,68,124,98,124,128,146,80,138,104]],
+benchdip:[[74,44,74,60,82,102,72,82,72,104,110,114,138,128],[82,70,80,86,90,128,62,94,72,104,118,136,146,142]],
+decline:[[138,92,120,98,78,102,121,120,122,142,50,103,22,104],[138,118,120,124,78,110,102,132,122,142,50,106,22,104]],
+thrust:[[38,96,52,104,94,134,72,120,90,130,124,108,134,144],[38,96,52,104,96,106,72,106,92,104,126,104,132,144]],
+sumo:[[100,30,100,46,100,90,104,64,94,50,110,118,118,146],[100,58,100,74,100,118,104,92,94,78,124,126,122,146]]});
+FY.bicycle=132;FY.stepup=146;FY.benchdip=146;FY.decline=143;FY.thrust=146;
+Object.assign(EQ,{stepup:[[106,128,156,128],[106,128,106,146]],benchdip:[[40,104,80,104],[60,104,60,146]],decline:[[8,104,42,104],[25,104,25,143]],thrust:[[26,112,66,112],[46,112,46,146]]});
+Object.assign(SK,{});
+Object.assign(AR,{
+diamond:[[138,90,124,96,80,112,124,118,124,140,50,122,22,130],[138,116,124,122,80,128,108,131,124,140,50,134,22,136]],
+inclinebench:[[90,76,82,90,60,128,84,68,86,46,92,114,96,144],[90,76,82,90,60,128,62,100,72,80,92,114,96,144]],
+chinup:[[100,38,100,54,100,98,100,32,100,10,100,128,88,148],[102,14,100,30,102,74,116,36,104,10,98,104,80,116]],
+invrow:[[155,126,140,128,96,136,140,106,140,84,67,141,38,146],[153,94,140,100,96,118,120,98,140,84,67,132,38,146]],
+cablerow:[[60,60,60,76,60,120,82,78,104,80,92,116,122,118],[60,60,60,76,60,120,44,92,70,102,92,116,122,118]],
+goblet:[[100,28,100,46,100,90,104,66,114,52,100,118,100,146],[96,52,94,68,84,112,102,92,112,80,116,110,106,146]],
+deadlift:[[126,58,115,69,84,100,117,91,117,113,112,118,106,146],[100,30,100,46,100,90,100,68,100,90,100,118,100,146]],
+dbpress:[[100,30,100,46,100,90,120,60,116,38,100,118,100,146],[100,30,100,46,100,90,108,26,104,4,100,118,100,146]],
+arnold:[[100,30,100,46,100,90,94,66,96,42,100,118,100,146],[100,30,100,46,100,90,112,28,106,6,100,118,100,146]],
+hammer:[[100,28,100,46,100,88,101,68,102,90,100,116,100,146,100,116,100,146,101,68,118,52],[100,28,100,46,100,88,101,68,118,52,100,116,100,146,100,116,100,146,101,68,102,90]],
+revcurl:[[100,28,100,46,100,88,102,68,106,90,100,116,100,146],[100,28,100,46,100,88,104,66,124,62,100,116,100,146]]});
+FY.invrow=146;FY.cablerow=146;FY.inclinebench=146;
+Object.assign(EQ,{inclinebench:[[44,132,100,64],[50,132,50,146]],chinup:[[70,10,130,10]],invrow:[[126,84,154,84],[140,84,140,146]],cablerow:[[36,126,84,126],[124,104,124,126]]});
+AR.jumpsquat=AR.squat;FY.bridge=132;FY.hangraise=158;EQ.hangraise=[[70,8,130,8]];FY.climber=141;
+const FK=()=>$('hero').classList.contains('hide')?sk:'__idle';
+const RC={E:'#9a9a9a',D:'#25a862',C:'#2d8fe0',B:'#8b4fea',A:'#f08a12',S:'#e8142b'};
+const TIER=n=>n>=500?['MASTER',4]:n>=200?['EXPERT',3]:n>=50?['ADEPT',2]:n>0?['NOVICE',1]:['UNTRAINED',0];
+let sk=SK[state.ex]?state.ex:'Push-ups',figOn=false,SP=[];
+function renderCheckin(){$('cklist').innerHTML=splitCard()+state.quests.map((q,i)=>{const d=q.p>=q.t;return`<div class="card ${d?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${d?'✓':''}</b><br><small>${q.d} · +${q.xp} XP · ${q.p}/${q.t}</small>${d||q.bonus?'':`<button class="btn red" style="margin-top:10px" data-a="qdone" data-v="${i}">${armQ===i?'Tap again to confirm':'Mark as done'}</button>`}</div>`}).join('')+(allDone()?'<div class="card cy"><b>All quests complete.</b><br><small>You can level up now.</small></div>':'')}
+function renderSkills(){
+  views();
+  const reps = state.sk[sk] || 0;
+  const t = TIER(reps), tb = $('trsk'), op = isOpen(sk);
+  const nextCap = [1, 50, 200, 500, 500][t[1]];
+  tb.disabled = !op;
+  tb.textContent = op ? 'Train this skill' : 'Locked until ' + RK[REQ[sk]][1] + '-Rank';
+  $('skn').textContent = sk.replace(' (sec)', '') + ' · ' + t[0];
+  $('skc').textContent = SK[sk][2];
+  $('skxp').style.width = (t[1] === 4 ? 100 : Math.min(100, reps / nextCap * 100)) + '%';
+  $('skxpt').textContent = t[1] === 4 ? reps + ' MAX' : reps + '/' + nextCap;
+
+  $('sksel').innerHTML = GRP.map(g => `<optgroup label="${g}">${Object.keys(EX).filter(n => EX[n][0] === g).map(n => `<option value="${esc(n)}"${n === sk ? ' selected' : ''}>${isOpen(n) ? '' : '🔒 '}${esc(n.replace(' (sec)', ''))} (${TIER(state.sk[n] || 0)[0]})</option>`).join('')}</optgroup>`).join('');
+
+  $('sktabs').innerHTML = ['All', ...GRP].map(g =>
+    `<button class="chip" aria-pressed="${skGrp === g}" data-a="skgrp" data-v="${g}">${g}</button>`
+  ).join('');
+
+  const groups = skGrp === 'All' ? GRP : [skGrp];
+  $('tree').innerHTML = groups.map(g => `<div class="branch"><h3>${g}</h3><div class="chips">${
+    Object.keys(EX).filter(n => EX[n][0] === g).map(n => {
+      const x = TIER(state.sk[n] || 0), o = isOpen(n);
+      return `<button class="chip" aria-pressed="${n === sk}" data-a="skill" data-v="${esc(n)}"${o ? '' : ' style="opacity:.5"'}>${o ? '' : '🔒 '}${esc(n.replace(' (sec)', ''))}<br><small>${o ? '★'.repeat(x[1]) + '☆'.repeat(4 - x[1]) + ' ' + (state.sk[n] || 0) : 'Unlocks at ' + RK[REQ[n]][1] + '-Rank'}</small></button>`;
+    }).join('')
+  }</div></div>`).join('');
+}
+$('sksel').addEventListener('change', e => {
+  sk = e.target.value;
+  skGrp = 'All';
+  renderSkills();
+});
+function initFig(){$('fig').innerHTML=`<defs><radialGradient id="ag"><stop id="g1" offset="0" stop-opacity=".6"/><stop id="g2" offset="1" stop-opacity="0"/></radialGradient></defs><ellipse id="au" fill="url(#ag)"/><g id="sp">${'<circle r="2"/>'.repeat(14)}</g><line id="flr" x1="10" x2="190" stroke="#30394d" stroke-width="2"/><line id="eq" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="bl" fill="none" stroke="#8d97ad" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line id="e2" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="gl" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".6" style="filter:blur(3px)"/><path id="bd" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle id="hd" r="9" fill="#08090f" stroke="#fff" stroke-width="4"/><line id="pr" stroke="#cfd6e6" stroke-width="6" stroke-linecap="round"/>`;SP=[...document.querySelectorAll('#sp circle')]}
+const FRONT=new Set(['abd','press','facepull','jack','sumo','dbpress','arnold']),VIEWS=[['3/4',40,14],['Front',0,0],['Side',90,0],['Back',180,0],['Top',0,90]];
+let vi=0,spin=0,TH=40,PH=14;
+function views(){const e=$('views');if(!e)return;const an=SK[FK()][0],tp=TOPOK.has(an),sd=!FRONT.has(an);if((vi===4&&!tp)||(vi===2&&!sd))vi=0;
+ e.innerHTML=VIEWS.map((v,i)=>[v,i]).filter(([v,i])=>i===2?sd:i===4?tp:true).map(([v,i])=>`<button class="chip" aria-pressed="${!spin&&i===vi}" data-a="view" data-v="${i}">${v[0]}</button>`).join('')+`<button class="chip" aria-pressed="${!!spin}" data-a="spin">Spin</button>`}
+const ARMW={diamond:[9,3]},BL={t:44,n:16,u:22,f:22,h:30,s:30},CH=[[4,2,'t'],[2,0,'n'],[2,6,'u'],[6,8,'f'],[4,10,'h'],[10,12,'s'],[4,14,'h'],[14,16,'s'],[2,18,'u'],[18,20,'f']],HANG=new Set(['chinup','pull','muscleup','dips','hangraise','benchdip']),AN={bicycle:4,stepup:12},TOPOK=new Set(['diamond','invrow','bicycle','decline','thrust','pushup','incline','pike','bench','skull','bridge','plank','crunch','legraise','climber','archer','twist','row','dbrow']);
+function rig(A,B,k,an){const n=A.length,q=A.map((a,i)=>a+(B[i]-a)*k),o=q.slice();
+ CH.forEach(([a,b,L])=>{if(b>=n)return;const ag=P=>{const dx=P[b]-P[a],dy=P[b+1]-P[a+1];return Math.hypot(dx,dy)<3?null:Math.atan2(dy,dx)};
+  let a1=ag(A),a2=ag(B);if(a1==null)a1=a2;if(a2==null)a2=a1;if(a1==null)a1=a2=Math.PI/2;
+  const d=Math.atan2(Math.sin(a2-a1),Math.cos(a2-a1)),th=a1+d*k;o[b]=o[a]+Math.cos(th)*BL[L];o[b+1]=o[a+1]+Math.sin(th)*BL[L]});
+ const c=AN[an]!=null?[AN[an]]:HANG.has(an)?[8]:[8,12].concat(n>14?[16]:[]);let ai=c[0];c.forEach(i=>{if(A[i+1]>A[ai+1])ai=i});
+ const dx=q[ai]-o[ai],dy=q[ai+1]-o[ai+1];for(let i=0;i<n;i+=2){o[i]+=dx;o[i+1]+=dy}return o}
+const eas=x=>(1-Math.cos(Math.PI*Math.min(1,Math.max(0,x))))/2,JK=h=>h<.4?eas(h/.4):h<.5?1-eas((h-.4)/.1):h<.75?0:h<.85?.6*eas((h-.75)/.1):.6*(1-eas((h-.85)/.15)),JL=h=>h>.5&&h<.75?16*Math.sin(Math.PI*(h-.5)/.25):0;
+function frame(t){const s=SK[FK()],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0]==='jumpsquat',jp=t/1000*.9%1,k=jm?JK(jp):(1-Math.cos(t/1000*Math.PI*1.3))/2,p=rig(A,B,k,s[0]),r=rankOf(state.level),c=RC[r],ri=RK.findIndex(x=>x[1]===r);
+ if(jm){const L=JL(jp);for(let i=1;i<p.length;i+=2)p[i]-=L}
+ if(spin)TH=t/22%360;else{const g=VIEWS[vi][1];TH+=(g+360*Math.round((TH-g)/360)-TH)*.12}
+ PH+=((spin?14:VIEWS[vi][2])-PH)*.12;
+ const th=TH*Math.PI/180,ph=PH*Math.PI/180,ct=Math.cos(th),st=Math.sin(th),cp=Math.cos(ph),sn=Math.sin(ph);
+ const u=i=>p[i]-100,J=(i,lat,sg)=>f?[sg*(u(i)+lat),p[i+1],0]:[sg*lat,p[i+1],u(i)];
+ const H=J(0,0,1),S=J(2,0,1),P=J(4,0,1),SR=J(2,14,1),SL=J(2,14,-1),PR=J(4,9,1),PL=J(4,9,-1),n=p.length;
+ const [el,wl]=ARMW[s[0]]||[14,14],E1=J(6,el,1),W1=J(8,wl,1),E2=n>18?J(18,el,-1):J(6,el,-1),W2=n>18?J(20,wl,-1):J(8,wl,-1);
+ const K1=J(10,9,1),A1=J(12,9,1),K2=n>14?J(14,9,-1):J(10,9,-1),A2=n>14?J(16,9,-1):J(12,9,-1);
+ const Pj=q=>{const x1=q[0]*ct+q[2]*st,z1=-q[0]*st+q[2]*ct,y0=q[1]-90;return[100+x1,90+y0*cp-z1*sn,z1*cp-y0*sn]};
+ const seg=(a,near)=>{const q=a.map(Pj);return{d:'M'+q.map(v=>v[0].toFixed(1)+' '+v[1].toFixed(1)).join('L'),z:near?9e9:q.reduce((x,v)=>x+v[2],0)/q.length}};
+ const up=Math.abs(p[2]-p[4])<Math.abs(p[3]-p[5]),ft=(a,k)=>up&&a[1]-k[1]>12?[f?[a[0],a[1],8]:[a[0],a[1],a[2]+8]]:[];
+ const sp=[seg([H,S,P],1),seg([SL,SR],1),seg([PL,PR],1)],ar=[seg([SR,E1,W1]),seg([SL,E2,W2])],lg=[seg([PR,K1,A1,...ft(A1,K1)]),seg([PL,K2,A2,...ft(A2,K2)])];
+ const nr=[],fr=[];[ar,lg].forEach(g=>{const a=g[0].z>=g[1].z;nr.push(g[a?0:1]);fr.push(g[a?1:0])});
+ const d=sp.concat(nr).map(x=>x.d).join(''),d2=fr.map(x=>x.d).join(''),hp=Pj(H);
+ const C=[H,S,P,K1,A1].map(Pj),cx=C.reduce((a,v)=>a+v[0],0)/5,cy=C.reduce((a,v)=>a+v[1],0)/5;
+ const Sx=(id,o)=>{const e=$(id);for(const a in o)e.setAttribute(a,o[a])},wob=Math.sin(t/300)*4;
+ Sx('bd',{d});Sx('bl',{d:d2});Sx('gl',{d:d+d2,stroke:c});Sx('hd',{cx:hp[0],cy:hp[1]});
+ Sx('au',{cx,cy,rx:58+ri*5+wob,ry:72+ri*4+wob});Sx('g1',{'stop-color':c});Sx('g2',{'stop-color':c});
+ const fy=FY[s[0]]||150;Sx('flr',{y1:fy,y2:fy});$('flr').style.display=PH>45?'none':'';
+ const pr=$('pr');pr.style.display=s[1]?'':'none';
+ if(s[1]){const h=s[3]==='b'?26:16,a=s[3]==='v'?[W1[0],W1[1]-9,W1[2]]:[f?W1[0]-h:-h,W1[1],W1[2]],b=s[3]==='v'?[W1[0],W1[1]+9,W1[2]]:[f?W1[0]+h:h,W1[1],W1[2]],pa=Pj(a),pb=Pj(b);Sx('pr',{x1:pa[0],y1:pa[1],x2:pb[0],y2:pb[1],'stroke-width':6})}
+ const E=EQ[s[0]]||[];['eq','e2'].forEach((id,i)=>{const l=E[i],q=$(id);q.style.display=l?'':'none';if(l){const a=Pj(f?[l[0]-100,l[1],0]:[0,l[1],l[0]-100]),b=Pj(f?[l[2]-100,l[3],0]:[0,l[3],l[2]-100]);Sx(id,{x1:a[0],y1:a[1],x2:b[0],y2:b[1]})}});
+ const m=6+ri*2;SP.forEach((o,i)=>{if(i>=m){o.style.display='none';return}o.style.display='';const q=(t/1800+i/14)%1;o.setAttribute('cx',cx+Math.sin(i*12.9)*(40+ri*3));o.setAttribute('cy',cy+62-q*130);o.setAttribute('opacity',1-q);o.setAttribute('fill',c)})}
+function figLoop(t){if($('skills').classList.contains('hide')&&$('hero').classList.contains('hide')){figOn=false;return}frame(t);requestAnimationFrame(figLoop)}
+initFig();
+
+document.addEventListener('click',e=>{const f=document.createElement('div');f.className='flash';f.style.left=e.clientX+'px';f.style.top=e.clientY+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),320)});
+$('boot').classList.add('on');setTimeout(()=>$('boot').classList.remove('on'),950);syncCustom();
+if(navigator.serviceWorker)navigator.serviceWorker.getRegistrations().then(r=>r.forEach(x=>x.unregister())).catch(()=>{});
+render();
+/* remember which Status sections are open */
+document.querySelectorAll('details.fold').forEach(d=>{if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
+$('aoab').addEventListener('pointerdown',e=>{e.preventDefault();aoaTap()});
+</script>
+</body>
+</html>
