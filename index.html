@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -683,14 +683,14 @@ const FLAT=new Set(['Push-ups','Incline Push-ups','Diamond Push-ups','Decline Pu
 function formOk(ex,L,ar){
  if(!FLAT.has(ex))return true;
  const v=i=>L[i].visibility;
- const pt=(a,b)=>{const p=[a,b].filter(i=>v(i)>=.2);if(!p.length)return null;return{x:p.reduce((t,i)=>t+L[i].x,0)/p.length*ar,y:p.reduce((t,i)=>t+L[i].y,0)/p.length}};
- const s=pt(11,12),h=pt(23,24);
- if(!s||!h)return true;
- const a=pt(27,28)||pt(25,26);
+ /* the model invents hidden joints with low confidence, so only trust points it is really sure about */
+ const pt=(a,b)=>{const p=[a,b].filter(i=>v(i)>=.6);if(!p.length)return null;return{x:p.reduce((t,i)=>t+L[i].x,0)/p.length*ar,y:p.reduce((t,i)=>t+L[i].y,0)/p.length}};
+ const s=pt(11,12),h=pt(23,24),a=pt(27,28)||pt(25,26);
+ if(!s||!h||!a)return true;
  const r=(p,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d<.04?0:Math.abs(q.y-p.y)/d};
  const lim=(ex==='Incline Push-ups'||ex==='Decline Push-ups')?.92:.85;
- /* only block when clearly standing/upright; missing legs never block */
- return !(r(s,h)>lim&&(!a||r(h,a)>lim))}
+ /* block only when the body is clearly standing: every joint confidently seen and stacked vertically */
+ return !(r(s,h)>lim&&r(h,a)>lim)}
 /* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
 function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
 function feed(d,a,now){
