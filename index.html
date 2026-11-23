@@ -1,4 +1,4 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -679,6 +679,7 @@ function measure(j,W,thr=.4){
  for(const s of[0,1]){const i=t.map(x=>x+s),v=Math.min(...i.map(k=>W[k].visibility));if(v>thr){const a=ang(W[i[0]],W[i[1]],W[i[2]]);vals.push(a);sum+=a*v;w+=v}}
  return w?(mn?Math.min(...vals):sum/w):null}
 /* POSTURE GATE: floor exercises only count when the body is actually horizontal and the legs are in frame. */
+const PVX=new Set(['Push-ups','Incline Push-ups','Diamond Push-ups','Decline Push-ups','Archer Push-ups','Pike Push-ups']);
 const FLAT=new Set(['Push-ups','Incline Push-ups','Diamond Push-ups','Decline Push-ups','Archer Push-ups','Plank Hold (sec)']);
 function formOk(ex,L,ar){
  if(!FLAT.has(ex))return true;
@@ -697,6 +698,24 @@ function feed(d,a,now){
  const j=d[1];
  if(j==='twist'){const s=a>20?1:a<-20?-1:0;if(s){if(T.side&&s!==T.side&&now-(T.t||0)>350){T.t=now;rep()}T.side=s}return}
  if(j==='hold'){if(a>150){if(!T.t)T.t=now;if(now-T.t>=1000){T.t+=1000;rep()}}else T.t=0;return}
+
+ /* PUSH-UP COUNTER: counts a drop-and-return in the elbow angle, so it works from any camera angle (no fixed degree targets) */
+ if(PVX.has(state.ex)){
+  const amp=[22,32,45][state.sens];
+  if(!T.armed){T.armed=1;T.ph=0;T.top=a;T.bot=a;T.ds=0;T.md=0}
+  if(!T.ph){
+   T.top=Math.max(a,T.top-.3);const dr=T.top-a;
+   if(dr>=8){if(!T.ds)T.ds=now;T.md=Math.max(T.md,dr)}
+   else if(dr<5){if(T.md>=amp*.5&&T.md<amp&&now-(T.cue||0)>1500){T.cue=now;cue('Go deeper')}T.ds=0;T.md=0}
+   if(dr>=amp&&T.top>=100){T.ph=1;T.bot=a}
+  }else{
+   T.bot=Math.min(T.bot,a);
+   if(a-T.bot>=amp*.75&&now-(T.lastRepTime||0)>450){
+    const g=gradeRep(T.bot,T.top,T.top-amp,T.ds?now-T.ds:1000);
+    T.ph=0;T.lastRepTime=now;T.top=a;T.ds=0;T.md=0;rep(g)}
+  }
+  $('ro').textContent+=' · DROP '+Math.round(Math.max(0,T.top-a))+'/'+amp;
+  return}
 
  let [,,lo,hi,sh]=d;
  if(hi-lo>40){const [a,b]=[[22,12],[5,0],[-5,-8]][state.sens];lo+=a;hi-=b}
