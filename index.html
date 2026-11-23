@@ -680,16 +680,16 @@ function measure(j,W,thr=.4){
  return w?(mn?Math.min(...vals):sum/w):null}
 /* POSTURE GATE: floor exercises only count when the body is actually horizontal and the legs are in frame. */
 const FLAT=new Set(['Push-ups','Incline Push-ups','Diamond Push-ups','Decline Push-ups','Archer Push-ups','Plank Hold (sec)']);
-function formOk(ex,W){
+function formOk(ex,L,ar){
  if(!FLAT.has(ex))return true;
- const vis=i=>W[i].visibility,mid=(a,b)=>({x:(W[a].x+W[b].x)/2,y:(W[a].y+W[b].y)/2,z:(W[a].z+W[b].z)/2});
- if(Math.min(vis(11),vis(12))<.5||Math.min(vis(23),vis(24))<.5)return false;
- const ankles=Math.min(vis(27),vis(28))>=.5,knees=Math.min(vis(25),vis(26))>=.5;
- if(!ankles&&!knees)return false;
- const s=mid(11,12),h=mid(23,24),a=ankles?mid(27,28):mid(25,26);
- const lim=(ex==='Incline Push-ups'||ex==='Decline Push-ups')?.75:.55;
- const r=(p,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y,q.z-p.z);return d?Math.abs(q.y-p.y)/d:1};
- return r(s,h)<lim&&r(h,a)<lim}
+ const v=i=>L[i].visibility;
+ if(Math.min(v(11),v(12))<.4||Math.min(v(23),v(24))<.4)return false;
+ const an=Math.min(v(27),v(28))>=.3,kn=Math.min(v(25),v(26))>=.3;
+ if(!an&&!kn)return false;
+ const mid=(a,b)=>({x:(L[a].x+L[b].x)/2*ar,y:(L[a].y+L[b].y)/2});
+ const s=mid(11,12),h=mid(23,24),a=an?mid(27,28):mid(25,26);
+ const r=(p,q)=>{const d=Math.hypot(q.x-p.x,q.y-p.y);return d?Math.abs(q.y-p.y)/d:1};
+ return !(r(s,h)>.8&&r(h,a)>.8)}
 /* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
 function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
 function feed(d,a,now){
@@ -698,7 +698,7 @@ function feed(d,a,now){
  if(j==='hold'){if(a>150){if(!T.t)T.t=now;if(now-T.t>=1000){T.t+=1000;rep()}}else T.t=0;return}
 
  let [,,lo,hi,sh]=d;
- if(hi-lo>40){const k=[12,0,-8][state.sens];lo+=k;hi-=k}
+ if(hi-lo>40){const [a,b]=[[22,12],[5,0],[-5,-8]][state.sens];lo+=a;hi-=b}
  const v=sh?a:-a,hT=sh?hi:-lo,lT=sh?lo:-hi;
 
  if(!T.lastRepTime) T.lastRepTime = 0;
@@ -735,11 +735,12 @@ function onPose(r){const cv=$('ov'),x=cv.getContext('2d'),vd=$('vid');cv.width=v
  if(!T.ready){x.save();x.setLineDash([10,8]);x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=3;x.strokeRect(cv.width*.18,cv.height*.04,cv.width*.64,cv.height*.92);x.restore()}
  if(!L||!W){if(!T.ready)T.okc=0;T.okf=0;T.armed=0;T.down=0;T.part=0;ro.textContent='NO BODY FOUND. STEP BACK';T.sm=null;return}
  x.strokeStyle='#52d9ff';x.lineWidth=4;x.beginPath();BONES.forEach(([a,b])=>{x.moveTo(L[a].x*cv.width,L[a].y*cv.height);x.lineTo(L[b].x*cv.width,L[b].y*cv.height)});x.stroke();
- const d=EX[state.ex],m=measure(d[1],W,T.ready?.4:.6),fo=formOk(state.ex,W),now=performance.now();
+ const d=EX[state.ex],m=measure(d[1],W,T.ready?.4:.6),fo=formOk(state.ex,L,cv.width/cv.height),now=performance.now();
  if(!T.ready){if(!T.t0)T.t0=now;T.okc=(m==null||!fo)?0:(T.okc||0)+1;ro.textContent='FRAME CHECK '+Math.min(100,Math.round(T.okc/12*100))+'%'+(m==null?' · SHOW FULL BODY':!fo?' · GET INTO POSITION':'');
   if(T.okc>=12||now-T.t0>8000){T.ready=true;T.sm=null;beep(660,.1);setTimeout(()=>beep(990,.15),110);vib(60);say('Ready');$('coach').innerHTML='Locked in. Go!'}return}
  if(m==null){ro.textContent='SHOW YOUR FULL BODY';T.sm=null;T.okf=0;T.armed=0;T.down=0;T.part=0;return}
- if(!fo){T.okf=0;T.armed=0;T.down=0;T.part=0;T.sm=null;T.t=0;ro.textContent='GET INTO POSITION · FULL BODY IN FRAME';if(now-(T.pc||0)>3500){T.pc=now;cue('Get into position')}return}
+ if(!fo){T.bad=(T.bad||0)+1;if(T.bad>12){T.okf=0;T.armed=0;T.down=0;T.part=0;T.sm=null;T.t=0;ro.textContent='GET INTO POSITION · FULL BODY IN FRAME';if(now-(T.pc||0)>3500){T.pc=now;cue('Get into position')}}return}
+ T.bad=0;
  T.okf=(T.okf||0)+1;
  if(T.okf<8){ro.textContent='HOLD POSITION…';T.sm=m;return}
  T.sm=T.sm==null?m:T.sm*.5+m*.5;ro.textContent=d[1].toUpperCase()+' '+Math.round(T.sm)+'° · REPS '+cur+(T.combo>1?' · COMBO x'+T.combo:'');feed(d,T.sm,now)}
