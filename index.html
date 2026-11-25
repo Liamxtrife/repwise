@@ -90,12 +90,12 @@ select,input{width:100%;padding:10px;background:#090e19;border:1px solid #3b4962
 .bar i{display:block;width:100%;background:var(--a);min-height:4px}
 .danger{border-left-color:#ff9d00}
 .btn.dng{width:100%;color:#ff8a9c}
-nav{position:fixed;left:0;right:0;bottom:0;z-index:12;background:rgba(6,8,14,.96);border-top:1px solid #52d9ff66;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0))}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:12;background:rgba(6,8,14,.96);border-top:1px solid #52d9ff66;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
 nav button{position:relative;flex:1;max-width:110px;border:0;background:none;padding:11px 2px;font-size:.88rem;color:#aab2c6;transition:transform .14s cubic-bezier(.2,1.7,.4,1),background .12s,color .12s,box-shadow .12s}
 @media(hover:hover){nav button:hover{color:#08090f;background:#fff;box-shadow:0 3px 0 var(--a),0 6px 0 #000;transform:skew(-12deg) translateY(-3px) scale(1.07)}}
 nav button:active{color:#08090f;background:#fff;box-shadow:0 3px 0 var(--a),0 6px 0 #000;transform:skew(-12deg) translateY(-3px) scale(1.07)}
 nav button[aria-selected=true]{color:#fff;background:linear-gradient(105deg,#ed254c,#a90f34);box-shadow:0 3px 0 var(--b);transform:skew(-12deg) translateY(-2px)}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0));transform:translateX(-50%);background:#101a2a;border:1px solid var(--b);padding:10px 16px;font-weight:600;font-size:.88rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:25;max-width:90%;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#101a2a;border:1px solid var(--b);padding:10px 16px;font-weight:600;font-size:.88rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:25;max-width:90%;text-align:center}
 .toast.on{opacity:1}
 
 /* Flaming Streak Effect Styles */
@@ -107,9 +107,9 @@ nav button[aria-selected=true]{color:#fff;background:linear-gradient(105deg,#ed2
   animation: flicker 1.2s infinite alternate ease-in-out;
 }
 @keyframes flicker {
-  0% { transform: scale(1) skew(-8deg); text-shadow: 0 0 5px #ff4500, 0 0 10px #ff2200; }
-  50% { transform: scale(1.04) skew(-8deg); text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300, 0 0 30px #ff0000; }
-  100% { transform: scale(1) skew(-8deg); text-shadow: 0 0 6px #ff4500, 0 0 14px #ff2200; }
+  0% { transform: scale(1); text-shadow: 0 0 5px #ff4500, 0 0 10px #ff2200; }
+  50% { transform: scale(1.04); text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300, 0 0 30px #ff0000; }
+  100% { transform: scale(1); text-shadow: 0 0 6px #ff4500, 0 0 14px #ff2200; }
 }
 .flame-card {
   border: 1px solid #ff5500 !important;
@@ -244,8 +244,8 @@ section.enter{animation:wipe .35s ease-out}
 .idle{position:absolute;left:50%;translate:-50% 0;bottom:24%;font:1rem Anton,Impact,sans-serif;letter-spacing:.12em;background:#fff;color:#08090f;padding:3px 18px;transform:skew(-8deg);box-shadow:4px 4px 0 var(--a),8px 8px 0 #000;white-space:nowrap;z-index:2}
 .readout:empty{display:none}
 .pick{padding:0;margin-bottom:8px}.pick summary{list-style:none;display:flex;align-items:center;gap:10px;padding:10px 12px;min-height:48px;cursor:pointer;-webkit-tap-highlight-color:transparent}.pick summary::-webkit-details-marker{display:none}.pick summary>span{flex:1;min-width:0}.pick summary b{display:block}.pick .pk{padding:0 12px 12px}
-.gold{position:relative;display:flex;align-items:center;gap:12px;padding:10px 20px;margin:4px 8px 6px 0;background:linear-gradient(100deg,#ffe27a,#f0a500 60%,#c47a00);color:#08090f;transform:skew(-8deg);box-shadow:5px 5px 0 var(--a),9px 9px 0 #000;overflow:hidden}.gold>*{transform:skew(8deg)}.gold span{font-size:1.6rem}.gold b{font:2.2rem/1 Anton,Impact,sans-serif;letter-spacing:.03em}.gold small{margin-left:auto;max-width:44%;text-align:right;color:#3a2600;font-weight:700;font-size:.68rem;line-height:1.25}.gold::after{content:"";position:absolute;top:0;bottom:0;width:70px;left:-90px;background:linear-gradient(100deg,transparent,#fff9,transparent);animation:sweep 3.8s ease-in-out infinite}@keyframes sweep{60%,100%{left:120%}}
-.shd{font:1.1rem Anton,Impact,sans-serif;letter-spacing:.18em;color:var(--b);margin:22px 0 10px;display:flex;align-items:center;gap:10px}.shd::before{content:"";width:10px;height:10px;background:var(--a);transform:rotate(45deg)}.shd::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.gold{position:relative;display:flex;align-items:center;gap:12px;padding:10px 20px;margin:4px 8px 6px 0;background:linear-gradient(100deg,#ffe27a,#f0a500 60%,#c47a00);color:#08090f;transform:skew(-8deg);box-shadow:5px 5px 0 var(--a),9px 9px 0 #000;overflow:hidden}.gold>*{transform:skew(8deg)}.gold span{font-size:1.6rem}.gold b{font:2.2rem/1 Anton,Impact,sans-serif;letter-spacing:.03em}.gold small{margin-left:auto;max-width:44%;text-align:right;color:#3a2600;font-weight:700;font-size:.68rem;line-height:1.25}.gold::after{content:"";position:absolute;top:0;bottom:0;width:70px;left:-90px;background:linear-gradient(100deg,transparent,#fff9,transparent);animation:sweep 9.1s ease-in-out infinite}@keyframes sweep{60%,100%{left:120%}}
+.shop-hd{font:1.1rem Anton,Impact,sans-serif;letter-spacing:.18em;color:var(--b);margin:22px 0 10px;display:flex;align-items:center;gap:10px}.shop-hd::before{content:"";width:10px;height:10px;background:var(--a);transform:rotate(45deg)}.shop-hd::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
 .pv{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 58%,color-mix(in srgb,var(--rc,#52d9ff) 36%,transparent),transparent 68%),repeating-linear-gradient(-14deg,transparent 0 13px,color-mix(in srgb,var(--rc,#52d9ff) 9%,transparent) 13px 15px),linear-gradient(#0a0e18,#05070d)}.pv svg{display:block;width:100%;height:auto;position:relative;z-index:1}.pv svg svg.fgv{display:inline;width:120px;height:140px;position:static}
 .tabs{flex-wrap:nowrap;gap:6px}.tabs .chip{padding:8px 11px;font-size:.82rem;min-height:40px}
 .stg{display:flex;gap:14px;align-items:stretch;margin:16px 0 0}.stg .pv{width:44%;flex:none;border:1px solid #344057}.lk{flex:1;display:flex;flex-direction:column;justify-content:center;gap:9px}.lk h3{font:1.6rem Anton,Impact,sans-serif;letter-spacing:.04em;transform:skew(-8deg);text-shadow:3px 3px 0 var(--a);margin:0 0 2px}.lk div{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid #344057;padding-bottom:6px}.lk div small{color:var(--mute);letter-spacing:.12em;font-size:.65rem}.lk div b{font-size:.85rem;color:var(--b)}.lk p{margin:0;color:var(--mute);font-size:.72rem;line-height:1.35}
@@ -253,10 +253,10 @@ section.enter{animation:wipe .35s ease-out}
 .rar{font-size:.62rem;letter-spacing:.16em;font-weight:700;color:var(--rc)}
 .pt{position:absolute;left:0;bottom:10px;z-index:3;background:#ffd24a;color:#08090f;font:1rem Anton,Impact,sans-serif;padding:2px 14px 2px 12px;transform:skew(-12deg);box-shadow:3px 3px 0 #000}.pt.poor{background:#3a4258;color:#b6bfd1}
 .sb{position:absolute;top:8px;right:0;z-index:3;font:.72rem Anton,Impact,sans-serif;letter-spacing:.1em;padding:2px 12px 2px 14px;background:#fff;color:#08090f;transform:skew(-12deg);box-shadow:-3px 3px 0 #000}.sb.eq{background:var(--b)}.sb.ac{background:var(--a);color:#fff}
-.it.lg::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 62%);transform:translateX(-100%);animation:shn 4.2s ease-in-out infinite;pointer-events:none;z-index:4}@keyframes shn{60%,100%{transform:translateX(100%)}}
-.pv.pvbig{width:68%;margin:0 auto 12px;aspect-ratio:120/140;border:1px solid color-mix(in srgb,var(--rc) 60%,#000);box-shadow:0 0 34px color-mix(in srgb,var(--rc) 40%,transparent)}.pv.pvbig::before{content:"";position:absolute;inset:-60%;background:repeating-conic-gradient(color-mix(in srgb,var(--rc) 26%,transparent) 0 7deg,transparent 7deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 8%,transparent 55%);mask-image:radial-gradient(circle,#000 8%,transparent 55%);animation:pvr2 26s linear infinite}@keyframes pvr2{to{transform:rotate(360deg)}}
+.it.lg::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 62%);transform:translateX(-100%);animation:shn 9.2s ease-in-out infinite;pointer-events:none;z-index:4}@keyframes shn{60%,100%{transform:translateX(100%)}}
+.pv.pvbig{width:68%;margin:0 auto 12px;aspect-ratio:120/140;border:1px solid color-mix(in srgb,var(--rc) 60%,#000);box-shadow:0 0 34px color-mix(in srgb,var(--rc) 40%,transparent)}.pv.pvbig::before{content:"";position:absolute;inset:-60%;background:repeating-conic-gradient(color-mix(in srgb,var(--rc) 26%,transparent) 0 7deg,transparent 7deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 8%,transparent 55%);mask-image:radial-gradient(circle,#000 8%,transparent 55%);animation:pvr2 52s linear infinite}@keyframes pvr2{to{transform:rotate(360deg)}}
 .nm2{font:2rem/1.05 Anton,Impact,sans-serif;letter-spacing:.03em;text-transform:uppercase;transform:skew(-8deg);text-shadow:3px 3px 0 color-mix(in srgb,var(--rc) 70%,#000);margin:4px 0 8px}
-.pva{transform-box:fill-box;transform-origin:center;animation:pvp 2.6s ease-in-out infinite}.pva2{transform-box:fill-box;transform-origin:center;animation:pvq 2.2s ease-in-out infinite}.pvw{transform-box:fill-box;transform-origin:50% 100%;opacity:0;animation:pvw 2.6s ease-in infinite}.pvf{animation:pvb 3.2s ease-in-out infinite}.pvc{transform-box:fill-box;transform-origin:50% 0;animation:pvc 3s ease-in-out infinite}.pvr{animation:pvk 1s steps(2) infinite}.pvscan{animation:pvscan 3s linear infinite}.pvspin{transform-box:view-box;transform-origin:60px 70px;animation:pvspin 18s linear infinite}
+.pva{transform-box:fill-box;transform-origin:center;animation:pvp 2.6s ease-in-out infinite}.pva2{transform-box:fill-box;transform-origin:center;animation:pvq 2.2s ease-in-out infinite}.pvw{transform-box:fill-box;transform-origin:50% 100%;opacity:0;animation:pvw 2.6s ease-in infinite}.pvf{animation:pvb 5.8s ease-in-out infinite}.pvc{transform-box:fill-box;transform-origin:50% 0;animation:pvc 3s ease-in-out infinite}.pvr{animation:pvk 1s steps(2) infinite}.pvscan{animation:pvscan 3s linear infinite}.pvspin{transform-box:view-box;transform-origin:60px 70px;animation:pvspin 18s linear infinite}
 @keyframes pvp{50%{opacity:.6;transform:scale(1.07)}}@keyframes pvq{50%{opacity:.5;transform:scale(1.12)}}@keyframes pvw{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.9}100%{opacity:0;transform:translateY(-78px) scale(1.15)}}@keyframes pvb{50%{transform:translateY(-2.5px)}}@keyframes pvc{50%{transform:skewX(-3.5deg)}}@keyframes pvk{50%{opacity:.15}}@keyframes pvscan{from{transform:translateY(4px)}to{transform:translateY(134px)}}@keyframes pvspin{to{transform:rotate(360deg)}}
 
 .dgk u{position:absolute;left:-14px;right:-14px;top:88%;height:3px;background:#ffd24a;box-shadow:0 0 8px #ffd24a;text-decoration:none}
@@ -268,7 +268,7 @@ section.enter{animation:wipe .35s ease-out}
 .row .btn{font-size:clamp(.72rem,3.5vw,.92rem);padding:11px 4px;letter-spacing:.02em;overflow:visible;text-overflow:clip}
 .row .btn.sm{font-size:clamp(.68rem,3.2vw,.82rem);padding:6px 4px}
 #camb{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.08em}
-#camb::before{animation:camglow 1.8s ease-in-out infinite}
+#camb::before{animation:camglow 3.2s ease-in-out infinite}
 @keyframes camglow{50%{box-shadow:inset 0 0 0 1px #ff8298,3px 3px 0 #52d9ff,0 0 22px #f02b4f99}}
 #tabb::before{background:linear-gradient(105deg,#1b2a52,#4a1566);box-shadow:inset 0 0 0 1px #8b4fea,3px 3px 0 #05070c,0 0 14px #8b4fea66}
 .stage{border-color:#52d9ff55;box-shadow:0 0 26px rgba(82,217,255,.12),inset 0 0 40px rgba(240,43,79,.06)}
@@ -292,6 +292,41 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
 .readout{left:auto;right:8px;bottom:16px}
 .idle{top:61%;bottom:auto;left:56%;translate:-50% -50%;max-width:86%;animation:idlep 1.6s ease-in-out infinite}@keyframes idlep{50%{box-shadow:4px 4px 0 var(--a),8px 8px 0 #000,0 0 24px #fff8}}
 @media(prefers-reduced-motion:reduce){.idle{animation:none}}
+/* ===== v6: declutter, HUD wrapper, utilities ===== */
+.hudtl{position:absolute;top:8px;left:8px;z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:6px;pointer-events:none}
+.hudtl .cring{position:relative;top:auto;left:auto}.hudtl .ofl{position:static}
+.cam.off .hudtl,.cam.off .bmini,.cam.off .bhp{opacity:.18;transition:opacity .3s}
+.hudtl,.bmini,.bhp{transition:opacity .3s}
+.stgs{margin-top:8px}.stgs>summary{list-style:none;cursor:pointer;text-align:center;padding:9px;font-size:.82rem;color:var(--mute);border:1px dashed #39445c}.stgs>summary::-webkit-details-marker{display:none}.stgs[open]>summary{color:var(--b);border-color:var(--b)}
+.nxtd,.dgd{padding:10px 14px}.nxtd>summary,.dgd>summary{list-style:none;cursor:pointer;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nxtd>summary::-webkit-details-marker,.dgd>summary::-webkit-details-marker{display:none}
+.hint{margin:6px 0}.hint>summary{cursor:pointer;font-size:.78rem;color:var(--b);list-style:none}.hint>summary::-webkit-details-marker{display:none}
+.dhd{display:block;margin:12px 0 4px;font:.72rem Anton,Impact,sans-serif;letter-spacing:.2em;color:var(--b)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dgrid .btn{font-size:.78rem;padding:8px 4px;min-height:40px}
+body.still *{animation-play-state:paused!important}
+.mt-1{margin-top:6px!important}.mt-2{margin-top:8px!important}.mt-3{margin-top:10px!important}.mt-4{margin-top:12px!important}.mb-2{margin:0 0 8px!important}.mb-3{margin:0 0 10px!important}.db{display:block!important}.tc{text-align:center!important}.w-full{width:100%!important}
+/* ===== v7: picker, modals, rest overlay, type + corners ===== */
+.mwrap{position:relative;width:100%;max-width:380px}
+.mx{position:absolute;top:-12px;right:-4px;z-index:3;width:36px;height:36px;padding:0;border:2px solid #fff;background:var(--a);color:#fff;font:1rem Anton,Impact,sans-serif;transform:skew(-8deg);box-shadow:2px 2px 0 #000}
+.mscroll{max-height:86vh;overflow-y:auto}
+.pkl{margin-top:8px;max-height:50vh;overflow-y:auto}
+.pkh{margin:10px 0 2px;font:700 .7rem Sora,system-ui,sans-serif;letter-spacing:.12em;color:var(--b)}
+.pk{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:11px 6px;background:none;border:0;border-bottom:1px solid #29324a;color:var(--ink);min-height:44px}.pk[disabled]{opacity:.45}.pk small{color:var(--b);font-weight:700}
+.strip{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}.strip::-webkit-scrollbar{display:none}.strip .chip{flex:none;white-space:nowrap;padding:6px 12px;min-height:36px;font-size:.82rem}
+#skpreview{display:grid;grid-template-columns:128px 1fr;column-gap:12px;row-gap:4px;align-items:center;text-align:left!important}
+#skpreview h3{grid-column:2;grid-row:1;margin:0}
+#skpreview #figslot{grid-column:1;grid-row:1/4}
+#skpreview #fig{max-width:128px!important}
+#skpreview .skxr{grid-column:2;grid-row:2;display:flex;align-items:center;gap:8px}.skxr .xp{flex:1}
+#skpreview #skc{grid-column:2;grid-row:3;font-size:.78rem}
+#skpreview #views,#skpreview>.row{grid-column:1/-1}
+.resto{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:5;width:148px;padding:5px 8px 7px;text-align:center;background:#05070cdd;border:1px solid var(--b);box-shadow:0 0 14px rgba(82,217,255,.3)}
+.resto .big{font-size:1.8rem;line-height:1.1}.resto .xp{height:5px;margin:2px 0}.resto small{display:block;font-size:.62rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.resto .btn{min-height:28px;padding:2px 12px;font-size:.7rem;margin-top:4px}
+.tag,.readout,.it .nm,.shd b,nav button{font-family:Sora,system-ui,sans-serif;font-weight:700;letter-spacing:.04em}
+.tag{font-size:.68rem}.readout{font-size:.72rem}nav button{font-size:.76rem;text-transform:uppercase}
+.stat{clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);border-left:3px solid var(--b)}
+select,input{border-radius:2px;background:#070b14;border:1px solid #3b4962}.cd{border-radius:2px}
+.dp{overflow-y:auto;max-height:100dvh}
 /* ===== UI cleanup ===== */
 .trainhead{display:flex;align-items:center;gap:12px}
 .trainhead h1{flex:none;margin:6px 0 10px}
@@ -305,7 +340,6 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
 .pick summary b .tag{margin:0 0 0 6px;vertical-align:2px}
 /* ===== Vanguard roster ===== */
 #fold-shadows{--hc:#8b4fea}
-#shadows .shd{display:block;margin:0;font:inherit;letter-spacing:0;color:inherit}
 #shadows .shd::before,#shadows .shd::after{display:none}
 #shadows .shd.on{border-color:var(--hc);background:linear-gradient(145deg,color-mix(in srgb,var(--hc) 22%,#0a0d17),#0a0d17);box-shadow:inset 0 0 16px color-mix(in srgb,var(--hc) 28%,transparent)}
 #shadows .shd.on b{color:color-mix(in srgb,var(--hc) 45%,#fff);text-shadow:0 0 10px var(--hc)}
@@ -313,7 +347,7 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
 .hhd b{font:1.15rem Anton,Impact,sans-serif;letter-spacing:.06em;text-transform:uppercase}
 .rfx{position:absolute;left:10px;right:10px;top:40px;display:flex;justify-content:space-between;pointer-events:none}
 .rfx div{display:flex;flex-direction:column;gap:14px}
-.rfx i{font-style:normal;font-size:1.5rem;line-height:1;text-shadow:0 0 12px currentColor;animation:pvb 3s ease-in-out infinite}
+.rfx i{font-style:normal;font-size:1.5rem;line-height:1;text-shadow:0 0 12px currentColor;animation:pvb 5.4s ease-in-out infinite}
 /* ===== Boss arena ===== */
 .arena{display:flex;align-items:center;gap:6px;margin:6px 0 8px;padding:6px;background:radial-gradient(ellipse at 50% 100%,#1b2540,#080c16);border:1px solid #344057;position:relative;overflow:hidden}
 .arena .ar-hero{width:44%;flex:none;aspect-ratio:120/140;border:0;background:none}
@@ -326,6 +360,46 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
 @keyframes slsh{0%{opacity:1;clip-path:inset(0 100% 0 0)}60%{opacity:1;clip-path:inset(0)}100%{opacity:0;clip-path:inset(0)}}
 @keyframes hlunge{0%,100%{transform:none}40%{transform:translateX(34px) rotate(6deg)}}
 .wk{margin:6px 0;font-size:.78rem;color:#ffd24a}.wk b{display:inline-block;font:.8rem Anton,Impact,sans-serif;letter-spacing:.1em;background:#ffd24a;color:#08090f;padding:0 7px;margin-right:8px;transform:skew(-10deg)}
+
+/* ===== UI polish v6 (Persona 5 feel) ===== */
+/* screen change: quick red slash wipe + settle (plays only when a tab becomes visible) */
+main>section:not(.hide){animation:scrIn .26s cubic-bezier(.2,.9,.3,1) both}
+@keyframes scrIn{0%{opacity:0;transform:translateX(18px) skewX(-4deg);clip-path:polygon(0 0,0 0,-24px 100%,0 100%)}100%{opacity:1;transform:none;clip-path:polygon(0 0,140% 0,120% 100%,0 100%)}}
+main>section:not(.hide) h1{animation:h1In .34s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes h1In{0%{transform:skew(-8deg) translateX(-26px) scale(.94);opacity:0}100%{transform:skew(-8deg);opacity:1}}
+/* modals: snap-in card, red/cyan diagonal edge on the backdrop */
+.modal.on{background:linear-gradient(115deg,rgba(240,43,79,.16),transparent 38%),rgba(0,0,0,.76);animation:mdIn .16s ease-out both}
+.modal.on>.mwrap,.modal.on>.card{animation:mdPop .26s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes mdIn{from{opacity:0}to{opacity:1}}
+@keyframes mdPop{0%{opacity:0;transform:translateY(16px) skewX(-5deg) scale(.94)}100%{opacity:1;transform:none}}
+/* numbers: steady digits, big stat numerals in Anton with a hard red shadow */
+.big,.stat b,#restn,#cnt,.hud b{font-variant-numeric:tabular-nums}
+.stat b{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-shadow:2px 2px 0 rgba(240,43,79,.75)}
+/* toast: skewed slab with a hard offset shadow */
+.toast{transform:translateX(-50%) skew(-6deg);border:2px solid #fff;background:#0a0f1c;box-shadow:4px 4px 0 var(--a),8px 8px 0 #000;letter-spacing:.02em}
+/* inputs: hard cyan edge + red offset on focus */
+select:focus,input:focus{outline:none;border-color:var(--b);box-shadow:3px 3px 0 var(--a)}
+select:focus-visible,input:focus-visible{outline:none}
+/* folds: headers lift on press like buttons */
+.fold>summary.hd:active{transform:skew(-8deg) translate(2px,2px);box-shadow:3px 3px 0 var(--a),5px 5px 0 #000}
+/* safer tap feedback on shop/skill items */
+.it:active{transform:scale(.975)}
+
+/* ===== v7: Archive, quests chip ===== */
+.qchip{display:inline-block;position:relative;margin:2px 0 10px;padding:5px 16px 5px 14px;border:0;background:#fff;color:#08090f;font:.95rem Anton,Impact,sans-serif;letter-spacing:.08em;transform:skew(-10deg);box-shadow:3px 3px 0 var(--a),6px 6px 0 #000}
+.qchip:active{transform:skew(-10deg) translate(2px,2px);box-shadow:1px 1px 0 var(--a),3px 3px 0 #000}
+.qchip.done{background:var(--b);box-shadow:3px 3px 0 #1c8a52,6px 6px 0 #000}
+.ndot{display:inline-block;width:10px;height:10px;margin-left:8px;background:var(--a);border:2px solid #fff;transform:rotate(45deg);vertical-align:1px}
+#archive>.fold,#shop>.fold,#train>.fold{margin-top:4px}
+
+/* ===== v8: history, photos, report card, events ===== */
+.item.pri{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:inherit;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}.item.pri:last-child{border:0}.item.pri::after{content:"›";color:var(--a);font-size:1.3rem;margin-left:8px}.item.pri:active{background:#ffffff10}
+.gl{font:1.5rem/1 Anton,Impact,sans-serif;width:38px;text-align:center;padding:3px 0;transform:skew(-10deg);background:#9aa3b8;color:#08090f;box-shadow:3px 3px 0 #000}
+.gl.gS{background:var(--a);color:#fff}.gl.gA{background:#ffb02e}.gl.gB{background:var(--b)}.gl.gx{background:#252c3d;color:#7d86a0}
+.rrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}.rrow:last-child{border:0}.rrow b{font:.8rem Sora,system-ui,sans-serif;font-weight:700;letter-spacing:.06em}.rrow small{display:block}
+.phc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.phc img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border:2px solid #fff;box-shadow:3px 3px 0 var(--a)}.phc small{display:block;text-align:center;margin-top:4px}
+.phg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.phb{padding:0;border:1px solid #3b4962;background:#070b14;aspect-ratio:3/4}.phb img{width:100%;height:100%;object-fit:cover;display:block}
+.hxc{width:100%;height:auto;display:block;background:#070b14;border:1px solid #344057}
 </style>
 </head>
 <body>
@@ -333,45 +407,53 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
 <main>
 <section id="train">
   <div class="trainhead"><h1>Train</h1><div class="hud" id="hud"></div></div>
+  <button class="qchip" id="qchip" data-a="go" data-v="hero">QUESTS 0/0</button>
   <div class="card cy" id="today"></div>
-  <div class="card stage" style="margin-top:6px">
-    <div class="cam" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#0b0f1acc"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="tabo hide" id="tabo"></div><div class="bmini" id="bmini"></div><div class="bhp" id="bhp"><i></i></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><u></u><b></b></div></div></div>
+  <div class="card stage mt-1">
+    <div class="cam off" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="hudtl"><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#0b0f1acc"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small></div><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="tabo hide" id="tabo"></div><div class="resto hide" id="rest"><small>REST</small><div class="big" id="restn">0:00</div><div class="xp"><i id="restb2"></i></div><small id="restx"></small><button class="btn sm" data-a="skiprest">Skip</button></div><div class="bmini" id="bmini"></div><div class="bhp" id="bhp"><i></i></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><u></u><b></b></div></div></div>
     <div class="coach" id="coach"></div>
-    <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
+    <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button></div>
     <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
+    <div class="row"><button class="btn sm" id="painb" data-a="pain">⚠ Something hurt</button></div>
     <div id="wsug"></div>
-    <div class="row"><button class="btn" id="tabb" data-a="tab">Interval mode: 40s / 20s</button></div>
-    <div class="row"><button class="btn sm" id="restb" data-a="restc"></button><button class="btn sm" id="sensb" data-a="sens"></button><button class="btn sm" id="undob" data-a="undo">Undo set</button></div>
+    <div class="row hide" id="tabrow"><button class="btn" id="tabb" data-a="tab">Interval mode: 40s / 20s</button></div>
+    <details class="stgs"><summary>⚙️ Settings · flip · rest · detect · undo</summary><div class="row"><button class="btn sm" id="flipb" data-a="flip">Camera: Front</button><button class="btn sm" id="restb" data-a="restc"></button></div><div class="row"><button class="btn sm" id="sensb" data-a="sens"></button><button class="btn sm" id="undob" data-a="undo">Undo set</button></div></details>
   </div>
-  <div class="card cy hide" id="rest" style="text-align:center"><small>REST</small><div class="big" id="restn" style="font-size:3rem">0:00</div><div style="display:flex"><div class="xp"><i id="restb2"></i></div></div><small id="restx"></small><br><button class="btn sm" style="margin-top:8px" data-a="skiprest">Skip rest</button></div>
   <div id="nxt"></div><div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
-  <select id="exsel" aria-label="Pick any exercise"></select>
+  <button class="btn w-full mt-2" id="exbtn" data-a="exopen">Change exercise ▾</button><select id="exsel" class="hide" aria-label="Pick any exercise"></select>
   <details class="fold" id="fold-prog"><summary class="hd">Program <small id="progname"></small></summary><div id="plansbody"></div><div id="restcard"></div></details>
+  <details class="fold" id="fold-rival"><summary class="hd">Rival</summary><div id="rival"></div><div id="chal"></div></details>
 </section>
 
 <section id="hero" class="hide">
   <h1>Status</h1>
-  <div class="card cy" style="text-align:center">
+  <div class="card cy tc">
     <div id="avt"></div><div class="rfx" id="rfx"></div>
     <div class="idline"><b id="lv">LV 1</b> · <span id="ttl"></span></div>
     <div class="xpb"><i id="xpf"></i></div>
     <div class="xpt" id="xpt"></div>
   </div>
-  <div id="gatecard"></div>
+  <div id="gatecard"></div><div id="evcard"></div>
   <details class="fold" id="fold-quests" open><summary class="hd">Daily quests</summary><div id="quests"></div>
-  <p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Each level costs more than the last, and reaching S takes about three years of steady training. Missing a day never adds extra work. Rest days offer recovery quests that give a +25% boss damage buff for your next workout. Only your first 12 or so sets a day hit at full power.</p>
+  
   </details>
-  <details class="fold" id="fold-ladder"><summary class="hd">Rank ladder</summary><div id="ladder"></div></details>
   <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
-  <details class="fold" id="fold-shadows" open><summary class="hd"><span id="shtitle">Vanguard roster</span> <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
-  <details class="fold" id="fold-rival"><summary class="hd">Rival</summary><div id="rival"></div></details>
-  <details class="fold" id="fold-loadout" open><summary class="hd">Loadout</summary><div class="card" id="loadout"></div></details>
-  <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
 </section>
 
 
 
-<section id="shop" class="hide"><h1>Shop</h1><div class="gold"><span>🪙</span><b id="goldct"></b><small>Earn gold from reps, quests, chests and bosses</small></div><div id="shoplist"></div></section>
+<section id="archive" class="hide">
+  <h1>Archive</h1>
+  <p class="sub">Ranks, badges and your shadow army. Nothing here needs doing, it is your record.</p>
+  <div id="presc"></div>
+  <details class="fold" id="fold-shadows"><summary class="hd"><span id="shtitle">Vanguard roster</span> <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
+  <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
+  <details class="fold" id="fold-rewards" open><summary class="hd">Unlock path</summary><div id="rrlist"></div></details>
+  <details class="fold" id="fold-ladder" open><summary class="hd">Rank ladder</summary><details class="hint"><summary>? How XP and levels work</summary><p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Each level costs more than the last, and reaching S takes about three years of steady training. Missing a day never adds extra work. Rest days offer recovery quests that give a +25% boss damage buff for your next workout. Only your first 12 or so sets a day hit at full power.</p></details><div id="ladder"></div></details>
+</section>
+
+<section id="shop" class="hide"><h1>Shop</h1><div class="gold"><span>🪙</span><b id="goldct"></b><small>Earn gold from reps, quests, chests and bosses</small></div><details class="fold" id="fold-loadout"><summary class="hd">Loadout</summary><div class="card" id="loadout"></div></details>
+<div id="shoplist"></div></section>
 
 <section id="skills" class="hide"><h1>Skill Tree</h1>
   <p class="sub">Tap a skill or pick from the menu to watch the technique. Every rep you count ranks that skill up.</p>
@@ -382,22 +464,23 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
   <div class="card cy" id="skpreview" style="text-align:center;position:relative;box-shadow:0 10px 24px #08090f">
     <h3 id="skn"></h3>
     <div id="figslot"><svg id="fig" viewBox="0 0 200 160" style="width:100%;max-width:260px" aria-label="Animated stick figure"></svg></div>
-    <div style="display:flex;align-items:center;gap:8px;margin:6px 0"><div class="xp"><i id="skxp"></i></div><small id="skxpt"></small></div>
+    <div class="skxr"><div class="xp"><i id="skxp"></i></div><small id="skxpt"></small></div>
     <small id="skc"></small>
     <div class="chips" id="views" style="justify-content:center;margin-top:8px"></div>
     <div class="row"><button class="btn red" id="trsk" data-a="trainsk">Train this skill</button></div>
   </div>
-  <div class="chips" id="sktabs" style="margin-top:12px"></div>
+  <div class="chips mt-4" id="sktabs"></div>
   <div id="tree"></div>
 </section>
 
 <section id="food" class="hide">
   <h1>Food</h1>
-  <div class="card"><div class="grid" style="margin:0 0 10px"><div class="stat"><b id="fk">0</b><span>Calories eaten</span></div><div class="stat"><b id="fl">—</b><span>Remaining</span></div><div class="stat"><b id="fp">0 g</b><span>Protein</span></div><div class="stat"><b id="fw">0 / 8</b><span>Water glasses</span></div></div>
+  <div class="card"><div class="grid mb-3"><div class="stat"><b id="fk">0</b><span>Calories eaten</span></div><div class="stat"><b id="fl">—</b><span>Remaining</span></div><div class="stat"><b id="fp">0 g</b><span>Protein</span></div><div class="stat"><b id="fw">0 / 8</b><span>Water glasses</span></div></div>
     <label><small>Daily calorie goal</small><input id="fg" type="number" inputmode="numeric"></label>
     <div class="row"><button class="btn" data-a="w" data-v="-1">− Water</button><button class="btn" data-a="w" data-v="1">+ Water</button></div></div>
-  <h2 class="hd">Quick add</h2><div class="chips" id="qchips"></div><h2 class="hd">Recent meals</h2><div class="grid" id="presets"></div>
-  <div class="card"><h3>Add food</h3><input id="fn" maxlength="60" placeholder="Food name"><div class="row"><input id="fc" type="number" inputmode="numeric" placeholder="kcal"><input id="fpr" type="number" inputmode="numeric" placeholder="protein g"></div><button class="btn red" style="margin-top:10px" data-a="addfood">Add</button></div>
+  <div class="card"><small>QUICK ADD</small><div class="chips strip mt-1" id="qchips"></div><small class="db mt-2">RECENT MEALS</small><div class="chips strip mt-1" id="presets"></div></div>
+  <div class="card" id="nstreak"></div>
+  <div class="card"><h3>Add food</h3><input id="fn" maxlength="60" placeholder="Food name"><div class="row"><input id="fc" type="number" inputmode="numeric" placeholder="kcal"><input id="fpr" type="number" inputmode="numeric" placeholder="protein g"></div><button class="btn red mt-3" data-a="addfood">Add</button></div>
   <h2 class="hd">Today’s meals</h2><div id="flist"></div>
 </section>
 
@@ -406,30 +489,32 @@ nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
   <p class="sub">Everything is saved on this device.</p>
   <div class="grid"><div class="stat"><b id="p1">0</b><span>Reps today</span></div><div class="stat"><b id="p2">0</b><span>Day streak</span></div><div class="stat"><b id="p3">0</b><span>Sets, last 7 days</span></div><div class="stat"><b id="p4">0 kg</b><span>Volume, last 7 days</span></div></div>
   <div class="card"><h3>Daily reps</h3><div class="chips" id="rng"></div><div class="bars" id="bars"></div></div>
-  <div class="card"><h3>Training calendar</h3><div class="cal" id="cal"></div><small id="calt"></small><div class="calk" style="margin-top:6px">Less <i class="cd"></i><i class="cd l1"></i><i class="cd l2"></i><i class="cd l3"></i><i class="cd l4"></i> More</div></div>
+  <div class="card"><h3>Training calendar</h3><div class="cal" id="cal"></div><small id="calt"></small><div class="calk mt-1">Less <i class="cd"></i><i class="cd l1"></i><i class="cd l2"></i><i class="cd l3"></i><i class="cd l4"></i> More</div></div>
   <div class="card"><h3>Weekly recap</h3><div id="recap"></div></div>
+  <div class="card"><h3>Report card</h3><div id="rcard"></div></div>
   <div class="card"><h3>Personal records</h3><div id="prl"></div></div>
   <div class="card"><h3>Form</h3><div id="formc"></div></div>
-  <div class="card"><h3>Body weight</h3><div id="bwc"></div><div class="row" style="margin-top:10px"><input id="bwin" type="number" inputmode="decimal" step="0.1" placeholder="Weight"><button class="btn red" data-a="bwadd">Log</button></div><small style="display:block;margin-top:8px">Optional. Weight moves around day to day, so look at the long trend, not single days. Your rank and rewards never depend on it.</small><button class="btn sm" style="margin-top:8px" data-a="bwdel">Remove last entry</button></div>
-  <h2 class="hd">Data</h2>
-  <div class="row"><button class="btn" data-a="exp">Export</button><button class="btn" data-a="imp">Import</button></div>
+  <div class="card"><h3>Progress photos</h3><div id="phbox"></div><div class="row mt-2"><button class="btn red" data-a="phadd">Add photo</button></div><small class="db mt-1">Stays on this device only. Photos are not included in Export, so they are lost if you clear browser data.</small></div>
+  <input type="file" id="phf" accept="image/*" class="hide">
+  <div class="card"><h3>Body weight</h3><div id="bwc"></div><div class="row mt-3"><input id="bwin" type="number" inputmode="decimal" step="0.1" placeholder="Weight"><button class="btn red" data-a="bwadd">Log</button></div><small class="db mt-2">Optional. Weight moves around day to day, so look at the long trend, not single days. Your rank and rewards never depend on it.</small><button class="btn sm mt-2" data-a="bwdel">Remove last entry</button></div>
   <input type="file" id="impf" accept=".json" class="hide">
-  <h2 class="hd">Danger zone</h2>
-  <div class="card danger"><p class="sub" style="margin:0 0 10px">Erases your level, rank, program, history and food log.</p><button class="btn dng" data-a="reset">Reset everything</button></div>
 </section>
 </main>
 
 <nav aria-label="Main">
 <button data-a="go" data-v="train" aria-selected="true">Train</button><button data-a="go" data-v="hero">Status</button><button data-a="go" data-v="food">Food</button><button data-a="go" data-v="prog">Progress</button>
 </nav>
-<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn" id="lkb2" data-a="lktog">Hardcore Path: OFF</button><button class="btn" id="pulseb" data-a="pulse">Boss Pulse: OFF</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small id="pathn"></small><button class="btn" data-a="menu">Close</button></div></div>
-<div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" style="width:100%"></i></div><div class="aoa-r" id="aoar"></div></div>
+<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><small class="dhd">NAVIGATION</small><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="archive">Archive <i class="ndot hide" id="ndot"></i></button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to use</button><small class="dhd">PREFERENCES</small><div class="dgrid"><button class="btn" id="lkb2" data-a="lktog">Hardcore Path: OFF</button><button class="btn" id="pulseb" data-a="pulse">Boss Pulse: OFF</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button></div><small class="dhd">DATA &amp; BACKUP</small><div class="dgrid"><button class="btn" data-a="exp">Export</button><button class="btn" data-a="imp">Import</button></div><button class="btn dng w-full mt-2" data-a="reset">Reset everything</button><small id="pathn"></small><button class="btn" data-a="menu">Close</button></div></div>
+<div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" class="w-full"></i></div><div class="aoa-r" id="aoar"></div></div>
 <div class="sfx" id="sfx"><div class="band"></div><div class="tx"><div id="sfxt"></div><small id="sfxs"></small></div></div>
-<div class="modal" id="gd"><div class="card" id="gdb" style="width:100%;max-width:380px"></div></div>
+<div class="modal" id="gd" data-a="gdend"><div class="mwrap" data-a="none"><button class="mx" data-a="gdend" aria-label="Close">✕</button><div class="card" id="gdb"></div></div></div>
 <div class="modal" id="lkq" data-a="none"><div class="card" id="lkb" data-a="none" style="width:100%;max-width:380px"></div></div>
-<div class="modal" id="shp" data-a="shpx"><div class="card" id="shpb" data-a="none" style="width:100%;max-width:360px;text-align:center"></div></div>
-<div class="modal" id="sum"><div class="card" id="sumb" style="width:100%;max-width:380px"></div></div>
-<div class="modal" id="hmd"><div class="card" id="hmb" style="width:100%;max-width:380px;max-height:86vh;overflow-y:auto"></div></div>
+<div class="modal" id="shp" data-a="shpx"><div class="mwrap" data-a="none"><button class="mx" data-a="shpx" aria-label="Close">✕</button><div class="card tc" id="shpb"></div></div></div>
+<div class="modal" id="sum" data-a="closesum"><div class="mwrap" data-a="none"><button class="mx" data-a="closesum" aria-label="Close">✕</button><div class="card" id="sumb"></div></div></div>
+<div class="modal" id="hmd" data-a="hx"><div class="mwrap" data-a="none"><button class="mx" data-a="hx" aria-label="Close">✕</button><div class="card mscroll" id="hmb"></div></div></div>
+<div class="modal" id="exm" data-a="exx"><div class="mwrap" data-a="none"><button class="mx" data-a="exx" aria-label="Close">✕</button><div class="card mscroll"><h3>Pick exercise</h3><input id="exq" placeholder="Search exercises" autocomplete="off"><div class="chips mt-2" id="exg"></div><div class="pkl" id="exl"></div></div></div></div>
+<div class="modal" id="pnm" data-a="pnx"><div class="mwrap" data-a="none"><button class="mx" data-a="pnx" aria-label="Close">✕</button><div class="card danger" id="pnb"></div></div></div>
+<div class="modal" id="hxm" data-a="xhx"><div class="mwrap" data-a="none"><button class="mx" data-a="xhx" aria-label="Close">✕</button><div class="card mscroll" id="hxb"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="lu" id="lu" data-r="E"><div class="burst"></div><div class="slash"></div><i class="rg"></i><i class="rg"></i><i class="rg"></i><div class="pts" id="pts"></div><div class="t" id="lut">LEVEL UP</div><div class="s" id="lun"></div><div class="m" id="lum"></div></div>
 <div class="boot" id="boot"><div class="b-s"></div><div class="b-t">ASCEND</div><div class="b-u">YOUR EVOLUTION STARTS HERE</div></div>
@@ -474,11 +559,11 @@ function gapMissed(){if(!state.last)return 0;let n=0;const d=new Date(state.last
 function bump(){const t=dk();if(state.last===t)return;state.streak=state.last&&gapMissed()===0?state.streak+1:1;state.last=t;if([7,14,30,60,100].includes(state.streak)){state.gold+=state.streak*5;setTimeout(()=>fx(state.streak+' DAY STREAK','+'+state.streak*5+' gold'),800)}if(state.streak%7===0&&state.freeze<2){state.freeze++;toast('Streak freeze earned!')}}
 const PRESET={1:[1],2:[1,4],3:[1,3,5],4:[1,2,4,5],5:[1,2,3,4,5],6:[1,2,3,4,5,6],7:[0,1,2,3,4,5,6]},DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 function autoRest(n){state.restDays=[0,1,2,3,4,5,6].filter(i=>!PRESET[Math.max(1,Math.min(7,n))].includes(i))}
-function renderRestCard(){const pr=prOf(),tn=7-state.restDays.length;$('restcard').innerHTML=cb||!pr?'':`<div class="card"><h3>Training days</h3><p class="sub" style="margin:0 0 8px">${pr.name} is built for ${pr.freq||pr.days.length} sessions a week. Tap to change your days. The rest are rest days and never break your streak.</p><div class="chips">${[1,2,3,4,5,6,0].map(i=>`<button class="chip" aria-pressed="${!state.restDays.includes(i)}" data-a="restday" data-v="${i}">${DN[i]}</button>`).join('')}</div><small style="display:block;margin-bottom:8px">${tn} training day${tn===1?'':'s'}${tn===(pr.freq||pr.days.length)?'':' · this program is built for '+(pr.freq||pr.days.length)}</small><small>Streak freezes: ${'❄'.repeat(state.freeze)||'none'} (max 2). One is used automatically if you miss a training day. You earn one for every 7-day streak and every boss you defeat.</small></div><div class="card"><h3>Daily reminder</h3><p class="sub" style="margin:0 0 8px">A web page can’t ring your phone by itself, so this makes a calendar reminder on your training days.</p><div class="row"><input id="remt" type="time" value="${state.remt||'18:00'}"><button class="btn" data-a="ics">Add to calendar</button></div></div>`}
+function renderRestCard(){const pr=prOf(),tn=7-state.restDays.length;$('restcard').innerHTML=cb||!pr?'':`<div class="card"><h3>Training days</h3><p class="sub mb-2">${pr.name} is built for ${pr.freq||pr.days.length} sessions a week. Tap to change your days. The rest are rest days and never break your streak.</p><div class="chips">${[1,2,3,4,5,6,0].map(i=>`<button class="chip" aria-pressed="${!state.restDays.includes(i)}" data-a="restday" data-v="${i}">${DN[i]}</button>`).join('')}</div><small style="display:block;margin-bottom:8px">${tn} training day${tn===1?'':'s'}${tn===(pr.freq||pr.days.length)?'':' · this program is built for '+(pr.freq||pr.days.length)}</small><small>Streak freezes: ${'❄'.repeat(state.freeze)||'none'} (max 2). One is used automatically if you miss a training day. You earn one for every 7-day streak and every boss you defeat.</small></div><div class="card"><h3>Daily reminder</h3><p class="sub mb-2">A web page can’t ring your phone by itself, so this makes a calendar reminder on your training days.</p><div class="row"><input id="remt" type="time" value="${state.remt||'18:00'}"><button class="btn" data-a="ics">Add to calendar</button></div></div>`}
 $('restcard').addEventListener('change',e=>{if(e.target.id==='remt'){state.remt=e.target.value;save()}});
 
 /* ===== SPLIT AS QUESTS (manual tick-off) ===== */
-function planLines(){const pt=planToday();return pt?'<div style="margin-top:8px">'+pt.items.map(it=>`<small style="display:block">${it.done>=it.s?'☑':'☐'} ${esc(it.n.replace(' (sec)',''))} ${it.done}/${it.s}</small>`).join('')+'</div>':''}
+function planLines(){const pt=planToday();return pt?'<div class="mt-2">'+pt.items.map(it=>`<small style="display:block">${it.done>=it.s?'☑':'☐'} ${esc(it.n.replace(' (sec)',''))} ${it.done}/${it.s}</small>`).join('')+'</div>':''}
 function manualSet(it){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0});h.reps+=it.r;h.sets++;h.volume+=it.r*state.kg;h.manual=(h.manual||0)+1;state.sk[it.n]=(state.sk[it.n]||0)+it.r;bump();
  state.prog.sets[it.n]=(state.prog.sets[it.n]||0)+1;save();qProg('reps',it.r);hitBoss(Math.floor(it.r/4));qProg('sets',1);qProg('plan',1);
  const pt=planToday();if(!state.prog.done&&pt.items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++,state.sup=0;save();fx('Workout clear',pt.name);beep(784,.2);vib([60,40,60]);setTimeout(showSummary,1600)}}
@@ -511,12 +596,12 @@ const monday=()=>{const d=new Date();d.setDate(d.getDate()-(d.getDay()+6)%7);ret
 function syncBoss(){const w=monday();if(!state.boss||state.boss.wk!==w){const i=Math.floor(new Date(w+'T00:00:00')/6048e5)%BOSSES.length;state.boss={wk:w,name:BOSSES[i].n,hp:200+state.level*10,dmg:0,dead:false,ph:1};save()}}
 function hitBoss(n){syncBoss();const b=state.boss;if(b.dead)return;b.dmg=Math.min(b.hp,b.dmg+n);const ph=bossPhase();if(ph>(b.ph||1)&&b.dmg<b.hp){b.ph=ph;fx('PHASE '+ph,ph===2?'Enraged: clean reps hit harder':'Final form: clean reps hit hardest');beep(150,.4,'sawtooth');vib([60,40,120])}if(b.dmg>=b.hp){b.dead=true;state.bossWins++;state.bn.push(b.name);state.xp+=100;state.gold+=100;state.freeze=Math.min(2,state.freeze+1);fx('BOSS DOWN',b.name);beep(880,.4,'square');vib([80,60,80,60,200]);toast('Boss defeated! +100 XP and a streak freeze');save();tryLevel()}}
 function renderBossCore(){syncBoss();const b=state.boss,left=7-(new Date().getDay()+6)%7,rd=state.restDays.includes(new Date().getDay());
- $('boss').innerHTML=(critDay()?'<div class="card cy"><span class="tag g">SURGE DAY</span><small> Quest XP is doubled today!</small></div>':'')+(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><h3 style="margin:6px 0 0">${b.name} <small>${b.dead?'DEFEATED':'PHASE '+bossPhase()+' of 3'}</small></h3><div id="arslot"></div><div class="wk"><b>WEAKNESS</b>${esc(bdef(b).wk)}</div><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at ${ovT()}, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small><small style="display:block;margin-top:6px">${enrgTxt()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
+ $('boss').innerHTML=(critDay()?'<div class="card cy"><span class="tag g">SURGE DAY</span><small> Quest XP is doubled today!</small></div>':'')+(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><h3 class="mt-1">${b.name} <small>${b.dead?'DEFEATED':'PHASE '+bossPhase()+' of 3'}</small></h3><div id="arslot"></div><div class="wk"><b>WEAKNESS</b>${esc(bdef(b).wk)}</div><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at ${ovT()}, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small><small style="display:block;margin-top:6px">${enrgTxt()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red mt-3" data-a="exp">Download backup</button></div>':'')}
 
 /* ===== RANK TRIALS (GATES) ===== */
 const TRIALS={11:['Push-ups',20],21:['Squats',40],31:['Push-ups',40],41:['Squats',80],51:['Push-ups',70]};
 const trialOk=ex=>{const t=state.trial;return !!t&&!!EX[ex]&&EX[ex][0]===EX[t.ex][0]&&state.target*(1+state.kg/10)>=t.n};
-function renderGate(){const t=state.trial,h=t?`<div class="card danger"><span class="tag r">RANK GATE</span><h3 style="margin-top:6px">Trial for ${rankOf(t.lv)}-Rank</h3><p class="sub" style="margin:0 0 10px">Do <b>${t.n} ${esc(t.ex)}</b> in one camera set, <b>or</b> lift heavy: any ${EX[t.ex][0]} exercise where reps × (1 + kg ÷ 10) reaches ${t.n} (for example 5 reps at ${Math.round((t.n/5-1)*10)} kg). Set the weight first. Warm up. If you fall short, rest and try again another day.</p><button class="btn red" data-a="gate">Enter the gate</button></div>`:'';$('gate').innerHTML=h;$('gatecard').innerHTML=h}
+function renderGate(){const t=state.trial,h=t?`<div class="card danger"><span class="tag r">RANK GATE</span><h3 class="mt-1">Trial for ${rankOf(t.lv)}-Rank</h3><p class="sub mb-3">Do <b>${t.n} ${esc(t.ex)}</b> in one camera set, <b>or</b> lift heavy: any ${EX[t.ex][0]} exercise where reps × (1 + kg ÷ 10) reaches ${t.n} (for example 5 reps at ${Math.round((t.n/5-1)*10)} kg). Set the weight first. Warm up. If you fall short, rest and try again another day.</p><button class="btn red" data-a="gate">Enter the gate</button></div>`:'';$('gate').innerHTML=h;$('gatecard').innerHTML=h}
 
 /* ===== BADGES & TITLES ===== */
 const tot=()=>{let r=0,s=0;for(const k in state.hist){r+=state.hist[k].reps||0;s+=state.hist[k].sets||0}return{reps:r,sets:s}};
@@ -559,7 +644,7 @@ function syncPassive(){const t=dk();syncBoss();
   if(hr>0){b.burnT+=hr*36e5;hitBoss(hr*2)}if(n>=b.burnEnd){delete b.burnEnd;delete b.burnT;save()}}}
 const nextChg=()=>{const l=[11,21,31,41].find(x=>x>state.level);return l?'Next Hunter unlocks at '+rankOf(l)+'-Rank (level '+l+').':'You are S-Rank. Your Strike Squad runs every Hunter passive.'};
 function heroModal(){const first=!state.hero,left=HID.filter(id=>!state.heroes[id]);if(!left.length||(!first&&!(state.hpick>0)))return;
- $('hmb').innerHTML=`<span class="tag r">${first?'CHOOSE YOUR HUNTER':'NEW HUNTER UNLOCKED'}</span><h3 style="margin-top:8px">${first?'Pick your S-Rank Hunter':'Unlock a Hunter'}</h3><p class="sub">Your roster names, colors and passive follow your active Hunter. ${first?'This is your starting pick. Each rank-up (D, C, B, A) unlocks one more Hunter.':'You can switch Hunters any time on Status.'} Unlocking a Hunter does not unlock their passive for other Hunters. Link it on Status with gold to run passives together.</p>`+left.map(id=>{const x=H[id];return`<button class="btn" data-a="hpick" data-v="${id}" style="width:100%;text-align:left;margin-bottom:12px"><b style="color:${x.col}">${x.glyph} ${x.n}</b><br><small>${x.roster.toUpperCase()}: ${x.pass}</small></button>`}).join('')+'<button class="btn" data-a="hx" style="width:100%">Later</button>';
+ $('hmb').innerHTML=`<span class="tag r">${first?'CHOOSE YOUR HUNTER':'NEW HUNTER UNLOCKED'}</span><h3 class="mt-2">${first?'Pick your S-Rank Hunter':'Unlock a Hunter'}</h3><p class="sub">Your roster names, colors and passive follow your active Hunter. ${first?'This is your starting pick. Each rank-up (D, C, B, A) unlocks one more Hunter.':'You can switch Hunters any time on Status.'} Unlocking a Hunter does not unlock their passive for other Hunters. Link it on Status with gold to run passives together.</p>`+left.map(id=>{const x=H[id];return`<button class="btn" data-a="hpick" data-v="${id}" style="width:100%;text-align:left;margin-bottom:12px"><b style="color:${x.col}">${x.glyph} ${x.n}</b><br><small>${x.roster.toUpperCase()}: ${x.pass}</small></button>`}).join('')+'<button class="btn w-full" data-a="hx">Later</button>';
  $('hmd').classList.add('on')}
 function renderRfx(){const e=$('rfx');if(!e)return;const h=hh(),g=[];
  if(state.level>=51)capt().forEach((b,i)=>g.push([H[HID[i]].glyph,H[HID[i]].col]));else for(let i=0;i<Math.min(8,Math.ceil(uN()/3));i++)g.push([h.glyph,h.col]);
@@ -595,16 +680,16 @@ function renderShadows(){const h=hh(),D=shDefs(),R=tot().reps,sq=state.level>=51
  card=(s,on)=>`<div class="shd ${on?'on ':''}${s.k.toLowerCase()}"><span class="sk">${s.k}</span><b>${on?esc(s.n):'???'}</b><small>${esc(s.d)}</small></div>`;
  $('shtitle').textContent=sq?'Sovereign Strike Squad':h.roster;$('shcount').textContent=got.length+' unit'+(got.length===1?'':'s');$('fold-shadows').style.setProperty('--hc',h.col);
  $('shadows').innerHTML=`<div class="hhd"><b style="color:${h.col}">${h.glyph} ${esc(h.n)}</b><small style="display:block;margin-top:4px">PASSIVE · ${esc(h.pass)}</small></div>`
- +(!state.hero?'<button class="btn red" style="margin:10px 0;width:100%" data-a="hnew">Choose your Hunter</button>':state.hpick>0&&owned.length<5?`<button class="btn red" style="margin:10px 0;width:100%" data-a="hnew">Unlock a Hunter (${state.hpick} available)</button>`:`<small style="display:block;margin-top:8px">${nextChg()}</small>`)
+ +(!state.hero?'<button class="btn red" style="margin:10px 0;width:100%" data-a="hnew">Choose your Hunter</button>':state.hpick>0&&owned.length<5?`<button class="btn red" style="margin:10px 0;width:100%" data-a="hnew">Unlock a Hunter (${state.hpick} available)</button>`:`<small class="db mt-2">${nextChg()}</small>`)
  +`<small style="display:block;margin:12px 0 6px">HUNTERS · gold links a Hunter’s passive so it runs with your active one</small>`+HID.map(id=>{const x=H[id],un=!!state.heroes[id],ac=state.hero===id,lk=!!(state.plink&&state.plink[id]);
   const btn=ac?'<span class="tag">ACTIVE</span>':un?`<button class="btn sm" data-a="hsel" data-v="${id}">Switch</button>`:'';
   const pl=ac?'Passive on while active':lk?'Passive linked ✓':un?`<button class="btn sm red" data-a="plink" data-v="${id}">Link passive · 🪙${nextLink()}</button>`:'Locked. Unlock this Hunter first.';
-  return`<div class="card" style="padding:10px 12px;margin-bottom:8px;border-left-color:${x.col};${un?'':'opacity:.6'}"><div class="item" style="border:0;padding:0"><div><b style="color:${x.col}">${x.glyph} ${esc(x.n)}</b><span>${esc(x.roster)}</span></div>${btn}</div><small style="display:block;margin-top:6px">${esc(x.pass)}</small><div style="margin-top:8px"><small>${pl.startsWith('<')?'':pl}</small>${pl.startsWith('<')?pl:''}</div></div>`}).join('')
+  return`<div class="card" style="padding:10px 12px;margin-bottom:8px;border-left-color:${x.col};${un?'':'opacity:.6'}"><div class="item" style="border:0;padding:0"><div><b style="color:${x.col}">${x.glyph} ${esc(x.n)}</b><span>${esc(x.roster)}</span></div>${btn}</div><small style="display:block;margin-top:6px">${esc(x.pass)}</small><div class="mt-2"><small>${pl.startsWith('<')?'':pl}</small>${pl.startsWith('<')?pl:''}</div></div>`}).join('')
  +(sq?`<small style="display:block;margin:12px 0 6px">STRIKE CAPTAINS · your last 5 bosses, each with a Hunter passive</small><div class="shg">${HID.map((id,i)=>{const b=cap[i];return`<div class="shd ${b?'on ':''}boss"><span class="sk">${H[id].glyph}</span><b>${b?esc(b):'EMPTY'}</b><small>${b?esc(H[id].roster)+' passive active':'Defeat another boss'}</small></div>`}).join('')}</div>`:'')
  +`<small style="display:block;margin:14px 0 6px">${sq?'UNITS':'ROSTER'}</small>`
  +(got.length?`<div class="shg">${vis.map(s=>card(s,1)).join('')}</div>`:'<small>No units yet. Count your first 100 reps to recruit your first unit.</small>')
- +(got.length>12?`<button class="btn sm" style="margin-top:10px" data-a="shall">${shAll?'Show fewer':'Show all '+got.length}</button>`:'')
- +`<small style="display:block;margin:14px 0 6px">NEXT TO RECRUIT</small><div class="shg">${nxt.map(s=>card(s,0)).join('')}</div><small style="display:block;margin-top:10px">A unit joins every 500 reps and every boss you defeat. Instant dungeons can drop rare ones. Units are named after your active Hunter and each one is worth +1 boss damage per 10 units (max +3). Units come from lifetime totals, never from one day's volume. Even resting days, your roster hits the boss a little. Train smart and rest when you need to.${sq?' At S-Rank every captain’s passive works at once.':''}</small>`}
+ +(got.length>12?`<button class="btn sm mt-3" data-a="shall">${shAll?'Show fewer':'Show all '+got.length}</button>`:'')
+ +`<small style="display:block;margin:14px 0 6px">NEXT TO RECRUIT</small><div class="shg">${nxt.map(s=>card(s,0)).join('')}</div><details class="hint"><summary>? How units work</summary><small style="display:block;margin-top:6px">A unit joins every 500 reps and every boss you defeat. Instant dungeons can drop rare ones. Units are named after your active Hunter and each one is worth +1 boss damage per 10 units (max +3). Units come from lifetime totals, never from one day's volume. Even resting days, your roster hits the boss a little. Train smart and rest when you need to.${sq?' At S-Rank every captain’s passive works at once.':''}</small></details>`}
 /* ===== SHADOW ARMY POWER ===== */
 const armyBonus=()=>Math.min(3,Math.floor(Object.keys(state.shadows).length/10));
 
@@ -622,14 +707,14 @@ function dgTick(){const g=state.dg;if(!g||g.st!=='run'){clearInterval(dgI);dgI=0
  const e=$('dgt');if(e)e.textContent=dgFmt(l)}
 function renderDungeon(){dgGen();const g=state.dg,t=DGT[g.i],rest=state.restDays.includes(new Date().getDay());
  if(g.st==='run'&&!dgI)dgI=setInterval(dgTick,500);
- if(rest&&g.st==='idle'){$('dungeon').innerHTML='<div class="card"><span class="tag">INSTANT DUNGEON</span><p class="sub" style="margin:6px 0 0">Rest day. The gate stays closed. Recover well.</p></div>';return}
+ if(rest&&g.st==='idle'){$('dungeon').innerHTML='<div class="card"><span class="tag">INSTANT DUNGEON</span><p class="sub mt-1">Rest day. The gate stays closed. Recover well.</p></div>';return}
  const obj=t[2].map((o,i)=>{const done=g.p[i]>=g.need[i];return`<div class="item"><div><b>${done?'✓ ':''}${esc(o[0])}</b><br><small>${g.p[i]}/${g.need[i]}</small></div>${g.st==='run'&&!done?`<button class="btn sm" data-a="load" data-v="${esc(o[0])}" data-r="${g.need[i]-g.p[i]}">Load</button>`:''}</div>`}).join('');
  let b;
- if(g.st==='idle')b=`<p class="sub" style="margin:6px 0 8px">A gate opened. Clear it within ${t[1]} minutes for +40 XP and a chance at a rare shadow. It is optional, and skipping costs nothing. Move with control and stop if anything hurts.</p>${obj}<button class="btn red" style="margin-top:10px" data-a="dgenter">Enter the dungeon</button>`;
- else if(g.st==='run')b=`<div class="dgt" id="dgt">${dgFmt(dgLeft())}</div>${obj}<button class="btn sm" style="margin-top:10px" data-a="dgquit">Leave the dungeon</button>`;
- else if(g.st==='clear')b='<p class="sub" style="margin:6px 0 0">Cleared. Tomorrow: '+tmrDg()+'.</p>';
- else b='<p class="sub" style="margin:6px 0 0">The gate closed. Tomorrow: '+tmrDg()+'.</p>';
- $('dungeon').innerHTML=`<div class="card ${g.st==='run'?'danger':g.st==='clear'?'cy ok':''}"><span class="tag r">INSTANT DUNGEON</span> <small>${esc(t[0])}${g.st==='clear'?' · cleared':''}</small>${b}</div>`}
+ if(g.st==='idle')b=`<p class="sub" style="margin:6px 0 8px">A gate opened. Clear it within ${t[1]} minutes for +40 XP and a chance at a rare shadow. It is optional, and skipping costs nothing. Move with control and stop if anything hurts.</p>${obj}<button class="btn red mt-3" data-a="dgenter">Enter the dungeon</button>`;
+ else if(g.st==='run')b=`<div class="dgt" id="dgt">${dgFmt(dgLeft())}</div>${obj}<button class="btn sm mt-3" data-a="dgquit">Leave the dungeon</button>`;
+ else if(g.st==='clear')b='<p class="sub mt-1">Cleared. Tomorrow: '+tmrDg()+'.</p>';
+ else b='<p class="sub mt-1">The gate closed. Tomorrow: '+tmrDg()+'.</p>';
+ $('dungeon').innerHTML=g.st==='idle'?`<details class="card dgd"><summary><span class="tag r">INSTANT DUNGEON</span> <small>${esc(t[0])} · tap to view</small></summary>${b}</details>`:`<div class="card ${g.st==='run'?'danger':g.st==='clear'?'cy ok':''}"><span class="tag r">INSTANT DUNGEON</span> <small>${esc(t[0])}${g.st==='clear'?' · cleared':''}</small>${b}</div>`}
 function dgRep(){const g=state.dg;if(!g||g.st!=='run'||g.d!==dk())return;if(dgLeft()<=0){dgTick();return}
  const t=DGT[g.i],i=t[2].findIndex((o,j)=>o[0]===state.ex&&g.p[j]<g.need[j]);if(i<0)return;g.p[i]++;
  if(g.p.every((p,j)=>p>=g.need[j]))dgClear()}
@@ -651,7 +736,7 @@ function aoaOpen(){aoaN=0;aoaD=0;aoaT=Date.now()+5000;$('aoar').innerHTML='';$('
 function aoaTick(){const l=aoaT-Date.now();$('aoam').style.width=Math.max(0,l/50)+'%';if(l<=0){clearInterval(aoaI);aoaEnd()}}
 function aoaTap(){if(Date.now()>=aoaT)return;aoaN++;$('aoas').textContent=aoaN+' HIT'+(aoaN>1?'S':'');beep(260+(aoaN*23)%380,.04,'square');vib(10)}
 function aoaEnd(){const b=state.boss;$('aoab').classList.add('hide');aoaD=Math.max(0,Math.min(Math.ceil(b.hp*.2),aoaN*aoaPer(),b.hp-b.dmg));
- $('aoar').innerHTML=aoaD?`${aoaD} DAMAGE<br><button class="btn red" style="margin-top:12px" data-a="aoaclose">Finish</button>`:`No hits landed<br><button class="btn" style="margin-top:12px" data-a="aoaclose">Close</button>`;
+ $('aoar').innerHTML=aoaD?`${aoaD} DAMAGE<br><button class="btn red mt-4" data-a="aoaclose">Finish</button>`:`No hits landed<br><button class="btn mt-4" data-a="aoaclose">Close</button>`;
  if(aoaD){beep(110,.4,'sawtooth');vib([60,40,200])}}
 
 /* ===== JOB CLASS: decided by your most-trained muscle groups ===== */
@@ -667,10 +752,18 @@ function jobClass(){const g={};let tt=0;for(const n in state.sk){const e=EX[n];i
 
 /* ===== WEIGHT SUGGESTIONS ===== */
 function wLog(ex,kg,r,gs){if(!(kg>0))return;state.wl=state.wl||{};const a=(state.wl[ex]=state.wl[ex]||[]);a.push({kg,r,p:gs&&gs.length?gs.reduce((x,y)=>x+y,0)/gs.length:null});while(a.length>3)a.shift()}
-function wSug(){const a=(state.wl&&state.wl[state.ex])||[];if(!(state.kg>0)||a.length<2)return null;
+function wSug(){const a=(state.wl&&state.wl[state.ex])||[];if(painOn(state.ex)||!(state.kg>0)||a.length<2)return null;
  if(!a.slice(-2).every(e=>e.kg===state.kg&&e.r>=state.target&&(e.p===null||e.p>=2)))return null;
  const st=state.unit==='lb'?5/2.2046:(state.kg<40?2.5:5);return Math.round((state.kg+st)*100)/100}
-function renderWsug(){const s=wSug();$('wsug').innerHTML=s==null?rSugHtml():`<div class="card cy" style="margin-top:10px"><b>Ready for more</b><br><small>Two solid sets at ${W(state.kg)} × ${state.target}. Try ${W(s)} next.</small><br><button class="btn sm red" style="margin-top:8px" data-a="wapply">Use ${W(s)}</button></div>`}
+/* ===== PAIN FLAG + HOLD ===== */
+const GENTLE={'Push-ups':'Incline Push-ups','Bench Press':'Push-ups','Chest Dips':'Push-ups','Pike Push-ups':'Push-ups','Pull-ups':'Lat Pulldown','Barbell Rows':'Dumbbell Rows','Bulgarian Split Squats':'Squats','Lunges':'Squats','Romanian Deadlifts':'Squats'};
+const PN_MS=7*864e5,RSTEPS=[5,8,10,12,15,20,30,40,60];
+function painOn(ex){const t=state.pn&&state.pn[ex];return !!t&&Date.now()-t<PN_MS}
+function hSug(){const a=((state.kg>0?state.wl:state.rl)||{})[state.ex]||[];if(a.length<2)return false;return a.slice(-2).every(e=>e.p>0&&e.p<1.75&&(state.kg>0?e.kg===state.kg:true))}
+function lowerStep(){if(state.kg>0){const st=state.unit==='lb'?5/2.2046:(state.kg<=40?2.5:5),n=Math.round((state.kg-st)*100)/100;return n>0?{kg:n,l:'Drop weight to '+W(n)}:null}const l=RSTEPS.filter(x=>x<state.target);return l.length?{t:l[l.length-1],l:'Drop target to '+l[l.length-1]+' reps'}:null}
+function pnCard(){return`<div class="card danger mt-3"><b>Flagged: ${esc(String(state.ex).replace(' (sec)',''))}</b><br><small>No weight or rep increases while this is sore. Keep it light or train something else. If it is sharp, swollen or does not settle, see a professional.</small><br><button class="btn sm mt-2" data-a="pnclear">Pain is gone</button></div>`}
+function holdCard(){return`<div class="card mt-3"><span class="tag">HOLD</span> <b>Stay here for now</b><br><small>Form slipped on your last two sets. Stay at ${state.kg>0?W(state.kg):state.target+' reps'} until it is clean, then it will suggest more.</small></div>`}
+function renderWsug(){if(painOn(state.ex)){$('wsug').innerHTML=pnCard();return}if(hSug()){$('wsug').innerHTML=holdCard();return}const s=wSug();$('wsug').innerHTML=s==null?rSugHtml():`<div class="card cy mt-3"><b>Ready for more</b><br><small>Two solid sets at ${W(state.kg)} × ${state.target}. Try ${W(s)} next.</small><br><button class="btn sm red mt-2" data-a="wapply">Use ${W(s)}</button></div>`}
 
 /* ===== TRAINING CALENDAR + BODY WEIGHT ===== */
 function renderCal(){const wk=15,dow=(new Date().getDay()+6)%7;let h='',n0=0;
@@ -756,12 +849,12 @@ function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q
 
 /* ===== UI ===== */
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
-const SEC=['train','hero','food','prog','skills','shop'];
+const SEC=['train','hero','food','prog','skills','shop','archive'];
 function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classList.add('enter');setTimeout(()=>$(s).classList.remove('enter'),400);document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===s));scrollTo(0,0);render();if(s==='hero')$('avt').appendChild($('fig'));else if(s==='skills')$('figslot').appendChild($('fig'));if((s==='skills'||s==='hero')&&!figOn){figOn=true;requestAnimationFrame(figLoop)}}
 function render(){syncPassive();genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
 const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
- $('top').textContent='LV '+l+' '+r;$('lkb2').textContent='Hardcore Path: '+(state.lock?'ON':'OFF');$('pulseb').textContent='Boss Pulse: '+(state.pulse?'ON':'OFF');$('pathn').textContent='Path: '+(state.lock?'Locked. Skills unlock as your rank rises.':'Open. Every skill is available.');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
+ $('top').textContent='LV '+l+' '+r+(state.pres?' ★'+state.pres:'');$('lkb2').textContent='Hardcore Path: '+(state.lock?'ON':'OFF');$('pulseb').textContent='Boss Pulse: '+(state.pulse?'ON':'OFF');$('pathn').textContent='Path: '+(state.lock?'Locked. Skills unlock as your rank rises.':'Open. Every skill is available.');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
  $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP · 🪙${state.gold}</small>`;
  $('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(jc.ok&&jc.cls!=='Hunter'?' · '+jc.name:'')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';
  $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
@@ -772,20 +865,23 @@ const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locke
  $('stats').innerHTML=`<div class="srow"><b>STR</b><div class="xp"><i style="width:${Math.min(100,l*2)}%"></i></div><span>${l}${bn('STR')}</span></div><div class="srow"><b>AGI</b><div class="xp"><i style="width:${Math.min(100,state.streak*5)}%"></i></div><span>${streakDisplay}${bn('AGI')}</span></div><div class="srow"><b>VIT</b><div class="xp"><i style="width:${Math.min(100,tot/200)}%"></i></div><span>${tot}${bn('VIT')}</span></div><div class="srow"><b>JOB</b><div class="xp"><i style="width:${jc.share}%"></i></div><span>${jc.ok?esc(jc.name):'Unclassed'}</span></div>`;
  $('stats').innerHTML+=statPts();
  $('quests').innerHTML=state.quests.map((q,i)=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}${q.p>=q.t||(q.bonus&&!q.rec)?'':`<button class="btn sm" style="margin-top:8px" data-a="qdone" data-v="${i}">${armQ===i?'Tap again to confirm':'Mark done'}</button>`}</div>`).join('');
+ {const qd=state.quests.filter(q=>q.p>=q.t).length;$('qchip').textContent='QUESTS '+qd+'/'+state.quests.length;$('qchip').classList.toggle('done',qd===state.quests.length&&qd>0)}
+ if(state.arcSeen==null)state.arcSeen=arcCount();
+ $('ndot').classList.toggle('hide',!(arcCount()>state.arcSeen));
  $('ladder').innerHTML=RK.map((x,i)=>`<div class="card ${x[1]===r?'cy':''}" style="padding:10px 14px"><b style="font-family:Anton,Impact,sans-serif">${x[1]}-RANK</b> <small>Level ${x[0]}${RK[i+1]?'–'+(RK[i+1][0]-1):'+'}</small></div>`).join('');
- renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderLoadout();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderRfx();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
+ renderV8();renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderLoadout();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderRfx();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
 function renderToday(){const pt=planToday();
- if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="openprog">Choose a program</button>`;return}
+ if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub mb-3">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="openprog">Choose a program</button>`;return}
  const fin=state.prog.done,wd=new Date().getDay(),isR=state.restDays.includes(wd)&&!fin;let nxd='';if(isR){for(let i=1;i<=7;i++){const k=(wd+i)%7;if(!state.restDays.includes(k)){nxd=i===1?'tomorrow':DN[k];break}}}
  $('today').innerHTML=`<h3>Today: ${pt.pr.name} · ${pt.name}</h3>${fin?'<span class="tag g">WORKOUT COMPLETE</span><small> Rest up. Next session tomorrow.</small>':''}${isR?'<span class="tag">REST DAY</span><small> '+(nxd?'Next session '+nxd+'. ':'')+'Train anyway if you like.</small>':''}<div class="chips" style="margin:10px 0 0">${pt.items.map(i=>`<button class="chip" aria-pressed="${i.n===state.ex}" data-a="${state.man?'mtap':'load'}" data-v="${esc(i.n)}" data-r="${i.r}">${i.done>=i.s?'✓ ':state.man?'+1 ':''}${esc(i.n.replace(' (sec)',''))} ${i.done}/${i.s}</button>`).join('')}</div><div class="chips" style="margin:2px 0 0">${[['peak','Peak'],['normal','Normal'],['sore','Sore']].map(x=>`<button class="chip" aria-pressed="${(state.en&&state.en.d===dk()?state.en.v:'normal')===x[0]}" data-a="enr" data-v="${x[0]}">${x[1]}</button>`).join('')}<button class="chip" aria-pressed="${!!state.man}" data-a="mman">Manual: ${state.man?'ON':'OFF'}</button><button class="chip" data-a="swap" aria-label="Swap exercise">⇄ Swap</button></div>`}
-function renderTrain(){buildSel();state.lw=state.lw||{};if(renderTrain.last!==state.ex){if(renderTrain.last===undefined){if(state.lw[state.ex]===undefined)state.lw[state.ex]=state.kg}else state.kg=state.lw[state.ex]||0;renderTrain.last=state.ex}const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps')+(state.pr[state.ex]?' · best '+state.pr[state.ex].r:'');
+function renderTrain(){buildSel();{const eb=$('exbtn');if(eb)eb.textContent='Change exercise ▾ · '+String(state.ex).replace(' (sec)','');const tr=$('tabrow');if(tr)tr.classList.toggle('hide',!(EX[state.ex]&&EX[state.ex][0]==='Cardio'))}state.lw=state.lw||{};if(renderTrain.last!==state.ex){if(renderTrain.last===undefined){if(state.lw[state.ex]===undefined)state.lw[state.ex]=state.kg}else state.kg=state.lw[state.ex]||0;renderTrain.last=state.ex}const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps')+(state.pr[state.ex]?' · best '+state.pr[state.ex].r:'');
  $('arc').style.strokeDashoffset=641-641*Math.min(1,cur/state.target);$('kgb').textContent='Weight: '+W(state.kg);$('undob').disabled=!undoSnap;$('restb').textContent='Rest: '+(state.restS?state.restS+'s':'Off');$('sensb').textContent='Detect: '+['Easy','Normal','Strict'][state.sens];$('tgt').textContent='Target: '+state.target;$('exsel').value=state.ex;renderWsug();
  if(!tracking)$('coach').innerHTML=`<b>${esc(state.ex)}</b> · Prop your phone up, step back until your whole body is in frame, then hit Start. Stop if anything hurts.`}
 function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>`<option>${esc(n)}</option>`).join('')}</optgroup>`).join('');
  $('plansbody').innerHTML=`<div class="card cy"><h3>Custom split</h3><label><small>Program name</small><input data-f="name" maxlength="30" value="${esc(cb.name)}"></label>
- <small style="display:block;margin-top:10px">Your days</small><div class="chips" style="margin-top:6px">${cb.days.map((x,i)=>`<button class="chip" aria-pressed="${i===cb.d}" data-a="cbday" data-v="${i}">${esc(x.name)}</button>`).join('')}${cb.days.length<7?'<button class="chip" data-a="cbaddday">+ Day</button>':''}</div></div>
+ <small style="display:block;margin-top:10px">Your days</small><div class="chips mt-1">${cb.days.map((x,i)=>`<button class="chip" aria-pressed="${i===cb.d}" data-a="cbday" data-v="${i}">${esc(x.name)}</button>`).join('')}${cb.days.length<7?'<button class="chip" data-a="cbaddday">+ Day</button>':''}</div></div>
  <div class="card"><label><small>Day name</small><input data-f="dname" data-d="${cb.d}" maxlength="24" value="${esc(d.name)}"></label>
- ${d.ex.map((e,i)=>`<div class="item"><div style="flex:1"><b>${esc(e.n.replace(' (sec)',''))}</b><div class="row" style="margin-top:6px"><label><small>Sets</small><input data-f="s" data-d="${cb.d}" data-i="${i}" type="number" min="1" max="10" value="${e.s}"></label><label><small>${EX[e.n][1]==='hold'?'Seconds':'Reps'}</small><input data-f="r" data-d="${cb.d}" data-i="${i}" type="number" min="1" max="100" value="${e.r}"></label></div></div><button class="btn sm" data-a="cbrm" data-v="${i}" aria-label="Remove">✕</button></div>`).join('')||'<small>No exercises yet. Add one below.</small>'}
+ ${d.ex.map((e,i)=>`<div class="item"><div style="flex:1"><b>${esc(e.n.replace(' (sec)',''))}</b><div class="row mt-1"><label><small>Sets</small><input data-f="s" data-d="${cb.d}" data-i="${i}" type="number" min="1" max="10" value="${e.s}"></label><label><small>${EX[e.n][1]==='hold'?'Seconds':'Reps'}</small><input data-f="r" data-d="${cb.d}" data-i="${i}" type="number" min="1" max="100" value="${e.r}"></label></div></div><button class="btn sm" data-a="cbrm" data-v="${i}" aria-label="Remove">✕</button></div>`).join('')||'<small>No exercises yet. Add one below.</small>'}
  <div class="row"><select id="cbsel">${opts}</select><button class="btn red" style="flex:none;width:80px" data-a="cbadd">Add</button></div>
  <button class="btn" style="width:100%;margin-top:10px" data-a="cbdelday">Delete this day</button></div>
  <button class="btn red" data-a="cbsave">Save & start</button><button class="btn" style="width:100%;margin-top:10px" data-a="cbcancel">Cancel</button>`}
@@ -794,26 +890,27 @@ function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label=
  if(f==='dname')d.name=t.value.trim()||'Day '+(+t.dataset.d+1);else{const x=d.ex[+t.dataset.i];if(x)x[f]=Math.max(1,Math.min(f==='s'?10:100,+t.value||1))}}));
 function renderPlans(){renderRestCard();{const pn=$('progname'),q=prOf();if(pn)pn.textContent=q?'· '+q.name:'· none'}if(cb){renderBuilder();return}const p=state.prog,pr=prOf();
  if(!pr){const L=PATHS,list=PROGS.filter(x=>x.id==='custom'||pm(x).p===pf);
-  $('plansbody').innerHTML=`<div class="chips" style="margin:0 0 10px">${L.map(l=>`<button class="chip" aria-pressed="${pf===l[0]}" data-a="pf" data-v="${l[0]}">${l[1]}</button>`).join('')}</div>`+list.map(x=>`<details class="card pick ${x.id==='fb'?'cy':''}"><summary><span><b>${esc(pm(x).h)}<span class="tag ${DC[x.lvl]||''}">${esc(x.lvl)}</span></b><small>${esc(x.real||x.name)} · ${x.freq||x.days.length} days/wk</small></span><button class="btn sm" data-a="start" data-v="${x.id}">Start</button></summary><div class="pk"><p class="sub" style="margin:0 0 8px">${esc(x.blurb)}${x.gear?' <b>Gear:</b> '+esc(x.gear):''}</p>${x.days.map(d=>`<small style="display:block"><b>${esc(d.name)}</b> · ${d.ex.map(e=>esc(e.n.replace(' (sec)',''))).join(', ')}</small>`).join('')}${x.id==='custom'?'<button class="btn" style="margin-top:8px;width:100%" data-a="cbedit">Edit split</button>':''}</div></details>`).join('')+(state.custom?'':'<button class="btn" style="width:100%;margin-top:4px" data-a="cbnew">+ Build your own</button>');return}
- $('plansbody').innerHTML=`<div class="card cy"><span class="tag">ACTIVE</span><h3 style="margin-top:6px">${pr.name}</h3><small>Session ${p.day%pr.days.length+1} of ${pr.days.length}. The next one unlocks after you finish today.</small><button class="btn sm" style="margin-top:10px" data-a="swap">Change program</button></div>
+  $('plansbody').innerHTML=`<div class="chips mb-3">${L.map(l=>`<button class="chip" aria-pressed="${pf===l[0]}" data-a="pf" data-v="${l[0]}">${l[1]}</button>`).join('')}</div>`+list.map(x=>`<details class="card pick ${x.id==='fb'?'cy':''}"><summary><span><b>${esc(pm(x).h)}<span class="tag ${DC[x.lvl]||''}">${esc(x.lvl)}</span></b><small>${esc(x.real||x.name)} · ${x.freq||x.days.length} days/wk</small></span><button class="btn sm" data-a="start" data-v="${x.id}">Start</button></summary><div class="pk"><p class="sub mb-2">${esc(x.blurb)}${x.gear?' <b>Gear:</b> '+esc(x.gear):''}</p>${x.days.map(d=>`<small style="display:block"><b>${esc(d.name)}</b> · ${d.ex.map(e=>esc(e.n.replace(' (sec)',''))).join(', ')}</small>`).join('')}${x.id==='custom'?'<button class="btn" style="margin-top:8px;width:100%" data-a="cbedit">Edit split</button>':''}</div></details>`).join('')+(state.custom?'':'<button class="btn" style="width:100%;margin-top:4px" data-a="cbnew">+ Build your own</button>');return}
+ $('plansbody').innerHTML=`<div class="card cy"><span class="tag">ACTIVE</span><h3 class="mt-1">${pr.name}</h3><small>Session ${p.day%pr.days.length+1} of ${pr.days.length}. The next one unlocks after you finish today.</small><button class="btn sm mt-3" data-a="swap">Change program</button></div>
  ${pr.id==='custom'?'<button class="btn" style="width:100%;margin-bottom:10px" data-a="cbedit">Edit custom split</button>':''}`}
 function renderProg(){const h=state.hist[dk()]||{reps:0},N=state.rng||7;$('p1').textContent=h.reps||0;$('p2').innerHTML=`<span class="flame-streak">🔥 ${state.streak}</span>`;let s=0,v=0,w=[],mx=50;
  for(let i=N-1;i>=0;i--){const x=state.hist[ago(i)]||{};if(i<7){s+=x.sets||0;v+=x.volume||0}const r=x.reps||0;mx=Math.max(mx,r);const d=new Date(Date.now()-i*864e5);w.push([N>7?String(d.getDate()):d.toLocaleDateString([],{weekday:'short'}),r])}
  $('p3').textContent=s;$('p4').textContent=W(v);$('bars').style.gap=N>7?'3px':'10px';
  $('bars').innerHTML=w.map(x=>`<div class="bar"><span>${N>7?'':x[1]}</span><i style="height:${Math.max(6,x[1]/mx*100)}%"></i><span style="font-size:${N>7?'.6rem':'.75rem'}">${x[0]}</span></div>`).join('');
  $('rng').innerHTML=[7,30].map(n=>`<button class="chip" aria-pressed="${N===n}" data-a="rng" data-v="${n}">${n} days</button>`).join('');
- const e=Object.entries(state.pr);$('prl').innerHTML=e.length?e.map(([n,x])=>`<div class="item"><div><b>${esc(n.replace(' (sec)',''))}</b></div><span>${x.r}${EX[n]&&EX[n][1]==='hold'?' sec':' reps'}${x.kg?' × '+W(x.kg):''}</span></div>`).join(''):'<small>No records yet. Finish a set to set your first.</small>';renderForm();renderCal();renderBW()}
+ const e=Object.entries(state.pr);$('prl').innerHTML=e.length?e.map(([n,x])=>`<button class="item pri" data-a="exh" data-v="${esc(n)}"><div><b>${esc(n.replace(' (sec)',''))}</b></div><span>${x.r}${EX[n]&&EX[n][1]==='hold'?' sec':' reps'}${x.kg?' × '+W(x.kg):''}</span></button>`).join(''):'<small>No records yet. Finish a set to set your first.</small>';renderForm();renderCal();renderBW()}
 function renderForm(){const f=state.fm,t=(f.S||0)+(f.A||0)+(f.B||0)+(f.C||0),col={S:'#f02b4f',A:'#ffb02e',B:'#52d9ff',C:'#9aa3b8'};
- $('formc').innerHTML=t?['S','A','B','C'].map(l=>{const n=f[l]||0;return`<div class="srow"><b>${l}</b><div class="xp"><i style="width:${Math.round(n/t*100)}%;background:${col[l]};box-shadow:none"></i></div><span>${n}</span></div>`}).join('')+`<small style="display:block;margin-top:8px">Clean rate ${Math.round(((f.S||0)+(f.A||0))/t*100)}% · Best combo ${state.bc||0}</small>`:'<small>Start the camera and every rep gets graded S to C on depth and tempo.</small>'}
+ $('formc').innerHTML=t?['S','A','B','C'].map(l=>{const n=f[l]||0;return`<div class="srow"><b>${l}</b><div class="xp"><i style="width:${Math.round(n/t*100)}%;background:${col[l]};box-shadow:none"></i></div><span>${n}</span></div>`}).join('')+`<small class="db mt-2">Clean rate ${Math.round(((f.S||0)+(f.A||0))/t*100)}% · Best combo ${state.bc||0}</small>`:'<small>Start the camera and every rep gets graded S to C on depth and tempo.</small>'}
 const QK=[['Rice',205,4],['Egg',78,6],['Protein',120,24]];
 function rememberMeal(n,c,p){state.meals=[{n,c,p}].concat((state.meals||[]).filter(x=>x.n.toLowerCase()!==n.toLowerCase())).slice(0,8)}
-function renderQuickFood(){const m=state.meals||[];$('qchips').innerHTML=QK.map((q,i)=>`<button class="chip" data-a="qk" data-v="${i}">+${q[0]}</button>`).join('');$('presets').innerHTML=m.length?m.map((p,i)=>`<button class="btn" data-a="pre" data-v="${i}" style="text-align:left"><b>${esc(p.n)}</b><br><small>${p.c} kcal · ${p.p}g P</small></button>`).join(''):'<div class="card"><small>Meals you add show up here for 1-tap logging next time.</small></div>'}
-function renderFood(){renderQuickFood();const f=state.food,k=f.log.reduce((a,x)=>a+x.c,0),p=f.log.reduce((a,x)=>a+x.p,0);$('fk').textContent=k;$('fp').textContent=Math.round(p)+' g';$('fw').textContent=f.water+' / 8';$('fl').textContent=f.goal-k>=0?(f.goal-k)+' kcal':'+'+(k-f.goal)+' over';
+function renderQuickFood(){const m=state.meals||[];$('qchips').innerHTML=QK.map((q,i)=>`<button class="chip" data-a="qk" data-v="${i}">+${q[0]}</button>`).join('');$('presets').innerHTML=m.length?m.map((p,i)=>`<button class="chip" data-a="pre" data-v="${i}">${esc(p.n)} · ${p.c}</button>`).join(''):'<small>Meals you add show up here for 1-tap logging.</small>'}
+function renderFood(){nhRec();renderQuickFood();const f=state.food,k=f.log.reduce((a,x)=>a+x.c,0),p=f.log.reduce((a,x)=>a+x.p,0);$('fk').textContent=k;$('fp').textContent=Math.round(p)+' g';$('fw').textContent=f.water+' / 8';$('fl').textContent=f.goal-k>=0?(f.goal-k)+' kcal':'+'+(k-f.goal)+' over';
  if(document.activeElement!==$('fg'))$('fg').value=f.goal;
- $('flist').innerHTML=f.log.length?f.log.map(x=>`<div class="card"><div class="item" style="border:0;padding:0"><div><b>${esc(x.n)}</b><span>${x.c} kcal · ${x.p}g protein</span></div><button class="btn sm" data-a="delfood" data-v="${x.id}">Delete</button></div></div>`).join(''):'<div class="card"><small>Nothing logged yet.</small></div>'}
+ $('flist').innerHTML=f.log.length?'<div class="card">'+f.log.map(x=>`<div class="item"><div><b>${esc(x.n)}</b><span>${x.c} kcal · ${x.p}g protein</span></div><button class="btn sm" data-a="delfood" data-v="${x.id}">Delete</button></div>`).join('')+'</div>':'<div class="card"><small>Nothing logged yet.</small></div>'}
 $('fg').addEventListener('input',e=>{state.food.goal=Math.max(0,+e.target.value||0);save();renderFood()});
 
 /* exercise picker */
+function arcCount(){return Object.keys(state.badges||{}).length+Object.keys(state.shadows||{}).length}
 let selSig='';
 function buildSel(){const sg=state.lock+'|'+rIdx()+'|'+(state.prog?state.prog.id:'');if(sg===selSig)return;selSig=sg;
  $('exsel').innerHTML=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>{const o=isOpen(n)||n===state.ex;return`<option value="${n}"${o?'':' disabled'}>${o?'':'🔒 '}${n}${o?'':' (unlocks at '+RK[REQ[n]][1]+')'}</option>`}).join('')}</optgroup>`).join('')}
@@ -838,7 +935,7 @@ function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0
  const isNew=!state.sk[ex],old=state.pr[ex],isPR=!!old&&(state.kg>old.kg||(state.kg===old.kg&&state.target>old.r));
  h.reps+=state.target;h.sets++;h.volume+=state.target*state.kg;state.sk[ex]=(state.sk[ex]||0)+state.target;
  if(!old||isPR)state.pr[ex]={kg:state.kg,r:state.target};if(isPR)h.prs=(h.prs||0)+1;
- bump();wLog(ex,state.kg,state.target,gs);rLog(ex,state.target,gs);if(!state.ob){state.ob=1;state.gold+=50;state.xp+=30;setTimeout(()=>toast('First gate cleared! +50 gold, +30 XP'),1200)}T.fat=0;let gateOk=false;
+ bump();wLog(ex,state.kg,state.target,gs);rLog(ex,state.target,gs);xLog(ex,state.kg,state.target,gs);if(!state.ob){state.ob=1;state.gold+=50;state.xp+=30;setTimeout(()=>toast('First gate cleared! +50 gold, +30 XP'),1200)}T.fat=0;let gateOk=false;
  if(trialOk(ex)){state.gate[state.trial.lv]=1;state.trial=null;gateOk=true}
  cur=0;save();qProg('sets',1);if(isPR)qProg('pr',1);if(state.kg>0)qProg('wt',1);if(isNew)qProg('new',1);
  beep(523,.1);setTimeout(()=>beep(784,.18),110);vib([60,40,60]);say('Set done');
@@ -874,7 +971,7 @@ function formOk(ex,L,ar){
  return !(r(s,h)>lim&&r(h,a)>lim)}
 /* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
 function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
-const stB=k=>((state.st&&state.st[k])||0)+Math.floor(state.level/5)*5,critDay=()=>Math.floor(Date.now()/864e5)%6===2,xpMul=()=>(1+.02*stB('VIT'))*((state.dxp===dk()||critDay())?2:1);
+const stB=k=>((state.st&&state.st[k])||0)+Math.floor(Math.max(state.level,state.pres?51:0)/5)*5,critDay=()=>Math.floor(Date.now()/864e5)%6===2,xpMul=()=>(1+.02*stB('VIT'))*((state.dxp===dk()||critDay())?2:1)*(1+.1*(state.pres||0));
 const bossPhase=()=>{const b=state.boss,p=b&&b.hp?(b.hp-b.dmg)/b.hp:1;return p>.66?1:p>.33?2:3};
 const bossBonus=g=>{const b=state.boss;return b&&!b.dead&&g&&(g.l==='S'||g.l==='A')?bossPhase()-1:0};
 const BART=['M30 12L38 20 52 12 46 30 48 52H12L14 30 8 12 22 20Z','M16 10H44V26H54V52H6V26H16Z','M30 3L34 14 44 16 46 28 55 33 50 56H10L5 33 14 28 16 16 26 14Z','M4 44Q12 12 30 8Q48 12 56 44L44 36 38 56 30 40 22 56 16 36Z','M16 6L22 16 30 4 38 16 44 6 44 24 38 28 48 56H12L22 28 16 24Z','M8 56V24Q8 5 30 5T52 24V56H42V26Q42 17 30 17T18 26V56Z','M8 56Q6 34 12 14L18 30 22 22 26 34 30 8 34 34 38 22 42 30 48 14Q54 34 52 56Z','M30 8L36 22 57 14 43 31 51 54 30 42 9 54 17 31 3 14 24 22Z','M30 3L53 16V44L30 57 7 44V16Z','M30 5Q46 8 46 24L42 54 30 46 18 54 14 24Q14 8 30 5Z','M30 12L36 5 38 16 49 13 44 24 55 30 44 37 49 48 38 44 30 55 23 44 11 48 16 37 5 30 16 24 11 13 22 16 24 5Z','M30 2L57 30 30 58 3 30Z'],
@@ -890,7 +987,7 @@ function arenaHit(){['arboss','arhero','bmini'].forEach(i=>{const e=$(i);if(e){e
 function renderMini(){const b=state.boss,e=$('bmini'),h=$('bhp');if(!b||!e)return;e.innerHTML=bossArt(b,40)+`<small>${esc(b.name)}</small>`;h.firstChild.style.width=Math.max(0,(b.hp-b.dmg)/b.hp*100)+'%'}
 function renderBoss(){renderBossCore();mountArena();renderMini()}
 function fl(t,cls){const c=$('cam'),e=document.createElement('div');e.className='fl '+(cls||'');e.textContent=t;e.style.left=(18+Math.random()*45)+'%';c.appendChild(e);setTimeout(()=>e.remove(),900)}
-function repFx(g){let dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0)+Math.floor(state.kg/20)+heroDmg(g);const over=energyOver(),bm=bossMult(g);dm=Math.max(1,Math.round(dm*bm*(1+recBuff())));if(over)dm=Math.max(1,Math.round(dm*.25));if(!over)state.gold+=1+Math.floor(state.kg/20)+(state.gmg===dk()?1:0);hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
+function repFx(g){let dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0)+Math.floor(state.kg/20)+heroDmg(g)+mastB(state.ex);const over=energyOver(),bm=bossMult(g);dm=Math.max(1,Math.round(dm*bm*(1+recBuff())));if(over)dm=Math.max(1,Math.round(dm*.25));if(!over)state.gold+=1+Math.floor(state.kg/20)+(state.gmg===dk()?1:0);hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
  if(bm>1&&cur%4===1)fl('WEAKNESS!','co');else if(bm<1&&cur%3===1)fl('NEEDS S/A FORM','co');else if(over&&cur===1)fl('ENERGY SPENT','co');
  if(g&&g.l==='S'){const c=$('cam');c.classList.remove('shk');void c.offsetWidth;c.classList.add('shk')}
  const o=state.pr[state.ex];if(state.target-cur===1)fl('LAST REP!','co');else if(state.target>=8&&cur===Math.ceil(state.target/2))fl('HALFWAY','co');else if(o&&cur===o.r&&state.kg>=o.kg)fl('MATCHED YOUR BEST','co')}
@@ -899,10 +996,32 @@ const SHOP=[['frz','Streak freeze','Saves a streak (max 2)',150],['dxp','Double 
 /* ===== SHOP v3: dark-monarch preview scenes ===== */
 const SHD={frz:'Automatically saves your streak if you miss a training day. You can hold 2.',dxp:'Doubles all quest XP for the rest of today.',gmg:'Every rep drops 1 extra gold until midnight.',bst:'Every rep hits the boss for +1 extra damage until midnight.',lck:'Crack it open for gold or a streak freeze. 5% chance of a 600 gold jackpot.',au:'Dark flames rise around your figure on Status and Skill Tree.',fr:'A neon border around your camera while you train.',ox_band:'A red headband whose tails flutter behind your stickman.',ox_scarf:'A crimson scarf wrapped at the neck with a tail that trails behind.',ox_wrist:'Neon bands on both wrists that follow every arm movement.',ox_boots:'Armoured boots on both feet. They move with every step and squat.',ox_belt:'A gold champion belt that sits on your hips and turns with your body.',ox_blade:'A dagger gripped in your front hand. It swings with the arm.',ox_cape:'A flowing shadow cape. Free at C-Rank, or buy it early.',ox_guard:'Armoured shoulder guards. Free at A-Rank, or buy them early.',ox_crown:'The Monarch crown, mark of S-Rank. Free at S-Rank, or buy it early.'};
 const GEARN=['cape','guard','crown','band','scarf','wrist','boots','belt','blade'];
+/* ===== MONARCH COLLECTION + RANK UNLOCK PATH ===== */
+GEARN.push('horns','icecrown','wings');
+const MSPEC=[
+ ['frost','D-RANK',1,11,'Frost Monarch','8fe3ff',700,'icy',['icecrown','Icecrown circlet',700,'A circlet of ice shards on your stickman.'],[]],
+ ['plague','C-RANK',2,21,'Plague Monarch','5fd72b',900,'sickly green',null,['Shadow cape']],
+ ['beast','B-RANK',3,31,'Beast Monarch','d9923a',1100,'wild amber',['horns','Beast horns',1200,'Curved horns on your stickman.'],[]],
+ ['dragon','A-RANK',4,41,'Dragon Monarch','ff4d1a',1400,'molten',['wings','Dragon wings',1600,'Dark membrane wings spread behind your stickman.'],['Shoulder guards']],
+ ['destr','S-RANK',5,51,'Monarch of Destruction','e0115f',1800,'ruinous crimson',null,['Monarch crown']],
+ ['wflame','ASCEND ★1',6,0,'Monarch of White Flames','efe4ff',2500,'pale white',null,[]]
+];
+const RRT=[],RRMAP={},RRSHORT={},MKEYS=[];
+MSPEC.forEach(m=>{const [id,l,ri,lv,n,c,p,th,g,ex]=m,free=ri===6?'Unlocks when you Ascend ★1':'Unlocks at '+l.replace('-RANK','-Rank'),keys=['au_'+c,'fr_'+c],items=[n+' aura',n+' frame'];
+ SHOP.push(['au_'+c,n+' aura','Figure aura',p],['fr_'+c,n+' frame','Camera border',p+100]);
+ SHD['au_'+c]='A '+th+' glow around your figure. '+free+'.';SHD['fr_'+c]='A '+th+' neon border for your camera. '+free+'.';
+ if(g){SHOP.push(['ox_'+g[0],g[1],g[3],g[2]]);SHD['ox_'+g[0]]=g[3]+' '+free+'.';keys.push('ox_'+g[0]);items.push(g[1])}
+ keys.forEach(k=>{RRMAP[k]=l;RRSHORT[k]=free;MKEYS.push(k)});
+ RRT.push({id,l,ri,lv,pres:ri===6?1:0,n,keys,items:items.concat(ex.map(x=>x+' (rank gear)'))})});
+const MSET=new Set(MKEYS);
+/* ===== S-RANK HUNTER COSMETICS (buy-only gear) ===== */
+const HUNT=[['rapier','Rapier','A slim violet-white rapier in your off hand.',1100],['claws','Triple claws','Triple claws on both hands.',1000],['katana','Katana','A katana slung across your back.',1200],['gaunt','Gauntlets','Heavy steel fists on both hands.',1400],['staff','Flame staff','A flame-tipped staff held upright.',1000],['twin','Twin daggers','A second dagger in your off hand. Pair it with the Shadow dagger.',1200],['igris','Crimson plume','A knight’s red helm plume that streams behind you.',1000],['beru','Insect antennae','Long insectoid antennae that sway as you move.',900],['bellion','War crest','A spiked black war helm with a blood-red edge.',1300],['ponyt','Golden ponytail','A golden ponytail that swings behind you.',600],['ytail','Tiger tail','A striped white tiger tail that curls behind your hips.',800],['chain','Bronze chain','A heavy bronze chain slung across your chest.',700],['flame','Flame crown','A flickering crown of fire above your head.',1000]],HKEYS=[];
+HUNT.forEach(h=>{GEARN.push(h[0]);SHOP.push(['ox_'+h[0],h[1],h[2],h[3]]);SHD['ox_'+h[0]]=h[2];HKEYS.push('ox_'+h[0])});
+
 const gearOnS=(n,ri)=>{const k='ox_'+n;if(state.hide&&state.hide[k])return false;return !!state.owned[k]||(n==='cape'&&ri>=2)||(n==='guard'&&ri>=4)||(n==='crown'&&ri>=5)};
 let FN=0,LIVE=[],liveOn=false;
 const scn=(k,r)=>/^(au|fr)_/.test(k)?'#'+k.slice(3):r;
-const shortD=s=>{const k=s[0];return k.startsWith('au_')?'Dark flames for your figure':k.startsWith('fr_')?'Neon border for your camera':s[2]};
+const shortD=s=>{const k=s[0];if(RRSHORT[k])return RRSHORT[k];return k.startsWith('au_')?'Dark flames for your figure':k.startsWith('fr_')?'Neon border for your camera':s[2]};
 const rarOf=p=>p<250?['COMMON','#9aa3b8']:p<500?['RARE','#52d9ff']:p<1000?['EPIC','#b36bff']:['LEGENDARY','#ffd24a'];
 const rays=c=>`<g class="pvspin" fill="${c}" opacity=".17">${Array.from({length:12},(_,i)=>{const a=i*Math.PI/6,f=n=>n.toFixed(1);return`<path d="M60 70L${f(60+95*Math.cos(a-.1))} ${f(70+95*Math.sin(a-.1))}L${f(60+95*Math.cos(a+.1))} ${f(70+95*Math.sin(a+.1))}Z"/>`}).join('')}</g>`;
 function pvChar(o,id,live){const A=o.aura?'#'+o.aura:'',F=o.frame?'#'+o.frame:'';
@@ -929,37 +1048,38 @@ function shopPv(k,id,tryOn){const pre=k.slice(0,3),col=k.slice(3),ri=RK.findInde
  return pvIcon(k,id)}
 function shopState(s){const k=s[0],pre=k.slice(0,3),eqp=pre==='au_'||pre==='fr_'||pre==='ox_',eq=pre==='au_'?state.aura===k.slice(3):pre==='fr_'?state.frame===k.slice(3):pre==='ox_'?!(state.hide&&state.hide[k]):false,own=!!state.owned[k];
  let tag='';if(own)tag=eqp?(eq?'EQUIPPED':'OWNED'):'OWNED';else if(k==='frz')tag=state.freeze+'/2 HELD';else if((k==='dxp'&&state.dxp===dk())||(k==='bst'&&state.bst===dk())||(k==='gmg'&&state.gmg===dk()))tag='ACTIVE';
- return{own,eqp,eq,tag,cls:tag==='EQUIPPED'?'eq':tag==='ACTIVE'?'ac':''}}
+ if(!tag&&!own&&RRMAP[k])tag=RRMAP[k];return{own,eqp,eq,tag,cls:tag==='EQUIPPED'?'eq':tag==='ACTIVE'?'ac':''}}
 let shpK=null,shopTab='All';
 function renderShop(){$('goldct').textContent=state.gold;$('mgold').textContent='· 🪙'+state.gold;
- const by=p=>SHOP.filter(x=>x[0].startsWith(p)).map(x=>x[0]),G=[['Boosts',['frz','dxp','bst','gmg','lck']],['Auras',by('au_')],['Frames',by('fr_')],['Gear',by('ox_')]],nm=(p,c)=>{const x=SHOP.find(y=>y[0]===p+c);return x?x[1].replace(/ (aura|frame)$/,''):'None'},gear=GEARN.filter(n=>state.owned['ox_'+n]&&!(state.hide&&state.hide['ox_'+n])).length;
+ const by=p=>SHOP.filter(x=>x[0].startsWith(p)&&!MSET.has(x[0])).map(x=>x[0]),G=[['Boosts',['frz','dxp','bst','gmg','lck']],['Monarchs',MKEYS],['Auras',by('au_')],['Frames',by('fr_')],['Gear',by('ox_')]],nm=(p,c)=>{const x=SHOP.find(y=>y[0]===p+c);return x?x[1].replace(/ (aura|frame)$/,''):'None'},gear=GEARN.filter(n=>state.owned['ox_'+n]&&!(state.hide&&state.hide['ox_'+n])).length;
  const lri=RK.findIndex(x=>x[1]===rankOf(state.level)),look=pvChar({aura:state.aura,frame:state.frame,g:GEARN.filter(n=>gearOnS(n,lri)),ri:lri},'look',true);
- $('shoplist').innerHTML=`<div class="stg"><div class="pv" style="--rc:${state.aura?'#'+state.aura:'#f02b4f'}">${look}</div><div class="lk"><h3>YOUR LOOK</h3><div><small>AURA</small><b>${nm('au_',state.aura)}</b></div><div><small>FRAME</small><b>${nm('fr_',state.frame)}</b></div><div><small>GEAR</small><b>${gear} / 9</b></div><p>Tap any item to try it on before you buy.</p></div></div>
+ $('shoplist').innerHTML=`<div class="stg"><div class="pv" style="--rc:${state.aura?'#'+state.aura:'#f02b4f'}">${look}</div><div class="lk"><h3>YOUR LOOK</h3><div><small>AURA</small><b>${nm('au_',state.aura)}</b></div><div><small>FRAME</small><b>${nm('fr_',state.frame)}</b></div><div><small>GEAR</small><b>${gear} / ${GEARN.length}</b></div><p>Tap any item to try it on before you buy.</p></div></div>
  <div class="chips tabs" style="margin:14px 0 4px">${['All',...G.map(g=>g[0])].map(t=>`<button class="chip" aria-pressed="${shopTab===t}" data-a="stab" data-v="${t}">${t}</button>`).join('')}</div>`+
- G.filter(g=>shopTab==='All'||g[0]===shopTab).map(([t,ks])=>`<div class="shd">${t}</div><div class="grid">${ks.map(k=>{const s=SHOP.find(x=>x[0]===k),st=shopState(s),r=rarOf(s[3]),af=state.gold>=s[3];
-  return`<button class="it ${s[3]>=500?'lg':''}" style="--rc:${r[1]}" data-a="shopitem" data-v="${k}"><div class="pv" style="--rc:${scn(k,r[1])}">${shopPv(k,k)}${st.tag?`<span class="sb ${st.cls}">${st.tag}</span>`:''}${st.own?'':`<span class="pt ${af?'':'poor'}">🪙 ${s[3]}</span>`}</div><div class="ib"><span class="rar">◆ ${r[0]}</span><span class="nm">${s[1]}</span><span class="ds">${shortD(s)}</span></div></button>`}).join('')}</div>`).join('');
+ G.filter(g=>shopTab==='All'||g[0]===shopTab).map(([t,ks])=>`<div class="shop-hd">${t}</div><div class="grid">${ks.map(k=>{const s=SHOP.find(x=>x[0]===k),st=shopState(s),r=rarOf(s[3]),af=state.gold>=s[3];
+  return`<button class="it ${s[3]>=500?'lg':''}" style="--rc:${r[1]}" data-a="shopitem" data-v="${k}"><div class="pv" style="--rc:${scn(k,r[1])}">${shopPv(k,k)}${st.tag?`<span class="sb ${st.cls}">${st.tag}</span>`:''}${st.own?'':MSET.has(k)?'<span class="pt poor">🔒</span>':`<span class="pt ${af?'':'poor'}">🪙 ${s[3]}</span>`}</div><div class="ib"><span class="rar">◆ ${r[0]}</span><span class="nm">${s[1]}</span><span class="ds">${shortD(s)}</span></div></button>`}).join('')}</div>`).join('');
  mountFigs($('shoplist'));if($('shp').classList.contains('on'))showShp()}
 function showShp(){const s=SHOP.find(x=>x[0]===shpK);if(!s)return;const k=s[0],pre=k.slice(0,3),st=shopState(s),r=rarOf(s[3]),need=s[3]-state.gold,d=SHD[k]||SHD[pre.slice(0,2)]||s[2];
  let btn;if(st.own)btn=st.eqp?`<button class="btn red" style="flex:2" data-a="buy" data-v="${k}">${st.eq?'Remove':'Equip'}</button>`:`<button class="btn" style="flex:2" disabled>Owned ✓</button>`;
+ else if(MSET.has(k))btn=`<button class="btn" style="flex:2" disabled>🔒 ${RRSHORT[k]}</button>`;
  else btn=`<button class="btn ${need>0?'':'red'}" style="flex:2" data-a="buy" data-v="${k}">${need>0?'Need 🪙'+need+' more':'Buy · 🪙'+s[3]}</button>`;
- $('shpb').innerHTML=`<div class="pv pvbig" style="--rc:${scn(k,r[1])}">${shopPv(k,'m'+k,true)}</div><span class="rar" style="--rc:${r[1]}">◆ ${r[0]}${st.tag?' · '+st.tag:''}</span><div class="nm2" style="--rc:${r[1]}">${s[1]}</div><p class="sub" style="margin:0 0 6px">${d}</p><small style="color:#ffd24a;display:block;margin-bottom:12px">You have 🪙${state.gold}</small><div class="row">${btn}<button class="btn" data-a="shpx">Close</button></div>`;mountFigs($('shpb'));$('shp').classList.add('on')}
+ $('shpb').innerHTML=`<div class="pv pvbig" style="--rc:${scn(k,r[1])}">${shopPv(k,'m'+k,true)}</div><span class="rar" style="--rc:${r[1]}">◆ ${r[0]}${st.tag?' · '+st.tag:''}</span><div class="nm2" style="--rc:${r[1]}">${s[1]}</div><p class="sub" style="margin:0 0 6px">${d}</p>${MSET.has(k)&&!st.own?'<div style="margin-bottom:12px"></div>':`<small style="color:#ffd24a;display:block;margin-bottom:12px">You have 🪙${state.gold}</small>`}<div class="row">${btn}<button class="btn" data-a="shpx">Close</button></div>`;mountFigs($('shpb'));$('shp').classList.add('on')}
 function rLog(ex,r,gs){if(state.kg>0)return;const a=(state.rl[ex]=state.rl[ex]||[]);a.push({r,p:gs&&gs.length?gs.reduce((x,y)=>x+y,0)/gs.length:0});while(a.length>3)a.shift()}
-function rSug(){const a=state.rl[state.ex]||[];if(state.kg>0||a.length<3||!a.every(e=>e.r>=state.target&&e.p>=2.5))return null;const t=[5,8,10,12,15,20,30,40,60],i=t.indexOf(state.target);return i>=0&&i<t.length-1?t[i+1]:null}
-function rSugHtml(){const n=rSug();return n==null?'':`<div class="card cy" style="margin-top:10px"><b>Ready to level up</b><br><small>Three clean sets of ${state.target}. Try ${n} reps next.</small><br><button class="btn sm red" style="margin-top:8px" data-a="rapply">Use ${n} reps</button></div>`}
+function rSug(){const a=state.rl[state.ex]||[];if(painOn(state.ex)||state.kg>0||a.length<3||!a.every(e=>e.r>=state.target&&e.p>=2.5))return null;const t=[5,8,10,12,15,20,30,40,60],i=t.indexOf(state.target);return i>=0&&i<t.length-1?t[i+1]:null}
+function rSugHtml(){const n=rSug();return n==null?'':`<div class="card cy mt-3"><b>Ready to level up</b><br><small>Three clean sets of ${state.target}. Try ${n} reps next.</small><br><button class="btn sm red mt-2" data-a="rapply">Use ${n} reps</button></div>`}
 function renderNext(){const L=[];
- if(!state.ob){$('nxt').innerHTML='<div class="card danger"><span class="tag r">FIRST GATE</span><p class="sub" style="margin:6px 0 0">1) Open Program on this page and pick one. 2) Tap Start tracking and step back so your body is in frame. 3) Finish one set for +50 gold and +30 XP.</p></div>';return}
+ if(!state.ob){$('nxt').innerHTML='<details class="card danger nxtd" open><summary><span class="tag r">FIRST GATE</span> <small>Pick a program, start tracking, finish one set</small></summary><p class="sub mt-1">1) Open Program on this page and pick one. 2) Tap Start tracking and step back so your body is in frame. 3) Finish one set for +50 gold and +30 XP.</p></details>';return}
  const q=state.quests.filter(x=>!x.bonus&&x.p<x.t)[0];if(q)L.push(q.n+': '+(q.t-q.p)+' to go (+'+Math.round(q.xp*xpMul())+' XP)');
  const b=state.boss;if(b&&!b.dead){const ph=bossPhase(),lim=ph===1?.66:ph===2?.33:0;L.push(ph<3?'Boss phase '+(ph+1)+' in '+Math.ceil(b.hp-b.dmg-b.hp*lim)+' damage':'Boss down in '+(b.hp-b.dmg)+' damage')}
- const cs=SHOP.filter(x=>/^(au|fr|ox)_/.test(x[0])&&!state.owned[x[0]]),af=cs.find(x=>x[3]<=state.gold),nx=cs.filter(x=>x[3]>state.gold).sort((a,c)=>a[3]-c[3])[0];
+ const cs=SHOP.filter(x=>/^(au|fr|ox)_/.test(x[0])&&!state.owned[x[0]]&&!MSET.has(x[0])),af=cs.find(x=>x[3]<=state.gold),nx=cs.filter(x=>x[3]>state.gold).sort((a,c)=>a[3]-c[3])[0];
  if(af)L.push('You can afford: '+af[1]+' (menu, Shop)');else if(nx)L.push(nx[1]+': 🪙'+(nx[3]-state.gold)+' more');
- $('nxt').innerHTML=L.length?'<div class="card cy"><span class="tag">NEXT</span>'+L.map(x=>'<small style="display:block;margin-top:4px">› '+esc(x)+'</small>').join('')+'</div>':''}
+ $('nxt').innerHTML=L.length?'<details class="card cy nxtd"><summary><span class="tag">NEXT</span> <small>'+esc(L[0])+(L.length>1?' · +'+(L.length-1)+' more':'')+'</small></summary>'+L.slice(1).map(x=>'<small class="db mt-1">› '+esc(x)+'</small>').join('')+'</details>':''}
 function renderRival(){const r=state.rival,me={lv:state.level,r:tot().reps,w:wk(0).r,b:state.bossWins,s:state.streak},row=(l,k)=>`<div class="item"><b>${l}</b><span>${me[k]} vs ${r[k]}${me[k]>r[k]?' ▲':me[k]<r[k]?' ▼':''}</span></div>`;
- $('rival').innerHTML='<p class="sub">Swap codes with a friend and compare. Their numbers are a snapshot from when they shared it.</p><div class="row"><button class="btn" data-a="mycode">Copy my code</button></div><div class="row"><input id="rvin" placeholder="Paste friend code"><button class="btn red" data-a="rival" style="flex:none;width:90px">Add</button></div>'+(r?`<div class="card" style="margin-top:10px"><small>YOU vs RIVAL (saved ${r.d})</small>${row('Level','lv')}${row('Total reps','r')}${row('Reps this week','w')}${row('Bosses','b')}${row('Streak','s')}</div>`:'')}
+ $('rival').innerHTML='<p class="sub">Swap codes with a friend and compare. Their numbers are a snapshot from when they shared it.</p><div class="row"><button class="btn" data-a="mycode">Copy my code</button></div><div class="row"><input id="rvin" placeholder="Paste friend code"><button class="btn red" data-a="rival" style="flex:none;width:90px">Add</button></div>'+(r?`<div class="card mt-3"><small>YOU vs RIVAL (saved ${r.d})</small>${row('Level','lv')}${row('Total reps','r')}${row('Reps this week','w')}${row('Bosses','b')}${row('Streak','s')}</div>`:'')}
 function chest(){const r=Math.random();if(r<.15&&state.freeze<2){state.freeze++;return'Streak freeze'}if(r<.4){state.gold+=120;return'🪙120 JACKPOT'}const g=20+Math.floor(Math.random()*40);state.gold+=g;return'🪙'+g}
 const tmrDg=()=>DGT[(Math.floor(Date.now()/864e5)+1)%DGT.length][0];
 function wk(o){let r=0,c=0,s=0;for(let i=0;i<7;i++){const h=state.hist[ago(i+o)]||{};r+=h.reps||0;s+=h.sets||0;if(h.reps)c++}return{r,s,c}}
 const recapTxt=()=>{const a=wk(0);return'ASCEND weekly: '+a.r+' reps, '+a.s+' sets, '+a.c+'/7 days · LV '+state.level+' '+rankOf(state.level)+' · best combo '+(state.bc||0)+' · '+state.bossWins+' bosses down'};
-function renderRecap(){const a=wk(0),b=wk(7),d=a.r-b.r;$('recap').innerHTML=`<div class="grid" style="margin:0 0 10px"><div class="stat"><b>${a.r}</b><span>Reps, last 7 days</span></div><div class="stat"><b>${d>=0?'+':''}${d}</b><span>vs the week before (${b.r})</span></div></div><small>${a.c} of 7 days trained · ${a.s} sets</small><br><button class="btn sm" style="margin-top:8px" data-a="share">Share recap</button>`}
+function renderRecap(){const a=wk(0),b=wk(7),d=a.r-b.r;$('recap').innerHTML=`<div class="grid mb-3"><div class="stat"><b>${a.r}</b><span>Reps, last 7 days</span></div><div class="stat"><b>${d>=0?'+':''}${d}</b><span>vs the week before (${b.r})</span></div></div><small>${a.c} of 7 days trained · ${a.s} sets</small><br><button class="btn sm mt-2" data-a="share">Share recap</button>`}
 const GD=[['Welcome to ASCEND','Your workouts are a game. The camera counts your reps, and every set earns XP, gold, rank and shadow soldiers. This quick guide takes under a minute.'],
 ['1. Pick a program','Tap Program on the Train tab and choose one. Not sure? Pick Phantom Initiate (no gear) or Iron Awakening (gym). ASCEND then tells you what to train each day and tracks your sets.'],
 ['2. Set up the camera','Prop your phone up and step back until your whole body is in frame. Front, side or back all work. Tap Start tracking and allow camera access. Nothing is uploaded; it all stays on your phone.'],
@@ -967,7 +1087,7 @@ const GD=[['Welcome to ASCEND','Your workouts are a game. The camera counts your
 ['4. Quests, XP and gold','On the Status tab, finish every daily quest to level up. You earn gold from reps, quests and dungeon chests. Spend it in the Shop (menu, top left) and spend stat points on Status.'],
 ['5. Rest and stay safe','Set rest days under Program on the Train tab so your streak never breaks. Stop if anything hurts, and back up your progress from time to time in Progress. You can replay this guide any time from the menu.']];
 let gi=0;
-function showGuide(i){gi=Math.max(0,Math.min(GD.length-1,i));const l=gi===GD.length-1;$('gdb').innerHTML=`<span class="tag r">${gi+1} / ${GD.length}</span><h3 style="margin-top:8px">${GD[gi][0]}</h3><p class="sub">${GD[gi][1]}</p><div class="row">${gi?'<button class="btn" data-a="gdprev">Back</button>':'<button class="btn" data-a="gdend">Skip</button>'}<button class="btn red" data-a="${l?'gdend':'gdnext'}">${l?'Start':'Next'}</button></div>`;$('gd').classList.add('on')}
+function showGuide(i){gi=Math.max(0,Math.min(GD.length-1,i));const l=gi===GD.length-1;$('gdb').innerHTML=`<span class="tag r">${gi+1} / ${GD.length}</span><h3 class="mt-2">${GD[gi][0]}</h3><p class="sub">${GD[gi][1]}</p><div class="row">${gi?'<button class="btn" data-a="gdprev">Back</button>':'<button class="btn" data-a="gdend">Skip</button>'}<button class="btn red" data-a="${l?'gdend':'gdnext'}">${l?'Start':'Next'}</button></div>`;$('gd').classList.add('on')}
 function dgSet(drop,amp,hit){
  const e=$('dg');if(!e)return;
  $('dgf').style.height=(Math.min(1.25,drop/amp)/1.25*100)+'%';
@@ -1065,15 +1185,16 @@ function lockOk(L){const k=T.lock,c=torso(L);if(!c)return true;const p=hipP(L),d
 async function startCam(){beep(20,.01);say('Tracking');
  if(typeof Pose==='undefined'){$('coach').textContent='Tracker failed to load. Check your internet connection and reload.';return}
  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:640,height:480}})}catch(e){$('coach').textContent='Camera blocked. Allow camera access (the page must be on HTTPS or localhost).';return}
- tracking=true;T={};wl(1);$('cam').classList.toggle('rear',facing!=='user');$('cidle').classList.add('hide');$('camb').textContent='Stop tracking';$('ro').textContent='LOADING MODEL…';
+ tracking=true;T={};wl(1);$('cam').classList.toggle('rear',facing!=='user');$('cidle').classList.add('hide');$('cam').classList.remove('off');$('camb').textContent='Stop tracking';$('ro').textContent='LOADING MODEL…';
  $('coach').innerHTML=`Tracking <b>${esc(state.ex)}</b>. Start in the starting position, then move through the full range. Facing the camera, sideways or turned away all work.`;
  pose=new Pose({locateFile:f=>'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/'+f});
  pose.setOptions({modelComplexity:1,smoothLandmarks:true,minDetectionConfidence:.4,minTrackingConfidence:.4});pose.onResults(onPose);
  const v=$('vid');v.srcObject=stream;await v.play();loop()}
-function stopCam(){tracking=false;wl(0);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}if(pose){try{pose.close()}catch(e){}pose=null}$('vid').srcObject=null;$('cidle').classList.remove('hide');$('ro').textContent='';$('dg').classList.add('hide');$('camb').textContent='Start tracking';T={}}
+function stopCam(){tracking=false;wl(0);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}if(pose){try{pose.close()}catch(e){}pose=null}$('vid').srcObject=null;$('cidle').classList.remove('hide');$('cam').classList.add('off');$('ro').textContent='';$('dg').classList.add('hide');$('camb').textContent='Start tracking';T={}}
 
 /* ===== ACTIONS ===== */
 let armReset=0,armQ=-1,skGrp='All';
+function pnApply(f){state.pn=state.pn||{};state.wl=state.wl||{};state.rl=state.rl||{};state.pn[state.ex]=Date.now();f();cur=0;T={ready:T.ready};$('pnm').classList.remove('on');save();render()}
 const act={
  go:b=>go(b.dataset.v),
  hnew:()=>heroModal(),
@@ -1136,9 +1257,20 @@ hx:()=>$('hmd').classList.remove('on'),
  lktog:()=>{const on=!state.lock;if(on&&!confirm('Hardcore Path seals most skills until your rank rises. Turn it on?'))return;state.lock=on;state.lockAsked=1;save();selSig='';render()},
  tab:()=>{if(TB){tabStop();return}if(!EX[state.ex]||EX[state.ex][0]!=='Cardio'){toast('Pick a cardio exercise (HIIT or Shadowboxing) first');return}TB={r:1,w:true,t:40,i:setInterval(tabTick,1000)};beep(880,.25,'square');say('Go');tabRender()},
  pulse:()=>{state.pulse=!state.pulse;save();if(state.pulse)beep(55,.3,'sawtooth');toast(state.pulse?'Boss Pulse ON while you track':'Boss Pulse OFF');render()},
+ exopen:()=>{renderPicker();$('exm').classList.add('on')},
+ exx:()=>$('exm').classList.remove('on'),
+ exg:b=>{exF=b.dataset.v;renderPicker()},
+pain:()=>{const ex=state.ex,g=GENTLE[ex],lo=lowerStep();$('pnb').innerHTML=`<h3>Something hurt</h3><p class="sub">Stop the set. Pain is a signal, not a challenge. If it is sharp, swollen, numb or does not settle, stop training that area and see a professional.</p>${g&&EX[g]?`<button class="btn red w-full mt-2" data-a="pnswap" data-v="${esc(g)}">Swap to ${esc(g)}</button>`:''}${lo?`<button class="btn w-full mt-2" data-a="pnlow">${lo.l}</button>`:''}<button class="btn w-full mt-2" data-a="pnflag">Flag it and rest</button>`;$('pnm').classList.add('on')},
+ pnx:()=>$('pnm').classList.remove('on'),
+ pnflag:()=>{pnApply(()=>{});toast('Flagged. No increases for 7 days. Rest up.')},
+ pnlow:()=>{const lo=lowerStep();if(!lo)return;pnApply(()=>{if(lo.kg!=null)state.kg=lo.kg;else state.target=lo.t;state.wl[state.ex]=[];state.rl[state.ex]=[]});toast('Lowered. Keep it comfortable.')},
+ pnswap:b=>{const g=b.dataset.v;if(!EX[g])return;pnApply(()=>{state.ex=g});toast('Switched to '+g)},
+ pnclear:()=>{if(state.pn)delete state.pn[state.ex];save();renderTrain();toast('Flag cleared')},
+ expick:b=>{state.ex=b.dataset.v;cur=0;T={ready:T.ready};save();$('exm').classList.remove('on');render()},
  sp:b=>{if(state.sp<1)return;state.sp--;state.st[b.dataset.v]=stB(b.dataset.v)+1;save();render()},
  buy:b=>{const k=b.dataset.v,s=SHOP.find(x=>x[0]===k);if(!s)return;const pre=k.slice(0,3),col=k.slice(3);
   if(state.owned[k]){if(pre==='au_')state.aura=state.aura===col?'':col;else if(pre==='fr_')state.frame=state.frame===col?'':col;else if(pre==='ox_'){state.hide=state.hide||{};if(state.hide[k])delete state.hide[k];else state.hide[k]=1}else{toast('Already owned');return}save();render();return}
+  if(MSET.has(k)){toast(RRSHORT[k]||'Locked');return}
   if(state.gold<s[3]){toast('Not enough gold');return}
   if(k==='frz'){if(state.freeze>=2){toast('Freezes are full');return}state.freeze++}
   else if(k==='dxp'){if(state.dxp===dk()){toast('Already active');return}state.dxp=dk()}
@@ -1163,6 +1295,7 @@ hx:()=>$('hmd').classList.remove('on'),
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/calendar'}));a.download='ascend-reminder.ics';a.click();toast('Open the file to add the reminder')},
  menu:()=>$('drawer').classList.toggle('on'),
  skills:()=>{$('drawer').classList.remove('on');go('skills')},
+ archive:()=>{$('drawer').classList.remove('on');state.arcSeen=arcCount();save();go('archive')},
  togpreview:b=>{const p=$('skpreview'),h=p.classList.toggle('hide');b.textContent=h?'Show Preview':'Hide Preview'},
  skill:b=>{sk=b.dataset.v;renderSkills()},
  skgrp:b=>{skGrp=b.dataset.v;renderSkills()},
@@ -1224,7 +1357,7 @@ const REQ={'Push-ups':0,'Incline Push-ups':0,'Squats':0,'Lunges':0,'Crunches':0,
 'Hammer Curls':1,'Lateral Raises':1,'Tricep Pushdowns':1,'Face Pulls':1,
 'Bench Press':2,'Overhead Press':2,'Barbell Rows':2,'Romanian Deadlifts':2,
 'Pull-ups':3,'Chest Dips':3,'Bulgarian Split Squats':3,'Skull Crushers':3};
-const rIdx=()=>RK.findIndex(x=>x[1]===rankOf(state.level));
+const rIdx=()=>state.pres?RK.length-1:RK.findIndex(x=>x[1]===rankOf(state.level));
 const inProg=n=>{const pr=prOf();return !!pr&&pr.days.some(d=>d.ex.some(e=>e.n===n))};
 const isOpen=n=>!state.lock||rIdx()>=REQ[n]||inProg(n);
 SK['__idle']=['idle',0,''];
@@ -1305,7 +1438,7 @@ function renderSkills(){
   tb.disabled = !op;
   tb.textContent = op ? 'Train this skill' : 'Locked until ' + RK[REQ[sk]][1] + '-Rank';
   $('skn').textContent = sk.replace(' (sec)', '') + ' · ' + t[0];
-  $('skc').textContent = SK[sk][2];
+  $('skc').textContent = SK[sk][2] + (t[1] >= 3 ? ' · Perk: +' + (t[1] - 2) + ' boss damage per rep' : '');
   $('skxp').style.width = (t[1] === 4 ? 100 : Math.min(100, reps / nextCap * 100)) + '%';
   $('skxpt').textContent = t[1] === 4 ? reps + ' MAX' : reps + '/' + nextCap;
 
@@ -1330,7 +1463,7 @@ $('sksel').addEventListener('change', e => {
 });
 let RM=[];
 function figInner(){const P2=(id,st,w,e)=>`<path id="${id}" fill="none" stroke="${st}" stroke-width="${w}"${e||''}/>`,R=(id,w,o)=>`<path id="${id}" class="rm" fill="none" stroke-opacity=".5" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"${o||''}/>`,Fl=(id,w,g)=>`<path id="${id}" fill="none" stroke="${g?'#8d98b5':'#fff'}"${g?' opacity=".6"':''} stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
-return `<defs><radialGradient id="ag"><stop id="g1" offset="0" stop-opacity=".6"/><stop id="g2" offset="1" stop-opacity="0"/></radialGradient><linearGradient id="cgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a043ec"/><stop offset="1" stop-color="#25083f"/></linearGradient><linearGradient id="sgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7ff"/><stop offset=".5" stop-color="#8d98b5"/><stop offset="1" stop-color="#454f68"/></linearGradient><linearGradient id="kgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a8"/><stop offset=".5" stop-color="#ffd24a"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs><ellipse id="au" fill="url(#ag)"/><g id="sp">${'<circle r="2"/>'.repeat(14)}</g><line id="flr" x1="10" x2="190" stroke="#30394d" stroke-width="2"/><line id="eq" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><line id="e2" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="cpb" fill="url(#cgF)" stroke="#c88bff" stroke-width="1.2" stroke-linejoin="round"/><path id="gl" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".35" style="filter:blur(3px)"/>${R('rFA',9,' opacity=".6"')}${R('rFL',10,' opacity=".6"')}${Fl('fFA',5.5,1)}${Fl('fFL',6,1)}${P2('wbF','#52d9ff',9)}${P2('btF','#c4103a',10.5,' stroke-linejoin="round" stroke-linecap="round"')}${R('rN',8)}${R('rT',10)}${R('rS',9)}${R('rH',9)}${Fl('fN',5)}${Fl('fT',5.5)}${Fl('fS',5)}${Fl('fH',5)}${P2('blt','#ffd24a',5)}<circle id="bkl" r="0" fill="#fff3a8" stroke="#8a6a1c" stroke-width="1"/>${P2('scft','#f02b4f',4.5,' stroke-linecap="round"')}${P2('scf','#f02b4f',5.5,' stroke-linecap="round"')}<path id="hr" class="rm" fill="#0b1020" stroke-width="2.4" stroke-linejoin="round"/><circle id="hd" class="rm" r="9.5" fill="#05070d" stroke-width="3.2"/><path id="eyg" style="filter:blur(1.6px)"/><path id="ey"/>${P2('hbt','#f02b4f',2.6,' stroke-linecap="round"')}${P2('hbd','#f02b4f',3.6,' stroke-linecap="round"')}${R('rNA',9.5)}${R('rNL',10.5)}${Fl('fNA',5.5)}${Fl('fNL',6)}${P2('wbN','#52d9ff',9)}${P2('btN','#c4103a',10.5,' stroke-linejoin="round" stroke-linecap="round"')}${P2('bld','#e8eefc',3.2,' stroke-linecap="round"')}${P2('hlt','#ffd24a',3.4,' stroke-linecap="round"')}<line id="pr" stroke="#cfd6e6" stroke-width="6" stroke-linecap="round"/><path id="cpf" fill="url(#cgF)" stroke="#c88bff" stroke-width="1.2" stroke-linejoin="round"/><path id="gd1" fill="url(#sgF)" stroke="#fff" stroke-width=".8"/><path id="gd2" fill="url(#sgF)" stroke="#fff" stroke-width=".8"/><circle id="crg" fill="#ffd24a" opacity=".35" style="filter:blur(4px)"/><path id="crn" fill="url(#kgF)" stroke="#fff" stroke-opacity=".6" stroke-width=".8"/>`;}
+return `<defs><radialGradient id="ag"><stop id="g1" offset="0" stop-opacity=".6"/><stop id="g2" offset="1" stop-opacity="0"/></radialGradient><linearGradient id="cgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a043ec"/><stop offset="1" stop-color="#25083f"/></linearGradient><linearGradient id="sgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7ff"/><stop offset=".5" stop-color="#8d98b5"/><stop offset="1" stop-color="#454f68"/></linearGradient><linearGradient id="kgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a8"/><stop offset=".5" stop-color="#ffd24a"/><stop offset="1" stop-color="#b8860b"/></linearGradient></defs><ellipse id="au" fill="url(#ag)"/><g id="sp">${'<circle r="2"/>'.repeat(14)}</g><line id="flr" x1="10" x2="190" stroke="#30394d" stroke-width="2"/><line id="eq" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><line id="e2" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="wng" fill="#2a0b14" stroke="#ff4d1a" stroke-width="1.2" stroke-linejoin="round" opacity=".92"/><path id="cpb" fill="url(#cgF)" stroke="#c88bff" stroke-width="1.2" stroke-linejoin="round"/><path id="ytl" fill="none" stroke="#eaf6ff" stroke-width="4.6" stroke-linecap="round"/><path id="ytls" fill="none" stroke="#1b2a3a" stroke-width="4.6" stroke-dasharray="2 5"/><path id="pny" fill="#ffe08a" stroke="#fff3c4" stroke-width=".8" stroke-linejoin="round"/><path id="igp" fill="#d0123f" stroke="#ff8aa6" stroke-width=".8" stroke-linejoin="round"/><path id="ktn" fill="none" stroke="#cfd6e8" stroke-width="2" stroke-linecap="round"/><path id="kth" fill="none" stroke="#7a1430" stroke-width="3.2" stroke-linecap="round"/><path id="gl" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".35" style="filter:blur(3px)"/>${R('rFA',9,' opacity=".6"')}${R('rFL',10,' opacity=".6"')}${Fl('fFA',5.5,1)}${Fl('fFL',6,1)}${P2('wbF','#52d9ff',9)}${P2('btF','#c4103a',10.5,' stroke-linejoin="round" stroke-linecap="round"')}${R('rN',8)}${R('rT',10)}${R('rS',9)}${R('rH',9)}${Fl('fN',5)}${Fl('fT',5.5)}${Fl('fS',5)}${Fl('fH',5)}${P2('blt','#ffd24a',5)}<circle id="bkl" r="0" fill="#fff3a8" stroke="#8a6a1c" stroke-width="1"/>${P2('scft','#f02b4f',4.5,' stroke-linecap="round"')}${P2('scf','#f02b4f',5.5,' stroke-linecap="round"')}<path id="hr" class="rm" fill="#0b1020" stroke-width="2.4" stroke-linejoin="round"/><circle id="hd" class="rm" r="9.5" fill="#05070d" stroke-width="3.2"/><path id="eyg" style="filter:blur(1.6px)"/><path id="ey"/>${P2('hbt','#f02b4f',2.6,' stroke-linecap="round"')}${P2('hbd','#f02b4f',3.6,' stroke-linecap="round"')}${R('rNA',9.5)}${R('rNL',10.5)}${Fl('fNA',5.5)}${Fl('fNL',6)}${P2('wbN','#52d9ff',9)}${P2('btN','#c4103a',10.5,' stroke-linejoin="round" stroke-linecap="round"')}${P2('bld','#e8eefc',3.2,' stroke-linecap="round"')}${P2('hlt','#ffd24a',3.4,' stroke-linecap="round"')}<line id="pr" stroke="#cfd6e6" stroke-width="6" stroke-linecap="round"/><path id="cpf" fill="url(#cgF)" stroke="#c88bff" stroke-width="1.2" stroke-linejoin="round"/><path id="gd1" fill="url(#sgF)" stroke="#fff" stroke-width=".8"/><path id="gd2" fill="url(#sgF)" stroke="#fff" stroke-width=".8"/><circle id="crg" fill="#ffd24a" opacity=".35" style="filter:blur(4px)"/><path id="crn" fill="url(#kgF)" stroke="#fff" stroke-opacity=".6" stroke-width=".8"/><path id="hrn" fill="#e6c27a" stroke="#fff" stroke-opacity=".75" stroke-width=".8" stroke-linejoin="round"/><path id="icr" fill="#bfefff" stroke="#fff" stroke-width=".8" stroke-linejoin="round"/><path id="stf" fill="none" stroke="#9a6a35" stroke-width="2.6" stroke-linecap="round"/><circle id="sto" fill="#ff6a2a" stroke="#ffd24a" stroke-width="1.2"/><path id="rpr" fill="none" stroke="#e9deff" stroke-width="1.6" stroke-linecap="round"/><path id="rpg" fill="none" stroke="#b79bff" stroke-width="2.4" stroke-linecap="round"/><path id="clw" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><circle id="gnN" fill="#8d98b5" stroke="#fff" stroke-width="1.2"/><circle id="gnF" fill="#8d98b5" stroke="#fff" stroke-width="1.2"/><path id="chn" fill="none" stroke="#d98a2b" stroke-width="3.2" stroke-dasharray="3.4 2"/><path id="chd" fill="none" stroke="#ffe1a1" stroke-width="1" stroke-dasharray="3.4 2"/><path id="igb" fill="none" stroke="#7a1430" stroke-width="3.2" stroke-linecap="round"/><path id="bru" fill="none" stroke="#d9b3ff" stroke-width="2" stroke-linecap="round"/><path id="blc" fill="#15091f" stroke="#ff3b5c" stroke-width="1.2" stroke-linejoin="round"/><path id="fcr" fill="#ff6a2a" stroke="#ffd24a" stroke-width="1" stroke-linejoin="round"/><path id="ytlF" fill="none" stroke="#eaf6ff" stroke-width="4.6" stroke-linecap="round"/><path id="ytlsF" fill="none" stroke="#1b2a3a" stroke-width="4.6" stroke-dasharray="2 5"/><path id="pnyF" fill="#ffe08a" stroke="#fff3c4" stroke-width=".8" stroke-linejoin="round"/><path id="igpF" fill="#d0123f" stroke="#ff8aa6" stroke-width=".8" stroke-linejoin="round"/><path id="ktnF" fill="none" stroke="#cfd6e8" stroke-width="2" stroke-linecap="round"/><path id="kthF" fill="none" stroke="#7a1430" stroke-width="3.2" stroke-linecap="round"/><path id="tw1" fill="none" stroke="#c9b2ff" stroke-width="3" stroke-linecap="round"/><path id="tw2" fill="none" stroke="#7a43ff" stroke-width="3.4" stroke-linecap="round"/>`;}
 function figMount(svg,p){svg.innerHTML=figInner().replace(/id="([^"]+)"/g,(m,a)=>'id="'+p+a+'"').replace(/url\(#([^)]+)\)/g,(m,a)=>'url(#'+p+a+')');const m={};return{svg,p,e:id=>m[id]||(m[id]=svg.querySelector('[id="'+p+id+'"]')),SP:[...svg.querySelectorAll('[id="'+p+'sp"] circle')],RM:[...svg.querySelectorAll('.rm')]}}
 let FIG0=null;
 function initFig(){FIG0=figMount($('fig'),'');SP=FIG0.SP;RM=FIG0.RM}
@@ -1376,6 +1509,10 @@ function figDraw(Z,t,O){const s=SK[O.sk],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0
   Sx('crn',{d:hasK?`M${X-9} ${Y-9}L${X-9} ${Y-21}L${X-4.5} ${Y-15}L${X} ${Y-24}L${X+4.5} ${Y-15}L${X+9} ${Y-21}L${X+9} ${Y-9}Z`:''});Sx('crg',{cx:X,cy:Y-15,r:hasK?15:0});
   const sdr=st>=0?-1:1,sp0=Pj(S),pp0=Pj(P),F1=v=>v.toFixed(1),hb=ox('band');
   Sx('hbd',{d:hb?`M${X-9} ${Y-3.6}Q${X+ex*.4} ${Y-.6} ${X+9} ${Y-3.6}`:''});
+  {const wx=sp0[0],wy=sp0[1]+2,wp=d=>`M${F1(wx)} ${F1(wy)}Q${F1(wx+d*26)} ${F1(wy-38)} ${F1(wx+d*50)} ${F1(wy-12)}Q${F1(wx+d*41)} ${F1(wy-9)} ${F1(wx+d*43)} ${F1(wy+6)}Q${F1(wx+d*32)} ${F1(wy-1)} ${F1(wx+d*30)} ${F1(wy+14)}Q${F1(wx+d*19)} ${F1(wy+4)} ${F1(wx+d*8)} ${F1(wy+18)}Z`;
+  Sx('wng',{d:ox('wings')?wp(-1)+wp(1):''});
+  Sx('hrn',{d:ox('horns')?`M${X-5} ${Y-8}Q${X-15} ${Y-12} ${X-12} ${Y-27}Q${X-8} ${Y-16} ${X-2} ${Y-10}ZM${X+5} ${Y-8}Q${X+15} ${Y-12} ${X+12} ${Y-27}Q${X+8} ${Y-16} ${X+2} ${Y-10}Z`:''});
+  Sx('icr',{d:ox('icecrown')?`M${X-9} ${Y-9}L${X-8} ${Y-19}L${X-4} ${Y-13}L${X-2} ${Y-24}L${X} ${Y-14}L${X+2} ${Y-24}L${X+4} ${Y-13}L${X+8} ${Y-19}L${X+9} ${Y-9}Z`:''})}
   Sx('hbt',{d:hb?`M${X+sdr*8} ${Y-3}Q${X+sdr*17} ${Y-2+wob*.5} ${X+sdr*24} ${Y+3+wob}M${X+sdr*8} ${Y-2}Q${X+sdr*16} ${Y+3+wob*.4} ${X+sdr*21} ${Y+9+wob*.8}`:''});
   const scv=ox('scarf'),nx=X+(sp0[0]-X)*.78,ny=Y+(sp0[1]-Y)*.78,shw=Math.max(5,Math.abs(q2[0]-q1[0])*.36);
   Sx('scf',{d:scv?`M${nx-shw} ${ny-.5}Q${nx} ${ny+4.5} ${nx+shw} ${ny-.5}`:''});
@@ -1389,6 +1526,23 @@ function figDraw(Z,t,O){const s=SK[O.sk],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0
   const bdv=ox('blade'),wN=an.q[2],eN=an.q[1],bdx=wN[0]-eN[0],bdy=wN[1]-eN[1],bdl=Math.hypot(bdx,bdy)||1,bu=bdx/bdl,bv=bdy/bdl;
   Sx('bld',{d:bdv?`M${F1(wN[0]-bu*3)} ${F1(wN[1]-bv*3)}L${F1(wN[0]+bu*22)} ${F1(wN[1]+bv*22)}`:''});
   Sx('hlt',{d:bdv?`M${F1(wN[0]+bu*2+bv*5)} ${F1(wN[1]+bv*2-bu*5)}L${F1(wN[0]+bu*2-bv*5)} ${F1(wN[1]+bv*2+bu*5)}`:''});
+  {const wF=af.q[2],eF=af.q[1],fx0=wF[0]-eF[0],fy0=wF[1]-eF[1],fl0=Math.hypot(fx0,fy0)||1,fu=fx0/fl0,fv=fy0/fl0,hv=(w,e)=>{const dx=w[0]-e[0],dy=w[1]-e[1],l=Math.hypot(dx,dy)||1;return[dx/l,dy/l]},rp=ox('rapier'),cl=ox('claws'),kt=ox('katana'),gt=ox('gaunt'),sf=ox('staff');
+  Sx('rpr',{d:rp?`M${F1(wF[0]-fu*3)} ${F1(wF[1]-fv*3)}L${F1(wF[0]+fu*34)} ${F1(wF[1]+fv*34)}`:''});
+  Sx('rpg',{d:rp?`M${F1(wF[0]+fu*2+fv*6)} ${F1(wF[1]+fv*2-fu*6)}L${F1(wF[0]+fu*2-fv*6)} ${F1(wF[1]+fv*2+fu*6)}`:''});
+  const cw=(w,e)=>{const u=hv(w,e);let d='';[-3.5,0,3.5].forEach(k=>{d+=`M${F1(w[0]+u[0]*2-u[1]*k)} ${F1(w[1]+u[1]*2+u[0]*k)}L${F1(w[0]+u[0]*12-u[1]*k*1.7)} ${F1(w[1]+u[1]*12+u[0]*k*1.7)}`});return d};
+  Sx('clw',{d:cl?cw(wN,eN)+cw(wF,eF):''});
+  Sx('gnN',{cx:wN[0],cy:wN[1],r:gt?6:0});Sx('gnF',{cx:wF[0],cy:wF[1],r:gt?6:0});
+  const kx=buy,ky=-bux,ka=[pp0[0]+kx*7-bux*2,pp0[1]+ky*7-buy*2],kb=[sp0[0]-kx*9+bux*20,sp0[1]-ky*9+buy*20],km=[ka[0]+(kb[0]-ka[0])*.8,ka[1]+(kb[1]-ka[1])*.8];
+  {const k1=kt?`M${F1(ka[0])} ${F1(ka[1])}L${F1(km[0])} ${F1(km[1])}`:'',k2=kt?`M${F1(km[0])} ${F1(km[1])}L${F1(kb[0])} ${F1(kb[1])}`:'',kf=Pj([P[0],P[1],P[2]-14])[2]>pp0[2];Sx('ktn',{d:kf?'':k1});Sx('kth',{d:kf?'':k2});Sx('ktnF',{d:kf?k1:''});Sx('kthF',{d:kf?k2:''})}
+  Sx('stf',{d:sf?`M${F1(wN[0])} ${F1(wN[1]+26)}L${F1(wN[0])} ${F1(wN[1]-38)}`:''});Sx('sto',{cx:wN[0],cy:wN[1]-42,r:sf?5:0});
+  const twn=ox('twin');Sx('tw1',{d:twn?`M${F1(wF[0]-fu*3)} ${F1(wF[1]-fv*3)}L${F1(wF[0]+fu*21)} ${F1(wF[1]+fv*21)}`:''});Sx('tw2',{d:twn?`M${F1(wF[0]+fu*2+fv*5)} ${F1(wF[1]+fv*2-fu*5)}L${F1(wF[0]+fu*2-fv*5)} ${F1(wF[1]+fv*2+fu*5)}`:''});
+  const igr=ox('igris');{let d='',fr=false;if(igr){const Hm=H,B1=Pj([Hm[0]-5,Hm[1]-8,Hm[2]-2]),B2=Pj([Hm[0]+5,Hm[1]-8,Hm[2]-2]),C1=Pj([Hm[0]-3,Hm[1]-26+wob*.3,Hm[2]-12]),T=Pj([Hm[0],Hm[1]-14+wob*.6,Hm[2]-32]),C2=Pj([Hm[0]+3,Hm[1]-12,Hm[2]-16]);fr=T[2]>hp[2];d=`M${F1(B1[0])} ${F1(B1[1])}Q${F1(C1[0])} ${F1(C1[1])} ${F1(T[0])} ${F1(T[1])}Q${F1(C2[0])} ${F1(C2[1])} ${F1(B2[0])} ${F1(B2[1])}Z`}Sx('igp',{d:fr?'':d});Sx('igpF',{d:fr?d:''})}Sx('igb',{d:igr?`M${F1(X-9.5)} ${F1(Y-3)}Q${F1(X+ex*.4)} ${F1(Y-6.5)} ${F1(X+9.5)} ${F1(Y-3)}`:''});
+  const bru=ox('beru');Sx('bru',{d:bru?`M${F1(X-3+ex)} ${F1(Y-9)}Q${F1(X-10+ex)} ${F1(Y-26+wob*.3)} ${F1(X-21+ex)} ${F1(Y-27+wob*.6)}M${F1(X+3+ex)} ${F1(Y-9)}Q${F1(X+10+ex)} ${F1(Y-26+wob*.3)} ${F1(X+21+ex)} ${F1(Y-27+wob*.6)}`:''});
+  Sx('blc',{d:ox('bellion')?`M${X-9} ${Y-3}L${X-9} ${Y-13}L${X-5.5} ${Y-11}L${X-3.5} ${Y-27}L${X} ${Y-17}L${X+3.5} ${Y-27}L${X+5.5} ${Y-11}L${X+9} ${Y-13}L${X+9} ${Y-3}Z`:''});
+  {let d='',fr=false;if(ox('ponyt')){const Hm=H,B1=Pj([Hm[0]-3,Hm[1]-5,Hm[2]-6]),B2=Pj([Hm[0]+3,Hm[1]-1,Hm[2]-6]),C1=Pj([Hm[0]+wob*.3,Hm[1]-8,Hm[2]-20]),T=Pj([Hm[0]+wob*.8,Hm[1]+16,Hm[2]-22]),C2=Pj([Hm[0]+2,Hm[1]+4,Hm[2]-14]);fr=T[2]>hp[2];d=`M${F1(B1[0])} ${F1(B1[1])}Q${F1(C1[0])} ${F1(C1[1])} ${F1(T[0])} ${F1(T[1])}Q${F1(C2[0])} ${F1(C2[1])} ${F1(B2[0])} ${F1(B2[1])}Z`}Sx('pny',{d:fr?'':d});Sx('pnyF',{d:fr?d:''})}
+  {let d='',fr=false;if(ox('ytail')){const b0=Pj([P[0],P[1]-2,P[2]-3]),c0=Pj([P[0]+wob*.4,P[1]+8,P[2]-20]),e0=Pj([P[0]+wob*.8,P[1]-12,P[2]-30]);fr=e0[2]>pp0[2];d=`M${F1(b0[0])} ${F1(b0[1])}Q${F1(c0[0])} ${F1(c0[1])} ${F1(e0[0])} ${F1(e0[1])}`}Sx('ytl',{d:fr?'':d});Sx('ytls',{d:fr?'':d});Sx('ytlF',{d:fr?d:''});Sx('ytlsF',{d:fr?d:''})}
+  {const cdn=ox('chain')?`M${F1(q1[0])} ${F1(q1[1]+2)}L${F1(pp0[0]+(q2[0]-q1[0])*.32)} ${F1(pp0[1])}`:'';Sx('chn',{d:cdn});Sx('chd',{d:cdn})}
+  Sx('fcr',{d:ox('flame')?`M${X-8} ${Y-8}Q${X-11} ${Y-19-wob*.3} ${X-5} ${Y-24+wob*.4}Q${X-4} ${Y-17} ${X-2} ${Y-14}Q${X} ${Y-30+wob*.8} ${X+3} ${Y-15}Q${X+5} ${Y-19} ${X+8} ${Y-23-wob*.4}Q${X+11} ${Y-13} ${X+8} ${Y-8}Z`:''})}
  }
  Sx('au',{cx,cy,rx:58+ri*5+wob,ry:72+ri*4+wob});Sx('g1',{'stop-color':c});Sx('g2',{'stop-color':c});
  const fy=FY[s[0]]||150;Sx('flr',{y1:fy,y2:fy});Z.e('flr').style.display=PH>45?'none':'';
@@ -1404,7 +1558,7 @@ function frame(t){const r=rankOf(state.level),ri=RK.findIndex(x=>x[1]===r);
 function figLoop(t){if($('skills').classList.contains('hide')&&$('hero').classList.contains('hide')){figOn=false;return}frame(t);requestAnimationFrame(figLoop)}
 initFig();
 
-document.addEventListener('click',e=>{const f=document.createElement('div');f.className='flash';f.style.left=e.clientX+'px';f.style.top=e.clientY+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),320)});
+document.addEventListener('click',e=>{if(!e.target.closest('button,summary'))return;const f=document.createElement('div');f.className='flash';f.style.left=e.clientX+'px';f.style.top=e.clientY+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),320)});
 $('boot').classList.add('on');setTimeout(()=>$('boot').classList.remove('on'),950);syncCustom();
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 /* ===== AUTO-STOP: ends the set when the user can no longer push through ===== */
@@ -1425,6 +1579,10 @@ let PI=null,PB=0;
 function pulseStop(){clearTimeout(PI);PI=null}
 function pulseTick(){if(!tracking||!state.pulse||state.snd==='off'||!state.boss||state.boss.dead){pulseStop();return}const ph=bossPhase(),bpm=[0,66,84,104][ph];try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.setValueAtTime(90,t);o.frequency.exponentialRampToValueAtTime(40,t+.18);g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26);if(PB%2===0){const n=AC.createOscillator(),f=AC.createBiquadFilter(),g2=AC.createGain();n.type='sawtooth';n.frequency.value=[55,55,65.4,49][(PB>>1)%4]*(ph===3?2:1);f.type='lowpass';f.frequency.value=260+ph*120;g2.gain.setValueAtTime(.05,t);g2.gain.exponentialRampToValueAtTime(.001,t+.5);n.connect(f);f.connect(g2);g2.connect(AC.destination);n.start(t);n.stop(t+.52)}}catch(e){}PB++;PI=setTimeout(pulseTick,60000/bpm)}
 setInterval(()=>{if(state.pulse&&tracking&&!PI){PB=0;pulseTick()}else if((!tracking||!state.pulse)&&PI)pulseStop()},1000);
+document.addEventListener('visibilitychange',()=>document.body.classList.toggle('still',document.hidden));
+let exF='All';
+function renderPicker(){const q=($('exq').value||'').trim().toLowerCase(),sel=$('exsel');$('exg').innerHTML=['All'].concat(GRP).map(g=>`<button class="chip" aria-pressed="${exF===g}" data-a="exg" data-v="${g}">${g}</button>`).join('');let h='';sel.querySelectorAll('optgroup').forEach(og=>{if(exF!=='All'&&og.label!==exF)return;const o=[...og.children].filter(x=>!q||x.value.toLowerCase().includes(q));if(!o.length)return;h+=`<small class="db pkh">${og.label}</small>`+o.map(x=>`<button class="pk" data-a="expick" data-v="${esc(x.value)}"${x.disabled?' disabled':''}><span>${esc(x.textContent)}</span>${x.value===state.ex?'<small>CURRENT</small>':''}</button>`).join('')});$('exl').innerHTML=h||'<small>No exercises match.</small>'}
+$('exq').addEventListener('input',renderPicker);
 setInterval(autoStop,500);setInterval(clearStaleCue,400);
 render();
 /* remember which Status sections are open */
@@ -1435,12 +1593,95 @@ setInterval(()=>{syncPassive()},60000);
 /* ===== ONE-TIME PATH CHOICE (locked / open skills) ===== */
 function askLock(step){const c=$('lkb');
  c.innerHTML=step==='sure'
-  ?`<span class="tag r">NO TURNING BACK</span><h3 style="margin-top:8px">Be careful what you wish for</h3><p class="sub">Most skills will stay sealed for weeks or months, and the hardest ones for years. You cannot switch back later. Skills in your active program stay open.</p><div class="row"><button class="btn" data-a="lkback">Go back</button><button class="btn red" data-a="lklock">I accept the grind</button></div>`
-  :`<span class="tag r">ONE-TIME CHOICE</span><h3 style="margin-top:8px">Choose your path</h3><p class="sub">Pick how skills unlock. You only choose once, and it cannot be changed later.</p><button class="btn" data-a="lkopen" style="width:100%;margin-bottom:4px">Open Path</button><small style="display:block;margin-bottom:14px;color:var(--mute)">Every skill is open from day one. Train however you like.</small><button class="btn red" data-a="lkask" style="width:100%;margin-bottom:4px">Locked Path</button><small style="display:block;color:var(--mute)">Skills start sealed and unlock only as your rank rises. It is a long road. Reaching S-Rank takes about three years of steady training.</small>`;
+  ?`<span class="tag r">NO TURNING BACK</span><h3 class="mt-2">Be careful what you wish for</h3><p class="sub">Most skills will stay sealed for weeks or months, and the hardest ones for years. You cannot switch back later. Skills in your active program stay open.</p><div class="row"><button class="btn" data-a="lkback">Go back</button><button class="btn red" data-a="lklock">I accept the grind</button></div>`
+  :`<span class="tag r">ONE-TIME CHOICE</span><h3 class="mt-2">Choose your path</h3><p class="sub">Pick how skills unlock. You only choose once, and it cannot be changed later.</p><button class="btn" data-a="lkopen" style="width:100%;margin-bottom:4px">Open Path</button><small style="display:block;margin-bottom:14px;color:var(--mute)">Every skill is open from day one. Train however you like.</small><button class="btn red" data-a="lkask" style="width:100%;margin-bottom:4px">Locked Path</button><small style="display:block;color:var(--mute)">Skills start sealed and unlock only as your rank rises. It is a long road. Reaching S-Rank takes about three years of steady training.</small>`;
  $('lkq').classList.add('on')}
 function lkDone(lock){state.lock=lock;state.lockAsked=1;save();$('lkq').classList.remove('on');selSig='';render();toast(lock?'Locked Path chosen. Earn every skill.':'Open Path chosen. All skills are open.');if(!state.guide)setTimeout(()=>showGuide(0),700)}
 if(state.lock&&!state.lockAsked)state.lockAsked=1;
 
+
+/* ===== v8 features ===== */
+const gradeP=v=>v>=3.5?'S':v>=2.75?'A':v>=1.75?'B':v>=.75?'C':'D';
+const gcls=l=>l==='—'?'gx':'g'+l;
+function xLog(ex,kg,r,gs){state.xh=state.xh||{};const a=(state.xh[ex]=state.xh[ex]||[]);a.push({d:dk(),kg,r,p:gs&&gs.length?Math.round(gs.reduce((x,y)=>x+y,0)/gs.length*10)/10:null});while(a.length>80)a.shift()}
+const mastB=ex=>Math.max(0,TIER(state.sk[ex]||0)[1]-2);
+
+/* per-exercise history */
+function showHx(n){const a=(state.xh||{})[n]||[],v=x=>x.kg>0?x.kg*(1+x.r/30):x.r,by={};a.forEach(x=>{by[x.d]=Math.max(by[x.d]||0,v(x))});const ks=Object.keys(by).sort().slice(-20),pr=state.pr[n],hold=EX[n]&&EX[n][1]==='hold';let h=`<h3>${esc(n.replace(' (sec)',''))}</h3>`;
+ if(pr)h+=`<small>BEST · ${pr.r}${hold?' sec':' reps'}${pr.kg?' × '+W(pr.kg):''}</small>`;
+ if(ks.length<2)h+='<p class="sub mt-2">History builds from now on. Finish a few more sets of this and a trend line shows up here.</p>';
+ else{const vals=ks.map(k=>by[k]),mn=Math.min(...vals),mx=Math.max(...vals),pts=vals.map((y,i)=>[10+i*(280/(vals.length-1)),105-(y-mn)/((mx-mn)||1)*85]);h+=`<small class="db mt-2">${a.some(x=>x.kg>0)?'ESTIMATED STRENGTH':'BEST SET PER DAY'}</small><svg class="hxc mt-1" viewBox="0 0 300 120" role="img" aria-label="Progress chart"><polyline points="${pts.map(q=>q.join(',')).join(' ')}" fill="none" stroke="#52d9ff" stroke-width="3"/>${pts.map(q=>`<circle cx="${q[0]}" cy="${q[1]}" r="4" fill="#f02b4f" stroke="#fff" stroke-width="1.5"/>`).join('')}<text x="10" y="116" fill="#aab2c6" font-size="9">${ks[0]}</text><text x="290" y="116" fill="#aab2c6" font-size="9" text-anchor="end">${ks[ks.length-1]}</text></svg>`}
+ if(a.length){h+='<small class="db mt-3">RECENT SETS</small>'+a.slice(-6).reverse().map(x=>`<div class="item"><div><b>${x.d}</b></div><span>${x.r}${hold?' sec':' reps'}${x.kg>0?' × '+W(x.kg):''}${x.p?' · '+(x.p>=3.5?'S':x.p>=2.75?'A':x.p>=1.75?'B':'C'):''}</span></div>`).join('')}
+ $('hxb').innerHTML=h;$('hxm').classList.add('on')}
+
+/* progress photos (device only, own storage key) */
+const PHK=KEY+'_ph';let PHc=null;
+function phGet(){if(!PHc){try{PHc=JSON.parse(localStorage.getItem(PHK)||'[]')}catch(e){PHc=[]}}return PHc}
+function phSet(a){try{localStorage.setItem(PHK,JSON.stringify(a));PHc=a;return true}catch(e){return false}}
+function renderPh(){const a=phGet(),el=$('phbox'),sg=a.length+'|'+(a.length?a[a.length-1].t:0);if(el.dataset.sg===sg)return;el.dataset.sg=sg;let h='';
+ if(a.length>=2){const f=a[0],l=a[a.length-1];h+=`<div class="phc"><div><img src="${f.u}" alt="First photo"><small>First · ${f.d}</small></div><div><img src="${l.u}" alt="Latest photo"><small>Latest · ${l.d}</small></div></div>`}
+ h+=a.length?`<div class="phg">${a.slice(-8).reverse().map(x=>`<button class="phb" data-a="phdel" data-v="${x.t}" aria-label="Photo from ${x.d}, tap to delete"><img src="${x.u}" alt=""></button>`).join('')}</div>`:'<small>No photos yet. Add one every few weeks, same spot and lighting.</small>';el.innerHTML=h}
+$('phf').addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';if(!f)return;const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const m=480,sc=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);const a=phGet().slice();a.push({d:dk(),t:Date.now(),u:c.toDataURL('image/jpeg',.7)});while(a.length>24)a.shift();if(phSet(a)){renderPh();toast('Photo saved on this device')}else toast('Not enough storage for another photo')};im.onerror=()=>{URL.revokeObjectURL(u);toast('Could not read that photo')};im.src=u});
+
+/* water + protein streaks */
+function nhRec(){const f=state.food,t=dk();state.nh=state.nh||{};const e={w:f.water,p:Math.round(f.log.reduce((a,x)=>a+x.p,0)),m:f.log.length},o=state.nh[t];if(!o||o.w!==e.w||o.p!==e.p||o.m!==e.m){state.nh[t]=e;const k=Object.keys(state.nh).sort();while(k.length>60)delete state.nh[k.shift()];save()}renderNs()}
+function nStreak(f){let n=0;for(let i=0;i<60;i++){const e=(state.nh||{})[ago(i)];if(e&&f(e))n++;else if(i>0)break}return n}
+function nMile(key,n){state.nmr=state.nmr||{};if(n<(state.nmr[key]||0))state.nmr[key]=0;[[3,20],[7,50],[14,100],[30,200]].forEach(m=>{if(n>=m[0]&&(state.nmr[key]||0)<m[0]){state.nmr[key]=m[0];state.gold+=m[1];save();toast((key==='w'?'Hydration':'Protein')+' streak: '+m[0]+' days · +'+m[1]+' gold')}})}
+function renderNs(){const w=nStreak(e=>e.w>=8),p=nStreak(e=>e.p>=80);nMile('w',w);nMile('p',p);$('nstreak').innerHTML=`<small>STREAKS · bonus gold at 3, 7, 14 and 30 days</small><div class="grid mt-1"><div class="stat"><b>💧 ${w}</b><span>Days with 8 glasses</span></div><div class="stat"><b>🥩 ${p}</b><span>Days with 80 g protein</span></div></div>`}
+
+/* weekly report card */
+function renderRc(){const a=wk(0),b=wk(7),nh=state.nh||{};let nd=0,wd=0,have=0;for(let i=0;i<7;i++){const e=nh[ago(i)];if(e){have++;if(e.m>0)nd++;if(e.w>=8)wd++}}
+ const dp=n=>n>=6?4:n>=5?3:n>=3?2:n>=1?1:0,cp=a.c>=5?4:a.c>=4?3:a.c>=3?2:a.c>=1?1:0,r=b.r?a.r/b.r:null,vp=r==null?(a.r>0?2:0):r>=1.1?4:r>=.95?3:r>=.75?2:a.r>0?1:0,f=state.fm||{},ft=(f.S||0)+(f.A||0)+(f.B||0)+(f.C||0),fp=ft?((f.S||0)*4+(f.A||0)*3+(f.B||0)*2+(f.C||0))/ft:null;
+ const R=[['CONSISTENCY',a.c+' of 7 days trained',cp],['VOLUME',a.r+' reps'+(b.r?' · last week '+b.r:''),vp],['FORM','All-time average',fp],['NUTRITION',have?nd+' of 7 days logged':'Starts once you log food',have?dp(nd):null],['HYDRATION',have?wd+' of 7 days at 8 glasses':'Starts once you log water',have?dp(wd):null]];
+ const ps=R.map(x=>x[2]).filter(x=>x!=null),ov=ps.length?gradeP(ps.reduce((x,y)=>x+y,0)/ps.length):'—';
+ $('rcard').innerHTML=R.map(x=>{const l=x[2]==null?'—':gradeP(x[2]);return`<div class="rrow"><div><b>${x[0]}</b><small>${x[1]}</small></div><span class="gl ${gcls(l)}">${l}</span></div>`}).join('')+`<div class="rrow"><div><b>OVERALL</b></div><span class="gl ${gcls(ov)}">${ov}</span></div>`}
+
+/* monthly event */
+const EVG=[['Chest','Forge the Breastplate'],['Back','Iron Spine'],['Legs','Titan Stride'],['Core','Core Furnace'],['Shoulders','Atlas Month'],['Arms','Armory Month']],EV_N=300;
+function evNow(){const d=new Date(),m=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),g=EVG[d.getMonth()%6];return{id:'ev'+m.replace('-',''),m,g:g[0],name:g[1]+' ('+g[0]+')',left:new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate()}}
+const gReps=g=>Object.keys(EX).filter(n=>EX[n][0]===g).reduce((a,n)=>a+(state.sk[n]||0),0);
+function renderEv(){const e=evNow();if(!state.ev||state.ev.m!==e.m)state.ev={m:e.m,base:gReps(e.g),done:!!state.badges[e.id]};const p=Math.max(0,gReps(e.g)-state.ev.base);
+ if(p>=EV_N&&!state.ev.done){state.ev.done=true;state.gold+=250;state.badges[e.id]=dk();state.evn=state.evn||{};state.evn[e.id]=e.name;save();setTimeout(()=>fx('Event cleared',e.name),400);toast('+250 gold and a new title')}
+ Object.entries(state.evn||{}).forEach(([id,n])=>{if(!BG.some(b=>b[0]===id))BG.push([id,n,'Month event cleared',()=>false])});
+ $('evcard').innerHTML=`<div class="card ${state.ev.done?'cy ok':''} mt-3"><span class="tag r">EVENT</span> <b>${esc(e.name)}</b><br><small>${state.ev.done?'Cleared. New event next month.':EV_N+' '+e.g+' reps this month · '+e.left+' day'+(e.left===1?'':'s')+' left'}</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${Math.min(100,p/EV_N*100)}%"></i></div><small>${Math.min(p,EV_N)}/${EV_N}</small></div><small class="db mt-1">Reward: 🪙250 and a title</small></div>`}
+
+/* 7-day rival challenge (codes only, no server) */
+const dAdd=(s0,k)=>{const q=s0.split('-').map(Number);return dk(new Date(q[0],q[1]-1,q[2]+k))};
+const chReps=c=>{let r=0;for(let k=0;k<7;k++)r+=(state.hist[dAdd(c.s,k)]||{}).reps||0;return r};
+function renderCh(){const c=state.ch,el=$('chal'),sg=JSON.stringify([c,c?chReps(c):0,dk()]);if(el.dataset.sg===sg)return;el.dataset.sg=sg;
+ if(!c){el.innerHTML='<div class="card mt-3"><b>7-day challenge</b><br><small>Total reps over 7 days, head to head. Start one and send your friend the code, or paste theirs.</small><div class="row mt-2"><button class="btn sm red" data-a="chnew">Start challenge</button></div><div class="row"><input id="chin" placeholder="Paste challenge code"><button class="btn red" data-a="chjoin" style="flex:none;width:90px">Join</button></div></div>';return}
+ const e=dAdd(c.s,6),over=dk()>e,mine=chReps(c);let dn=0;for(let k=0;k<7;k++)if(dAdd(c.s,k)<=dk())dn++;
+ let h=`<div class="card mt-3"><span class="tag r">CHALLENGE</span> <b>${over?'Final':'Day '+dn+' of 7'}</b><br><div class="grid mt-2"><div class="stat"><b>${mine}</b><span>Your reps</span></div><div class="stat"><b>${c.t!=null?c.t:'?'}</b><span>Rival reps</span></div></div>`;
+ if(!over)h+=`<small class="db mt-2">Ends ${e}. Everything you count from ${c.s} adds up.</small><div class="row mt-2"><button class="btn sm" data-a="chcode">Share code</button><button class="btn sm" data-a="chend">Cancel</button></div>`;
+ else{h+='<div class="row mt-2"><button class="btn sm" data-a="chres">Share my result</button></div>';
+  if(c.t==null)h+='<div class="row"><input id="chrin" placeholder="Paste rival result"><button class="btn red" data-a="chcmp" style="flex:none;width:90px">Compare</button></div>';
+  else{const w=mine>c.t,t=mine===c.t;if(!c.paid){c.paid=1;state.gold+=w?100:30;save();toast(w?'Challenge won! +100 gold':'Challenge done. +30 gold')}h+=`<div class="card ${w?'cy ok':''} mt-2"><b>${w?'VICTORY':t?'DRAW':'DEFEAT'}</b><br><small>${w?'You out-repped your rival.':t?'Dead even.':'Close it out next time.'}</small></div><div class="row mt-2"><button class="btn sm" data-a="chend">New challenge</button></div>`}}
+ el.innerHTML=h+'</div>'}
+
+/* ascension */
+function renderPres(){const L=state.level>=51;$('presc').innerHTML=(state.pres?`<div class="card cy"><span class="tag r">ASCENDED</span> <b>★ ${state.pres}</b><br><small>+${state.pres*10}% XP from every quest, permanently.</small></div>`:'')+(L?'<div class="card danger"><b>Ascend</b><br><small>You reached S-Rank. Ascending sends you back to level 1 and earns a permanent ★ (+10% XP). You keep gold, shop items, badges, shadows, skills, records and every unlocked skill.</small><br><button class="btn red mt-2" data-a="ascend">Ascend ★</button></div>':'')}
+
+var V8=0;function renderV8(){if(!V8)return;renderRR();renderEv();renderPres();renderCh();renderRc();renderPh();renderNs()}
+
+Object.assign(act,{
+ exh:b=>showHx(b.dataset.v),
+ xhx:()=>$('hxm').classList.remove('on'),
+ phadd:()=>$('phf').click(),
+ phdel:b=>{if(!confirm('Delete this photo?'))return;phSet(phGet().filter(x=>String(x.t)!==b.dataset.v));renderPh()},
+ chnew:()=>{state.ch={i:Date.now().toString(36),s:dk()};save();render();act.chcode()},
+ chcode:()=>{const c=state.ch;if(!c)return;const t='ASCH-'+btoa(JSON.stringify({i:c.i,s:c.s}));if(navigator.share)navigator.share({text:t}).catch(()=>{});else if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Challenge code copied'),()=>toast(t))}else toast(t)},
+ chjoin:()=>{try{const o=JSON.parse(atob($('chin').value.trim().replace(/^ASCH-/,'')));if(typeof o.i!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(o.s))throw 0;state.ch={i:o.i,s:o.s};save();render();toast('Challenge joined')}catch(e){toast('That code is not valid')}},
+ chres:()=>{const c=state.ch;if(!c)return;const t='ASCR-'+btoa(JSON.stringify({i:c.i,r:chReps(c)}));if(navigator.share)navigator.share({text:t}).catch(()=>{});else if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('Result copied'),()=>toast(t))}else toast(t)},
+ chcmp:()=>{try{const o=JSON.parse(atob($('chrin').value.trim().replace(/^ASCR-/,'')));if(typeof o.r!=='number'||o.i!==state.ch.i)throw 0;state.ch.t=o.r|0;save();render()}catch(e){toast('That result is not for this challenge')}},
+ chend:()=>{if(state.ch&&dk()<=dAdd(state.ch.s,6)&&!confirm('Cancel this challenge?'))return;state.ch=null;save();render()},
+ ascend:()=>{if(state.level<51)return;if(!confirm('Ascend? You go back to level 1 and gain a permanent ★ (+10% XP). Your gold, items, badges, shadows, skills and records stay.'))return;state.pres=(state.pres||0)+1;state.level=1;state.xp=0;state.trial=null;save();render();fx('Ascended','★ '+state.pres)}
+});
+V8=1;renderV8();
+
+function renderRR(){state.rrg=state.rrg||{};const nw=[];RRT.forEach(t=>{const ok=t.pres?(state.pres||0)>=t.pres:rIdx()>=t.ri;if(ok&&!state.rrg[t.id]){state.rrg[t.id]=1;t.keys.forEach(k=>state.owned[k]=1);nw.push(t)}});
+ if(nw.length){save();if(nw.length===1)setTimeout(()=>fx('Reward unlocked',nw[0].n),600);else toast('New rank rewards unlocked. See Archive.')}
+ const nxt=RRT.find(t=>!t.pres&&rIdx()<t.ri);
+ $('rrlist').innerHTML='<p class="sub">Every rank unlocks a Monarch set. They can’t be bought, so rank up to earn them, then equip them in the Shop.</p>'+RRT.map(t=>{const u=!!state.rrg[t.id],lv=t.pres?'Ascend once':'Level '+t.lv,left=!u&&!t.pres&&rIdx()<t.ri?Math.max(0,t.lv-state.level):0;return`<div class="card ${u?'cy':''}" style="padding:10px 14px;${u?'':'opacity:.6'}"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b style="font-family:Anton,Impact,sans-serif;letter-spacing:.05em">${u?'':'🔒 '}${t.l}</b><small>${u?'UNLOCKED':lv+(left?' · '+left+' to go':'')}</small></div><b style="display:block;margin-top:2px">${esc(t.n)}</b><small>${t.items.map(esc).join(' · ')}</small></div>`}).join('')+'<div class="row mt-2"><button class="btn" data-a="shopgo">Open Shop</button></div>'}
 </script>
 </body>
 </html>
