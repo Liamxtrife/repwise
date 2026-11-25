@@ -11,7 +11,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(ellipse at 92% 4%,rgba(240,43,79,.19),transparent 34rem),radial-gradient(ellipse at 0 48%,rgba(82,217,255,.09),transparent 28rem),#08090f;background-attachment:fixed;color:var(--ink);font:400 16px/1.5 Sora,system-ui,sans-serif;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:28px 28px}
-main{max-width:480px;margin:0 auto;padding:18px 18px calc(96px + env(safe-area-inset-bottom,0px))}
+main{max-width:480px;margin:0 auto;padding:18px 18px calc(110px + env(safe-area-inset-bottom,0px))}
 h1,.hd,h3,.big,.logo,nav button,.lvchip{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.05em}
 h1{font-size:2rem;display:inline-block;transform:skew(-8deg);background:linear-gradient(105deg,#f02b4f,#b9143c);padding:2px 16px 4px;margin:6px 0 10px;box-shadow:5px 5px 0 var(--b);letter-spacing:.065em}
 h3{margin:0 0 6px;font-size:1.1rem}
@@ -259,6 +259,39 @@ section.enter{animation:wipe .35s ease-out}
 .pva{transform-box:fill-box;transform-origin:center;animation:pvp 2.6s ease-in-out infinite}.pva2{transform-box:fill-box;transform-origin:center;animation:pvq 2.2s ease-in-out infinite}.pvw{transform-box:fill-box;transform-origin:50% 100%;opacity:0;animation:pvw 2.6s ease-in infinite}.pvf{animation:pvb 3.2s ease-in-out infinite}.pvc{transform-box:fill-box;transform-origin:50% 0;animation:pvc 3s ease-in-out infinite}.pvr{animation:pvk 1s steps(2) infinite}.pvscan{animation:pvscan 3s linear infinite}.pvspin{transform-box:view-box;transform-origin:60px 70px;animation:pvspin 18s linear infinite}
 @keyframes pvp{50%{opacity:.6;transform:scale(1.07)}}@keyframes pvq{50%{opacity:.5;transform:scale(1.12)}}@keyframes pvw{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.9}100%{opacity:0;transform:translateY(-78px) scale(1.15)}}@keyframes pvb{50%{transform:translateY(-2.5px)}}@keyframes pvc{50%{transform:skewX(-3.5deg)}}@keyframes pvk{50%{opacity:.15}}@keyframes pvscan{from{transform:translateY(4px)}to{transform:translateY(134px)}}@keyframes pvspin{to{transform:rotate(360deg)}}
 
+.dgk u{position:absolute;left:-14px;right:-14px;top:88%;height:3px;background:#ffd24a;box-shadow:0 0 8px #ffd24a;text-decoration:none}
+.dgk u::after{content:"S";position:absolute;right:-14px;top:-8px;font:.6rem Anton,Impact,sans-serif;color:#ffd24a}
+.dg.sr .dgk u{background:#fff;box-shadow:0 0 12px #ffd24a}
+.tabo{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,7,12,.86);text-align:center}
+.tabo.tw .big{color:#ff4263}.tabo.tr .big{color:#52d9ff}
+/* ===== v5 polish: fitted buttons, glow, opaque neon nav ===== */
+.row .btn{font-size:clamp(.72rem,3.5vw,.92rem);padding:11px 4px;letter-spacing:.02em;overflow:visible;text-overflow:clip}
+.row .btn.sm{font-size:clamp(.68rem,3.2vw,.82rem);padding:6px 4px}
+#camb{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+#camb::before{animation:camglow 1.8s ease-in-out infinite}
+@keyframes camglow{50%{box-shadow:inset 0 0 0 1px #ff8298,3px 3px 0 #52d9ff,0 0 22px #f02b4f99}}
+#tabb::before{background:linear-gradient(105deg,#1b2a52,#4a1566);box-shadow:inset 0 0 0 1px #8b4fea,3px 3px 0 #05070c,0 0 14px #8b4fea66}
+.stage{border-color:#52d9ff55;box-shadow:0 0 26px rgba(82,217,255,.12),inset 0 0 40px rgba(240,43,79,.06)}
+.cam{box-shadow:0 0 0 1px #000,0 0 22px rgba(240,43,79,.28)}
+nav{background:linear-gradient(180deg,rgba(10,13,24,.99),#05070d);border-top:2px solid #52d9ff;box-shadow:0 -6px 24px rgba(82,217,255,.22),0 -1px 0 #f02b4f}
+nav button[aria-selected=true]{box-shadow:0 3px 0 var(--b),0 0 18px #f02b4f99}
+.card{box-shadow:0 0 0 1px rgba(82,217,255,.06)}
+.coach{border-left-color:#f02b4f;background:linear-gradient(90deg,#1a0a14,#101827)}
+@media(prefers-reduced-motion:reduce){#camb::before{animation:none}}
+/* ===== zero-scroll camera-top HUD ===== */
+.coach:empty{display:none}
+.coach{margin:8px 0 2px;padding:9px 12px}
+.stage{padding:10px}
+.row .btn{overflow:visible}
+@media(max-width:380px){.row .btn{font-size:.8rem;padding:11px 6px}}
+.dg{right:16px;min-height:0;max-height:76%;overflow:visible}.dgk{min-height:0}
+#today{padding:10px 12px;margin-bottom:8px}
+.row .btn,.row .btn.sm{overflow:visible!important}.row{padding:0 4px}
+.bmini{position:absolute;left:8px;bottom:14px;z-index:4;display:flex;align-items:center;gap:5px;padding:3px 9px 3px 4px;background:#05070cb8;border-left:3px solid #f02b4f;pointer-events:none}.bmini small{font-size:.62rem;line-height:1;white-space:nowrap;max-width:84px;overflow:hidden;text-overflow:ellipsis;color:#ffb3c1}.bmini svg{flex:none}.bmini.hit svg{animation:bhit .4s}
+.bhp{position:absolute;left:0;right:0;bottom:0;height:8px;z-index:4;background:#05070c;border-top:1px solid #f02b4f66;pointer-events:none}.bhp i{display:block;height:100%;background:linear-gradient(90deg,#f02b4f,#ff8298);box-shadow:0 0 10px #f02b4f;transition:width .35s}
+.readout{left:auto;right:8px;bottom:16px}
+.idle{top:61%;bottom:auto;left:56%;translate:-50% -50%;max-width:86%;animation:idlep 1.6s ease-in-out infinite}@keyframes idlep{50%{box-shadow:4px 4px 0 var(--a),8px 8px 0 #000,0 0 24px #fff8}}
+@media(prefers-reduced-motion:reduce){.idle{animation:none}}
 /* ===== UI cleanup ===== */
 .trainhead{display:flex;align-items:center;gap:12px}
 .trainhead h1{flex:none;margin:6px 0 10px}
@@ -300,19 +333,20 @@ section.enter{animation:wipe .35s ease-out}
 <main>
 <section id="train">
   <div class="trainhead"><h1>Train</h1><div class="hud" id="hud"></div></div>
-  <div id="nxt"></div><div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
   <div class="card cy" id="today"></div>
-  <details class="fold" id="fold-prog"><summary class="hd">Program <small id="progname"></small></summary><div id="plansbody"></div><div id="restcard"></div></details>
-  <div class="card cy hide" id="rest" style="text-align:center"><small>REST</small><div class="big" id="restn" style="font-size:3rem">0:00</div><div style="display:flex"><div class="xp"><i id="restb2"></i></div></div><small id="restx"></small><br><button class="btn sm" style="margin-top:8px" data-a="skiprest">Skip rest</button></div>
-  <select id="exsel" aria-label="Pick any exercise"></select>
-  <div class="card stage" style="margin-top:12px">
-    <div class="cam" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#0b0f1acc"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><b></b></div></div></div>
+  <div class="card stage" style="margin-top:6px">
+    <div class="cam" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#0b0f1acc"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="tabo hide" id="tabo"></div><div class="bmini" id="bmini"></div><div class="bhp" id="bhp"><i></i></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><u></u><b></b></div></div></div>
     <div class="coach" id="coach"></div>
     <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
     <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
     <div id="wsug"></div>
+    <div class="row"><button class="btn" id="tabb" data-a="tab">Interval mode: 40s / 20s</button></div>
     <div class="row"><button class="btn sm" id="restb" data-a="restc"></button><button class="btn sm" id="sensb" data-a="sens"></button><button class="btn sm" id="undob" data-a="undo">Undo set</button></div>
   </div>
+  <div class="card cy hide" id="rest" style="text-align:center"><small>REST</small><div class="big" id="restn" style="font-size:3rem">0:00</div><div style="display:flex"><div class="xp"><i id="restb2"></i></div></div><small id="restx"></small><br><button class="btn sm" style="margin-top:8px" data-a="skiprest">Skip rest</button></div>
+  <div id="nxt"></div><div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
+  <select id="exsel" aria-label="Pick any exercise"></select>
+  <details class="fold" id="fold-prog"><summary class="hd">Program <small id="progname"></small></summary><div id="plansbody"></div><div id="restcard"></div></details>
 </section>
 
 <section id="hero" class="hide">
@@ -331,13 +365,11 @@ section.enter{animation:wipe .35s ease-out}
   <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
   <details class="fold" id="fold-shadows" open><summary class="hd"><span id="shtitle">Vanguard roster</span> <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
   <details class="fold" id="fold-rival"><summary class="hd">Rival</summary><div id="rival"></div></details>
+  <details class="fold" id="fold-loadout" open><summary class="hd">Loadout</summary><div class="card" id="loadout"></div></details>
   <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
 </section>
 
-<section id="checkin" class="hide"><h1>Check-in</h1>
-  <p class="sub">Camera not tracking well? Tick off today’s split exercises or mark quests done here. Manual sets count for quests, your streak and a quarter of boss damage, but not for records. Quests give XP only once a day.</p>
-  <div id="cklist"></div>
-</section>
+
 
 <section id="shop" class="hide"><h1>Shop</h1><div class="gold"><span>🪙</span><b id="goldct"></b><small>Earn gold from reps, quests, chests and bosses</small></div><div id="shoplist"></div></section>
 
@@ -364,7 +396,7 @@ section.enter{animation:wipe .35s ease-out}
   <div class="card"><div class="grid" style="margin:0 0 10px"><div class="stat"><b id="fk">0</b><span>Calories eaten</span></div><div class="stat"><b id="fl">—</b><span>Remaining</span></div><div class="stat"><b id="fp">0 g</b><span>Protein</span></div><div class="stat"><b id="fw">0 / 8</b><span>Water glasses</span></div></div>
     <label><small>Daily calorie goal</small><input id="fg" type="number" inputmode="numeric"></label>
     <div class="row"><button class="btn" data-a="w" data-v="-1">− Water</button><button class="btn" data-a="w" data-v="1">+ Water</button></div></div>
-  <h2 class="hd">1-tap meals</h2><div class="grid" id="presets"></div>
+  <h2 class="hd">Quick add</h2><div class="chips" id="qchips"></div><h2 class="hd">Recent meals</h2><div class="grid" id="presets"></div>
   <div class="card"><h3>Add food</h3><input id="fn" maxlength="60" placeholder="Food name"><div class="row"><input id="fc" type="number" inputmode="numeric" placeholder="kcal"><input id="fpr" type="number" inputmode="numeric" placeholder="protein g"></div><button class="btn red" style="margin-top:10px" data-a="addfood">Add</button></div>
   <h2 class="hd">Today’s meals</h2><div id="flist"></div>
 </section>
@@ -390,7 +422,7 @@ section.enter{animation:wipe .35s ease-out}
 <nav aria-label="Main">
 <button data-a="go" data-v="train" aria-selected="true">Train</button><button data-a="go" data-v="hero">Status</button><button data-a="go" data-v="food">Food</button><button data-a="go" data-v="prog">Progress</button>
 </nav>
-<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small id="pathn"></small><button class="btn" data-a="menu">Close</button></div></div>
+<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn" id="lkb2" data-a="lktog">Hardcore Path: OFF</button><button class="btn" id="pulseb" data-a="pulse">Boss Pulse: OFF</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small id="pathn"></small><button class="btn" data-a="menu">Close</button></div></div>
 <div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" style="width:100%"></i></div><div class="aoa-r" id="aoar"></div></div>
 <div class="sfx" id="sfx"><div class="band"></div><div class="tx"><div id="sfxt"></div><small id="sfxs"></small></div></div>
 <div class="modal" id="gd"><div class="card" id="gdb" style="width:100%;max-width:380px"></div></div>
@@ -692,7 +724,7 @@ const pm=x=>({p:x.path,h:x.name});
 let cb=null,pf='shadow';
 const prOf=()=>state.prog&&PROGS.find(p=>p.id===state.prog.id);
 function syncProg(){const p=state.prog,pr=prOf(),t=dk();if(!p||!pr){state.prog=null;return}if(p.sd!==t){if(p.done)p.day=(p.day+1)%pr.days.length;p.done=false;p.sets={};p.sd=t}}
-function planToday(){syncProg();const pr=prOf();if(!pr)return null;const d=pr.days[state.prog.day%pr.days.length];return{pr,name:d.name,items:d.ex.map(e=>({...e,done:state.prog.sets[e.n]||0}))}}
+function planToday(){syncProg();const pr=prOf();if(!pr)return null;const d=pr.days[state.prog.day%pr.days.length],sw=state.swp&&state.swp.d===dk()?state.swp.m:{},ev=state.en&&state.en.d===dk()?state.en.v:'normal',rm=ev==='peak'?1.15:ev==='sore'?.8:1;return{pr,name:d.name,items:d.ex.map(e=>{const n=sw[e.n]||e.n;return{...e,n,o:e.n,r:Math.max(1,Math.round(e.r*rm)),s:ev==='sore'&&e.s>2?e.s-1:e.s,done:state.prog.sets[n]||0}})}}
 
 /* ===== LEVELS: slow, and gated by finishing every quest ===== */
 const need=l=>150+20*l+2*l*l;
@@ -702,7 +734,7 @@ const allDone=()=>state.quests.length>0&&state.quests.filter(q=>!q.bonus).every(
 function tryLevel(){if(!allDone())return;const r0=rankOf(state.level);let up=0;
  while(state.xp>=need(state.level)){const nx=state.level+1,tr=TRIALS[nx];
   if(tr&&!state.gate[nx]){if(!state.trial||state.trial.lv!==nx){state.trial={lv:nx,ex:tr[0],n:tr[1]};fx('RANK GATE','A trial awaits');beep(220,.5,'sawtooth');vib([120,60,120])}break}
-  state.xp-=need(state.level);state.level++;state.sp+=3;up=1;if([11,21,31,41].includes(state.level))state.hpick=(state.hpick||0)+1}
+  state.xp-=need(state.level);state.level++;if(state.level%5===0)setTimeout(()=>fx('MILESTONE PERK','+5 STR · AGI · VIT'),1200);up=1;if([11,21,31,41].includes(state.level))state.hpick=(state.hpick||0)+1}
  if(up){luFx(r0!==rankOf(state.level));if(state.hpick>0&&state.hero)setTimeout(heroModal,5200)}save()}
 const MSG={E:'THE WEAKEST HUNTER RISES',D:'YOU ARE NO LONGER A BEGINNER',C:'THE GATE OPENS',B:'THE SHADOWS STIR',A:'NONE CAN STAND IN YOUR WAY',S:'ARISE. THE MONARCH AWAKENS'},PT={E:0,D:14,C:8,B:16,A:36,S:52};
 function luFx(promo){const r=rankOf(state.level),el=$('lu');el.dataset.r=r;el.style.removeProperty('--c');$('lut').textContent=promo?'RANK UP':'LEVEL UP';$('lun').textContent='LV '+state.level+' · '+r+'-RANK';$('lum').textContent=MSG[r];
@@ -716,7 +748,7 @@ function genQuests(){const t=dk();if(state.qDate===t)return;state.qDate=t;syncPr
  BON=[{n:'Bonus: new record',d:'Beat a personal record today',t:1,k:'pr'},{n:'Bonus: go heavy',d:'Finish a set with weight above 0 kg',t:1,k:'wt'},{n:'Bonus: new skill',d:'Finish a set of a skill you have never trained',t:1,k:'new'},{n:'Bonus: hydrate',d:'Drink 8 glasses of water',t:1,k:'water'},{n:'Bonus: eat smart',d:'Log a meal in the Food tab',t:1,k:'meal'}][dn%5];
  state.quests=[{n:Q1[0],d:'Count '+Q1[1]+' reps',t:Q1[1],p:0,xp:15,k:'reps'},{n:'Iron discipline',d:'Finish 3 sets',t:3,p:0,xp:25,k:'sets'},
  pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),p:0,xp:60,k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,p:0,xp:60,k:'sets'}];
- if(state.restDays.includes(new Date().getDay()))state.quests.push({n:'Recovery: hydrate',d:'Drink 8 glasses of water',t:1,p:0,xp:10,k:'water',bonus:1,rec:1},{n:'Recovery: protein',d:'Log 80 g of protein in Food',t:1,p:0,xp:10,k:'prot',bonus:1,rec:1},{n:'Recovery: mobility',d:'Stretch or walk for 10 minutes, then tick it in Check-in',t:1,p:0,xp:10,k:'mob',bonus:1,rec:1});
+ if(state.restDays.includes(new Date().getDay()))state.quests.push({n:'Recovery: hydrate',d:'Drink 8 glasses of water',t:1,p:0,xp:10,k:'water',bonus:1,rec:1},{n:'Recovery: protein',d:'Log 80 g of protein in Food',t:1,p:0,xp:10,k:'prot',bonus:1,rec:1},{n:'Recovery: mobility',d:'Stretch or walk for 10 minutes, then tick it on the Status tab',t:1,p:0,xp:10,k:'mob',bonus:1,rec:1});
  state.quests.push(Object.assign(BON,{p:0,xp:15,bonus:1}));save();if(fr)toast('Streak freeze used. Your streak is safe.')}
 function refreshQuests(){const q=state.quests[2];if(!q||q.p>=q.t)return;const pt=planToday();
  Object.assign(q,pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,k:'sets'});q.p=Math.min(q.p,q.t-1);save()}
@@ -724,12 +756,12 @@ function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q
 
 /* ===== UI ===== */
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
-const SEC=['train','hero','food','prog','skills','checkin','shop'];
+const SEC=['train','hero','food','prog','skills','shop'];
 function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classList.add('enter');setTimeout(()=>$(s).classList.remove('enter'),400);document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===s));scrollTo(0,0);render();if(s==='hero')$('avt').appendChild($('fig'));else if(s==='skills')$('figslot').appendChild($('fig'));if((s==='skills'||s==='hero')&&!figOn){figOn=true;requestAnimationFrame(figLoop)}}
 function render(){syncPassive();genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
 const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
- $('top').textContent='LV '+l+' '+r;$('pathn').textContent='Path: '+(state.lock?'Locked. Skills unlock as your rank rises.':'Open. Every skill is available.');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
+ $('top').textContent='LV '+l+' '+r;$('lkb2').textContent='Hardcore Path: '+(state.lock?'ON':'OFF');$('pulseb').textContent='Boss Pulse: '+(state.pulse?'ON':'OFF');$('pathn').textContent='Path: '+(state.lock?'Locked. Skills unlock as your rank rises.':'Open. Every skill is available.');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
  $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP · 🪙${state.gold}</small>`;
  $('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(jc.ok&&jc.cls!=='Hunter'?' · '+jc.name:'')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';
  $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
@@ -739,16 +771,16 @@ const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locke
 
  $('stats').innerHTML=`<div class="srow"><b>STR</b><div class="xp"><i style="width:${Math.min(100,l*2)}%"></i></div><span>${l}${bn('STR')}</span></div><div class="srow"><b>AGI</b><div class="xp"><i style="width:${Math.min(100,state.streak*5)}%"></i></div><span>${streakDisplay}${bn('AGI')}</span></div><div class="srow"><b>VIT</b><div class="xp"><i style="width:${Math.min(100,tot/200)}%"></i></div><span>${tot}${bn('VIT')}</span></div><div class="srow"><b>JOB</b><div class="xp"><i style="width:${jc.share}%"></i></div><span>${jc.ok?esc(jc.name):'Unclassed'}</span></div>`;
  $('stats').innerHTML+=statPts();
- $('quests').innerHTML=state.quests.map(q=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}</div>`).join('');
+ $('quests').innerHTML=state.quests.map((q,i)=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}${q.p>=q.t||(q.bonus&&!q.rec)?'':`<button class="btn sm" style="margin-top:8px" data-a="qdone" data-v="${i}">${armQ===i?'Tap again to confirm':'Mark done'}</button>`}</div>`).join('');
  $('ladder').innerHTML=RK.map((x,i)=>`<div class="card ${x[1]===r?'cy':''}" style="padding:10px 14px"><b style="font-family:Anton,Impact,sans-serif">${x[1]}-RANK</b> <small>Level ${x[0]}${RK[i+1]?'–'+(RK[i+1][0]-1):'+'}</small></div>`).join('');
- renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderRfx();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
+ renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderLoadout();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderRfx();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
 function renderToday(){const pt=planToday();
  if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="openprog">Choose a program</button>`;return}
  const fin=state.prog.done,wd=new Date().getDay(),isR=state.restDays.includes(wd)&&!fin;let nxd='';if(isR){for(let i=1;i<=7;i++){const k=(wd+i)%7;if(!state.restDays.includes(k)){nxd=i===1?'tomorrow':DN[k];break}}}
- $('today').innerHTML=`<h3>Today: ${pt.pr.name} · ${pt.name}</h3>${fin?'<span class="tag g">WORKOUT COMPLETE</span><small> Rest up. Next session tomorrow.</small>':''}${isR?'<span class="tag">REST DAY</span><small> '+(nxd?'Next session '+nxd+'. ':'')+'Train anyway if you like.</small>':''}<div class="chips" style="margin:10px 0 0">${pt.items.map(i=>`<button class="chip" aria-pressed="${i.n===state.ex}" data-a="load" data-v="${esc(i.n)}" data-r="${i.r}">${i.done>=i.s?'✓ ':''}${esc(i.n.replace(' (sec)',''))} ${i.done}/${i.s}</button>`).join('')}</div>`}
+ $('today').innerHTML=`<h3>Today: ${pt.pr.name} · ${pt.name}</h3>${fin?'<span class="tag g">WORKOUT COMPLETE</span><small> Rest up. Next session tomorrow.</small>':''}${isR?'<span class="tag">REST DAY</span><small> '+(nxd?'Next session '+nxd+'. ':'')+'Train anyway if you like.</small>':''}<div class="chips" style="margin:10px 0 0">${pt.items.map(i=>`<button class="chip" aria-pressed="${i.n===state.ex}" data-a="${state.man?'mtap':'load'}" data-v="${esc(i.n)}" data-r="${i.r}">${i.done>=i.s?'✓ ':state.man?'+1 ':''}${esc(i.n.replace(' (sec)',''))} ${i.done}/${i.s}</button>`).join('')}</div><div class="chips" style="margin:2px 0 0">${[['peak','Peak'],['normal','Normal'],['sore','Sore']].map(x=>`<button class="chip" aria-pressed="${(state.en&&state.en.d===dk()?state.en.v:'normal')===x[0]}" data-a="enr" data-v="${x[0]}">${x[1]}</button>`).join('')}<button class="chip" aria-pressed="${!!state.man}" data-a="mman">Manual: ${state.man?'ON':'OFF'}</button><button class="chip" data-a="swap" aria-label="Swap exercise">⇄ Swap</button></div>`}
 function renderTrain(){buildSel();state.lw=state.lw||{};if(renderTrain.last!==state.ex){if(renderTrain.last===undefined){if(state.lw[state.ex]===undefined)state.lw[state.ex]=state.kg}else state.kg=state.lw[state.ex]||0;renderTrain.last=state.ex}const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps')+(state.pr[state.ex]?' · best '+state.pr[state.ex].r:'');
  $('arc').style.strokeDashoffset=641-641*Math.min(1,cur/state.target);$('kgb').textContent='Weight: '+W(state.kg);$('undob').disabled=!undoSnap;$('restb').textContent='Rest: '+(state.restS?state.restS+'s':'Off');$('sensb').textContent='Detect: '+['Easy','Normal','Strict'][state.sens];$('tgt').textContent='Target: '+state.target;$('exsel').value=state.ex;renderWsug();
- if(!tracking)$('coach').innerHTML=`<b>${esc(state.ex)}</b>: 1) Prop your phone up. 2) Step back so your whole body is in frame. Front, side or back all work. 3) Tap Start tracking. Reps are counted by the camera only. Move with control, every rep is graded S to C on depth and tempo. Five clean reps in a row start a combo that multiplies boss damage. Stop if anything hurts.`}
+ if(!tracking)$('coach').innerHTML=`<b>${esc(state.ex)}</b> · Prop your phone up, step back until your whole body is in frame, then hit Start. Stop if anything hurts.`}
 function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>`<option>${esc(n)}</option>`).join('')}</optgroup>`).join('');
  $('plansbody').innerHTML=`<div class="card cy"><h3>Custom split</h3><label><small>Program name</small><input data-f="name" maxlength="30" value="${esc(cb.name)}"></label>
  <small style="display:block;margin-top:10px">Your days</small><div class="chips" style="margin-top:6px">${cb.days.map((x,i)=>`<button class="chip" aria-pressed="${i===cb.d}" data-a="cbday" data-v="${i}">${esc(x.name)}</button>`).join('')}${cb.days.length<7?'<button class="chip" data-a="cbaddday">+ Day</button>':''}</div></div>
@@ -773,9 +805,10 @@ function renderProg(){const h=state.hist[dk()]||{reps:0},N=state.rng||7;$('p1').
  const e=Object.entries(state.pr);$('prl').innerHTML=e.length?e.map(([n,x])=>`<div class="item"><div><b>${esc(n.replace(' (sec)',''))}</b></div><span>${x.r}${EX[n]&&EX[n][1]==='hold'?' sec':' reps'}${x.kg?' × '+W(x.kg):''}</span></div>`).join(''):'<small>No records yet. Finish a set to set your first.</small>';renderForm();renderCal();renderBW()}
 function renderForm(){const f=state.fm,t=(f.S||0)+(f.A||0)+(f.B||0)+(f.C||0),col={S:'#f02b4f',A:'#ffb02e',B:'#52d9ff',C:'#9aa3b8'};
  $('formc').innerHTML=t?['S','A','B','C'].map(l=>{const n=f[l]||0;return`<div class="srow"><b>${l}</b><div class="xp"><i style="width:${Math.round(n/t*100)}%;background:${col[l]};box-shadow:none"></i></div><span>${n}</span></div>`}).join('')+`<small style="display:block;margin-top:8px">Clean rate ${Math.round(((f.S||0)+(f.A||0))/t*100)}% · Best combo ${state.bc||0}</small>`:'<small>Start the camera and every rep gets graded S to C on depth and tempo.</small>'}
-const PRE=[['Chicken & Rice',450,38],['Eggs & Toast',320,18],['Protein Shake',220,30],['Oats & Banana',350,12]];
-$('presets').innerHTML=PRE.map((p,i)=>`<button class="btn" data-a="pre" data-v="${i}" style="text-align:left"><b>${p[0]}</b><br><small>${p[1]} kcal · ${p[2]}g P</small></button>`).join('');
-function renderFood(){const f=state.food,k=f.log.reduce((a,x)=>a+x.c,0),p=f.log.reduce((a,x)=>a+x.p,0);$('fk').textContent=k;$('fp').textContent=Math.round(p)+' g';$('fw').textContent=f.water+' / 8';$('fl').textContent=f.goal-k>=0?(f.goal-k)+' kcal':'+'+(k-f.goal)+' over';
+const QK=[['Rice',205,4],['Egg',78,6],['Protein',120,24]];
+function rememberMeal(n,c,p){state.meals=[{n,c,p}].concat((state.meals||[]).filter(x=>x.n.toLowerCase()!==n.toLowerCase())).slice(0,8)}
+function renderQuickFood(){const m=state.meals||[];$('qchips').innerHTML=QK.map((q,i)=>`<button class="chip" data-a="qk" data-v="${i}">+${q[0]}</button>`).join('');$('presets').innerHTML=m.length?m.map((p,i)=>`<button class="btn" data-a="pre" data-v="${i}" style="text-align:left"><b>${esc(p.n)}</b><br><small>${p.c} kcal · ${p.p}g P</small></button>`).join(''):'<div class="card"><small>Meals you add show up here for 1-tap logging next time.</small></div>'}
+function renderFood(){renderQuickFood();const f=state.food,k=f.log.reduce((a,x)=>a+x.c,0),p=f.log.reduce((a,x)=>a+x.p,0);$('fk').textContent=k;$('fp').textContent=Math.round(p)+' g';$('fw').textContent=f.water+' / 8';$('fl').textContent=f.goal-k>=0?(f.goal-k)+' kcal':'+'+(k-f.goal)+' over';
  if(document.activeElement!==$('fg'))$('fg').value=f.goal;
  $('flist').innerHTML=f.log.length?f.log.map(x=>`<div class="card"><div class="item" style="border:0;padding:0"><div><b>${esc(x.n)}</b><span>${x.c} kcal · ${x.p}g protein</span></div><button class="btn sm" data-a="delfood" data-v="${x.id}">Delete</button></div></div>`).join(''):'<div class="card"><small>Nothing logged yet.</small></div>'}
 $('fg').addEventListener('input',e=>{state.food.goal=Math.max(0,+e.target.value||0);save();renderFood()});
@@ -841,7 +874,7 @@ function formOk(ex,L,ar){
  return !(r(s,h)>lim&&r(h,a)>lim)}
 /* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
 function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
-const stB=k=>(state.st&&state.st[k])||0,critDay=()=>Math.floor(Date.now()/864e5)%6===2,xpMul=()=>(1+.02*stB('VIT'))*((state.dxp===dk()||critDay())?2:1);
+const stB=k=>((state.st&&state.st[k])||0)+Math.floor(state.level/5)*5,critDay=()=>Math.floor(Date.now()/864e5)%6===2,xpMul=()=>(1+.02*stB('VIT'))*((state.dxp===dk()||critDay())?2:1);
 const bossPhase=()=>{const b=state.boss,p=b&&b.hp?(b.hp-b.dmg)/b.hp:1;return p>.66?1:p>.33?2:3};
 const bossBonus=g=>{const b=state.boss;return b&&!b.dead&&g&&(g.l==='S'||g.l==='A')?bossPhase()-1:0};
 const BART=['M30 12L38 20 52 12 46 30 48 52H12L14 30 8 12 22 20Z','M16 10H44V26H54V52H6V26H16Z','M30 3L34 14 44 16 46 28 55 33 50 56H10L5 33 14 28 16 16 26 14Z','M4 44Q12 12 30 8Q48 12 56 44L44 36 38 56 30 40 22 56 16 36Z','M16 6L22 16 30 4 38 16 44 6 44 24 38 28 48 56H12L22 28 16 24Z','M8 56V24Q8 5 30 5T52 24V56H42V26Q42 17 30 17T18 26V56Z','M8 56Q6 34 12 14L18 30 22 22 26 34 30 8 34 34 38 22 42 30 48 14Q54 34 52 56Z','M30 8L36 22 57 14 43 31 51 54 30 42 9 54 17 31 3 14 24 22Z','M30 3L53 16V44L30 57 7 44V16Z','M30 5Q46 8 46 24L42 54 30 46 18 54 14 24Q14 8 30 5Z','M30 12L36 5 38 16 49 13 44 24 55 30 44 37 49 48 38 44 30 55 23 44 11 48 16 37 5 30 16 24 11 13 22 16 24 5Z','M30 2L57 30 30 58 3 30Z'],
@@ -853,14 +886,15 @@ function mountArena(){const s=$('arslot');if(!s)return;const b=state.boss,ri=rId
  if(!ARE||ARE.sig!==sig){ARE=document.createElement('div');ARE.className='arena';ARE.sig=sig;
   ARE.innerHTML=`<div class="pv ar-hero" id="arhero" style="--rc:${state.aura?'#'+state.aura:bdef(b).col}">${pvChar({aura:state.aura,g,ri},'arena',true)}</div><div class="ar-vs">VS</div><div class="ar-boss" id="arboss">${bossArt(b,100)}<svg class="sl" viewBox="0 0 100 100" aria-hidden="true"><path d="M12 8L92 92M32 4L96 68" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/></svg></div>`;mountFigs(ARE)}
  s.appendChild(ARE);if(!liveOn){liveOn=true;requestAnimationFrame(liveLoop)}}
-function arenaHit(){['arboss','arhero'].forEach(i=>{const e=$(i);if(e){e.classList.remove('hit');void e.offsetWidth;e.classList.add('hit')}})}
-function renderBoss(){renderBossCore();mountArena()}
+function arenaHit(){['arboss','arhero','bmini'].forEach(i=>{const e=$(i);if(e){e.classList.remove('hit');void e.offsetWidth;e.classList.add('hit')}})}
+function renderMini(){const b=state.boss,e=$('bmini'),h=$('bhp');if(!b||!e)return;e.innerHTML=bossArt(b,40)+`<small>${esc(b.name)}</small>`;h.firstChild.style.width=Math.max(0,(b.hp-b.dmg)/b.hp*100)+'%'}
+function renderBoss(){renderBossCore();mountArena();renderMini()}
 function fl(t,cls){const c=$('cam'),e=document.createElement('div');e.className='fl '+(cls||'');e.textContent=t;e.style.left=(18+Math.random()*45)+'%';c.appendChild(e);setTimeout(()=>e.remove(),900)}
 function repFx(g){let dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0)+Math.floor(state.kg/20)+heroDmg(g);const over=energyOver(),bm=bossMult(g);dm=Math.max(1,Math.round(dm*bm*(1+recBuff())));if(over)dm=Math.max(1,Math.round(dm*.25));if(!over)state.gold+=1+Math.floor(state.kg/20)+(state.gmg===dk()?1:0);hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
  if(bm>1&&cur%4===1)fl('WEAKNESS!','co');else if(bm<1&&cur%3===1)fl('NEEDS S/A FORM','co');else if(over&&cur===1)fl('ENERGY SPENT','co');
  if(g&&g.l==='S'){const c=$('cam');c.classList.remove('shk');void c.offsetWidth;c.classList.add('shk')}
  const o=state.pr[state.ex];if(state.target-cur===1)fl('LAST REP!','co');else if(state.target>=8&&cur===Math.ceil(state.target/2))fl('HALFWAY','co');else if(o&&cur===o.r&&state.kg>=o.kg)fl('MATCHED YOUR BEST','co')}
-function statPts(){return`<div class="item" style="border:0;padding-top:10px"><div><b>Stat points: ${state.sp}</b><span>STR: +1 boss damage per 5 · AGI: shorter rests, longer dungeons · VIT: +2% quest XP each. 3 points per level.</span></div></div><div class="row">${['STR','AGI','VIT'].map(k=>`<button class="btn sm" data-a="sp" data-v="${k}" ${state.sp>0?'':'disabled'}>${k} ${stB(k)} +</button>`).join('')}</div>`}
+function statPts(){const m=Math.floor(state.level/5),nx=(m+1)*5;return`<div class="item" style="border:0;padding-top:10px"><div><b>Milestone perks: ${m*5} to each stat</b><span>Every 5 levels STR, AGI and VIT all rise by 5 automatically. STR: +1 boss damage per 5 · AGI: shorter rests, longer dungeons · VIT: +10% quest XP per perk. Next perk at LV ${nx}.</span></div></div>`}
 const SHOP=[['frz','Streak freeze','Saves a streak (max 2)',150],['dxp','Double XP scroll','Quest XP x2 today',200],['bst','Battle boost','+1 boss damage per rep today',150],['lck','Lucky chest','Random gold or a freeze',250],['gmg','Gold magnet','+1 gold per rep today',200],['au_ffd24a','Gold aura','Figure aura',300],['au_8b4fea','Violet aura','Figure aura',300],['au_55e6b0','Mint aura','Figure aura',300],['au_52d9ff','Cyan aura','Figure aura',300],['au_ff3b5c','Crimson aura','Figure aura',300],['au_ff6bd6','Pink aura','Figure aura',300],['au_a6ff4d','Lime aura','Figure aura',350],['au_dff6ff','Ice aura','Figure aura',400],['au_ff8a3d','Ember aura','Figure aura',500],['au_4d7cff','Royal aura','Figure aura',500],['fr_ffd24a','Gold frame','Camera border',350],['fr_f02b4f','Blood frame','Camera border',350],['fr_52d9ff','Cyan frame','Camera border',350],['fr_8b4fea','Violet frame','Camera border',350],['fr_55e6b0','Mint frame','Camera border',350],['fr_ffffff','White frame','Camera border',450],['fr_ff8a3d','Ember frame','Camera border',500],['ox_cape','Shadow cape','Figure cape (free at C-Rank)',400],['ox_guard','Shoulder guards','Figure armour (free at A-Rank)',800],['ox_crown','Monarch crown','Figure crown (free at S-Rank)',1500],['ox_band','Shadow headband','Headband with trailing tails',200],['ox_scarf','Crimson scarf','Scarf that flows behind you',300],['ox_wrist','Neon wristbands','Glowing wrist bands',350],['ox_boots','Hunter boots','Armoured boots',450],['ox_belt','Champion belt','Gold belt and buckle',700],['ox_blade','Shadow dagger','Dagger held in your hand',900]];
 /* ===== SHOP v3: dark-monarch preview scenes ===== */
 const SHD={frz:'Automatically saves your streak if you miss a training day. You can hold 2.',dxp:'Doubles all quest XP for the rest of today.',gmg:'Every rep drops 1 extra gold until midnight.',bst:'Every rep hits the boss for +1 extra damage until midnight.',lck:'Crack it open for gold or a streak freeze. 5% chance of a 600 gold jackpot.',au:'Dark flames rise around your figure on Status and Skill Tree.',fr:'A neon border around your camera while you train.',ox_band:'A red headband whose tails flutter behind your stickman.',ox_scarf:'A crimson scarf wrapped at the neck with a tail that trails behind.',ox_wrist:'Neon bands on both wrists that follow every arm movement.',ox_boots:'Armoured boots on both feet. They move with every step and squat.',ox_belt:'A gold champion belt that sits on your hips and turns with your body.',ox_blade:'A dagger gripped in your front hand. It swings with the arm.',ox_cape:'A flowing shadow cape. Free at C-Rank, or buy it early.',ox_guard:'Armoured shoulder guards. Free at A-Rank, or buy them early.',ox_crown:'The Monarch crown, mark of S-Rank. Free at S-Rank, or buy it early.'};
@@ -937,8 +971,8 @@ function showGuide(i){gi=Math.max(0,Math.min(GD.length-1,i));const l=gi===GD.len
 function dgSet(drop,amp,hit){
  const e=$('dg');if(!e)return;
  $('dgf').style.height=(Math.min(1.25,drop/amp)/1.25*100)+'%';
- e.classList.toggle('hit',!!hit);
- $('dgl').textContent=hit?'RISE!':'DEPTH'}
+ e.classList.toggle('hit',!!hit);const sr=drop/amp>=1.1;e.classList.toggle('sr',sr);
+ $('dgl').textContent=hit?'RISE!':sr?'S-RANK':'DEPTH'}
 function feed(d,a,now){
  const j=d[1];
  if(j==='twist'){const s=a>20?1:a<-20?-1:0;if(s){if(T.side&&s!==T.side&&now-(T.t||0)>350){T.t=now;rep()}T.side=s}return}
@@ -1018,7 +1052,8 @@ async function loop(){if(!tracking)return;const v=$('vid');if(v.readyState>=2&&!
 let facing='user',WL=null;
 async function wl(on){try{if(on&&navigator.wakeLock){WL=await navigator.wakeLock.request('screen')}else if(WL){await WL.release();WL=null}}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&tracking)wl(1)});
-function cue(m){$('coach').innerHTML='<b>'+m+'</b>';say(m);vib(30)}
+let cueAt=0;function cue(m){$('coach').innerHTML='<b data-cue>'+m+'</b>';cueAt=performance.now();say(m);vib(30)}
+function clearStaleCue(){const c=$('coach');if(!c||!c.innerHTML.startsWith('<b data-cue'))return;const n=performance.now();if(n-cueAt>2200||!tracking||(T&&T.seen!=null&&n-T.seen>800))c.innerHTML=''}
 const LC=document.createElement('canvas');LC.width=LC.height=12;
 function torso(L){const v=$('vid'),w=v.videoWidth,hh2=v.videoHeight;if(!w||[11,12,23,24].some(i=>L[i].visibility<.5))return null;
  try{const x=(L[11].x+L[12].x+L[23].x+L[24].x)/4*w,y=(L[11].y+L[12].y+L[23].y+L[24].y)/4*hh2,s=Math.max(8,Math.min(w,hh2)*.05),sx=Math.max(0,Math.min(w-s,x-s/2)),sy=Math.max(0,Math.min(hh2-s,y-s/2)),cx=LC.getContext('2d',{willReadFrequently:true});
@@ -1054,8 +1089,7 @@ hx:()=>$('hmd').classList.remove('on'),
  lkask:()=>askLock('sure'),
  lkback:()=>askLock(),
  lklock:()=>lkDone(true),
- checkin:()=>{$('drawer').classList.remove('on');go('checkin')},
- qdone:b=>{const i=+b.dataset.v;if(armQ!==i){armQ=i;renderCheckin();setTimeout(()=>{if(armQ===i){armQ=-1;renderCheckin()}},3500);return}
+ qdone:b=>{const i=+b.dataset.v;if(armQ!==i){armQ=i;render();setTimeout(()=>{if(armQ===i){armQ=-1;render()}},3500);return}
   armQ=-1;const q=state.quests[i];if(!q||q.p>=q.t){render();return}const t=dk();
   if(!q.rec)bump();
   if(q.k==='plan'){const pt=planToday();if(pt){pt.items.forEach(x=>state.prog.sets[x.n]=x.s);if(!state.prog.done)state.wo++,state.sup=0;state.prog.done=true}}
@@ -1093,8 +1127,15 @@ hx:()=>$('hmd').classList.remove('on'),
  bwadd:()=>{const v=parseFloat($('bwin').value);if(isNaN(v)){toast('Enter your weight');return}const kg=Math.round((state.unit==='lb'?v/2.2046:v)*100)/100;if(kg<20||kg>400){toast('That number looks off. Check it.');return}
   const a=state.bw,t=dk();if(a.length&&a[a.length-1].d===t)a[a.length-1].kg=kg;else a.push({d:t,kg});if(a.length>400)a.shift();$('bwin').value='';save();renderBW();toast('Weight logged')},
  bwdel:()=>{if(!state.bw.length)return;state.bw.pop();save();renderBW()},
- mset:b=>{const i=+b.dataset.v,all=b.dataset.all==='1',key='m'+i+(all?'a':'');if(armQ!==key){armQ=key;renderCheckin();setTimeout(()=>{if(armQ===key){armQ=-1;renderCheckin()}},3500);return}
+ mset:b=>{const i=+b.dataset.v,all=b.dataset.all==='1',key='m'+i+(all?'a':'');if(armQ!==key){armQ=key;render();setTimeout(()=>{if(armQ===key){armQ=-1;render()}},3500);return}
   armQ=-1;const pt=planToday();if(!pt)return;const it=pt.items[i];if(!it||it.done>=it.s)return;const n=all?it.s-it.done:1;for(let k=0;k<n;k++)manualSet(it);toast(n+' set'+(n>1?'s':'')+' logged: '+it.n.replace(' (sec)',''));render();arenaHit()},
+ mtap:b=>{const pt=planToday();if(!pt)return;const it=pt.items.find(x=>x.n===b.dataset.v);if(!it)return;state.ex=it.n;if(it.done>=it.s){toast('Already complete');save();return}manualSet(it);toast('+1 set logged: '+it.n.replace(' (sec)',''));render();arenaHit()},
+ mman:()=>{state.man=!state.man;save();toast(state.man?'Manual Mode ON: tap an exercise to log a set':'Manual Mode OFF');render()},
+ enr:b=>{state.en={d:dk(),v:b.dataset.v};save();refreshQuests();toast(b.dataset.v==='peak'?'Peak: reps +15% today':b.dataset.v==='sore'?'Sore: lighter targets today':'Normal targets');render()},
+ swap:()=>{const pt=planToday();if(!pt)return;const c0=pt.items.find(x=>x.n===state.ex);if(!c0||!EX[c0.n]){toast('Tap a plan exercise first, then ⇄ Swap');return}const g=EX[c0.n][0],h=EX[c0.n][1]==='hold',used=pt.items.map(x=>x.n),c=Object.keys(EX).filter(k=>EX[k][0]===g&&(EX[k][1]==='hold')===h&&(k===c0.n||k===c0.o||!used.includes(k))&&(typeof isOpen!=='function'||isOpen(k)));if(c.length<2){toast('No swap available for this one');return}const nx=c[(c.indexOf(c0.n)+1)%c.length];if(!state.swp||state.swp.d!==dk())state.swp={d:dk(),m:{}};if(nx===c0.o)delete state.swp.m[c0.o];else state.swp.m[c0.o]=nx;state.ex=nx;cur=0;T={ready:T.ready};save();toast('⇄ '+nx+' replaces '+c0.o);render()},
+ lktog:()=>{const on=!state.lock;if(on&&!confirm('Hardcore Path seals most skills until your rank rises. Turn it on?'))return;state.lock=on;state.lockAsked=1;save();selSig='';render()},
+ tab:()=>{if(TB){tabStop();return}if(!EX[state.ex]||EX[state.ex][0]!=='Cardio'){toast('Pick a cardio exercise (HIIT or Shadowboxing) first');return}TB={r:1,w:true,t:40,i:setInterval(tabTick,1000)};beep(880,.25,'square');say('Go');tabRender()},
+ pulse:()=>{state.pulse=!state.pulse;save();if(state.pulse)beep(55,.3,'sawtooth');toast(state.pulse?'Boss Pulse ON while you track':'Boss Pulse OFF');render()},
  sp:b=>{if(state.sp<1)return;state.sp--;state.st[b.dataset.v]=stB(b.dataset.v)+1;save();render()},
  buy:b=>{const k=b.dataset.v,s=SHOP.find(x=>x[0]===k);if(!s)return;const pre=k.slice(0,3),col=k.slice(3);
   if(state.owned[k]){if(pre==='au_')state.aura=state.aura===col?'':col;else if(pre==='fr_')state.frame=state.frame===col?'':col;else if(pre==='ox_'){state.hide=state.hide||{};if(state.hide[k])delete state.hide[k];else state.hide[k]=1}else{toast('Already owned');return}save();render();return}
@@ -1135,8 +1176,9 @@ hx:()=>$('hmd').classList.remove('on'),
  pf:b=>{pf=b.dataset.v;renderPlans()},
  openprog:()=>{const f=$('fold-prog');f.open=true;render();f.scrollIntoView({behavior:'smooth',block:'start'})},
  w:b=>{state.food.water=Math.max(0,Math.min(16,state.food.water+ +b.dataset.v));save();renderFood();if(state.food.water>=8&&+b.dataset.v>0)qProg('water',1)},
- pre:b=>{const p=PRE[+b.dataset.v];state.food.log.push({id:Date.now(),n:p[0],c:p[1],p:p[2]});save();renderFood();toast('Logged '+p[0]);qProg('meal',1);protChk()},
- addfood:()=>{const n=$('fn').value.trim(),c=parseFloat($('fc').value);if(!n||isNaN(c)||c<0){toast('Enter a name and calories');return}state.food.log.push({id:Date.now(),n,c,p:parseFloat($('fpr').value)||0});$('fn').value=$('fc').value=$('fpr').value='';save();renderFood();qProg('meal',1);protChk()},
+ pre:b=>{const p=(state.meals||[])[+b.dataset.v];if(!p)return;state.food.log.push({id:Date.now(),n:p.n,c:p.c,p:p.p});rememberMeal(p.n,p.c,p.p);save();renderFood();toast('Logged '+p.n);qProg('meal',1);protChk()},
+ qk:b=>{const q=QK[+b.dataset.v];state.food.log.push({id:Date.now(),n:q[0],c:q[1],p:q[2]});save();renderFood();toast('+'+q[0]+' · '+q[1]+' kcal');qProg('meal',1);protChk()},
+ addfood:()=>{const n=$('fn').value.trim(),c=parseFloat($('fc').value);if(!n||isNaN(c)||c<0){toast('Enter a name and calories');return}state.food.log.push({id:Date.now(),n,c,p:parseFloat($('fpr').value)||0});rememberMeal(n,c,parseFloat($('fpr').value)||0);$('fn').value=$('fc').value=$('fpr').value='';save();renderFood();qProg('meal',1);protChk()},
  delfood:b=>{state.food.log=state.food.log.filter(x=>String(x.id)!==b.dataset.v);save();renderFood()},
  exp:()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.download='ascend_backup_'+dk()+'.json';a.click();state.lastBackup=dk();save();renderBoss()},
  imp:()=>$('impf').click(),
@@ -1218,6 +1260,7 @@ add('Bicycle Crunches','Core','twist',0,0,0,'bicycle',0,1,'Elbow to the opposite
 add('Hanging Leg Raises','Core','hip',110,160,1,'hangraise',0,3,'Hang from a bar and lift your legs without swinging.');
 SK['Reverse Curls'][3]='b';SK['Deadlifts'][3]='b';SK['Incline Bench Press'][3]='b';
 add('Mountain Climbers','Cardio','hipmin',80,150,1,'climber',0,0,'Plank position. Drive one knee in at a time, fast.');
+add('Shadowboxing','Cardio','hipmin',80,150,1,'highknee',0,0,'Stay light on your feet and throw fast combos.');
 add('High Knees','Cardio','hipmin',90,155,1,'highknee',0,0,'Run in place and lift each knee to hip height.');
 add('Jumping Jacks','Cardio','abd',50,110,0,'jack',0,0,'Jump your feet apart as your arms swing overhead.');
 Object.assign(AR,{bridge:[[40,128,54,128,96,128,70,130,86,130,126,100,142,128],[40,128,54,128,98,102,70,130,86,130,126,98,142,128]],
@@ -1253,7 +1296,7 @@ const FK=()=>$('hero').classList.contains('hide')?sk:'__idle';
 const RC={E:'#9a9a9a',D:'#25a862',C:'#2d8fe0',B:'#8b4fea',A:'#f08a12',S:'#e8142b'};
 const TIER=n=>n>=500?['MASTER',4]:n>=200?['EXPERT',3]:n>=50?['ADEPT',2]:n>0?['NOVICE',1]:['UNTRAINED',0];
 let sk=SK[state.ex]?state.ex:'Push-ups',figOn=false,SP=[];
-function renderCheckin(){$('cklist').innerHTML=splitCard()+state.quests.map((q,i)=>{const d=q.p>=q.t;return`<div class="card ${d?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${d?'✓':''}</b><br><small>${q.d} · +${q.xp} XP · ${q.p}/${q.t}</small>${d||(q.bonus&&!q.rec)?'':`<button class="btn red" style="margin-top:10px" data-a="qdone" data-v="${i}">${armQ===i?'Tap again to confirm':'Mark as done'}</button>`}</div>`}).join('')+(allDone()?'<div class="card cy"><b>All quests complete.</b><br><small>You can level up now.</small></div>':'')}
+function renderLoadout(){const el=$('loadout');if(!el)return;const L=SHOP.filter(x=>/^(au|fr|ox)_/.test(x[0])&&state.owned[x[0]]);el.innerHTML=L.length?['au_','fr_','ox_'].map(p=>{const l=L.filter(x=>x[0].startsWith(p));return l.length?`<small style="display:block;margin:8px 0 4px">${p==='au_'?'AURA':p==='fr_'?'FRAME':'GEAR'}</small><div class="chips">${l.map(x=>{const k=x[0],col=k.slice(3),eq=p==='au_'?state.aura===col:p==='fr_'?state.frame===col:!(state.hide&&state.hide[k]);return`<button class="chip" aria-pressed="${eq}" data-a="buy" data-v="${k}">${esc(x[1])}</button>`}).join('')}</div>`:''}).join(''):'<small>Buy auras, frames and gear in the Shop, then equip them here. Titles are below.</small>'}
 function renderSkills(){
   views();
   const reps = state.sk[sk] || 0;
@@ -1370,12 +1413,24 @@ function autoStop(){if(!state.rir||!tracking||!T.ready||cur<1||cur>=state.target
  if(out>1500)why='You stepped out of frame';else if(!hold&&!mid&&still>1500)why='Weight racked';else if(!hold&&mid&&still>2800)why='Stalled mid-rep';
  if(!why)return;const c=cur,keep=state.target;state.target=c;finishSet();state.target=keep;save();
  $('coach').innerHTML='<b>Walk-away save</b> · '+why+'. Saved '+c+' reps. Rest up.';say('Set saved');renderTrain()}
-setInterval(autoStop,500);
+
+/* ===== TABATA 40s/20s interval mode (HIIT, shadowboxing) ===== */
+let TB=null;
+function tabRender(){const o=$('tabo'),b=$('tabb');if(!TB){o.className='tabo hide';b.textContent='Interval mode: 40s / 20s';return}o.className='tabo '+(TB.w?'tw':'tr');o.innerHTML=`<small>ROUND ${TB.r}/8 · ${esc(state.ex)}</small><div class="big">${TB.w?'WORK':'REST'}</div><div class="big" style="font-size:4rem">${TB.t}</div>`;b.textContent='Stop interval'}
+function tabLog(){const pt=state.prog?planToday():null,it=pt&&pt.items.find(x=>x.n===state.ex);if(it&&it.done<it.s){manualSet(it)}else{const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0});h.reps+=20;h.sets++;h.manual=(h.manual||0)+1;state.sk[state.ex]=(state.sk[state.ex]||0)+20;bump();save();qProg('reps',20);hitBoss(5);qProg('sets',1)}render();arenaHit()}
+function tabStop(done){if(TB)clearInterval(TB.i);TB=null;tabRender();if(done){fx('TABATA CLEAR','8 rounds done');beep(1046,.3);vib([80,60,120])}}
+function tabTick(){if(!TB)return;TB.t--;if(TB.t<=0){if(TB.w){tabLog();if(TB.r>=8){tabStop(true);return}TB.w=false;TB.t=20;beep(440,.25);say('Rest')}else{TB.r++;TB.w=true;TB.t=40;beep(880,.25,'square');say('Go')}}else if(TB.t<=3)beep(660,.08);tabRender()}
+/* ===== BOSS PULSE: optional WebAudio dark-synth, no audio files ===== */
+let PI=null,PB=0;
+function pulseStop(){clearTimeout(PI);PI=null}
+function pulseTick(){if(!tracking||!state.pulse||state.snd==='off'||!state.boss||state.boss.dead){pulseStop();return}const ph=bossPhase(),bpm=[0,66,84,104][ph];try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.setValueAtTime(90,t);o.frequency.exponentialRampToValueAtTime(40,t+.18);g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26);if(PB%2===0){const n=AC.createOscillator(),f=AC.createBiquadFilter(),g2=AC.createGain();n.type='sawtooth';n.frequency.value=[55,55,65.4,49][(PB>>1)%4]*(ph===3?2:1);f.type='lowpass';f.frequency.value=260+ph*120;g2.gain.setValueAtTime(.05,t);g2.gain.exponentialRampToValueAtTime(.001,t+.5);n.connect(f);f.connect(g2);g2.connect(AC.destination);n.start(t);n.stop(t+.52)}}catch(e){}PB++;PI=setTimeout(pulseTick,60000/bpm)}
+setInterval(()=>{if(state.pulse&&tracking&&!PI){PB=0;pulseTick()}else if((!tracking||!state.pulse)&&PI)pulseStop()},1000);
+setInterval(autoStop,500);setInterval(clearStaleCue,400);
 render();
 /* remember which Status sections are open */
 document.querySelectorAll('details.fold').forEach(d=>{if(d.id==='fold-prog')return;if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
 $('aoab').addEventListener('pointerdown',e=>{e.preventDefault();aoaTap()});
-if(!state.lockAsked&&!state.lock)setTimeout(askLock,900);else if(!state.guide)setTimeout(()=>showGuide(0),1100);else if(!state.hero&&state.prog)setTimeout(heroModal,1500);
+state.lockAsked=1;if(!state.guide)setTimeout(()=>showGuide(0),1100);else if(!state.hero&&state.prog)setTimeout(heroModal,1500);
 setInterval(()=>{syncPassive()},60000);
 /* ===== ONE-TIME PATH CHOICE (locked / open skills) ===== */
 function askLock(step){const c=$('lkb');
