@@ -7,11 +7,11 @@
 <meta name="theme-color" content="#08090f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ASCEND"><link rel="apple-touch-icon" href="icon.png"><link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700&display=swap">
 <style>
-:root{--ink:#f5f7ff;--mute:#aab2c6;--line:#30394d;--a:#f02b4f;--b:#52d9ff;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0)}
+:root{--ink:#f5f7ff;--mute:#aab2c6;--line:#30394d;--a:#f02b4f;--b:#52d9ff;color-scheme:dark;box-sizing:border-box}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(ellipse at 92% 4%,rgba(240,43,79,.19),transparent 34rem),radial-gradient(ellipse at 0 48%,rgba(82,217,255,.09),transparent 28rem),#08090f;background-attachment:fixed;color:var(--ink);font:400 16px/1.5 Sora,system-ui,sans-serif;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:28px 28px}
-main{max-width:480px;margin:0 auto;padding:18px 18px 110px}
+main{max-width:480px;margin:0 auto;padding:18px 18px calc(96px + env(safe-area-inset-bottom,0px))}
 h1,.hd,h3,.big,.logo,nav button,.lvchip{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.05em}
 h1{font-size:2rem;display:inline-block;transform:skew(-8deg);background:linear-gradient(105deg,#f02b4f,#b9143c);padding:2px 16px 4px;margin:6px 0 10px;box-shadow:5px 5px 0 var(--b);letter-spacing:.065em}
 h3{margin:0 0 6px;font-size:1.1rem}
@@ -20,7 +20,7 @@ small{color:var(--mute)}
 button,select,input{font:inherit;color:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #75e7ff;outline-offset:3px}
 .hide{display:none!important}
-.top{position:sticky;top:env(safe-area-inset-top,0);z-index:10;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;background:rgba(7,9,16,.93);border-bottom:1px solid rgba(82,217,255,.38);backdrop-filter:blur(14px)}
+.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) 18px 10px;background:rgba(7,9,16,.93);border-bottom:1px solid rgba(82,217,255,.38);backdrop-filter:blur(14px)}
 .logo{font-size:1.5rem;letter-spacing:.19em}.logo i{color:#ff4263;font-style:normal}
 .btn,.lvchip,.chip{position:relative;isolation:isolate;border:0;background:none;font-weight:700;padding:11px 14px;min-height:44px;transition:color .12s}
 .btn::before,.lvchip::before,.chip::before{content:"";position:absolute;inset:0;z-index:-1;transform:skew(-12deg);background:linear-gradient(145deg,#182033,#101522);box-shadow:inset 0 0 0 1px #39445c,3px 3px 0 #05070c;transition:transform .14s cubic-bezier(.2,1.7,.4,1),background .12s,box-shadow .12s}
@@ -187,7 +187,7 @@ section.enter{animation:wipe .35s ease-out}
 @keyframes grp{0%{opacity:0;transform:skew(-10deg) scale(1.9)}14%{opacity:1;transform:skew(-10deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:skew(-10deg) translateY(-12px)}}
 .cmbo{position:absolute;left:8px;bottom:34px;z-index:3;padding:3px 10px;background:#f02b4f;color:#fff;font:.85rem Anton,Impact,sans-serif;letter-spacing:.08em;transform:skew(-10deg);box-shadow:3px 3px 0 #000}
 /* depth gauge (push-ups), Persona style */
-.dg{position:absolute;right:12px;top:12%;bottom:10%;width:34px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.dg{position:absolute;right:12px;top:10%;bottom:14%;width:34px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
 .dgl{font:.7rem Anton,Impact,sans-serif;letter-spacing:.12em;background:#fff;color:#08090f;padding:1px 7px;transform:skew(-10deg);box-shadow:2px 2px 0 var(--a),4px 4px 0 #000;white-space:nowrap}
 .dgk{position:relative;flex:1;width:18px;background:repeating-linear-gradient(180deg,transparent 0 9px,#ffffff22 9px 10px),#04070f;border:2px solid #fff;transform:skew(-10deg);box-shadow:3px 3px 0 var(--a),6px 6px 0 #000}
 .dgk i{position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(180deg,#a9deff,#52d9ff);box-shadow:0 0 12px #52d9ff99;transition:height .08s linear}
@@ -240,7 +240,7 @@ section.enter{animation:wipe .35s ease-out}
 .cam.shk{animation:shake .25s linear}
 .cring{position:absolute;top:8px;left:8px;margin:0;width:70px;height:70px;z-index:3;pointer-events:none}
 .cring .big{font-size:2rem;text-shadow:2px 2px 0 #a50d32}
-.ofl{position:absolute;top:82px;left:8px;z-index:3;background:#000b;padding:1px 8px;font-size:.7rem;white-space:nowrap;color:#e8eefc}
+.ofl{position:absolute;top:86px;left:8px;z-index:3;background:#000b;padding:1px 8px;font-size:.7rem;white-space:nowrap;color:#e8eefc}
 .idle{position:absolute;left:50%;translate:-50% 0;bottom:24%;font:1rem Anton,Impact,sans-serif;letter-spacing:.12em;background:#fff;color:#08090f;padding:3px 18px;transform:skew(-8deg);box-shadow:4px 4px 0 var(--a),8px 8px 0 #000;white-space:nowrap;z-index:2}
 .readout:empty{display:none}
 .pick{padding:0;margin-bottom:8px}.pick summary{list-style:none;display:flex;align-items:center;gap:10px;padding:10px 12px;min-height:48px;cursor:pointer;-webkit-tap-highlight-color:transparent}.pick summary::-webkit-details-marker{display:none}.pick summary>span{flex:1;min-width:0}.pick summary b{display:block}.pick .pk{padding:0 12px 12px}
@@ -258,14 +258,48 @@ section.enter{animation:wipe .35s ease-out}
 .nm2{font:2rem/1.05 Anton,Impact,sans-serif;letter-spacing:.03em;text-transform:uppercase;transform:skew(-8deg);text-shadow:3px 3px 0 color-mix(in srgb,var(--rc) 70%,#000);margin:4px 0 8px}
 .pva{transform-box:fill-box;transform-origin:center;animation:pvp 2.6s ease-in-out infinite}.pva2{transform-box:fill-box;transform-origin:center;animation:pvq 2.2s ease-in-out infinite}.pvw{transform-box:fill-box;transform-origin:50% 100%;opacity:0;animation:pvw 2.6s ease-in infinite}.pvf{animation:pvb 3.2s ease-in-out infinite}.pvc{transform-box:fill-box;transform-origin:50% 0;animation:pvc 3s ease-in-out infinite}.pvr{animation:pvk 1s steps(2) infinite}.pvscan{animation:pvscan 3s linear infinite}.pvspin{transform-box:view-box;transform-origin:60px 70px;animation:pvspin 18s linear infinite}
 @keyframes pvp{50%{opacity:.6;transform:scale(1.07)}}@keyframes pvq{50%{opacity:.5;transform:scale(1.12)}}@keyframes pvw{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.9}100%{opacity:0;transform:translateY(-78px) scale(1.15)}}@keyframes pvb{50%{transform:translateY(-2.5px)}}@keyframes pvc{50%{transform:skewX(-3.5deg)}}@keyframes pvk{50%{opacity:.15}}@keyframes pvscan{from{transform:translateY(4px)}to{transform:translateY(134px)}}@keyframes pvspin{to{transform:rotate(360deg)}}
+
+/* ===== UI cleanup ===== */
+.trainhead{display:flex;align-items:center;gap:12px}
+.trainhead h1{flex:none;margin:6px 0 10px}
+.trainhead .hud{flex:1;min-width:0;margin:0 0 4px}
+.trainhead .hud small{white-space:nowrap;font-size:.72rem}
+#today .chips{flex-wrap:nowrap;overflow-x:auto;gap:6px;scrollbar-width:none;padding:0 6px 8px 0;-webkit-overflow-scrolling:touch}
+#today .chips::-webkit-scrollbar{display:none}
+#today .chips .chip{flex:none;white-space:nowrap;padding:6px 11px;min-height:34px;font-size:.8rem}
+.row .btn{white-space:nowrap;font-size:.92rem}
+.row .btn.sm{font-size:.82rem;padding:6px 8px}
+.pick summary b .tag{margin:0 0 0 6px;vertical-align:2px}
+/* ===== Vanguard roster ===== */
+#fold-shadows{--hc:#8b4fea}
+#shadows .shd{display:block;margin:0;font:inherit;letter-spacing:0;color:inherit}
+#shadows .shd::before,#shadows .shd::after{display:none}
+#shadows .shd.on{border-color:var(--hc);background:linear-gradient(145deg,color-mix(in srgb,var(--hc) 22%,#0a0d17),#0a0d17);box-shadow:inset 0 0 16px color-mix(in srgb,var(--hc) 28%,transparent)}
+#shadows .shd.on b{color:color-mix(in srgb,var(--hc) 45%,#fff);text-shadow:0 0 10px var(--hc)}
+#shadows .shd .sk{color:var(--hc)}
+.hhd b{font:1.15rem Anton,Impact,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.rfx{position:absolute;left:10px;right:10px;top:40px;display:flex;justify-content:space-between;pointer-events:none}
+.rfx div{display:flex;flex-direction:column;gap:14px}
+.rfx i{font-style:normal;font-size:1.5rem;line-height:1;text-shadow:0 0 12px currentColor;animation:pvb 3s ease-in-out infinite}
+/* ===== Boss arena ===== */
+.arena{display:flex;align-items:center;gap:6px;margin:6px 0 8px;padding:6px;background:radial-gradient(ellipse at 50% 100%,#1b2540,#080c16);border:1px solid #344057;position:relative;overflow:hidden}
+.arena .ar-hero{width:44%;flex:none;aspect-ratio:120/140;border:0;background:none}
+.ar-vs{font:1.3rem Anton,Impact,sans-serif;color:#fff;text-shadow:2px 2px 0 var(--a);transform:skew(-10deg)}
+.ar-boss{position:relative;flex:1;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.ar-boss svg.bs{width:92%;height:auto;filter:drop-shadow(0 0 8px #f02b4f66)}
+.ar-boss .sl{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
+.ar-boss.hit svg.bs{animation:bhit .4s}.ar-boss.hit .sl{animation:slsh .4s}.ar-hero.hit{animation:hlunge .4s}
+@keyframes bhit{0%,100%{transform:none}30%{transform:translateX(7px) scale(.95);filter:brightness(2.2)}60%{transform:translateX(-4px)}}
+@keyframes slsh{0%{opacity:1;clip-path:inset(0 100% 0 0)}60%{opacity:1;clip-path:inset(0)}100%{opacity:0;clip-path:inset(0)}}
+@keyframes hlunge{0%,100%{transform:none}40%{transform:translateX(34px) rotate(6deg)}}
+.wk{margin:6px 0;font-size:.78rem;color:#ffd24a}.wk b{display:inline-block;font:.8rem Anton,Impact,sans-serif;letter-spacing:.1em;background:#ffd24a;color:#08090f;padding:0 7px;margin-right:8px;transform:skew(-10deg)}
 </style>
 </head>
 <body>
 <header class="top"><button class="ham" data-a="menu" aria-label="Open menu"><i></i><i></i><i></i></button><div class="logo">ASC<i>END</i></div><button class="lvchip" id="top" data-a="go" data-v="hero">LV 1 E</button></header>
 <main>
 <section id="train">
-  <h1>Train</h1>
-  <div class="hud" id="hud"></div>
+  <div class="trainhead"><h1>Train</h1><div class="hud" id="hud"></div></div>
   <div id="nxt"></div><div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
   <div class="card cy" id="today"></div>
   <details class="fold" id="fold-prog"><summary class="hd">Program <small id="progname"></small></summary><div id="plansbody"></div><div id="restcard"></div></details>
@@ -277,26 +311,25 @@ section.enter{animation:wipe .35s ease-out}
     <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
     <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
     <div id="wsug"></div>
-    <div class="row"><button class="btn" id="restb" data-a="restc"></button><button class="btn" id="sensb" data-a="sens"></button></div>
-    <div class="row"><button class="btn" id="undob" data-a="undo">Undo last set</button></div>
+    <div class="row"><button class="btn sm" id="restb" data-a="restc"></button><button class="btn sm" id="sensb" data-a="sens"></button><button class="btn sm" id="undob" data-a="undo">Undo set</button></div>
   </div>
 </section>
 
 <section id="hero" class="hide">
   <h1>Status</h1>
   <div class="card cy" style="text-align:center">
-    <div id="avt"></div>
+    <div id="avt"></div><div class="rfx" id="rfx"></div>
     <div class="idline"><b id="lv">LV 1</b> · <span id="ttl"></span></div>
     <div class="xpb"><i id="xpf"></i></div>
     <div class="xpt" id="xpt"></div>
   </div>
   <div id="gatecard"></div>
   <details class="fold" id="fold-quests" open><summary class="hd">Daily quests</summary><div id="quests"></div>
-  <p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Each level costs more than the last, and reaching S takes about three years of steady training. Skip a day and a penalty quest appears.</p>
+  <p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Each level costs more than the last, and reaching S takes about three years of steady training. Missing a day never adds extra work. Rest days offer recovery quests that give a +25% boss damage buff for your next workout. Only your first 12 or so sets a day hit at full power.</p>
   </details>
   <details class="fold" id="fold-ladder"><summary class="hd">Rank ladder</summary><div id="ladder"></div></details>
   <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
-  <details class="fold" id="fold-shadows" open><summary class="hd">Shadow army <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
+  <details class="fold" id="fold-shadows" open><summary class="hd"><span id="shtitle">Vanguard roster</span> <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
   <details class="fold" id="fold-rival"><summary class="hd">Rival</summary><div id="rival"></div></details>
   <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
 </section>
@@ -364,6 +397,7 @@ section.enter{animation:wipe .35s ease-out}
 <div class="modal" id="lkq" data-a="none"><div class="card" id="lkb" data-a="none" style="width:100%;max-width:380px"></div></div>
 <div class="modal" id="shp" data-a="shpx"><div class="card" id="shpb" data-a="none" style="width:100%;max-width:360px;text-align:center"></div></div>
 <div class="modal" id="sum"><div class="card" id="sumb" style="width:100%;max-width:380px"></div></div>
+<div class="modal" id="hmd"><div class="card" id="hmb" style="width:100%;max-width:380px;max-height:86vh;overflow-y:auto"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="lu" id="lu" data-r="E"><div class="burst"></div><div class="slash"></div><i class="rg"></i><i class="rg"></i><i class="rg"></i><div class="pts" id="pts"></div><div class="t" id="lut">LEVEL UP</div><div class="s" id="lun"></div><div class="m" id="lum"></div></div>
 <div class="boot" id="boot"><div class="b-s"></div><div class="b-t">ASCEND</div><div class="b-u">YOUR EVOLUTION STARTS HERE</div></div>
@@ -375,12 +409,13 @@ const $=id=>document.getElementById(id),KEY='repwise_v4';
 const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const ago=n=>{const d=new Date();d.setDate(d.getDate()-n);return dk(d)};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',rl:{},lw:{},rival:null,frame:'',bst:'',food:{date:dk(),log:[],water:0,goal:2200}});
+const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',rl:{},lw:{},rival:null,frame:'',bst:'',hero:'',heroes:{},plink:{},sup:0,supDay:'',hpick:0,pd:'',hInit:0,food:{date:dk(),log:[],water:0,goal:2200}});
 let state=(()=>{try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY))||{})}catch(e){return def()}})();
 if(!state.food||state.food.date!==dk())state.food=Object.assign(def().food,{goal:(state.food||{}).goal||2200});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
 if(state.ob===undefined&&Object.keys(state.hist).length)state.ob=1;if(state.guide===undefined&&Object.keys(state.hist).length)state.guide=1;
 if(state.spInit===undefined){state.spInit=1;state.sp=(state.level-1)*3}
+if(!state.hInit){state.hInit=1;state.heroes=state.heroes||{};state.hpick=[11,21,31,41].filter(l=>state.level>=l).length}
 /* older saves: the fixed rep/boss shadows became milestone shadows (every 500 reps, every boss) */
 (()=>{const mg={s3:'r500',s5:'r1000',s8:'r2500',s10:'r5000',s4:'b1',s9:'b5'};for(const o in mg)if(state.shadows[o]){if(!state.shadows[mg[o]])state.shadows[mg[o]]=state.shadows[o];delete state.shadows[o]}})();
 const fdT=()=>{if(state.fd.d!==dk())state.fd={d:dk(),S:0,A:0,B:0,C:0,bc:0};return state.fd};
@@ -407,23 +442,44 @@ function gapMissed(){if(!state.last)return 0;let n=0;const d=new Date(state.last
 function bump(){const t=dk();if(state.last===t)return;state.streak=state.last&&gapMissed()===0?state.streak+1:1;state.last=t;if([7,14,30,60,100].includes(state.streak)){state.gold+=state.streak*5;setTimeout(()=>fx(state.streak+' DAY STREAK','+'+state.streak*5+' gold'),800)}if(state.streak%7===0&&state.freeze<2){state.freeze++;toast('Streak freeze earned!')}}
 const PRESET={1:[1],2:[1,4],3:[1,3,5],4:[1,2,4,5],5:[1,2,3,4,5],6:[1,2,3,4,5,6],7:[0,1,2,3,4,5,6]},DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 function autoRest(n){state.restDays=[0,1,2,3,4,5,6].filter(i=>!PRESET[Math.max(1,Math.min(7,n))].includes(i))}
-function renderRestCard(){const pr=prOf(),tn=7-state.restDays.length;$('restcard').innerHTML=cb||!pr?'':`<div class="card"><h3>Training days</h3><p class="sub" style="margin:0 0 8px">${pr.name} has ${pr.days.length} sessions a week. Tap to change your days. The rest are rest days and never break your streak.</p><div class="chips">${[1,2,3,4,5,6,0].map(i=>`<button class="chip" aria-pressed="${!state.restDays.includes(i)}" data-a="restday" data-v="${i}">${DN[i]}</button>`).join('')}</div><small style="display:block;margin-bottom:8px">${tn} training day${tn===1?'':'s'}${tn===pr.days.length?'':' · this program is built for '+pr.days.length}</small><small>Streak freezes: ${'❄'.repeat(state.freeze)||'none'} (max 2). One is used automatically if you miss a training day. You earn one for every 7-day streak and every boss you defeat.</small></div><div class="card"><h3>Daily reminder</h3><p class="sub" style="margin:0 0 8px">A web page can’t ring your phone by itself, so this makes a calendar reminder on your training days.</p><div class="row"><input id="remt" type="time" value="${state.remt||'18:00'}"><button class="btn" data-a="ics">Add to calendar</button></div></div>`}
+function renderRestCard(){const pr=prOf(),tn=7-state.restDays.length;$('restcard').innerHTML=cb||!pr?'':`<div class="card"><h3>Training days</h3><p class="sub" style="margin:0 0 8px">${pr.name} is built for ${pr.freq||pr.days.length} sessions a week. Tap to change your days. The rest are rest days and never break your streak.</p><div class="chips">${[1,2,3,4,5,6,0].map(i=>`<button class="chip" aria-pressed="${!state.restDays.includes(i)}" data-a="restday" data-v="${i}">${DN[i]}</button>`).join('')}</div><small style="display:block;margin-bottom:8px">${tn} training day${tn===1?'':'s'}${tn===(pr.freq||pr.days.length)?'':' · this program is built for '+(pr.freq||pr.days.length)}</small><small>Streak freezes: ${'❄'.repeat(state.freeze)||'none'} (max 2). One is used automatically if you miss a training day. You earn one for every 7-day streak and every boss you defeat.</small></div><div class="card"><h3>Daily reminder</h3><p class="sub" style="margin:0 0 8px">A web page can’t ring your phone by itself, so this makes a calendar reminder on your training days.</p><div class="row"><input id="remt" type="time" value="${state.remt||'18:00'}"><button class="btn" data-a="ics">Add to calendar</button></div></div>`}
 $('restcard').addEventListener('change',e=>{if(e.target.id==='remt'){state.remt=e.target.value;save()}});
 
 /* ===== SPLIT AS QUESTS (manual tick-off) ===== */
 function planLines(){const pt=planToday();return pt?'<div style="margin-top:8px">'+pt.items.map(it=>`<small style="display:block">${it.done>=it.s?'☑':'☐'} ${esc(it.n.replace(' (sec)',''))} ${it.done}/${it.s}</small>`).join('')+'</div>':''}
 function manualSet(it){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0});h.reps+=it.r;h.sets++;h.volume+=it.r*state.kg;h.manual=(h.manual||0)+1;state.sk[it.n]=(state.sk[it.n]||0)+it.r;bump();
  state.prog.sets[it.n]=(state.prog.sets[it.n]||0)+1;save();qProg('reps',it.r);hitBoss(Math.floor(it.r/4));qProg('sets',1);qProg('plan',1);
- const pt=planToday();if(!state.prog.done&&pt.items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++;save();fx('Workout clear',pt.name);beep(784,.2);vib([60,40,60]);setTimeout(showSummary,1600)}}
+ const pt=planToday();if(!state.prog.done&&pt.items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++,state.sup=0;save();fx('Workout clear',pt.name);beep(784,.2);vib([60,40,60]);setTimeout(showSummary,1600)}}
 function splitCard(){const pt=planToday();if(!pt)return'';return`<div class="card cy"><h3>Today’s split · ${esc(pt.name)}</h3><small>Tap +1 set after each set you finish, or All for the whole exercise. Each tap asks you to confirm.</small>${pt.items.map((it,i)=>{const d=it.done>=it.s;return`<div class="item"><div style="flex:1"><b>${d?'✓ ':''}${esc(it.n.replace(' (sec)',''))}</b><span>${it.done}/${it.s} sets × ${it.r}${EX[it.n][1]==='hold'?' sec':' reps'}</span></div>${d?'':`<button class="btn sm" data-a="mset" data-v="${i}">${armQ==='m'+i?'Confirm':'+1 set'}</button><button class="btn sm" data-a="mset" data-v="${i}" data-all="1">${armQ==='m'+i+'a'?'Confirm':'All'}</button>`}</div>`}).join('')}</div>`}
 
 /* ===== WEEKLY BOSS ===== */
-const BOSSES=['Goblin Warden','Iron Golem','Shadow Knight','Frost Wyrm','Blood Monarch','Gate Keeper'];
+const BOSSES=[
+{n:'Goblin Warden',col:'#55e6b0',w:'legs',wk:'Weak at the knees: leg exercises deal 2x'},
+{n:'Iron Golem',col:'#9aa6bf',w:'heavy',wk:'Plating cracks under weight: reps at 20 kg or more deal 2x'},
+{n:'Shadow Knight',col:'#8b4fea',w:'back',wk:'Exposed back: back and pull exercises deal 2x'},
+{n:'Frost Wyrm',col:'#52d9ff',w:'form',wk:'Ice scales shrug off sloppy reps: only S and A form grades hurt it'},
+{n:'Blood Monarch',col:'#f02b4f',w:'combo',wk:'Bleeds on rhythm: reps during a 5+ combo deal 2x'},
+{n:'Gate Keeper',col:'#ffd24a',w:'push',wk:'Guard drops against presses: chest and shoulder lifts deal 2x'},
+{n:'Thorn Hydra',col:'#a6ff4d',w:'arms',wk:'Heads fall to arm work: arm exercises deal 2x'},
+{n:'Storm Raptor',col:'#dff6ff',w:'cardio',wk:'Grounded by cardio: cardio exercises deal 2x'},
+{n:'Obsidian Titan',col:'#ff8a3d',w:'hi',wk:'Endurance test: sets of 15+ reps deal 2x'},
+{n:'Phantom Reaper',col:'#c9a8ff',w:'core',wk:'Hollow centre: core exercises deal 2x'},
+{n:'Magma Behemoth',col:'#ff6a2b',w:'heavyform',wk:'Heavy and clean: S or A reps at 20 kg or more deal 3x'},
+{n:'Void Emperor',col:'#b36bff',w:'sform',wk:'Only perfection pierces the void: S-grade reps deal 2x'}];
+const bdef=b=>BOSSES.find(x=>x.n===(b&&b.name))||BOSSES[0];
+const eCap=()=>12+Math.min(3,Math.floor(stB('VIT')/3)),eSets=()=>(state.hist[dk()]||{}).sets||0,energyOver=()=>eSets()>=eCap(),recBuff=()=>state.sup?.25:0;
+const enrgTxt=()=>'ENERGY '+Math.min(eSets(),eCap())+'/'+eCap()+' full-power sets today'+(energyOver()?' · spent: reps now deal 25%':'')+(state.sup?' · SUPERCOMPENSATED +25% damage':'');
+function bossMult(g){const b=state.boss;if(!b||b.dead)return 1;const w=bdef(b).w,gr=(EX[state.ex]||[])[0],cl=!!g&&(g.l==='S'||g.l==='A'),hv=state.kg>=20;
+ if(w==='legs')return gr==='Legs'?2:1;if(w==='back')return gr==='Back'?2:1;if(w==='push')return gr==='Chest'||gr==='Shoulders'?2:1;if(w==='arms')return gr==='Arms'?2:1;
+ if(w==='cardio')return gr==='Cardio'?2:1;if(w==='core')return gr==='Core'?2:1;if(w==='heavy')return hv?2:1;if(w==='hi')return state.target>=15?2:1;
+ if(w==='combo')return (T.combo||0)>=5?2:1;if(w==='heavyform')return hv&&cl?3:1;if(w==='sform')return g&&g.l==='S'?2:1;if(w==='form')return cl?1:.15;return 1}
+function recCheck(){const r=state.quests.filter(q=>q.rec);if(r.length&&r.every(q=>q.p>=q.t)&&state.supDay!==dk()){state.supDay=dk();state.sup=1;save();fx('SUPERCOMPENSATED','+25% boss damage next workout');beep(784,.2);vib([60,40,60])}}
+function protChk(){if(state.food.log.reduce((a,x)=>a+x.p,0)>=80)qProg('prot',1)}
 const monday=()=>{const d=new Date();d.setDate(d.getDate()-(d.getDay()+6)%7);return dk(d)};
-function syncBoss(){const w=monday();if(!state.boss||state.boss.wk!==w){const i=Math.floor(new Date(w+'T00:00:00')/6048e5)%BOSSES.length;state.boss={wk:w,name:BOSSES[i],hp:200+state.level*10,dmg:0,dead:false,ph:1};save()}}
+function syncBoss(){const w=monday();if(!state.boss||state.boss.wk!==w){const i=Math.floor(new Date(w+'T00:00:00')/6048e5)%BOSSES.length;state.boss={wk:w,name:BOSSES[i].n,hp:200+state.level*10,dmg:0,dead:false,ph:1};save()}}
 function hitBoss(n){syncBoss();const b=state.boss;if(b.dead)return;b.dmg=Math.min(b.hp,b.dmg+n);const ph=bossPhase();if(ph>(b.ph||1)&&b.dmg<b.hp){b.ph=ph;fx('PHASE '+ph,ph===2?'Enraged: clean reps hit harder':'Final form: clean reps hit hardest');beep(150,.4,'sawtooth');vib([60,40,120])}if(b.dmg>=b.hp){b.dead=true;state.bossWins++;state.bn.push(b.name);state.xp+=100;state.gold+=100;state.freeze=Math.min(2,state.freeze+1);fx('BOSS DOWN',b.name);beep(880,.4,'square');vib([80,60,80,60,200]);toast('Boss defeated! +100 XP and a streak freeze');save();tryLevel()}}
-function renderBoss(){syncBoss();const b=state.boss,left=7-(new Date().getDay()+6)%7,rd=state.restDays.includes(new Date().getDay());
- $('boss').innerHTML=(critDay()?'<div class="card cy"><span class="tag g">SURGE DAY</span><small> Quest XP is doubled today!</small></div>':'')+(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><div style="display:flex;align-items:center;gap:10px">${bossArt(b)}<h3 style="margin:6px 0">${b.name}<br><small>${b.dead?'DEFEATED':'PHASE '+bossPhase()+' of 3'}</small></h3></div><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at 5, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
+function renderBossCore(){syncBoss();const b=state.boss,left=7-(new Date().getDay()+6)%7,rd=state.restDays.includes(new Date().getDay());
+ $('boss').innerHTML=(critDay()?'<div class="card cy"><span class="tag g">SURGE DAY</span><small> Quest XP is doubled today!</small></div>':'')+(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><h3 style="margin:6px 0 0">${b.name} <small>${b.dead?'DEFEATED':'PHASE '+bossPhase()+' of 3'}</small></h3><div id="arslot"></div><div class="wk"><b>WEAKNESS</b>${esc(bdef(b).wk)}</div><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at ${ovT()}, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small><small style="display:block;margin-top:6px">${enrgTxt()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
 
 /* ===== RANK TRIALS (GATES) ===== */
 const TRIALS={11:['Push-ups',20],21:['Squats',40],31:['Push-ups',40],41:['Squats',80],51:['Push-ups',70]};
@@ -443,9 +499,43 @@ const BG=[['first','First Blood','Finish your first set',()=>tot().sets>=1],['r1
 function checkBadges(){BG.forEach(b=>{if(!state.badges[b[0]]&&b[3]()){state.badges[b[0]]=dk();toast('Badge unlocked: '+b[1]);beep(1046,.2)}})}
 function renderBadges(){$('bgcount').textContent=Object.keys(state.badges).length+'/'+BG.length;$('badges').innerHTML='<div class="grid">'+BG.map(b=>{const o=!!state.badges[b[0]],w=state.title===b[0];return`<button class="btn" data-a="title" data-v="${b[0]}" style="text-align:left;${o?'':'opacity:.45'}"><b>${o?(w?'★ ':''):'🔒 '}${b[1]}</b><br><small>${b[2]}</small></button>`}).join('')+'</div>'}
 
+/* ===== VANGUARD ROSTER: the army follows your active S-Rank Hunter ===== */
+const HID=['jinwoo','haein','jongin','yoonho','andre'];
+const H={
+jinwoo:{n:'Shadow Sovereign',roster:'The Shadow Legion',col:'#8b4fea',dk:'#3d1790',glyph:'◆',pre:'Shade',rp:'Shade',units:['Archer','Brute','Lancer','Mage','Phantom','Raider','Warden','Reaper','Titan','Monarch'],bs:'’s Shade',arise:'ARISE',join:'A SHADOW SOLDIER JOINS YOUR LEGION',pass:'Your legion keeps hitting the boss while you rest. Daily sleep damage is doubled.'},
+haein:{n:'Dancer of Light',roster:'Radiant Blades',col:'#ffd24a',dk:'#7a5a08',glyph:'✦',pre:'',rp:'Radiant',units:['Light Blade','Valkyrie Crest','Dawn Edge','Radiant Lance','Sun Veil'],bs:'’s Light Echo',arise:'UNSHEATHE',join:'A BLADE OF LIGHT JOINS YOUR GUARD',pass:'Chain 3 S-grade reps in a row for a critical slash. Every 3 blades add +1 damage (max +6).'},
+jongin:{n:'Ultimate Soldier',roster:'Inferno Constructs',col:'#ff6a2b',dk:'#7a1d08',glyph:'▲',pre:'',rp:'Inferno',units:['Flame Lancer','Cinder Wyrm','Ember Guard','Magma Hound','Ash Colossus'],bs:'’s Ember Husk',arise:'IGNITE',join:'A CONSTRUCT IS FORGED IN FIRE',pass:'A set of 15+ reps sets the boss burning for 2 damage an hour. Each construct adds 1 hour (base 3h, max 24h).'},
+yoonho:{n:'White Tiger',roster:'White-Fang Pack',col:'#bfe9ff',dk:'#2a4a66',glyph:'❖',pre:'',rp:'White',units:['Tiger Spirit','Feral Totem','Frost Fang','Snow Stalker','Pack Alpha'],bs:'’s Spirit',arise:'AWAKEN',join:'A SPIRIT JOINS THE PACK',pass:'Beast Overdrive (the x2 combo) needs 5 clean reps. Every 3 pack members cut that by 1, down to 3.'},
+andre:{n:'Goliath',roster:'Scavenger Titans',col:'#d98a2b',dk:'#5a3208',glyph:'■',pre:'',rp:'Titan',units:['Juggernaut Relic','Gravity Monolith','Bronze Colossus','Scrap Titan','Molten Idol'],bs:'’s Relic',arise:'CRUSH',join:'A TITAN RISES FROM THE SCRAP',pass:'Lifting 20 kg or more: every 5th rep is a Gravity Slam for +3 damage, plus 1 per 2 titans (max +13).'}};
+const hh=()=>H[state.hero]||H.jinwoo,uN=()=>Object.keys(state.shadows).length,RNX=['','','II','III','IV','V','VI','VII','VIII','IX','X'];
+const capt=()=>state.level>=51?state.bn.slice(-5):[];
+const hasP=id=>state.hero===id||!!(state.plink&&state.plink[id])||capt().length>HID.indexOf(id),nextLink=()=>[300,500,800,1200][Object.keys(state.plink||{}).length]||1200;
+const unitName=k=>{const h=hh(),L=h.units,lap=Math.floor((k-1)/L.length);return(h.pre?h.pre+' ':'')+L[(k-1)%L.length]+(lap?' '+(RNX[lap+1]||lap+1):'')};
+const ovT=()=>hasP('yoonho')?Math.max(3,5-Math.floor(uN()/3)):5;
+const sleepDmg=()=>Math.min(20,uN())*(hasP('jinwoo')?2:1);
+function heroDmg(g){let x=0;const U=uN();
+ if(hasP('haein')&&g&&g.l==='S'&&(T.sc||0)>=3){x+=Math.min(6,1+Math.floor(U/3));fl('SLASH','crit')}
+ if(hasP('andre')&&state.kg>=20&&cur%5===0){x+=3+Math.min(10,Math.floor(U/2));fl('GRAVITY SLAM','co')}
+ return x}
+function igniteBurn(){syncBoss();const b=state.boss;if(!b||b.dead)return;const hr=Math.min(24,3+uN()),n=Date.now();
+ if(!b.burnEnd||b.burnEnd<n)b.burnT=n;b.burnEnd=Math.max(b.burnEnd||0,n+hr*36e5);save();toast('Boss burning for '+hr+'h')}
+function syncPassive(){const t=dk();syncBoss();
+ if(!state.pd){state.pd=t;save()}
+ else if(state.pd!==t){const d=Math.min(7,Math.max(0,Math.round((new Date(t+'T00:00:00')-new Date(state.pd+'T00:00:00'))/864e5))),x=d*sleepDmg();state.pd=t;
+  if(x>0&&state.boss&&!state.boss.dead){hitBoss(x);toast('Your '+hh().roster+' dealt '+x+' damage while you rested')}else save()}
+ const b=state.boss;if(b&&!b.dead&&b.burnEnd){const n=Date.now(),hr=Math.floor((Math.min(n,b.burnEnd)-b.burnT)/36e5);
+  if(hr>0){b.burnT+=hr*36e5;hitBoss(hr*2)}if(n>=b.burnEnd){delete b.burnEnd;delete b.burnT;save()}}}
+const nextChg=()=>{const l=[11,21,31,41].find(x=>x>state.level);return l?'Next Hunter unlocks at '+rankOf(l)+'-Rank (level '+l+').':'You are S-Rank. Your Strike Squad runs every Hunter passive.'};
+function heroModal(){const first=!state.hero,left=HID.filter(id=>!state.heroes[id]);if(!left.length||(!first&&!(state.hpick>0)))return;
+ $('hmb').innerHTML=`<span class="tag r">${first?'CHOOSE YOUR HUNTER':'NEW HUNTER UNLOCKED'}</span><h3 style="margin-top:8px">${first?'Pick your S-Rank Hunter':'Unlock a Hunter'}</h3><p class="sub">Your roster names, colors and passive follow your active Hunter. ${first?'This is your starting pick. Each rank-up (D, C, B, A) unlocks one more Hunter.':'You can switch Hunters any time on Status.'} Unlocking a Hunter does not unlock their passive for other Hunters. Link it on Status with gold to run passives together.</p>`+left.map(id=>{const x=H[id];return`<button class="btn" data-a="hpick" data-v="${id}" style="width:100%;text-align:left;margin-bottom:12px"><b style="color:${x.col}">${x.glyph} ${x.n}</b><br><small>${x.roster.toUpperCase()}: ${x.pass}</small></button>`}).join('')+'<button class="btn" data-a="hx" style="width:100%">Later</button>';
+ $('hmd').classList.add('on')}
+function renderRfx(){const e=$('rfx');if(!e)return;const h=hh(),g=[];
+ if(state.level>=51)capt().forEach((b,i)=>g.push([H[HID[i]].glyph,H[HID[i]].col]));else for(let i=0;i<Math.min(8,Math.ceil(uN()/3));i++)g.push([h.glyph,h.col]);
+ const col=a=>`<div>${a.map((x,i)=>`<i style="color:${x[1]};animation-delay:${(i*.4).toFixed(1)}s">${x[0]}</i>`).join('')}</div>`;
+ e.innerHTML=g.length?col(g.filter((_,i)=>i%2===0))+col(g.filter((_,i)=>i%2===1)):''}
 /* ===== SHADOW ARMY: lifetime milestones only (every 500 reps, every boss, elite feats). Never from one day's volume. ===== */
 const SHP=['Archer','Brute','Lancer','Mage','Phantom','Raider','Warden','Reaper','Titan','Monarch'],RN=['','','II','III','IV','V','VI','VII','VIII','IX','X'];
-const shName=k=>{const lap=Math.floor((k-1)/10);return'Shade '+SHP[(k-1)%10]+(lap?' '+(RN[lap+1]||lap+1):'')};
+const shName=k=>unitName(k);
 const SHE=[['s1','Shade Scout','Count 100 total reps',()=>tot().reps>=100],
 ['s2','Shade Hound','Count 250 total reps',()=>tot().reps>=250],
 ['s6','Shade Wyvern','Finish 10 program workouts',()=>state.wo>=10],
@@ -454,35 +544,42 @@ const SHE=[['s1','Shade Scout','Count 100 total reps',()=>tot().reps>=100],
 ['f2','Shade Sentinel','Hit a clean-rep combo of 20',()=>(state.bc||0)>=20]];
 function shDefs(){const a=[],K=Math.floor(tot().reps/500);
  for(let k=1;k<=K;k++)a.push({id:'r'+k*500,k:'REP',n:shName(k),d:(k*500).toLocaleString()+' total reps'});
- for(let i=1;i<=state.bossWins;i++)a.push({id:'b'+i,k:'BOSS',n:(state.bn[i-1]||BOSSES[(i-1)%BOSSES.length])+'’s Shade',d:'Boss defeated #'+i});
+ for(let i=1;i<=state.bossWins;i++)a.push({id:'b'+i,k:'BOSS',n:(state.bn[i-1]||BOSSES[(i-1)%BOSSES.length].n)+hh().bs,d:'Boss defeated #'+i});
  Object.keys(state.shadows).filter(k=>/^d\d+$/.test(k)).forEach(k=>{const n=+k.slice(1);a.push({id:k,k:'RARE',n:dgName(n),d:'Dropped by dungeon clear #'+n,ok:true})});
- SHE.forEach(s=>a.push({id:s[0],k:'ELITE',n:s[1],d:s[2],ok:s[3]()}));
+ SHE.forEach(s=>a.push({id:s[0],k:'ELITE',n:s[1].replace(/^Shade/,hh().rp),d:s[2],ok:s[3]()}));
  a.forEach(s=>{if(s.ok===undefined)s.ok=true});return a}
 function arise(list){const el=$('lu');if(el.classList.contains('on')&&el.dataset.r!=='SH'){setTimeout(()=>arise(list),3200);return}
- const f=list.filter(x=>x.k==='BOSS').pop()||list[list.length-1];el.dataset.r='SH';$('lut').textContent='ARISE';$('lun').textContent=f.n+(list.length>1?'  +'+(list.length-1)+' more':'');
- $('lum').textContent=f.k==='BOSS'?'A FALLEN BOSS SERVES YOU NOW':f.k==='ELITE'?'AN ELITE SHADOW ANSWERS':f.k==='RARE'?'A RARE SHADOW ANSWERS THE GATE':'A SHADOW SOLDIER JOINS YOUR ARMY';
+ const f=list.filter(x=>x.k==='BOSS').pop()||list[list.length-1];el.dataset.r='SH';$('lut').textContent=hh().arise;el.style.setProperty('--c',hh().dk);$('lun').textContent=f.n+(list.length>1?'  +'+(list.length-1)+' more':'');
+ $('lum').textContent=f.k==='BOSS'?'A FALLEN BOSS SERVES YOU NOW':f.k==='ELITE'?'AN ELITE UNIT ANSWERS':f.k==='RARE'?'A RARE UNIT ANSWERS THE GATE':hh().join;
  $('pts').innerHTML=Array.from({length:34},()=>`<i class="pt" style="left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;animation-duration:${1.6+Math.random()*1.8}s"></i>`).join('');
  el.classList.add('on');clearTimeout(luFx.h);luFx.h=setTimeout(()=>el.classList.remove('on'),3800);
- beep(110,.5,'sawtooth');setTimeout(()=>beep(165,.4,'sawtooth'),180);setTimeout(()=>beep(330,.35),420);setTimeout(()=>say('Arise'),500);vib([90,60,90,60,220])}
+ beep(110,.5,'sawtooth');setTimeout(()=>beep(165,.4,'sawtooth'),180);setTimeout(()=>beep(330,.35),420);setTimeout(()=>say(hh().arise),500);vib([90,60,90,60,220])}
 function checkShadows(){const nw=shDefs().filter(s=>s.ok&&!state.shadows[s.id]);if(!nw.length)return;nw.forEach(s=>state.shadows[s.id]=dk());save();arise(nw)}
 let shAll=false;
-function renderShadows(){const D=shDefs(),R=tot().reps,
+function renderShadows(){const h=hh(),D=shDefs(),R=tot().reps,sq=state.level>=51,cap=capt(),
  got=D.filter(s=>state.shadows[s.id]).reverse().sort((a,b)=>state.shadows[b.id]<state.shadows[a.id]?-1:state.shadows[b.id]>state.shadows[a.id]?1:0),
- nxt=[{k:'REP',d:(500-R%500)+' reps to the next soldier'},{k:'BOSS',d:'Defeat a weekly boss'},{k:'RARE',d:'Clear an Instant Dungeon for a rare drop'}].concat(D.filter(s=>!state.shadows[s.id]&&s.k==='ELITE')),
- vis=shAll?got:got.slice(0,12),
+ nxt=[{k:'REP',d:(500-R%500)+' reps to the next recruit'},{k:'BOSS',d:'Defeat a weekly boss'},{k:'RARE',d:'Clear an Instant Dungeon for a rare drop'}].concat(D.filter(s=>!state.shadows[s.id]&&s.k==='ELITE')),
+ vis=shAll?got:got.slice(0,12),owned=HID.filter(id=>state.heroes[id]),
  card=(s,on)=>`<div class="shd ${on?'on ':''}${s.k.toLowerCase()}"><span class="sk">${s.k}</span><b>${on?esc(s.n):'???'}</b><small>${esc(s.d)}</small></div>`;
- $('shcount').textContent=got.length+' soldier'+(got.length===1?'':'s');
- $('shadows').innerHTML=(got.length?`<div class="shg">${vis.map(s=>card(s,1)).join('')}</div>`:'<small>No shadows yet. Count your first 100 reps to raise a Shade Scout.</small>')
+ $('shtitle').textContent=sq?'Sovereign Strike Squad':h.roster;$('shcount').textContent=got.length+' unit'+(got.length===1?'':'s');$('fold-shadows').style.setProperty('--hc',h.col);
+ $('shadows').innerHTML=`<div class="hhd"><b style="color:${h.col}">${h.glyph} ${esc(h.n)}</b><small style="display:block;margin-top:4px">PASSIVE · ${esc(h.pass)}</small></div>`
+ +(!state.hero?'<button class="btn red" style="margin:10px 0;width:100%" data-a="hnew">Choose your Hunter</button>':state.hpick>0&&owned.length<5?`<button class="btn red" style="margin:10px 0;width:100%" data-a="hnew">Unlock a Hunter (${state.hpick} available)</button>`:`<small style="display:block;margin-top:8px">${nextChg()}</small>`)
+ +`<small style="display:block;margin:12px 0 6px">HUNTERS · gold links a Hunter’s passive so it runs with your active one</small>`+HID.map(id=>{const x=H[id],un=!!state.heroes[id],ac=state.hero===id,lk=!!(state.plink&&state.plink[id]);
+  const btn=ac?'<span class="tag">ACTIVE</span>':un?`<button class="btn sm" data-a="hsel" data-v="${id}">Switch</button>`:'';
+  const pl=ac?'Passive on while active':lk?'Passive linked ✓':un?`<button class="btn sm red" data-a="plink" data-v="${id}">Link passive · 🪙${nextLink()}</button>`:'Locked. Unlock this Hunter first.';
+  return`<div class="card" style="padding:10px 12px;margin-bottom:8px;border-left-color:${x.col};${un?'':'opacity:.6'}"><div class="item" style="border:0;padding:0"><div><b style="color:${x.col}">${x.glyph} ${esc(x.n)}</b><span>${esc(x.roster)}</span></div>${btn}</div><small style="display:block;margin-top:6px">${esc(x.pass)}</small><div style="margin-top:8px"><small>${pl.startsWith('<')?'':pl}</small>${pl.startsWith('<')?pl:''}</div></div>`}).join('')
+ +(sq?`<small style="display:block;margin:12px 0 6px">STRIKE CAPTAINS · your last 5 bosses, each with a Hunter passive</small><div class="shg">${HID.map((id,i)=>{const b=cap[i];return`<div class="shd ${b?'on ':''}boss"><span class="sk">${H[id].glyph}</span><b>${b?esc(b):'EMPTY'}</b><small>${b?esc(H[id].roster)+' passive active':'Defeat another boss'}</small></div>`}).join('')}</div>`:'')
+ +`<small style="display:block;margin:14px 0 6px">${sq?'UNITS':'ROSTER'}</small>`
+ +(got.length?`<div class="shg">${vis.map(s=>card(s,1)).join('')}</div>`:'<small>No units yet. Count your first 100 reps to recruit your first unit.</small>')
  +(got.length>12?`<button class="btn sm" style="margin-top:10px" data-a="shall">${shAll?'Show fewer':'Show all '+got.length}</button>`:'')
- +`<small style="display:block;margin:14px 0 6px">NEXT TO RISE</small><div class="shg">${nxt.map(s=>card(s,0)).join('')}</div><small style="display:block;margin-top:10px">A soldier joins every 500 reps and every boss you defeat. Instant dungeons can drop rare ones. Army power: +${armyBonus()} boss damage per rep (+1 for every 10 shadows, max +3). Shadows come from lifetime totals, never from how much you do in one day. Train smart and rest when you need to.</small>`}
-
+ +`<small style="display:block;margin:14px 0 6px">NEXT TO RECRUIT</small><div class="shg">${nxt.map(s=>card(s,0)).join('')}</div><small style="display:block;margin-top:10px">A unit joins every 500 reps and every boss you defeat. Instant dungeons can drop rare ones. Units are named after your active Hunter and each one is worth +1 boss damage per 10 units (max +3). Units come from lifetime totals, never from one day's volume. Even resting days, your roster hits the boss a little. Train smart and rest when you need to.${sq?' At S-Rank every captain’s passive works at once.':''}</small>`}
 /* ===== SHADOW ARMY POWER ===== */
 const armyBonus=()=>Math.min(3,Math.floor(Object.keys(state.shadows).length/10));
 
 /* ===== INSTANT DUNGEON: one optional timed gate per day ===== */
 const DGT=[['Goblin Nest',5,[['Push-ups',40],['Squats',30]]],['Orc Hall',6,[['Squats',50],['Crunches',30]]],['Spider Cave',5,[['Lunges',40],['Push-ups',25]]],['Frost Vault',6,[['Pike Push-ups',20],['Leg Raises',25],['Squats',30]]],['Iron Trial',6,[['Push-ups',30],['Lunges',30],['Crunches',30]]],['Ant Nest',6,[['Mountain Climbers',40],['Squats',30]]]];
 const DGP=['Goblin','Orc','Naga','Troll','Wraith','Drake','Golem','Lich'];
-const dgName=n=>{const lap=Math.floor((n-1)/DGP.length);return'Shade '+DGP[(n-1)%DGP.length]+(lap?' '+(RN[lap+1]||lap+1):'')};
+const dgName=n=>{const lap=Math.floor((n-1)/DGP.length);return hh().rp+' '+DGP[(n-1)%DGP.length]+(lap?' '+(RN[lap+1]||lap+1):'')};
 let dgI=0;
 function dgGen(){if(state.dg&&state.dg.d===dk())return;const f=state.level<10?.75:state.level<25?1:1.25,i=Math.floor(Date.now()/864e5)%DGT.length,t=DGT[i];
  state.dg={d:dk(),i,st:'idle',t0:0,need:t[2].map(o=>Math.max(10,Math.round(o[1]*f/5)*5)),p:t[2].map(()=>0)};save()}
@@ -509,7 +606,7 @@ function dgAfter(){const g=state.dg;if(!g||g.st!=='run'||cur!==0)return;const t=
  state.ex=t[2][j][0];state.target=g.need[j]-g.p[j];T={ready:T.ready};save();toast('Next: '+state.ex);renderTrain()}
 function dgClear(){const g=state.dg;g.st='clear';clearInterval(dgI);dgI=0;state.dgn=(state.dgn||0)+1;state.xp+=40;const ch=chest();
  let sh=null;if(state.dgn%5===0||Math.random()<.2){const id='d'+state.dgn;state.shadows[id]=dk();sh={id,k:'RARE',n:dgName(state.dgn)}}
- save();fx('Dungeon cleared',DGT[g.i][0]);toast('Dungeon cleared! +40 XP · Chest: '+ch+(sh?' + rare shadow':''));tryLevel();
+ save();fx('Dungeon cleared',DGT[g.i][0]);toast('Dungeon cleared! +40 XP · Chest: '+ch+(sh?' + rare unit':''));tryLevel();
  if(sh)setTimeout(()=>arise([sh]),1600);renderDungeon()}
 
 /* ===== ALL-OUT ATTACK: finisher when the boss is under 20% HP ===== */
@@ -573,28 +670,26 @@ const EX={
 /* ===== PROGRAMS ===== */
 const D=(name,s)=>({name,ex:s.split(', ').map(x=>{const m=x.match(/^(.*) (\d+)x(\d+)$/);return{n:m[1],s:+m[2],r:+m[3]}})});
 const PROGS=[
-{id:'fb',name:'Full Body',lvl:'Beginner',blurb:'Whole body each session. The best place to start.',days:[D('Day A','Squats 3x10, Push-ups 3x10, Dumbbell Rows 3x10, Plank Hold (sec) 3x30'),D('Day B','Lunges 3x10, Incline Push-ups 3x12, Lat Pulldown 3x10, Leg Raises 3x10')]},
-{id:'bw',name:'Bodyweight Basics',lvl:'Beginner',blurb:'No equipment needed. Train anywhere.',days:[D('Day A','Squats 3x15, Push-ups 3x8, Crunches 3x15, Plank Hold (sec) 3x20'),D('Day B','Lunges 3x10, Incline Push-ups 3x10, Leg Raises 3x10, Russian Twists 3x20'),D('Day C','Squats 3x15, Pike Push-ups 3x8, Crunches 3x15, Plank Hold (sec) 3x30')]},
-{id:'ppl',name:'Push Pull Legs',lvl:'Intermediate',blurb:'Push, pull and legs on rotation. A popular muscle-building split.',days:[D('Push','Bench Press 4x8, Overhead Press 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12'),D('Pull','Pull-ups 4x8, Barbell Rows 4x8, Face Pulls 3x12, Bicep Curls 3x12'),D('Legs','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Leg Raises 3x12')]},
-{id:'ul',name:'Upper / Lower',lvl:'Intermediate',blurb:'Alternates upper and lower body over four sessions.',days:[D('Upper A','Bench Press 4x8, Barbell Rows 4x8, Overhead Press 3x10, Bicep Curls 3x12'),D('Lower A','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Crunches 3x15'),D('Upper B','Pull-ups 4x8, Chest Dips 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12'),D('Lower B','Bulgarian Split Squats 3x10, Squats 3x12, Leg Raises 3x12, Plank Hold (sec) 3x40')]},
-{id:'5x5',name:'5×5 Strength',lvl:'Intermediate',blurb:'Few lifts, heavy sets of five. Built for strength.',days:[D('Day A','Squats 5x5, Bench Press 5x5, Barbell Rows 5x5'),D('Day B','Squats 5x5, Overhead Press 5x5, Pull-ups 3x5')]},
-{id:'bro',name:'Bro Split',lvl:'Advanced',blurb:'One muscle group per day across five sessions.',days:[D('Chest','Bench Press 4x8, Incline Push-ups 3x12, Chest Dips 3x10'),D('Back','Pull-ups 4x8, Barbell Rows 4x8, Lat Pulldown 3x10'),D('Shoulders','Overhead Press 4x8, Lateral Raises 3x12, Face Pulls 3x12, Pike Push-ups 3x8'),D('Arms','Bicep Curls 3x12, Hammer Curls 3x12, Tricep Pushdowns 3x12, Skull Crushers 3x10'),D('Legs','Squats 4x8, Lunges 3x10, Romanian Deadlifts 3x10, Bulgarian Split Squats 3x10')]}];
-PROGS.push(
-{id:'pplul',name:'5-Day PPLUL Hybrid',lvl:'Intermediate',blurb:'Push, Pull, Legs, then Upper and Lower. Hits every muscle twice a week.',days:[D('Push','Bench Press 4x8, Dumbbell Shoulder Press 3x10, Incline Bench Press 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12'),D('Pull','Pull-ups 4x8, Barbell Rows 4x8, Seated Cable Rows 3x10, Face Pulls 3x12, Bicep Curls 3x12'),D('Legs','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Glute Bridges 3x15, Leg Raises 3x12'),D('Upper','Overhead Press 3x8, Chin-ups 3x8, Chest Dips 3x10, Dumbbell Rows 3x10, Hammer Curls 3x12'),D('Lower','Deadlifts 3x6, Bulgarian Split Squats 3x10, Hip Thrusts 3x10, Sumo Squats 3x12, Crunches 3x15')]},
-{id:'phul',name:'PHUL Power + Size',lvl:'Intermediate',blurb:'Two heavy days and two high-rep days. Strength and muscle together.',days:[D('Power Upper','Bench Press 4x5, Barbell Rows 4x5, Overhead Press 3x6, Pull-ups 3x6, Bicep Curls 2x8'),D('Power Lower','Squats 4x5, Deadlifts 3x5, Lunges 3x8, Hanging Leg Raises 3x10'),D('Size Upper','Incline Bench Press 4x12, Seated Cable Rows 4x12, Lateral Raises 4x15, Face Pulls 4x15, Tricep Pushdowns 3x12'),D('Size Lower','Goblet Squats 4x12, Romanian Deadlifts 4x12, Step-ups 3x12, Glute Bridges 3x15, Crunches 3x20')]},
-{id:'tl',name:'Torso / Limbs',lvl:'Intermediate',blurb:'Four days. Torso days for chest and back, limb days for legs and arms.',days:[D('Torso A','Bench Press 4x8, Barbell Rows 4x8, Overhead Press 3x10, Lat Pulldown 3x10'),D('Limbs A','Squats 4x8, Romanian Deadlifts 3x10, Bicep Curls 3x12, Tricep Pushdowns 3x12'),D('Torso B','Incline Bench Press 4x10, Pull-ups 4x8, Lateral Raises 3x15, Face Pulls 3x15'),D('Limbs B','Lunges 3x10, Hip Thrusts 3x10, Hammer Curls 3x12, Skull Crushers 3x12')]},
-{id:'arn',name:'Arnold Split',lvl:'Advanced',blurb:'Chest and back, shoulders and arms, legs. Run it twice a week for six sessions.',days:[D('Chest & Back','Bench Press 4x8, Pull-ups 4x8, Incline Bench Press 3x10, Barbell Rows 3x10, Chest Dips 3x10'),D('Shoulders & Arms','Arnold Press 4x10, Lateral Raises 4x12, Bicep Curls 3x12, Skull Crushers 3x12, Hammer Curls 3x12'),D('Legs & Abs','Squats 4x8, Romanian Deadlifts 3x10, Lunges 3x10, Hanging Leg Raises 3x12, Crunches 3x15')]},
-{id:'fb3',name:'Minimalist Full Body',lvl:'Beginner',blurb:'Three short sessions a week built on the big lifts. Great with busy schedules.',days:[D('Day A','Squats 3x8, Bench Press 3x8, Barbell Rows 3x8, Plank Hold (sec) 2x40'),D('Day B','Deadlifts 3x5, Overhead Press 3x8, Chin-ups 3x6, Crunches 2x15'),D('Day C','Goblet Squats 3x10, Push-ups 3x12, Dumbbell Rows 3x10, Glute Bridges 3x15')]},
-{id:'glu',name:'Glute & Legs Focus',lvl:'Intermediate',blurb:'Two lower-body days built around bridges, thrusts and single-leg work.',days:[D('Day A','Hip Thrusts 4x10, Sumo Squats 4x12, Step-ups 3x12, Glute Bridges 3x15'),D('Day B','Romanian Deadlifts 4x8, Bulgarian Split Squats 3x10, Lunges 3x12, Leg Raises 3x12')]},
-{id:'cal',name:'Calisthenics Skills',lvl:'Advanced',blurb:'Push, pull and legs with hard bodyweight skills. No gym needed.',days:[D('Push','Archer Push-ups 4x6, Pike Push-ups 3x8, Diamond Push-ups 3x10, Handstand Push-ups 3x5'),D('Pull','Pull-ups 4x8, Chin-ups 3x8, Inverted Rows 3x10, Muscle-ups 3x3'),D('Legs','Pistol Squats 3x5, Bulgarian Split Squats 3x8, Jump Squats 3x10, Hanging Leg Raises 3x10')]},
-{id:'hiit',name:'HIIT & Core',lvl:'Beginner',blurb:'Short, fast sessions for conditioning and abs. About 20 minutes.',days:[D('Day A','Jumping Jacks 3x40, Mountain Climbers 3x30, Jump Squats 3x12, Plank Hold (sec) 3x30'),D('Day B','High Knees 3x40, Bicycle Crunches 3x20, Squats 3x15, Push-ups 3x10')]},
-{id:'ap',name:'Anterior / Posterior',lvl:'Intermediate',blurb:'Front day, back day, four sessions. No single brutal leg day. Stop each set 1-3 reps shy of failure.',days:[D('Anterior A','Squats 3x8, Incline Bench Press 3x10, Step-ups 2x12, Lateral Raises 3x14, Bicep Curls 2x11, Hanging Leg Raises 2x12'),D('Posterior A','Romanian Deadlifts 3x8, Lat Pulldown 3x10, Seated Cable Rows 2x10, Skull Crushers 2x12, Glute Bridges 3x12'),D('Anterior B','Bench Press 3x8, Goblet Squats 3x10, Incline Push-ups 2x12, Lateral Raises 3x14, Hammer Curls 2x11, Plank Hold (sec) 2x40'),D('Posterior B','Hip Thrusts 3x12, Barbell Rows 3x8, Dumbbell Rows 2x11, Face Pulls 3x14, Tricep Pushdowns 2x12')]},
-{id:'ulab',name:'Upper / Lower · Arm & Delt Bias',lvl:'Intermediate',blurb:'Four days. Arms and side delts come first on lower days, so they are trained fresh.',days:[D('Upper A','Incline Bench Press 3x8, Lat Pulldown 3x10, Dumbbell Shoulder Press 2x10, Seated Cable Rows 2x10'),D('Lower A','Lateral Raises 3x14, Skull Crushers 2x12, Bicep Curls 2x11, Squats 3x8, Romanian Deadlifts 3x8, Crunches 2x15'),D('Upper B','Bench Press 3x8, Pull-ups 3x8, Chest Dips 2x10, Face Pulls 3x14'),D('Lower B','Lateral Raises 3x14, Hammer Curls 2x11, Tricep Pushdowns 2x12, Hip Thrusts 3x10, Bulgarian Split Squats 3x10, Plank Hold (sec) 2x40')]},
-{id:'lvfb',name:'Low-Volume Full Body',lvl:'Intermediate',blurb:'Three days, one or two hard sets per exercise. Short sessions and plenty of recovery.',days:[D('Day A','Squats 2x8, Bench Press 2x8, Lat Pulldown 2x10, Lateral Raises 1x14, Bicep Curls 1x11'),D('Day B','Romanian Deadlifts 2x8, Overhead Press 2x10, Barbell Rows 2x8, Tricep Pushdowns 1x12, Leg Raises 1x12'),D('Day C','Lunges 2x10, Incline Bench Press 2x10, Pull-ups 2x8, Face Pulls 1x14, Hammer Curls 1x11')]},
-{id:'hyb',name:'Hybrid Athletic',lvl:'Advanced',blurb:'HYROX-style. Two heavy strength days and two conditioning days. Add easy Zone 2 cardio on rest days.',days:[D('Strength Lower','Deadlifts 3x5, Squats 3x6, Bulgarian Split Squats 3x8, Hanging Leg Raises 3x10'),D('Strength Upper','Bench Press 3x6, Pull-ups 3x6, Overhead Press 3x6, Barbell Rows 3x8'),D('Engine A','Jump Squats 4x12, Mountain Climbers 4x30, Lunges 3x12, Plank Hold (sec) 3x40'),D('Engine B','High Knees 4x40, Step-ups 3x12, Jumping Jacks 3x40, Russian Twists 3x20')]});
+{id:"phantom",path:"shadow",name:"Phantom Initiate",real:"3-Day Zero-Gear Bodyweight Full Body",lvl:"Easy",freq:3,gear:"No Equipment",blurb:"Pure home workout. Zero equipment needed. Builds full-body strength and core control 3x a week.",days:[D("Day A","Squats 3x15, Push-ups 3x10, Inverted Rows 3x10, Glute Bridges 3x15, Plank Hold (sec) 2x30"),D("Day B","Lunges 3x12, Pike Push-ups 3x8, Incline Push-ups 3x12, Leg Raises 3x12, Russian Twists 2x20")]},
+{id:"blitz",path:"shadow",name:"Blitz Striker",real:"20-Minute Home HIIT & Core",lvl:"Moderate",freq:3,gear:"No Equipment",blurb:"High-pace bodyweight conditioning and abs for busy days. No equipment required.",days:[D("Day A","Jumping Jacks 3x40, Mountain Climbers 3x30, Jump Squats 3x12, Push-ups 3x12, Plank Hold (sec) 3x35"),D("Day B","High Knees 3x40, Bicycle Crunches 3x20, Squats 3x15, Pike Push-ups 3x8, Russian Twists 3x24")]},
+{id:"twinfang",path:"shadow",name:"Twin-Fang Arsenal",real:"4-Day Dumbbell Upper / Lower",lvl:"Hard",freq:4,gear:"Dumbbells Only",blurb:"Complete 4-day Upper/Lower home program using only a pair of dumbbells.",days:[D("Upper A","Dumbbell Shoulder Press 3x10, Dumbbell Rows 4x10, Incline Push-ups 3x12, Lateral Raises 3x14, Bicep Curls 3x12"),D("Lower A","Goblet Squats 4x12, Romanian Deadlifts 4x10, Bulgarian Split Squats 3x10, Plank Hold (sec) 2x40"),D("Upper B","Arnold Press 3x10, Dumbbell Rows 3x12, Diamond Push-ups 3x10, Hammer Curls 3x12, Skull Crushers 3x12"),D("Lower B","Sumo Squats 4x12, Lunges 3x12, Glute Bridges 4x15, Leg Raises 3x12")]},
+{id:"ironbar",path:"shadow",name:"Iron Bar Nomad",real:"4-Day Pull-Up & Dip Park Split",lvl:"Brutal",freq:4,gear:"Pull-Up & Dip Bar",blurb:"Street-workout upper/lower split built around pull-ups, dips, and single-leg squats.",days:[D("Upper A","Pull-ups 4x8, Chest Dips 4x10, Inverted Rows 3x12, Pike Push-ups 3x10, Hanging Leg Raises 3x12"),D("Lower A","Bulgarian Split Squats 4x10, Jump Squats 3x12, Glute Bridges 3x15, Plank Hold (sec) 3x45"),D("Upper B","Chin-ups 4x8, Diamond Push-ups 4x12, Bench Dips 3x15, Archer Push-ups 3x6, Leg Raises 3x15"),D("Lower B","Pistol Squats 3x5, Lunges 4x12, Step-ups 3x12, Russian Twists 3x24")]},
+{id:"gravity",path:"shadow",name:"Gravity Defier",real:"5-Day Advanced Calisthenics Mastery",lvl:"Extreme",freq:5,gear:"Pull-Up Bar & Floor",blurb:"Elite bodyweight skill mastery: pistol squats, muscle-ups, and handstand push-ups.",days:[D("Push","Archer Push-ups 4x6, Pike Push-ups 3x8, Diamond Push-ups 3x10, Handstand Push-ups 3x5"),D("Pull","Pull-ups 4x8, Chin-ups 3x8, Inverted Rows 3x10, Muscle-ups 3x3"),D("Legs","Pistol Squats 3x5, Bulgarian Split Squats 3x8, Jump Squats 3x10, Hanging Leg Raises 3x10")]},
+{id:"awaken",path:"iron",name:"Iron Awakening",real:"3-Day Gym Full Body (A/B)",lvl:"Easy",freq:3,gear:"Barbells, Dumbbells & Cables",blurb:"Balanced A/B gym routine hitting legs, push, pull, and shoulders with weights every session.",days:[D("Day A","Goblet Squats 3x10, Bench Press 3x10, Dumbbell Rows 3x10, Overhead Press 3x10, Bicep Curls 2x12"),D("Day B","Romanian Deadlifts 3x10, Incline Bench Press 3x10, Lat Pulldown 3x10, Sumo Squats 3x10, Tricep Pushdowns 2x12")]},
+{id:"pillar",path:"iron",name:"Twin-Pillar Protocol",real:"Classic 4-Day Upper / Lower",lvl:"Moderate",freq:4,gear:"Barbells, Dumbbells & Cables",blurb:"Classic 4-day weighted gym split alternating upper and lower body for steady muscle growth.",days:[D("Upper A","Bench Press 4x8, Barbell Rows 4x8, Overhead Press 3x10, Bicep Curls 3x12, Tricep Pushdowns 3x12"),D("Lower A","Squats 4x8, Romanian Deadlifts 3x10, Goblet Squats 3x12, Hip Thrusts 3x12"),D("Upper B","Incline Bench Press 4x8, Lat Pulldown 4x8, Seated Cable Rows 3x10, Lateral Raises 3x14, Hammer Curls 3x12"),D("Lower B","Deadlifts 3x6, Sumo Squats 4x10, Hip Thrusts 3x12, Romanian Deadlifts 3x10")]},
+{id:"titan",path:"iron",name:"Titan 5x5",real:"StrongLifts / 5x5 Barbell Strength",lvl:"Hard",freq:3,gear:"Barbell & Rack",blurb:"Heavy barbell sets of five, 3x a week. Built for pure progressive iron strength.",days:[D("Day A","Squats 5x5, Bench Press 5x5, Barbell Rows 5x5"),D("Day B","Squats 5x5, Overhead Press 5x5, Deadlifts 3x5")]},
+{id:"crimson",path:"iron",name:"Crimson Trinity",real:"6-Day Push / Pull / Legs (PPL)",lvl:"Brutal",freq:6,gear:"Barbells, Dumbbells & Cables",blurb:"High-volume weighted bodybuilding rotation hitting every muscle group twice per week.",days:[D("Push","Bench Press 4x8, Overhead Press 3x10, Incline Bench Press 3x10, Lateral Raises 3x14, Tricep Pushdowns 3x12"),D("Pull","Lat Pulldown 4x8, Barbell Rows 4x8, Seated Cable Rows 3x10, Face Pulls 3x14, Bicep Curls 3x12"),D("Legs","Squats 4x8, Romanian Deadlifts 3x10, Sumo Squats 3x10, Hip Thrusts 3x12, Goblet Squats 3x12")]},
+{id:"monarchbb",path:"iron",name:"Monarch Bodybuilding",real:"6-Day Arnold Antagonist Split",lvl:"Extreme",freq:6,gear:"Barbells, Dumbbells & Cables",blurb:"Classic high-volume iron physique split pairing Chest/Back, Shoulders/Arms, and Legs.",days:[D("Chest & Back","Bench Press 4x8, Lat Pulldown 4x8, Incline Bench Press 3x10, Barbell Rows 3x10, Seated Cable Rows 3x10"),D("Shoulders & Arms","Arnold Press 4x10, Lateral Raises 4x12, Bicep Curls 3x12, Skull Crushers 3x12, Hammer Curls 3x12"),D("Legs","Squats 4x8, Romanian Deadlifts 3x10, Hip Thrusts 3x12, Goblet Squats 3x12")]},
+{id:"catalyst",path:"apex",name:"Zero-Waste Catalyst",real:"Low-Volume High-Intensity Full Body",lvl:"Easy",freq:3,gear:"Full Gym",blurb:"1-2 all-out working sets per exercise (1-2 RIR). Short 45-minute sessions with full recovery.",days:[D("Day A","Squats 2x8, Bench Press 2x8, Lat Pulldown 2x10, Lateral Raises 1x14, Bicep Curls 1x11"),D("Day B","Romanian Deadlifts 2x8, Overhead Press 2x10, Barbell Rows 2x8, Tricep Pushdowns 1x12, Hip Thrusts 1x12"),D("Day C","Sumo Squats 2x10, Incline Bench Press 2x10, Seated Cable Rows 2x8, Face Pulls 1x14, Hammer Curls 1x11")]},
+{id:"overdrive",path:"apex",name:"Overdrive Specialization",real:"Upper / Lower (Arm & Side-Delt Bias)",lvl:"Moderate",freq:4,gear:"Full Gym",blurb:"Moves side delts and arms to the start of lower days so they are trained completely fresh.",days:[D("Upper A","Incline Bench Press 3x8, Lat Pulldown 3x10, Dumbbell Shoulder Press 2x10, Seated Cable Rows 2x10"),D("Lower A","Lateral Raises 3x14, Skull Crushers 2x12, Bicep Curls 2x11, Squats 3x8, Romanian Deadlifts 3x8"),D("Upper B","Bench Press 3x8, Pull-ups 3x8, Chest Dips 2x10, Face Pulls 3x14"),D("Lower B","Lateral Raises 3x14, Hammer Curls 2x11, Tricep Pushdowns 2x12, Hip Thrusts 3x10, Bulgarian Split Squats 3x10")]},
+{id:"eclipse",path:"apex",name:"Eclipse Split",real:"Anterior / Posterior (Front / Back)",lvl:"Hard",freq:4,gear:"Full Gym",blurb:"Front-of-body day, back-of-body day. Eliminates brutal leg days and balances fatigue.",days:[D("Anterior A","Squats 3x8, Incline Bench Press 3x10, Goblet Squats 2x12, Lateral Raises 3x14, Bicep Curls 2x11, Hanging Leg Raises 2x12"),D("Posterior A","Romanian Deadlifts 3x8, Lat Pulldown 3x10, Seated Cable Rows 2x10, Skull Crushers 2x12, Hip Thrusts 3x12"),D("Anterior B","Bench Press 3x8, Sumo Squats 3x10, Dumbbell Shoulder Press 2x10, Lateral Raises 3x14, Hammer Curls 2x11"),D("Posterior B","Deadlifts 3x6, Barbell Rows 3x8, Dumbbell Rows 2x11, Face Pulls 3x14, Tricep Pushdowns 2x12")]},
+{id:"pentad",path:"apex",name:"Sovereign Pentad",real:"5-Day PPLUL Hybrid Split",lvl:"Brutal",freq:5,gear:"Full Gym",blurb:"Push, Pull, Legs followed by Upper and Lower. Hits every muscle twice a week.",days:[D("Push","Bench Press 4x8, Dumbbell Shoulder Press 3x10, Incline Bench Press 3x10, Lateral Raises 3x12, Tricep Pushdowns 3x12"),D("Pull","Lat Pulldown 4x8, Barbell Rows 4x8, Seated Cable Rows 3x10, Face Pulls 3x12, Bicep Curls 3x12"),D("Legs","Squats 4x8, Romanian Deadlifts 3x10, Sumo Squats 3x10, Hip Thrusts 3x12, Goblet Squats 3x12"),D("Upper","Overhead Press 3x8, Pull-ups 3x8, Incline Bench Press 3x10, Dumbbell Rows 3x10, Hammer Curls 3x12"),D("Lower","Deadlifts 3x6, Bulgarian Split Squats 3x10, Hip Thrusts 3x12, Romanian Deadlifts 3x10")]},
+{id:"gauntlet",path:"apex",name:"Monarch Gauntlet",real:"HYROX Strength + Engine Hybrid",lvl:"Extreme",freq:4,gear:"Gym + Conditioning",blurb:"Two heavy barbell strength days paired with two high-engine athletic conditioning days.",days:[D("Strength Lower","Deadlifts 3x5, Squats 3x6, Bulgarian Split Squats 3x8, Hanging Leg Raises 3x10"),D("Strength Upper","Bench Press 3x6, Pull-ups 3x6, Overhead Press 3x6, Barbell Rows 3x8"),D("Engine A","Jump Squats 4x12, Mountain Climbers 4x30, Lunges 3x12, Plank Hold (sec) 3x40"),D("Engine B","High Knees 4x40, Step-ups 3x12, Jumping Jacks 3x40, Russian Twists 3x20")]}];
 const clone=o=>JSON.parse(JSON.stringify(o));
 function syncCustom(){const i=PROGS.findIndex(x=>x.id==='custom');if(i>=0)PROGS.splice(i,1);if(state.custom&&state.custom.days.length)PROGS.push({id:'custom',name:state.custom.name||'My Split',lvl:'Custom',blurb:'Your own split.',days:state.custom.days})}
-let cb=null,pf='All';
+const PATHS=[['shadow','Shadow Path'],['iron','Iron Vanguard'],['apex','Apex Path']],DC={Easy:'g',Moderate:'',Hard:'r',Brutal:'r',Extreme:'r'};
+const pm=x=>({p:x.path,h:x.name});
+let cb=null,pf='shadow';
 const prOf=()=>state.prog&&PROGS.find(p=>p.id===state.prog.id);
 function syncProg(){const p=state.prog,pr=prOf(),t=dk();if(!p||!pr){state.prog=null;return}if(p.sd!==t){if(p.done)p.day=(p.day+1)%pr.days.length;p.done=false;p.sets={};p.sd=t}}
 function planToday(){syncProg();const pr=prOf();if(!pr)return null;const d=pr.days[state.prog.day%pr.days.length];return{pr,name:d.name,items:d.ex.map(e=>({...e,done:state.prog.sets[e.n]||0}))}}
@@ -607,10 +702,10 @@ const allDone=()=>state.quests.length>0&&state.quests.filter(q=>!q.bonus).every(
 function tryLevel(){if(!allDone())return;const r0=rankOf(state.level);let up=0;
  while(state.xp>=need(state.level)){const nx=state.level+1,tr=TRIALS[nx];
   if(tr&&!state.gate[nx]){if(!state.trial||state.trial.lv!==nx){state.trial={lv:nx,ex:tr[0],n:tr[1]};fx('RANK GATE','A trial awaits');beep(220,.5,'sawtooth');vib([120,60,120])}break}
-  state.xp-=need(state.level);state.level++;state.sp+=3;up=1}
- if(up)luFx(r0!==rankOf(state.level));save()}
+  state.xp-=need(state.level);state.level++;state.sp+=3;up=1;if([11,21,31,41].includes(state.level))state.hpick=(state.hpick||0)+1}
+ if(up){luFx(r0!==rankOf(state.level));if(state.hpick>0&&state.hero)setTimeout(heroModal,5200)}save()}
 const MSG={E:'THE WEAKEST HUNTER RISES',D:'YOU ARE NO LONGER A BEGINNER',C:'THE GATE OPENS',B:'THE SHADOWS STIR',A:'NONE CAN STAND IN YOUR WAY',S:'ARISE. THE MONARCH AWAKENS'},PT={E:0,D:14,C:8,B:16,A:36,S:52};
-function luFx(promo){const r=rankOf(state.level),el=$('lu');el.dataset.r=r;$('lut').textContent=promo?'RANK UP':'LEVEL UP';$('lun').textContent='LV '+state.level+' · '+r+'-RANK';$('lum').textContent=MSG[r];
+function luFx(promo){const r=rankOf(state.level),el=$('lu');el.dataset.r=r;el.style.removeProperty('--c');$('lut').textContent=promo?'RANK UP':'LEVEL UP';$('lun').textContent='LV '+state.level+' · '+r+'-RANK';$('lum').textContent=MSG[r];
  $('pts').innerHTML=Array.from({length:PT[r]},()=>`<i class="pt" style="left:${Math.random()*100}%;animation-delay:${Math.random()*2}s;animation-duration:${1.4+Math.random()*1.6}s"></i>`).join('');
  el.classList.add('on');clearTimeout(luFx.h);luFx.h=setTimeout(()=>el.classList.remove('on'),promo?4800:3000)}
 $('lu').addEventListener('click',()=>$('lu').classList.remove('on'));
@@ -621,17 +716,17 @@ function genQuests(){const t=dk();if(state.qDate===t)return;state.qDate=t;syncPr
  BON=[{n:'Bonus: new record',d:'Beat a personal record today',t:1,k:'pr'},{n:'Bonus: go heavy',d:'Finish a set with weight above 0 kg',t:1,k:'wt'},{n:'Bonus: new skill',d:'Finish a set of a skill you have never trained',t:1,k:'new'},{n:'Bonus: hydrate',d:'Drink 8 glasses of water',t:1,k:'water'},{n:'Bonus: eat smart',d:'Log a meal in the Food tab',t:1,k:'meal'}][dn%5];
  state.quests=[{n:Q1[0],d:'Count '+Q1[1]+' reps',t:Q1[1],p:0,xp:15,k:'reps'},{n:'Iron discipline',d:'Finish 3 sets',t:3,p:0,xp:25,k:'sets'},
  pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),p:0,xp:60,k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,p:0,xp:60,k:'sets'}];
- if(pen)state.quests.push({n:'Penalty: recovery',d:'Count 60 reps to clear a missed day',t:60,p:0,xp:20,k:'reps',pen:1});
+ if(state.restDays.includes(new Date().getDay()))state.quests.push({n:'Recovery: hydrate',d:'Drink 8 glasses of water',t:1,p:0,xp:10,k:'water',bonus:1,rec:1},{n:'Recovery: protein',d:'Log 80 g of protein in Food',t:1,p:0,xp:10,k:'prot',bonus:1,rec:1},{n:'Recovery: mobility',d:'Stretch or walk for 10 minutes, then tick it in Check-in',t:1,p:0,xp:10,k:'mob',bonus:1,rec:1});
  state.quests.push(Object.assign(BON,{p:0,xp:15,bonus:1}));save();if(fr)toast('Streak freeze used. Your streak is safe.')}
 function refreshQuests(){const q=state.quests[2];if(!q||q.p>=q.t)return;const pt=planToday();
  Object.assign(q,pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,k:'sets'});q.p=Math.min(q.p,q.t-1);save()}
-function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q.t,q.p+n);if(q.p>=q.t){const x=Math.round(q.xp*xpMul());state.xp+=x;state.gold+=5;toast('Quest done: '+q.n+' +'+x+' XP')}}});save();tryLevel()}
+function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q.t,q.p+n);if(q.p>=q.t){const x=Math.round(q.xp*xpMul());state.xp+=x;state.gold+=5;toast('Quest done: '+q.n+' +'+x+' XP')}}});save();recCheck();tryLevel()}
 
 /* ===== UI ===== */
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
 const SEC=['train','hero','food','prog','skills','checkin','shop'];
 function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classList.add('enter');setTimeout(()=>$(s).classList.remove('enter'),400);document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===s));scrollTo(0,0);render();if(s==='hero')$('avt').appendChild($('fig'));else if(s==='skills')$('figslot').appendChild($('fig'));if((s==='skills'||s==='hero')&&!figOn){figOn=true;requestAnimationFrame(figLoop)}}
-function render(){genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
+function render(){syncPassive();genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
 const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
  $('top').textContent='LV '+l+' '+r;$('pathn').textContent='Path: '+(state.lock?'Locked. Skills unlock as your rank rises.':'Open. Every skill is available.');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
@@ -646,7 +741,7 @@ const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locke
  $('stats').innerHTML+=statPts();
  $('quests').innerHTML=state.quests.map(q=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}</div>`).join('');
  $('ladder').innerHTML=RK.map((x,i)=>`<div class="card ${x[1]===r?'cy':''}" style="padding:10px 14px"><b style="font-family:Anton,Impact,sans-serif">${x[1]}-RANK</b> <small>Level ${x[0]}${RK[i+1]?'–'+(RK[i+1][0]-1):'+'}</small></div>`).join('');
- renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
+ renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderRfx();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
 function renderToday(){const pt=planToday();
  if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="openprog">Choose a program</button>`;return}
  const fin=state.prog.done,wd=new Date().getDay(),isR=state.restDays.includes(wd)&&!fin;let nxd='';if(isR){for(let i=1;i<=7;i++){const k=(wd+i)%7;if(!state.restDays.includes(k)){nxd=i===1?'tomorrow':DN[k];break}}}
@@ -666,8 +761,8 @@ function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label=
  if(f==='name'){cb.name=t.value;return}const d=cb.days[+t.dataset.d];if(!d)return;
  if(f==='dname')d.name=t.value.trim()||'Day '+(+t.dataset.d+1);else{const x=d.ex[+t.dataset.i];if(x)x[f]=Math.max(1,Math.min(f==='s'?10:100,+t.value||1))}}));
 function renderPlans(){renderRestCard();{const pn=$('progname'),q=prOf();if(pn)pn.textContent=q?'· '+q.name:'· none'}if(cb){renderBuilder();return}const p=state.prog,pr=prOf();
- if(!pr){const L=['All','Beginner','Intermediate','Advanced'],list=PROGS.filter(x=>x.id==='custom'||pf==='All'||x.lvl===pf);
-  $('plansbody').innerHTML=`<div class="chips" style="margin:0 0 10px">${L.map(l=>`<button class="chip" aria-pressed="${pf===l}" data-a="pf" data-v="${l}">${l}</button>`).join('')}</div>`+list.map(x=>`<details class="card pick ${x.id==='fb'?'cy':''}"><summary><span><b>${esc(x.name)}</b><small>${x.days.length} days · ${x.lvl}${x.id==='fb'?' · best start':''}</small></span><button class="btn sm" data-a="start" data-v="${x.id}">Start</button></summary><div class="pk"><p class="sub" style="margin:0 0 8px">${esc(x.blurb)}</p>${x.days.map(d=>`<small style="display:block"><b>${esc(d.name)}</b> · ${d.ex.map(e=>esc(e.n.replace(' (sec)',''))).join(', ')}</small>`).join('')}${x.id==='custom'?'<button class="btn" style="margin-top:8px;width:100%" data-a="cbedit">Edit split</button>':''}</div></details>`).join('')+(state.custom?'':'<button class="btn" style="width:100%;margin-top:4px" data-a="cbnew">+ Build your own</button>');return}
+ if(!pr){const L=PATHS,list=PROGS.filter(x=>x.id==='custom'||pm(x).p===pf);
+  $('plansbody').innerHTML=`<div class="chips" style="margin:0 0 10px">${L.map(l=>`<button class="chip" aria-pressed="${pf===l[0]}" data-a="pf" data-v="${l[0]}">${l[1]}</button>`).join('')}</div>`+list.map(x=>`<details class="card pick ${x.id==='fb'?'cy':''}"><summary><span><b>${esc(pm(x).h)}<span class="tag ${DC[x.lvl]||''}">${esc(x.lvl)}</span></b><small>${esc(x.real||x.name)} · ${x.freq||x.days.length} days/wk</small></span><button class="btn sm" data-a="start" data-v="${x.id}">Start</button></summary><div class="pk"><p class="sub" style="margin:0 0 8px">${esc(x.blurb)}${x.gear?' <b>Gear:</b> '+esc(x.gear):''}</p>${x.days.map(d=>`<small style="display:block"><b>${esc(d.name)}</b> · ${d.ex.map(e=>esc(e.n.replace(' (sec)',''))).join(', ')}</small>`).join('')}${x.id==='custom'?'<button class="btn" style="margin-top:8px;width:100%" data-a="cbedit">Edit split</button>':''}</div></details>`).join('')+(state.custom?'':'<button class="btn" style="width:100%;margin-top:4px" data-a="cbnew">+ Build your own</button>');return}
  $('plansbody').innerHTML=`<div class="card cy"><span class="tag">ACTIVE</span><h3 style="margin-top:6px">${pr.name}</h3><small>Session ${p.day%pr.days.length+1} of ${pr.days.length}. The next one unlocks after you finish today.</small><button class="btn sm" style="margin-top:10px" data-a="swap">Change program</button></div>
  ${pr.id==='custom'?'<button class="btn" style="width:100%;margin-bottom:10px" data-a="cbedit">Edit custom split</button>':''}`}
 function renderProg(){const h=state.hist[dk()]||{reps:0},N=state.rng||7;$('p1').textContent=h.reps||0;$('p2').innerHTML=`<span class="flame-streak">🔥 ${state.streak}</span>`;let s=0,v=0,w=[],mx=50;
@@ -692,21 +787,21 @@ function buildSel(){const sg=state.lock+'|'+rIdx()+'|'+(state.prog?state.prog.id
 $('exsel').addEventListener('change',e=>{state.ex=e.target.value;cur=0;T={ready:T.ready};save();render()});
 
 /* ===== REP + SET LOGIC (camera only) ===== */
-const cmult=n=>n>=20?4:n>=10?3:n>=5?2:1;
+const cmult=n=>n>=20?4:n>=10?3:n>=ovT()?2:1;
 function repMsg(g){if(g.l==='S')return'Perfect control';if(g.l==='A')return g.d<2?'Clean. A bit deeper for S':'Clean. Slow the lowering for S';
  if(g.l==='B')return g.d<2&&g.t<2?'Go deeper and slower':g.d<2?'Go a little deeper':'Slow the lowering down';return'Too fast and shallow. Slow down, go deeper'}
-function setCmb(){const e=$('cmb'),n=T.combo||0;e.classList.toggle('hide',n<2);e.textContent='COMBO '+n+(cmult(n)>1?' · x'+cmult(n):'')}
+function setCmb(){const e=$('cmb'),n=T.combo||0;e.classList.toggle('hide',n<2);e.textContent='COMBO '+n+(cmult(n)>1?(hasP('yoonho')?' · BEAST OVERDRIVE x':' · x')+cmult(n):'')}
 function showGrade(g){const e=$('gr');e.textContent=g.l;e.dataset.g=g.l;e.classList.remove('on');void e.offsetWidth;e.classList.add('on');setCmb()}
 function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;{const now=Date.now(),rt=T.rt=T.rt||[];rt.push(now);if(rt.length>=5){const iv=rt.slice(1).map((x,i)=>x-rt[i]),b=(iv[0]+iv[1]+iv[2])/3;if(iv[iv.length-1]>=b*1.9)T.grind=1}}const c=$('cnt');c.classList.add('pop');setTimeout(()=>c.classList.remove('pop'),300);
  if(g){(T.gs=T.gs||[]).push(g.p);state.fm[g.l]=(state.fm[g.l]||0)+1;const f=fdT();f[g.l]++;
-  T.combo=(g.l==='S'||g.l==='A')?(T.combo||0)+1:g.l==='B'?(T.combo||0):0;
+  T.combo=(g.l==='S'||g.l==='A')?(T.combo||0)+1:g.l==='B'?(T.combo||0):0;T.sc=g.l==='S'?(T.sc||0)+1:0;
   if(T.combo>(state.bc||0))state.bc=T.combo;if(T.combo>f.bc)f.bc=T.combo;
   showGrade(g);$('coach').innerHTML='<b>'+g.l+' rep</b> · '+repMsg(g)+(T.combo>1?' · Combo '+T.combo+(cmult(T.combo)>1?' · x'+cmult(T.combo)+' damage':''):'')}
  qProg('reps',1+Math.floor(state.kg/20));repFx(g);if(state.snd==='voice')say(cur);else beep(660,.07);vib(15);
   if(g&&T.gs.length>=6&&!T.fat){const m=a=>a.reduce((x,y)=>x+y,0)/a.length;if(m(T.gs.slice(0,3))-m(T.gs.slice(-3))>=1.2&&m(T.gs.slice(-3))<=2.4){T.fat=1;setTimeout(()=>{$('coach').innerHTML='<b>Form is fading.</b> Finish this set, then rest or lower the weight.';say('Form fading')},900)}}
  dgRep();if(cur>=state.target)finishSet();dgAfter();renderTrain();renderBoss();renderDungeon()}
 function formLine(gs){const avg=gs.reduce((a,b)=>a+b,0)/gs.length,L=avg>=3.5?'S':avg>=2.75?'A':avg>=1.75?'B':'C',cl=Math.round(gs.filter(p=>p>=3).length/gs.length*100);return'Form '+L+' · '+cl+'% clean'}
-function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0}),ex=state.ex,gs=T.gs||[],fm=gs.length?formLine(gs):'';T.gs=[];T.rt=[];T.grind=0;T.combo=0;setCmb();
+function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0}),ex=state.ex,gs=T.gs||[],fm=gs.length?formLine(gs):'';T.gs=[];T.rt=[];T.grind=0;T.combo=0;T.sc=0;setCmb();if(hasP('jongin')&&state.target>=15)igniteBurn();
  const isNew=!state.sk[ex],old=state.pr[ex],isPR=!!old&&(state.kg>old.kg||(state.kg===old.kg&&state.target>old.r));
  h.reps+=state.target;h.sets++;h.volume+=state.target*state.kg;state.sk[ex]=(state.sk[ex]||0)+state.target;
  if(!old||isPR)state.pr[ex]={kg:state.kg,r:state.target};if(isPR)h.prs=(h.prs||0)+1;
@@ -715,12 +810,12 @@ function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0
  cur=0;save();qProg('sets',1);if(isPR)qProg('pr',1);if(state.kg>0)qProg('wt',1);if(isNew)qProg('new',1);
  beep(523,.1);setTimeout(()=>beep(784,.18),110);vib([60,40,60]);say('Set done');
  const pt=planToday(),it=pt&&pt.items.find(i=>i.n===ex);let done=false;
- if(it&&it.done<it.s){state.prog.sets[it.n]=it.done+1;save();qProg('plan',1);if(planToday().items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++;done=true}}
+ if(it&&it.done<it.s){state.prog.sets[it.n]=it.done+1;save();qProg('plan',1);if(planToday().items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++,state.sup=0;done=true}}
  if(h.sets>=20&&!h.warn){h.warn=1;setTimeout(()=>toast('20 sets today. That is plenty. Rest and recover.'),1700)}
  save();
  if(gateOk)fx('Gate cleared','Rank trial passed');else if(done)fx('Workout clear',pt.name);else if(isPR)fx('New PR',ex.replace(' (sec)','')+' · '+state.target+(state.kg?' × '+state.kg+' kg':''));else fx('Set clear',fm);
  if(done)setTimeout(showSummary,1600);else if(!(state.dg&&state.dg.st==='run'))startRest();
- $('coach').innerHTML='Set done'+(fm?' · '+fm:'')+'. Rest, then keep going.';render()}
+ $('coach').innerHTML='Set done'+(fm?' · '+fm:'')+'. Rest, then keep going.';render();arenaHit()}
 
 /* ===== CAMERA TRACKER: Anti-Cheating & Improved Form Verification ===== */
 const TRI={elbow:[11,13,15],knee:[23,25,27],hip:[11,23,25],abd:[23,11,13],plank:[11,23,27]};
@@ -749,9 +844,20 @@ function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=d
 const stB=k=>(state.st&&state.st[k])||0,critDay=()=>Math.floor(Date.now()/864e5)%6===2,xpMul=()=>(1+.02*stB('VIT'))*((state.dxp===dk()||critDay())?2:1);
 const bossPhase=()=>{const b=state.boss,p=b&&b.hp?(b.hp-b.dmg)/b.hp:1;return p>.66?1:p>.33?2:3};
 const bossBonus=g=>{const b=state.boss;return b&&!b.dead&&g&&(g.l==='S'||g.l==='A')?bossPhase()-1:0};
-function bossArt(b){const k=b.dead?3:bossPhase()-1,c=b.dead?'#555':'#f02b4f',o=n=>k>=n?1:0;return`<svg viewBox="0 0 60 60" width="64" height="64" aria-hidden="true"><path d="M30 4L46 20L52 58H8L14 20Z" fill="#0a0d17" stroke="${c}" stroke-width="2"/><path d="M22 26l6 3M38 26l-6 3" stroke="${b.dead?'#555':'#ff8298'}" stroke-width="3"/><path d="M30 8L26 22L33 34L28 48" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(1)}"/><path d="M18 30L27 38L22 54M42 28L34 40L40 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(2)}"/><path d="M12 56L30 40L48 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(3)}"/></svg>`}
+const BART=['M30 12L38 20 52 12 46 30 48 52H12L14 30 8 12 22 20Z','M16 10H44V26H54V52H6V26H16Z','M30 3L34 14 44 16 46 28 55 33 50 56H10L5 33 14 28 16 16 26 14Z','M4 44Q12 12 30 8Q48 12 56 44L44 36 38 56 30 40 22 56 16 36Z','M16 6L22 16 30 4 38 16 44 6 44 24 38 28 48 56H12L22 28 16 24Z','M8 56V24Q8 5 30 5T52 24V56H42V26Q42 17 30 17T18 26V56Z','M8 56Q6 34 12 14L18 30 22 22 26 34 30 8 34 34 38 22 42 30 48 14Q54 34 52 56Z','M30 8L36 22 57 14 43 31 51 54 30 42 9 54 17 31 3 14 24 22Z','M30 3L53 16V44L30 57 7 44V16Z','M30 5Q46 8 46 24L42 54 30 46 18 54 14 24Q14 8 30 5Z','M30 12L36 5 38 16 49 13 44 24 55 30 44 37 49 48 38 44 30 55 23 44 11 48 16 37 5 30 16 24 11 13 22 16 24 5Z','M30 2L57 30 30 58 3 30Z'],
+BDET=['','M16 36H44','','M30 14V38','M24 40H36','','M30 8V30','M30 14V40','M30 3V57M7 16L53 44M53 16L7 44','M50 8Q60 24 51 46','M20 30L30 48 40 30','M30 14A16 16 0 1 0 30 46A16 16 0 1 0 30 14'],BEY=[28,24,26,22,26,10,40,24,28,20,30,30];
+function bossArt(b,sz){const d=bdef(b),i=BOSSES.indexOf(d),k=b.dead?3:bossPhase()-1,c=b.dead?'#555':d.col,o=n=>k>=n?1:0,s=sz||64,y=BEY[i];
+ return`<svg class="bs" viewBox="0 0 60 60" width="${s}" height="${s}" aria-hidden="true"><path d="${BART[i]}" fill="#0a0d17" stroke="${c}" stroke-width="2" stroke-linejoin="round"/>${BDET[i]?`<path d="${BDET[i]}" fill="none" stroke="${c}" stroke-width="1.4" opacity=".5"/>`:''}<path d="M22 ${y}l6 3M38 ${y}l-6 3" stroke="${b.dead?'#555':'#ff8298'}" stroke-width="3"/><path d="M30 8L26 22L33 34L28 48" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(1)}"/><path d="M18 30L27 38L22 54M42 28L34 40L40 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(2)}"/><path d="M12 56L30 40L48 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(3)}"/></svg>`}
+let ARE=null;
+function mountArena(){const s=$('arslot');if(!s)return;const b=state.boss,ri=rIdx(),g=GEARN.filter(n=>gearOnS(n,ri)),sig=[b.name,b.dead?3:bossPhase(),state.aura,g.join(),ri].join('|');
+ if(!ARE||ARE.sig!==sig){ARE=document.createElement('div');ARE.className='arena';ARE.sig=sig;
+  ARE.innerHTML=`<div class="pv ar-hero" id="arhero" style="--rc:${state.aura?'#'+state.aura:bdef(b).col}">${pvChar({aura:state.aura,g,ri},'arena',true)}</div><div class="ar-vs">VS</div><div class="ar-boss" id="arboss">${bossArt(b,100)}<svg class="sl" viewBox="0 0 100 100" aria-hidden="true"><path d="M12 8L92 92M32 4L96 68" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/></svg></div>`;mountFigs(ARE)}
+ s.appendChild(ARE);if(!liveOn){liveOn=true;requestAnimationFrame(liveLoop)}}
+function arenaHit(){['arboss','arhero'].forEach(i=>{const e=$(i);if(e){e.classList.remove('hit');void e.offsetWidth;e.classList.add('hit')}})}
+function renderBoss(){renderBossCore();mountArena()}
 function fl(t,cls){const c=$('cam'),e=document.createElement('div');e.className='fl '+(cls||'');e.textContent=t;e.style.left=(18+Math.random()*45)+'%';c.appendChild(e);setTimeout(()=>e.remove(),900)}
-function repFx(g){const dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0)+Math.floor(state.kg/20);state.gold+=1+Math.floor(state.kg/20)+(state.gmg===dk()?1:0);hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
+function repFx(g){let dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0)+Math.floor(state.kg/20)+heroDmg(g);const over=energyOver(),bm=bossMult(g);dm=Math.max(1,Math.round(dm*bm*(1+recBuff())));if(over)dm=Math.max(1,Math.round(dm*.25));if(!over)state.gold+=1+Math.floor(state.kg/20)+(state.gmg===dk()?1:0);hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
+ if(bm>1&&cur%4===1)fl('WEAKNESS!','co');else if(bm<1&&cur%3===1)fl('NEEDS S/A FORM','co');else if(over&&cur===1)fl('ENERGY SPENT','co');
  if(g&&g.l==='S'){const c=$('cam');c.classList.remove('shk');void c.offsetWidth;c.classList.add('shk')}
  const o=state.pr[state.ex];if(state.target-cur===1)fl('LAST REP!','co');else if(state.target>=8&&cur===Math.ceil(state.target/2))fl('HALFWAY','co');else if(o&&cur===o.r&&state.kg>=o.kg)fl('MATCHED YOUR BEST','co')}
 function statPts(){return`<div class="item" style="border:0;padding-top:10px"><div><b>Stat points: ${state.sp}</b><span>STR: +1 boss damage per 5 · AGI: shorter rests, longer dungeons · VIT: +2% quest XP each. 3 points per level.</span></div></div><div class="row">${['STR','AGI','VIT'].map(k=>`<button class="btn sm" data-a="sp" data-v="${k}" ${state.sp>0?'':'disabled'}>${k} ${stB(k)} +</button>`).join('')}</div>`}
@@ -821,7 +927,7 @@ function wk(o){let r=0,c=0,s=0;for(let i=0;i<7;i++){const h=state.hist[ago(i+o)]
 const recapTxt=()=>{const a=wk(0);return'ASCEND weekly: '+a.r+' reps, '+a.s+' sets, '+a.c+'/7 days · LV '+state.level+' '+rankOf(state.level)+' · best combo '+(state.bc||0)+' · '+state.bossWins+' bosses down'};
 function renderRecap(){const a=wk(0),b=wk(7),d=a.r-b.r;$('recap').innerHTML=`<div class="grid" style="margin:0 0 10px"><div class="stat"><b>${a.r}</b><span>Reps, last 7 days</span></div><div class="stat"><b>${d>=0?'+':''}${d}</b><span>vs the week before (${b.r})</span></div></div><small>${a.c} of 7 days trained · ${a.s} sets</small><br><button class="btn sm" style="margin-top:8px" data-a="share">Share recap</button>`}
 const GD=[['Welcome to ASCEND','Your workouts are a game. The camera counts your reps, and every set earns XP, gold, rank and shadow soldiers. This quick guide takes under a minute.'],
-['1. Pick a program','Tap Program on the Train tab and choose one. Not sure? Pick Full Body. ASCEND then tells you what to train each day and tracks your sets.'],
+['1. Pick a program','Tap Program on the Train tab and choose one. Not sure? Pick Phantom Initiate (no gear) or Iron Awakening (gym). ASCEND then tells you what to train each day and tracks your sets.'],
 ['2. Set up the camera','Prop your phone up and step back until your whole body is in frame. Front, side or back all work. Tap Start tracking and allow camera access. Nothing is uploaded; it all stays on your phone.'],
 ['3. Move with control','The rep counter sits on top of the camera. The bar on the right shows depth: go down to the red line, then come back up and the rep counts. Slow, deep reps get higher grades (S to C), and clean reps build combos that hit bosses harder.'],
 ['4. Quests, XP and gold','On the Status tab, finish every daily quest to level up. You earn gold from reps, quests and dungeon chests. Spend it in the Shop (menu, top left) and spend stat points on Status.'],
@@ -895,22 +1001,32 @@ function onPose(r){const cv=$('ov'),x=cv.getContext('2d'),vd=$('vid');cv.width=v
  const L=r.poseLandmarks,W=r.poseWorldLandmarks,ro=$('ro');
  $('dg').classList.toggle('hide',!(T.ready&&!['hold','twist'].includes(EX[state.ex][1])));
  if(!T.ready){x.save();x.setLineDash([10,8]);x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=3;x.strokeRect(cv.width*.18,cv.height*.04,cv.width*.64,cv.height*.92);x.restore()}
- if(!L||!W){if(!T.ready)T.okc=0;T.okf=0;T.armed=0;T.down=0;T.part=0;ro.textContent='NO BODY FOUND. STEP BACK';T.sm=null;return}
+ if(!L||!W){if(!T.ready)T.okc=0;T.okf=0;T.armed=0;T.down=0;T.part=0;ro.textContent='NO BODY FOUND. STEP BACK';$('coach').innerHTML='Step back until your <b>head to ankles</b> are visible.';T.sm=null;return}
  x.strokeStyle='#52d9ff';x.lineWidth=4;x.beginPath();BONES.forEach(([a,b])=>{x.moveTo(L[a].x*cv.width,L[a].y*cv.height);x.lineTo(L[b].x*cv.width,L[b].y*cv.height)});x.stroke();
  const d=EX[state.ex],m=measure(d[1],W,T.ready?.4:.6),fo=formOk(state.ex,L,cv.width/cv.height),now=performance.now();
  if(!T.ready){if(!T.t0)T.t0=now;T.okc=(m==null||!fo)?0:(T.okc||0)+1;ro.textContent='FRAME CHECK '+Math.min(100,Math.round(T.okc/12*100))+'%'+(m==null?' · SHOW FULL BODY':!fo?' · GET INTO POSITION':'');
-  if(T.okc>=12||now-T.t0>8000){T.ready=true;T.sm=null;beep(660,.1);setTimeout(()=>beep(990,.15),110);vib(60);say('Ready');$('coach').innerHTML='Locked in. Go!'}return}
- if(m==null){ro.textContent='SHOW YOUR FULL BODY';T.sm=null;T.okf=0;T.armed=0;T.down=0;T.part=0;return}
+  if(T.okc>=12||now-T.t0>8000){T.ready=true;T.sm=null;T.lock=T.okc>=12?mkLock(L):null;T.seen=now;T.mvT=now;T.lostN=0;beep(660,.1);setTimeout(()=>beep(990,.15),110);vib(60);say('Ready');$('coach').innerHTML=T.lock?'Target locked. Strangers are ignored. Go!':'Locked in. Go!'}return}
+ if(m==null){ro.textContent='SHOW YOUR FULL BODY';$('coach').innerHTML='Step back until your <b>head to ankles</b> are visible.';T.sm=null;T.okf=0;T.armed=0;T.down=0;T.part=0;return}
+ if(T.lock&&!lockOk(L)){T.lostN=(T.lostN||0)+1;T.okf=0;T.armed=0;T.down=0;T.part=0;T.ph=0;T.sm=null;ro.textContent='TARGET LOST · STEP BACK INTO YOUR SPOT';if(T.lostN>150){T.ready=false;T.okc=0;T.t0=0;T.lock=null;$('coach').innerHTML='Re-checking the frame…'}return}
+ T.lostN=0;
  if(!fo){T.bad=(T.bad||0)+1;if(T.bad>12){T.okf=0;T.armed=0;T.down=0;T.part=0;T.sm=null;T.t=0;ro.textContent='GET INTO POSITION · FULL BODY IN FRAME';if(now-(T.pc||0)>3500){T.pc=now;cue('Get into position')}}return}
  T.bad=0;
  T.okf=(T.okf||0)+1;
  if(T.okf<8){ro.textContent='HOLD POSITION…';T.sm=m;return}
- T.sm=T.sm==null?m:T.sm*.5+m*.5;ro.textContent=d[1].toUpperCase()+' '+Math.round(T.sm)+'° · REPS '+cur+(T.combo>1?' · COMBO x'+T.combo:'');feed(d,T.sm,now)}
+ T.sm=T.sm==null?m:T.sm*.5+m*.5;T.seen=now;if(T.ref==null||Math.abs(T.sm-T.ref)>5){T.ref=T.sm;T.mvT=now}ro.textContent=d[1].toUpperCase()+' '+Math.round(T.sm)+'° · REPS '+cur+(T.combo>1?' · COMBO x'+T.combo:'');feed(d,T.sm,now)}
 async function loop(){if(!tracking)return;const v=$('vid');if(v.readyState>=2&&!busy){busy=true;try{await pose.send({image:v})}catch(e){}busy=false}requestAnimationFrame(loop)}
 let facing='user',WL=null;
 async function wl(on){try{if(on&&navigator.wakeLock){WL=await navigator.wakeLock.request('screen')}else if(WL){await WL.release();WL=null}}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&tracking)wl(1)});
 function cue(m){$('coach').innerHTML='<b>'+m+'</b>';say(m);vib(30)}
+const LC=document.createElement('canvas');LC.width=LC.height=12;
+function torso(L){const v=$('vid'),w=v.videoWidth,hh2=v.videoHeight;if(!w||[11,12,23,24].some(i=>L[i].visibility<.5))return null;
+ try{const x=(L[11].x+L[12].x+L[23].x+L[24].x)/4*w,y=(L[11].y+L[12].y+L[23].y+L[24].y)/4*hh2,s=Math.max(8,Math.min(w,hh2)*.05),sx=Math.max(0,Math.min(w-s,x-s/2)),sy=Math.max(0,Math.min(hh2-s,y-s/2)),cx=LC.getContext('2d',{willReadFrequently:true});
+  cx.drawImage(v,sx,sy,s,s,0,0,12,12);const d=cx.getImageData(0,0,12,12).data;let r=0,g=0,b=0,n=0;for(let i=0;i<d.length;i+=4){r+=d[i];g+=d[i+1];b+=d[i+2];n++}return[r/n,g/n,b/n]}catch(e){return null}}
+const hipP=L=>({x:(L[23].x+L[24].x)/2,y:(L[23].y+L[24].y)/2});
+function mkLock(L){const c=torso(L);return c?{p:hipP(L),c}:null}
+function lockOk(L){const k=T.lock,c=torso(L);if(!c)return true;const p=hipP(L),dc=Math.hypot(c[0]-k.c[0],c[1]-k.c[1],c[2]-k.c[2]),jump=Math.hypot(p.x-k.p.x,p.y-k.p.y),ok=dc<65&&(jump<.25||dc<35);
+ if(ok){k.p=p;k.c=k.c.map((v,i)=>v*.97+c[i]*.03)}return ok}
 async function startCam(){beep(20,.01);say('Tracking');
  if(typeof Pose==='undefined'){$('coach').textContent='Tracker failed to load. Check your internet connection and reload.';return}
  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:640,height:480}})}catch(e){$('coach').textContent='Camera blocked. Allow camera access (the page must be on HTTPS or localhost).';return}
@@ -925,9 +1041,15 @@ function stopCam(){tracking=false;wl(0);if(stream){stream.getTracks().forEach(t=
 let armReset=0,armQ=-1,skGrp='All';
 const act={
  go:b=>go(b.dataset.v),
+ hnew:()=>heroModal(),
+ plink:b=>{const id=b.dataset.v;state.plink=state.plink||{};if(!state.heroes[id]||state.hero===id||state.plink[id])return;const c=nextLink();if(state.gold<c){toast('Need 🪙'+c+' to link this passive');return}state.gold-=c;state.plink[id]=1;save();render();fx('PASSIVE LINKED',H[id].roster);beep(660,.2,'square');vib([40,30,80])},
+hx:()=>$('hmd').classList.remove('on'),
+ hsel:b=>{if(state.heroes[b.dataset.v]){state.hero=b.dataset.v;save();render()}},
+ hpick:b=>{const id=b.dataset.v;if(!H[id]||state.heroes[id])return;if(state.hero){if(!(state.hpick>0))return;state.hpick--}
+  state.heroes[id]=1;state.hero=id;save();$('hmd').classList.remove('on');render();fx(H[id].roster.toUpperCase(),H[id].n);beep(330,.3,'sawtooth');vib([60,40,120])},
  flip:()=>{facing=facing==='user'?'environment':'user';$('flipb').textContent='Camera: '+(facing==='user'?'Front':'Rear');if(tracking){stopCam();startCam()}},
  view:b=>{vi=+b.dataset.v;spin=0;views()},spin:()=>{spin=spin?0:1;views()},
- rir:()=>{state.rir=!state.rir;save();toast(state.rir?'Auto-Stop ON: the set ends when you can no longer push through':'Auto-Stop OFF');render()},
+ rir:()=>{state.rir=!state.rir;save();toast(state.rir?'Walk-Away Auto-Stop ON: your set saves when you rack the weight, step out of frame or stall':'Auto-Stop OFF');render()},
  lkopen:()=>lkDone(false),
  lkask:()=>askLock('sure'),
  lkback:()=>askLock(),
@@ -935,9 +1057,9 @@ const act={
  checkin:()=>{$('drawer').classList.remove('on');go('checkin')},
  qdone:b=>{const i=+b.dataset.v;if(armQ!==i){armQ=i;renderCheckin();setTimeout(()=>{if(armQ===i){armQ=-1;renderCheckin()}},3500);return}
   armQ=-1;const q=state.quests[i];if(!q||q.p>=q.t){render();return}const t=dk();
-  bump();
-  if(q.k==='plan'){const pt=planToday();if(pt){pt.items.forEach(x=>state.prog.sets[x.n]=x.s);if(!state.prog.done)state.wo++;state.prog.done=true}}
-  q.p=q.t;const xq=Math.round(q.xp*xpMul());state.xp+=xq;state.gold+=5;toast('Quest done: '+q.n+' +'+xq+' XP');save();tryLevel();render()},
+  if(!q.rec)bump();
+  if(q.k==='plan'){const pt=planToday();if(pt){pt.items.forEach(x=>state.prog.sets[x.n]=x.s);if(!state.prog.done)state.wo++,state.sup=0;state.prog.done=true}}
+  q.p=q.t;const xq=Math.round(q.xp*xpMul());state.xp+=xq;state.gold+=5;toast('Quest done: '+q.n+' +'+xq+' XP');save();recCheck();tryLevel();render()},
  cbnew:()=>{cb={name:'My Split',d:0,days:[{name:'Day 1',ex:[]}]};renderPlans()},
  cbedit:()=>{cb=clone(state.custom);cb.d=0;renderPlans()},
  cbday:b=>{cb.d=+b.dataset.v;renderPlans()},
@@ -948,7 +1070,7 @@ const act={
  cbcancel:()=>{cb=null;renderPlans()},
  cbsave:()=>{if(cb.days.some(x=>!x.ex.length)){toast('Every day needs at least one exercise');return}$('fold-prog').open=false;
   state.custom={name:cb.name.trim()||'My Split',days:clone(cb.days)};syncCustom();
-  state.prog={id:'custom',day:0,sets:{},sd:dk(),done:false};autoRest(state.custom.days.length);cb=null;refreshQuests();save();toast('Custom program started');render()},
+  state.prog={id:'custom',day:0,sets:{},sd:dk(),done:false};autoRest(state.custom.days.length);cb=null;refreshQuests();save();toast('Custom program started');render();if(!state.hero)setTimeout(heroModal,600)},
  gate:()=>{const t=state.trial;if(!t)return;state.ex=t.ex;state.target=t.n;cur=0;T={ready:T.ready};save();toast('Gate: '+t.n+' '+t.ex);go('train')},
  skiprest:()=>{clearInterval(restI);$('rest').classList.add('hide')},
  restc:()=>{const a=[0,30,60,90,120];state.restS=a[(a.indexOf(state.restS)+1)%a.length];save();renderTrain()},
@@ -972,7 +1094,7 @@ const act={
   const a=state.bw,t=dk();if(a.length&&a[a.length-1].d===t)a[a.length-1].kg=kg;else a.push({d:t,kg});if(a.length>400)a.shift();$('bwin').value='';save();renderBW();toast('Weight logged')},
  bwdel:()=>{if(!state.bw.length)return;state.bw.pop();save();renderBW()},
  mset:b=>{const i=+b.dataset.v,all=b.dataset.all==='1',key='m'+i+(all?'a':'');if(armQ!==key){armQ=key;renderCheckin();setTimeout(()=>{if(armQ===key){armQ=-1;renderCheckin()}},3500);return}
-  armQ=-1;const pt=planToday();if(!pt)return;const it=pt.items[i];if(!it||it.done>=it.s)return;const n=all?it.s-it.done:1;for(let k=0;k<n;k++)manualSet(it);toast(n+' set'+(n>1?'s':'')+' logged: '+it.n.replace(' (sec)',''));render()},
+  armQ=-1;const pt=planToday();if(!pt)return;const it=pt.items[i];if(!it||it.done>=it.s)return;const n=all?it.s-it.done:1;for(let k=0;k<n;k++)manualSet(it);toast(n+' set'+(n>1?'s':'')+' logged: '+it.n.replace(' (sec)',''));render();arenaHit()},
  sp:b=>{if(state.sp<1)return;state.sp--;state.st[b.dataset.v]=stB(b.dataset.v)+1;save();render()},
  buy:b=>{const k=b.dataset.v,s=SHOP.find(x=>x[0]===k);if(!s)return;const pre=k.slice(0,3),col=k.slice(3);
   if(state.owned[k]){if(pre==='au_')state.aura=state.aura===col?'':col;else if(pre==='fr_')state.frame=state.frame===col?'':col;else if(pre==='ox_'){state.hide=state.hide||{};if(state.hide[k])delete state.hide[k];else state.hide[k]=1}else{toast('Already owned');return}save();render();return}
@@ -1008,13 +1130,13 @@ const act={
  kg:()=>{const s=state.unit==='lb'?[0,10,25,35,45,55,70,95,135,185,225,275,315,365,405,495,550].map(l=>l/2.2046):[0,5,10,15,20,30,40,50,60,80,100,120,140,160,180,200,250];let i=0,m=1e9;s.forEach((v,j)=>{const d=Math.abs(v-state.kg);if(d<m){m=d;i=j}});state.kg=s[(i+1)%s.length];state.lw=state.lw||{};state.lw[state.ex]=state.kg;save();renderTrain()},
  tgt:()=>{const s=[5,8,10,12,15,20,30,40,60];state.target=s[(s.indexOf(state.target)+1)%s.length];cur=0;save();renderTrain()},
  load:b=>{state.ex=b.dataset.v;state.target=+b.dataset.r||state.target;cur=0;T={ready:T.ready};save();toast('Loaded '+state.ex);go('train')},
- start:b=>{state.prog={id:b.dataset.v,day:0,sets:{},sd:dk(),done:false};autoRest((PROGS.find(x=>x.id===b.dataset.v)||{days:[1,2,3]}).days.length);refreshQuests();save();toast('Program started');$('fold-prog').open=false;render();scrollTo(0,0)},
+ start:b=>{state.prog={id:b.dataset.v,day:0,sets:{},sd:dk(),done:false};autoRest((()=>{const q=PROGS.find(x=>x.id===b.dataset.v)||{days:[1,2,3]};return q.freq||q.days.length})());refreshQuests();save();toast('Program started');$('fold-prog').open=false;render();scrollTo(0,0);if(!state.hero)setTimeout(heroModal,600)},
  swap:()=>{state.prog=null;refreshQuests();save();$('fold-prog').open=true;render()},
  pf:b=>{pf=b.dataset.v;renderPlans()},
  openprog:()=>{const f=$('fold-prog');f.open=true;render();f.scrollIntoView({behavior:'smooth',block:'start'})},
  w:b=>{state.food.water=Math.max(0,Math.min(16,state.food.water+ +b.dataset.v));save();renderFood();if(state.food.water>=8&&+b.dataset.v>0)qProg('water',1)},
- pre:b=>{const p=PRE[+b.dataset.v];state.food.log.push({id:Date.now(),n:p[0],c:p[1],p:p[2]});save();renderFood();toast('Logged '+p[0]);qProg('meal',1)},
- addfood:()=>{const n=$('fn').value.trim(),c=parseFloat($('fc').value);if(!n||isNaN(c)||c<0){toast('Enter a name and calories');return}state.food.log.push({id:Date.now(),n,c,p:parseFloat($('fpr').value)||0});$('fn').value=$('fc').value=$('fpr').value='';save();renderFood();qProg('meal',1)},
+ pre:b=>{const p=PRE[+b.dataset.v];state.food.log.push({id:Date.now(),n:p[0],c:p[1],p:p[2]});save();renderFood();toast('Logged '+p[0]);qProg('meal',1);protChk()},
+ addfood:()=>{const n=$('fn').value.trim(),c=parseFloat($('fc').value);if(!n||isNaN(c)||c<0){toast('Enter a name and calories');return}state.food.log.push({id:Date.now(),n,c,p:parseFloat($('fpr').value)||0});$('fn').value=$('fc').value=$('fpr').value='';save();renderFood();qProg('meal',1);protChk()},
  delfood:b=>{state.food.log=state.food.log.filter(x=>String(x.id)!==b.dataset.v);save();renderFood()},
  exp:()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.download='ascend_backup_'+dk()+'.json';a.click();state.lastBackup=dk();save();renderBoss()},
  imp:()=>$('impf').click(),
@@ -1131,7 +1253,7 @@ const FK=()=>$('hero').classList.contains('hide')?sk:'__idle';
 const RC={E:'#9a9a9a',D:'#25a862',C:'#2d8fe0',B:'#8b4fea',A:'#f08a12',S:'#e8142b'};
 const TIER=n=>n>=500?['MASTER',4]:n>=200?['EXPERT',3]:n>=50?['ADEPT',2]:n>0?['NOVICE',1]:['UNTRAINED',0];
 let sk=SK[state.ex]?state.ex:'Push-ups',figOn=false,SP=[];
-function renderCheckin(){$('cklist').innerHTML=splitCard()+state.quests.map((q,i)=>{const d=q.p>=q.t;return`<div class="card ${d?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${d?'✓':''}</b><br><small>${q.d} · +${q.xp} XP · ${q.p}/${q.t}</small>${d||q.bonus?'':`<button class="btn red" style="margin-top:10px" data-a="qdone" data-v="${i}">${armQ===i?'Tap again to confirm':'Mark as done'}</button>`}</div>`}).join('')+(allDone()?'<div class="card cy"><b>All quests complete.</b><br><small>You can level up now.</small></div>':'')}
+function renderCheckin(){$('cklist').innerHTML=splitCard()+state.quests.map((q,i)=>{const d=q.p>=q.t;return`<div class="card ${d?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${d?'✓':''}</b><br><small>${q.d} · +${q.xp} XP · ${q.p}/${q.t}</small>${d||(q.bonus&&!q.rec)?'':`<button class="btn red" style="margin-top:10px" data-a="qdone" data-v="${i}">${armQ===i?'Tap again to confirm':'Mark as done'}</button>`}</div>`}).join('')+(allDone()?'<div class="card cy"><b>All quests complete.</b><br><small>You can level up now.</small></div>':'')}
 function renderSkills(){
   views();
   const reps = state.sk[sk] || 0;
@@ -1243,15 +1365,18 @@ document.addEventListener('click',e=>{const f=document.createElement('div');f.cl
 $('boot').classList.add('on');setTimeout(()=>$('boot').classList.remove('on'),950);syncCustom();
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 /* ===== AUTO-STOP: ends the set when the user can no longer push through ===== */
-function autoStop(){if(!state.rir||!tracking||cur<2||cur>=state.target||state.trial||(state.dg&&state.dg.st==='run'))return;
- const rt=T.rt||[];if(rt.length<2)return;const iv=rt.slice(1).map((x,i)=>x-rt[i]),n=Math.min(3,iv.length),b=iv.slice(0,n).reduce((x,y)=>x+y,0)/n,gap=Date.now()-rt[rt.length-1];
- if(gap>Math.max(4500,b*(T.grind?1.6:2.6))){const c=cur,keep=state.target;state.target=c;finishSet();state.target=keep;save();$('coach').innerHTML='<b>Limit reached</b> · Auto-Stop ended the set at '+c+' reps. Rest up.';say('Limit reached');renderTrain()}}
+function autoStop(){if(!state.rir||!tracking||!T.ready||cur<1||cur>=state.target||state.trial||(state.dg&&state.dg.st==='run')||T.seen==null)return;
+ const now=performance.now(),hold=(EX[state.ex]||[])[1]==='hold',out=now-T.seen,still=now-(T.mvT||now),mid=!!(T.down||T.part||T.ph===1);let why='';
+ if(out>1500)why='You stepped out of frame';else if(!hold&&!mid&&still>1500)why='Weight racked';else if(!hold&&mid&&still>2800)why='Stalled mid-rep';
+ if(!why)return;const c=cur,keep=state.target;state.target=c;finishSet();state.target=keep;save();
+ $('coach').innerHTML='<b>Walk-away save</b> · '+why+'. Saved '+c+' reps. Rest up.';say('Set saved');renderTrain()}
 setInterval(autoStop,500);
 render();
 /* remember which Status sections are open */
 document.querySelectorAll('details.fold').forEach(d=>{if(d.id==='fold-prog')return;if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
 $('aoab').addEventListener('pointerdown',e=>{e.preventDefault();aoaTap()});
-if(!state.lockAsked&&!state.lock)setTimeout(askLock,900);else if(!state.guide)setTimeout(()=>showGuide(0),1100);
+if(!state.lockAsked&&!state.lock)setTimeout(askLock,900);else if(!state.guide)setTimeout(()=>showGuide(0),1100);else if(!state.hero&&state.prog)setTimeout(heroModal,1500);
+setInterval(()=>{syncPassive()},60000);
 /* ===== ONE-TIME PATH CHOICE (locked / open skills) ===== */
 function askLock(step){const c=$('lkb');
  c.innerHTML=step==='sure'
