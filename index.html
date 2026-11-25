@@ -57,7 +57,7 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 .ring .n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .big{font-size:5rem;line-height:1;transform:skew(-8deg);text-shadow:4px 4px 0 #a50d32}
 .big.pop{animation:pop .3s}@keyframes pop{0%{transform:skew(-8deg) scale(1.4)}100%{transform:skew(-8deg)}}
-.cam{position:relative;margin:0 auto;overflow:hidden;background:#000;aspect-ratio:4/3;border:1px solid #52d9ff77}
+.cam{position:relative;margin:0 auto;overflow:hidden;background:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px) 0 0/28px 28px,radial-gradient(ellipse at 88% 8%,rgba(240,43,79,.25),transparent 65%),radial-gradient(ellipse at 8% 92%,rgba(82,217,255,.14),transparent 60%),linear-gradient(145deg,#161d2e,#0b0f1a);aspect-ratio:4/3;border:1px solid #52d9ff77}
 .cam video,.cam canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
 .cam.rear video,.cam.rear canvas{transform:none}
 .readout{position:absolute;left:8px;bottom:8px;padding:3px 9px;background:#000c;color:#7ce8ff;font:.8rem Anton,Impact,sans-serif;letter-spacing:.06em;border-left:3px solid var(--b);z-index:3}
@@ -185,7 +185,7 @@ section.enter{animation:wipe .35s ease-out}
 .gr.on{animation:grp .9s ease-out}
 .gr[data-g=S]{color:#ff3a5c}.gr[data-g=A]{color:#ffb02e}.gr[data-g=B]{color:#52d9ff}.gr[data-g=C]{color:#9aa3b8}
 @keyframes grp{0%{opacity:0;transform:skew(-10deg) scale(1.9)}14%{opacity:1;transform:skew(-10deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:skew(-10deg) translateY(-12px)}}
-.cmbo{position:absolute;left:8px;top:8px;z-index:3;padding:3px 10px;background:#f02b4f;color:#fff;font:.85rem Anton,Impact,sans-serif;letter-spacing:.08em;transform:skew(-10deg);box-shadow:3px 3px 0 #000}
+.cmbo{position:absolute;left:8px;bottom:34px;z-index:3;padding:3px 10px;background:#f02b4f;color:#fff;font:.85rem Anton,Impact,sans-serif;letter-spacing:.08em;transform:skew(-10deg);box-shadow:3px 3px 0 #000}
 /* depth gauge (push-ups), Persona style */
 .dg{position:absolute;right:12px;top:12%;bottom:10%;width:34px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
 .dgl{font:.7rem Anton,Impact,sans-serif;letter-spacing:.12em;background:#fff;color:#08090f;padding:1px 7px;transform:skew(-10deg);box-shadow:2px 2px 0 var(--a),4px 4px 0 #000;white-space:nowrap}
@@ -238,10 +238,10 @@ section.enter{animation:wipe .35s ease-out}
 .fl.co{left:50%!important;top:52%;font-size:1.5rem;white-space:nowrap;translate:-50% 0}
 @keyframes flo{to{opacity:0;margin-top:-90px}}
 .cam.shk{animation:shake .25s linear}
-.cring{position:absolute;top:8px;left:50%;margin:0 0 0 -44px;width:88px;height:88px;z-index:3;pointer-events:none}
-.cring .big{font-size:2.5rem;text-shadow:2px 2px 0 #a50d32}
-.ofl{position:absolute;top:100px;left:50%;translate:-50% 0;z-index:3;background:#000b;padding:1px 8px;font-size:.7rem;white-space:nowrap;color:#e8eefc}
-.idle{position:absolute;left:0;right:0;bottom:26%;text-align:center;font:1rem Anton,Impact,sans-serif;letter-spacing:.12em;color:#7ce8ff;z-index:2}
+.cring{position:absolute;top:8px;left:8px;margin:0;width:70px;height:70px;z-index:3;pointer-events:none}
+.cring .big{font-size:2rem;text-shadow:2px 2px 0 #a50d32}
+.ofl{position:absolute;top:82px;left:8px;z-index:3;background:#000b;padding:1px 8px;font-size:.7rem;white-space:nowrap;color:#e8eefc}
+.idle{position:absolute;left:50%;translate:-50% 0;bottom:24%;font:1rem Anton,Impact,sans-serif;letter-spacing:.12em;background:#fff;color:#08090f;padding:3px 18px;transform:skew(-8deg);box-shadow:4px 4px 0 var(--a),8px 8px 0 #000;white-space:nowrap;z-index:2}
 .readout:empty{display:none}
 </style>
 </head>
@@ -256,7 +256,7 @@ section.enter{animation:wipe .35s ease-out}
   <div class="card cy hide" id="rest" style="text-align:center"><small>REST</small><div class="big" id="restn" style="font-size:3rem">0:00</div><div style="display:flex"><div class="xp"><i id="restb2"></i></div></div><small id="restx"></small><br><button class="btn sm" style="margin-top:8px" data-a="skiprest">Skip rest</button></div>
   <select id="exsel" aria-label="Pick any exercise"></select>
   <div class="card stage" style="margin-top:12px">
-    <div class="cam" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#000b"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><b></b></div></div></div>
+    <div class="cam" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#0b0f1acc"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><b></b></div></div></div>
     <div class="coach" id="coach"></div>
     <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
     <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
