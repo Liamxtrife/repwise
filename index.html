@@ -186,6 +186,18 @@ section.enter{animation:wipe .35s ease-out}
 .gr[data-g=S]{color:#ff3a5c}.gr[data-g=A]{color:#ffb02e}.gr[data-g=B]{color:#52d9ff}.gr[data-g=C]{color:#9aa3b8}
 @keyframes grp{0%{opacity:0;transform:skew(-10deg) scale(1.9)}14%{opacity:1;transform:skew(-10deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:skew(-10deg) translateY(-12px)}}
 .cmbo{position:absolute;left:8px;top:8px;z-index:3;padding:3px 10px;background:#f02b4f;color:#fff;font:.85rem Anton,Impact,sans-serif;letter-spacing:.08em;transform:skew(-10deg);box-shadow:3px 3px 0 #000}
+/* depth gauge (push-ups), Persona style */
+.dg{position:absolute;right:12px;top:12%;bottom:10%;width:34px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.dgl{font:.7rem Anton,Impact,sans-serif;letter-spacing:.12em;background:#fff;color:#08090f;padding:1px 7px;transform:skew(-10deg);box-shadow:2px 2px 0 var(--a),4px 4px 0 #000;white-space:nowrap}
+.dgk{position:relative;flex:1;width:18px;background:repeating-linear-gradient(180deg,transparent 0 9px,#ffffff22 9px 10px),#04070f;border:2px solid #fff;transform:skew(-10deg);box-shadow:3px 3px 0 var(--a),6px 6px 0 #000}
+.dgk i{position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(180deg,#a9deff,#52d9ff);box-shadow:0 0 12px #52d9ff99;transition:height .08s linear}
+.dgk b{position:absolute;left:-12px;right:-12px;top:80%;height:4px;background:var(--a);box-shadow:0 0 0 1px #000,0 0 10px var(--a)}
+.dgk b::before{content:"";position:absolute;left:-9px;top:-5px;border:7px solid transparent;border-left:9px solid var(--a);border-right:0}
+.dg.hit .dgk i{background:repeating-linear-gradient(115deg,#f02b4f 0 8px,#ff7a93 8px 12px);box-shadow:0 0 16px #f02b4f}
+.dg.hit .dgk b{background:#fff;animation:dgp .4s steps(2) infinite}
+.dg.hit .dgk b::before{border-left-color:#fff}
+.dg.hit .dgl{background:var(--a);color:#fff;box-shadow:2px 2px 0 #000}
+@keyframes dgp{50%{background:var(--a)}}
 /* ===== Shadow army v2 ===== */
 .shd .sk{float:right;font:.6rem Anton,Impact,sans-serif;letter-spacing:.14em;color:#8b4fea}
 .shd.boss.on{border-color:#f02b4f;background:linear-gradient(145deg,#2a0a14,#0a0d17);box-shadow:inset 0 0 16px rgba(240,43,79,.22)}
@@ -234,7 +246,7 @@ section.enter{animation:wipe .35s ease-out}
   <div class="card stage" style="margin-top:12px">
     <div class="ring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg>
       <div class="n"><div class="big" id="cnt">0</div><small id="of">of 12 reps</small></div></div>
-    <div class="cam hide" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="readout" id="ro">LOADING…</div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div></div>
+    <div class="cam hide" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="readout" id="ro">LOADING…</div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><b></b></div></div></div>
     <div class="coach" id="coach"></div>
     <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
     <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
@@ -694,6 +706,11 @@ function formOk(ex,L,ar){
  return !(r(s,h)>lim&&r(h,a)>lim)}
 /* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
 function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
+function dgSet(drop,amp,hit){
+ const e=$('dg');if(!e)return;
+ $('dgf').style.height=(Math.min(1.25,drop/amp)/1.25*100)+'%';
+ e.classList.toggle('hit',!!hit);
+ $('dgl').textContent=hit?'RISE!':'DEPTH'}
 function feed(d,a,now){
  const j=d[1];
  if(j==='twist'){const s=a>20?1:a<-20?-1:0;if(s){if(T.side&&s!==T.side&&now-(T.t||0)>350){T.t=now;rep()}T.side=s}return}
@@ -715,6 +732,7 @@ function feed(d,a,now){
     T.ph=0;T.lastRepTime=now;T.top=a;T.ds=0;T.md=0;rep(g)}
   }
   $('ro').textContent+=' · DROP '+Math.round(Math.max(0,T.top-a))+'/'+amp;
+  dgSet(Math.max(0,T.top-a),amp,T.ph);
   return}
 
  let [,,lo,hi,sh]=d;
@@ -752,6 +770,7 @@ const BONES=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[23
 let pose=null,stream=null,busy=false;
 function onPose(r){const cv=$('ov'),x=cv.getContext('2d'),vd=$('vid');cv.width=vd.videoWidth||640;cv.height=vd.videoHeight||480;x.clearRect(0,0,cv.width,cv.height);
  const L=r.poseLandmarks,W=r.poseWorldLandmarks,ro=$('ro');
+ $('dg').classList.toggle('hide',!(T.ready&&PVX.has(state.ex)));
  if(!T.ready){x.save();x.setLineDash([10,8]);x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=3;x.strokeRect(cv.width*.18,cv.height*.04,cv.width*.64,cv.height*.92);x.restore()}
  if(!L||!W){if(!T.ready)T.okc=0;T.okf=0;T.armed=0;T.down=0;T.part=0;ro.textContent='NO BODY FOUND. STEP BACK';T.sm=null;return}
  x.strokeStyle='#52d9ff';x.lineWidth=4;x.beginPath();BONES.forEach(([a,b])=>{x.moveTo(L[a].x*cv.width,L[a].y*cv.height);x.lineTo(L[b].x*cv.width,L[b].y*cv.height)});x.stroke();
