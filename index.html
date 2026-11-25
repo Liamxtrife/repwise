@@ -357,7 +357,7 @@ section.enter{animation:wipe .35s ease-out}
 <nav aria-label="Main">
 <button data-a="go" data-v="train" aria-selected="true">Train</button><button data-a="go" data-v="hero">Status</button><button data-a="go" data-v="food">Food</button><button data-a="go" data-v="prog">Progress</button>
 </nav>
-<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="lockb" data-a="lock">Rank Unlocks: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small>ON: skills unlock as your rank rises (skills in your active program stay open). OFF: every skill is open.</small><button class="btn" data-a="menu">Close</button></div></div>
+<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="lockb" data-a="lock">Rank Unlocks: OFF</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small>ON: skills unlock as your rank rises (skills in your active program stay open). OFF: every skill is open.</small><button class="btn" data-a="menu">Close</button></div></div>
 <div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" style="width:100%"></i></div><div class="aoa-r" id="aoar"></div></div>
 <div class="sfx" id="sfx"><div class="band"></div><div class="tx"><div id="sfxt"></div><small id="sfxs"></small></div></div>
 <div class="modal" id="gd"><div class="card" id="gdb" style="width:100%;max-width:380px"></div></div>
@@ -633,7 +633,7 @@ function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classLis
 function render(){genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
 const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
- $('top').textContent='LV '+l+' '+r;$('lockb').textContent='Rank Unlocks: '+(state.lock?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
+ $('top').textContent='LV '+l+' '+r;$('lockb').textContent='Rank Unlocks: '+(state.lock?'ON':'OFF');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
  $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP · 🪙${state.gold}</small>`;
  $('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(jc.ok&&jc.cls!=='Hunter'?' · '+jc.name:'')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';
  $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
@@ -696,7 +696,7 @@ function repMsg(g){if(g.l==='S')return'Perfect control';if(g.l==='A')return g.d<
  if(g.l==='B')return g.d<2&&g.t<2?'Go deeper and slower':g.d<2?'Go a little deeper':'Slow the lowering down';return'Too fast and shallow. Slow down, go deeper'}
 function setCmb(){const e=$('cmb'),n=T.combo||0;e.classList.toggle('hide',n<2);e.textContent='COMBO '+n+(cmult(n)>1?' · x'+cmult(n):'')}
 function showGrade(g){const e=$('gr');e.textContent=g.l;e.dataset.g=g.l;e.classList.remove('on');void e.offsetWidth;e.classList.add('on');setCmb()}
-function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;const c=$('cnt');c.classList.add('pop');setTimeout(()=>c.classList.remove('pop'),300);
+function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;{const now=Date.now(),rt=T.rt=T.rt||[];rt.push(now);if(rt.length>=5){const iv=rt.slice(1).map((x,i)=>x-rt[i]),b=(iv[0]+iv[1]+iv[2])/3;if(iv[iv.length-1]>=b*1.9)T.grind=1}}const c=$('cnt');c.classList.add('pop');setTimeout(()=>c.classList.remove('pop'),300);
  if(g){(T.gs=T.gs||[]).push(g.p);state.fm[g.l]=(state.fm[g.l]||0)+1;const f=fdT();f[g.l]++;
   T.combo=(g.l==='S'||g.l==='A')?(T.combo||0)+1:g.l==='B'?(T.combo||0):0;
   if(T.combo>(state.bc||0))state.bc=T.combo;if(T.combo>f.bc)f.bc=T.combo;
@@ -705,7 +705,7 @@ function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;const c=$('cnt')
   if(g&&T.gs.length>=6&&!T.fat){const m=a=>a.reduce((x,y)=>x+y,0)/a.length;if(m(T.gs.slice(0,3))-m(T.gs.slice(-3))>=1.2&&m(T.gs.slice(-3))<=2.4){T.fat=1;setTimeout(()=>{$('coach').innerHTML='<b>Form is fading.</b> Finish this set, then rest or lower the weight.';say('Form fading')},900)}}
  dgRep();if(cur>=state.target)finishSet();dgAfter();renderTrain();renderBoss();renderDungeon()}
 function formLine(gs){const avg=gs.reduce((a,b)=>a+b,0)/gs.length,L=avg>=3.5?'S':avg>=2.75?'A':avg>=1.75?'B':'C',cl=Math.round(gs.filter(p=>p>=3).length/gs.length*100);return'Form '+L+' · '+cl+'% clean'}
-function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0}),ex=state.ex,gs=T.gs||[],fm=gs.length?formLine(gs):'';T.gs=[];T.combo=0;setCmb();
+function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0}),ex=state.ex,gs=T.gs||[],fm=gs.length?formLine(gs):'';T.gs=[];T.rt=[];T.grind=0;T.combo=0;setCmb();
  const isNew=!state.sk[ex],old=state.pr[ex],isPR=!!old&&(state.kg>old.kg||(state.kg===old.kg&&state.target>old.r));
  h.reps+=state.target;h.sets++;h.volume+=state.target*state.kg;state.sk[ex]=(state.sk[ex]||0)+state.target;
  if(!old||isPR)state.pr[ex]={kg:state.kg,r:state.target};if(isPR)h.prs=(h.prs||0)+1;
@@ -926,6 +926,7 @@ const act={
  go:b=>go(b.dataset.v),
  flip:()=>{facing=facing==='user'?'environment':'user';$('flipb').textContent='Camera: '+(facing==='user'?'Front':'Rear');if(tracking){stopCam();startCam()}},
  view:b=>{vi=+b.dataset.v;spin=0;views()},spin:()=>{spin=spin?0:1;views()},
+ rir:()=>{state.rir=!state.rir;save();toast(state.rir?'Auto-Stop ON: the set ends when you can no longer push through':'Auto-Stop OFF');render()},
  lock:()=>{state.lock=!state.lock;save();toast(state.lock?'Rank unlocks ON':'All skills are open');render()},
  checkin:()=>{$('drawer').classList.remove('on');go('checkin')},
  qdone:b=>{const i=+b.dataset.v;if(armQ!==i){armQ=i;renderCheckin();setTimeout(()=>{if(armQ===i){armQ=-1;renderCheckin()}},3500);return}
@@ -1237,6 +1238,11 @@ initFig();
 document.addEventListener('click',e=>{const f=document.createElement('div');f.className='flash';f.style.left=e.clientX+'px';f.style.top=e.clientY+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),320)});
 $('boot').classList.add('on');setTimeout(()=>$('boot').classList.remove('on'),950);syncCustom();
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+/* ===== AUTO-STOP: ends the set when the user can no longer push through ===== */
+function autoStop(){if(!state.rir||!tracking||cur<2||cur>=state.target||state.trial||(state.dg&&state.dg.st==='run'))return;
+ const rt=T.rt||[];if(rt.length<2)return;const iv=rt.slice(1).map((x,i)=>x-rt[i]),n=Math.min(3,iv.length),b=iv.slice(0,n).reduce((x,y)=>x+y,0)/n,gap=Date.now()-rt[rt.length-1];
+ if(gap>Math.max(4500,b*(T.grind?1.6:2.6))){const c=cur,keep=state.target;state.target=c;finishSet();state.target=keep;save();$('coach').innerHTML='<b>Limit reached</b> · Auto-Stop ended the set at '+c+' reps. Rest up.';say('Limit reached');renderTrain()}}
+setInterval(autoStop,500);
 render();
 /* remember which Status sections are open */
 document.querySelectorAll('details.fold').forEach(d=>{if(d.id==='fold-prog')return;if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
