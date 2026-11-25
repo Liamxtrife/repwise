@@ -50,14 +50,14 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 .hud span,.hud small{font-size:.8rem}
 .xp{height:13px;background:#080c16;border:1px solid #34435a;transform:skew(-20deg);overflow:hidden;flex:1}
 .xp i{display:block;height:100%;background:linear-gradient(90deg,var(--b),#a9deff);box-shadow:0 0 12px #52d9ff88;transition:width .4s}
-.stage{text-align:center;padding:20px 14px 16px}
+.stage{text-align:center;padding:10px 10px 14px}
 .ring{position:relative;width:210px;height:210px;margin:0 auto}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 #arc{filter:drop-shadow(0 0 9px #f02b4f);transition:stroke-dashoffset .25s}
 .ring .n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .big{font-size:5rem;line-height:1;transform:skew(-8deg);text-shadow:4px 4px 0 #a50d32}
 .big.pop{animation:pop .3s}@keyframes pop{0%{transform:skew(-8deg) scale(1.4)}100%{transform:skew(-8deg)}}
-.cam{position:relative;margin:14px auto 0;overflow:hidden;background:#000;aspect-ratio:4/3;border:1px solid #52d9ff77}
+.cam{position:relative;margin:0 auto;overflow:hidden;background:#000;aspect-ratio:4/3;border:1px solid #52d9ff77}
 .cam video,.cam canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
 .cam.rear video,.cam.rear canvas{transform:none}
 .readout{position:absolute;left:8px;bottom:8px;padding:3px 9px;background:#000c;color:#7ce8ff;font:.8rem Anton,Impact,sans-serif;letter-spacing:.06em;border-left:3px solid var(--b);z-index:3}
@@ -235,9 +235,14 @@ section.enter{animation:wipe .35s ease-out}
 /* v4: rep juice, shop, boss art */
 .fl{position:absolute;top:55%;z-index:4;font:1.8rem Anton,Impact,sans-serif;color:#fff;text-shadow:3px 3px 0 #f02b4f;transform:skew(-10deg);pointer-events:none;animation:flo .9s ease-out forwards}
 .fl.crit{color:#ffd24a;font-size:2.6rem;text-shadow:3px 3px 0 #000,0 0 14px #f02b4f}
-.fl.co{left:50%!important;top:36%;font-size:1.5rem;white-space:nowrap;translate:-50% 0}
+.fl.co{left:50%!important;top:52%;font-size:1.5rem;white-space:nowrap;translate:-50% 0}
 @keyframes flo{to{opacity:0;margin-top:-90px}}
 .cam.shk{animation:shake .25s linear}
+.cring{position:absolute;top:8px;left:50%;margin:0 0 0 -44px;width:88px;height:88px;z-index:3;pointer-events:none}
+.cring .big{font-size:2.5rem;text-shadow:2px 2px 0 #a50d32}
+.ofl{position:absolute;top:100px;left:50%;translate:-50% 0;z-index:3;background:#000b;padding:1px 8px;font-size:.7rem;white-space:nowrap;color:#e8eefc}
+.idle{position:absolute;left:0;right:0;bottom:26%;text-align:center;font:1rem Anton,Impact,sans-serif;letter-spacing:.12em;color:#7ce8ff;z-index:2}
+.readout:empty{display:none}
 </style>
 </head>
 <body>
@@ -246,14 +251,12 @@ section.enter{animation:wipe .35s ease-out}
 <section id="train">
   <h1>Train</h1>
   <div class="hud" id="hud"></div>
-  <div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
+  <div id="nxt"></div><div id="boss"></div><div id="gate"></div><div id="dungeon"></div>
   <div class="card cy" id="today"></div>
   <div class="card cy hide" id="rest" style="text-align:center"><small>REST</small><div class="big" id="restn" style="font-size:3rem">0:00</div><div style="display:flex"><div class="xp"><i id="restb2"></i></div></div><small id="restx"></small><br><button class="btn sm" style="margin-top:8px" data-a="skiprest">Skip rest</button></div>
   <select id="exsel" aria-label="Pick any exercise"></select>
   <div class="card stage" style="margin-top:12px">
-    <div class="ring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg>
-      <div class="n"><div class="big" id="cnt">0</div><small id="of">of 12 reps</small></div></div>
-    <div class="cam hide" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="readout" id="ro">LOADING…</div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><b></b></div></div></div>
+    <div class="cam" id="cam"><video id="vid" playsinline muted></video><canvas id="ov"></canvas><div class="ring cring"><svg viewBox="0 0 230 230" aria-hidden="true"><circle cx="115" cy="115" r="112" fill="#000b"/><circle cx="115" cy="115" r="102" fill="none" stroke="#30394d" stroke-width="14"/><circle id="arc" cx="115" cy="115" r="102" fill="none" stroke="#f02b4f" stroke-width="14" stroke-linecap="round" stroke-dasharray="641" stroke-dashoffset="641"/></svg><div class="n"><div class="big" id="cnt">0</div></div></div><small id="of" class="ofl">of 12 reps</small><div class="idle" id="cidle">TAP START TRACKING</div><div class="readout" id="ro"></div><div class="gr" id="gr" aria-hidden="true"></div><div class="cmbo hide" id="cmb"></div><div class="dg hide" id="dg"><span class="dgl" id="dgl">DEPTH</span><div class="dgk"><i id="dgf"></i><b></b></div></div></div>
     <div class="coach" id="coach"></div>
     <div class="row"><button class="btn red" id="camb" data-a="cam">Start tracking</button><button class="btn" id="flipb" data-a="flip">Camera: Front</button></div>
     <div class="row"><button class="btn" id="kgb" data-a="kg"></button><button class="btn" id="tgt" data-a="tgt"></button></div>
@@ -273,21 +276,23 @@ section.enter{animation:wipe .35s ease-out}
   </div>
   <div id="gatecard"></div>
   <details class="fold" id="fold-quests" open><summary class="hd">Daily quests</summary><div id="quests"></div>
-  <p class="sub">XP comes only from finishing quests, so the most you can earn is about 100 XP a day. You level up only when every quest of the day is done. Reaching S takes about a year of steady training. Skip a day and a penalty quest appears.</p>
+  <p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Reaching S takes about a year of steady training. Skip a day and a penalty quest appears.</p>
   </details>
   <details class="fold" id="fold-ladder"><summary class="hd">Rank ladder</summary><div id="ladder"></div></details>
   <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
   <details class="fold" id="fold-shadows" open><summary class="hd">Shadow army <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
-  <details class="fold" id="fold-shop"><summary class="hd">Shop <small id="goldct"></small></summary><p class="sub">Earn gold from reps, quests, dungeon chests and bosses.</p><div id="shop"></div></details>
+  <details class="fold" id="fold-rival"><summary class="hd">Rival</summary><div id="rival"></div></details>
   <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
 </section>
 
 <section id="plans" class="hide"><h1>Plans</h1><div id="plansbody"></div><div id="restcard"></div></section>
 
 <section id="checkin" class="hide"><h1>Check-in</h1>
-  <p class="sub">Camera not tracking well? Tick off today’s split exercises or mark quests done here. Manual sets count for quests and your streak, but not for boss damage or records. Quests give XP only once a day.</p>
+  <p class="sub">Camera not tracking well? Tick off today’s split exercises or mark quests done here. Manual sets count for quests, your streak and a quarter of boss damage, but not for records. Quests give XP only once a day.</p>
   <div id="cklist"></div>
 </section>
+
+<section id="shop" class="hide"><h1>Shop</h1><p class="sub">You have <b id="goldct"></b>. Earn gold from reps, quests, dungeon chests and bosses.</p><div id="shoplist"></div></section>
 
 <section id="skills" class="hide"><h1>Skill Tree</h1>
   <p class="sub">Tap a skill or pick from the menu to watch the technique. Every rep you count ranks that skill up.</p>
@@ -338,9 +343,10 @@ section.enter{animation:wipe .35s ease-out}
 <nav aria-label="Main">
 <button data-a="go" data-v="train" aria-selected="true">Train</button><button data-a="go" data-v="hero">Status</button><button data-a="go" data-v="plans">Plans</button><button data-a="go" data-v="food">Food</button><button data-a="go" data-v="prog">Progress</button>
 </nav>
-<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="lockb" data-a="lock">Rank Unlocks: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small>ON: skills unlock as your rank rises (skills in your active program stay open). OFF: every skill is open.</small><button class="btn" data-a="menu">Close</button></div></div>
+<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="lockb" data-a="lock">Rank Unlocks: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small>ON: skills unlock as your rank rises (skills in your active program stay open). OFF: every skill is open.</small><button class="btn" data-a="menu">Close</button></div></div>
 <div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" style="width:100%"></i></div><div class="aoa-r" id="aoar"></div></div>
 <div class="sfx" id="sfx"><div class="band"></div><div class="tx"><div id="sfxt"></div><small id="sfxs"></small></div></div>
+<div class="modal" id="gd"><div class="card" id="gdb" style="width:100%;max-width:380px"></div></div>
 <div class="modal" id="sum"><div class="card" id="sumb" style="width:100%;max-width:380px"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="lu" id="lu" data-r="E"><div class="burst"></div><div class="slash"></div><i class="rg"></i><i class="rg"></i><i class="rg"></i><div class="pts" id="pts"></div><div class="t" id="lut">LEVEL UP</div><div class="s" id="lun"></div><div class="m" id="lum"></div></div>
@@ -353,10 +359,11 @@ const $=id=>document.getElementById(id),KEY='repwise_v4';
 const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const ago=n=>{const d=new Date();d.setDate(d.getDate()-n);return dk(d)};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',food:{date:dk(),log:[],water:0,goal:2200}});
+const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',rl:{},rival:null,frame:'',bst:'',food:{date:dk(),log:[],water:0,goal:2200}});
 let state=(()=>{try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY))||{})}catch(e){return def()}})();
 if(!state.food||state.food.date!==dk())state.food=Object.assign(def().food,{goal:(state.food||{}).goal||2200});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+if(state.ob===undefined&&Object.keys(state.hist).length)state.ob=1;if(state.guide===undefined&&Object.keys(state.hist).length)state.guide=1;
 if(state.spInit===undefined){state.spInit=1;state.sp=(state.level-1)*3}
 /* older saves: the fixed rep/boss shadows became milestone shadows (every 500 reps, every boss) */
 (()=>{const mg={s3:'r500',s5:'r1000',s8:'r2500',s10:'r5000',s4:'b1',s9:'b5'};for(const o in mg)if(state.shadows[o]){if(!state.shadows[mg[o]])state.shadows[mg[o]]=state.shadows[o];delete state.shadows[o]}})();
@@ -388,7 +395,7 @@ $('restcard').addEventListener('change',e=>{if(e.target.id==='remt'){state.remt=
 /* ===== SPLIT AS QUESTS (manual tick-off) ===== */
 function planLines(){const pt=planToday();return pt?'<div style="margin-top:8px">'+pt.items.map(it=>`<small style="display:block">${it.done>=it.s?'☑':'☐'} ${esc(it.n.replace(' (sec)',''))} ${it.done}/${it.s}</small>`).join('')+'</div>':''}
 function manualSet(it){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0,volume:0});h.reps+=it.r;h.sets++;h.volume+=it.r*state.kg;h.manual=(h.manual||0)+1;state.sk[it.n]=(state.sk[it.n]||0)+it.r;bump();
- state.prog.sets[it.n]=(state.prog.sets[it.n]||0)+1;save();qProg('reps',it.r);qProg('sets',1);qProg('plan',1);
+ state.prog.sets[it.n]=(state.prog.sets[it.n]||0)+1;save();qProg('reps',it.r);hitBoss(Math.floor(it.r/4));qProg('sets',1);qProg('plan',1);
  const pt=planToday();if(!state.prog.done&&pt.items.every(i=>i.done>=i.s)){state.prog.done=true;state.wo++;save();fx('Workout clear',pt.name);beep(784,.2);vib([60,40,60]);setTimeout(showSummary,1600)}}
 function splitCard(){const pt=planToday();if(!pt)return'';return`<div class="card cy"><h3>Today’s split · ${esc(pt.name)}</h3><small>Tap +1 set after each set you finish, or All for the whole exercise. Each tap asks you to confirm.</small>${pt.items.map((it,i)=>{const d=it.done>=it.s;return`<div class="item"><div style="flex:1"><b>${d?'✓ ':''}${esc(it.n.replace(' (sec)',''))}</b><span>${it.done}/${it.s} sets × ${it.r}${EX[it.n][1]==='hold'?' sec':' reps'}</span></div>${d?'':`<button class="btn sm" data-a="mset" data-v="${i}">${armQ==='m'+i?'Confirm':'+1 set'}</button><button class="btn sm" data-a="mset" data-v="${i}" data-all="1">${armQ==='m'+i+'a'?'Confirm':'All'}</button>`}</div>`}).join('')}</div>`}
 
@@ -515,7 +522,7 @@ function wLog(ex,kg,r,gs){if(!(kg>0))return;state.wl=state.wl||{};const a=(state
 function wSug(){const a=(state.wl&&state.wl[state.ex])||[];if(!(state.kg>0)||a.length<2)return null;
  if(!a.slice(-2).every(e=>e.kg===state.kg&&e.r>=state.target&&(e.p===null||e.p>=2)))return null;
  const st=state.unit==='lb'?5/2.2046:(state.kg<40?2.5:5);return Math.round((state.kg+st)*100)/100}
-function renderWsug(){const s=wSug();$('wsug').innerHTML=s==null?'':`<div class="card cy" style="margin-top:10px"><b>Ready for more</b><br><small>Two solid sets at ${W(state.kg)} × ${state.target}. Try ${W(s)} next.</small><br><button class="btn sm red" style="margin-top:8px" data-a="wapply">Use ${W(s)}</button></div>`}
+function renderWsug(){const s=wSug();$('wsug').innerHTML=s==null?rSugHtml():`<div class="card cy" style="margin-top:10px"><b>Ready for more</b><br><small>Two solid sets at ${W(state.kg)} × ${state.target}. Try ${W(s)} next.</small><br><button class="btn sm red" style="margin-top:8px" data-a="wapply">Use ${W(s)}</button></div>`}
 
 /* ===== TRAINING CALENDAR + BODY WEIGHT ===== */
 function renderCal(){const wk=15,dow=(new Date().getDay()+6)%7;let h='',n0=0;
@@ -599,7 +606,7 @@ function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q
 
 /* ===== UI ===== */
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
-const SEC=['train','hero','plans','food','prog','skills','checkin'];
+const SEC=['train','hero','plans','food','prog','skills','checkin','shop'];
 function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classList.add('enter');setTimeout(()=>$(s).classList.remove('enter'),400);document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===s));scrollTo(0,0);render();if(s==='hero')$('avt').appendChild($('fig'));else if(s==='skills')$('figslot').appendChild($('fig'));if((s==='skills'||s==='hero')&&!figOn){figOn=true;requestAnimationFrame(figLoop)}}
 function render(){genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
@@ -616,7 +623,7 @@ const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locke
  $('stats').innerHTML+=statPts();
  $('quests').innerHTML=state.quests.map(q=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}</div>`).join('');
  $('ladder').innerHTML=RK.map((x,i)=>`<div class="card ${x[1]===r?'cy':''}" style="padding:10px 14px"><b style="font-family:Anton,Impact,sans-serif">${x[1]}-RANK</b> <small>Level ${x[0]}${RK[i+1]?'–'+(RK[i+1][0]-1):'+'}</small></div>`).join('');
- renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderShop();renderRecap()}
+ renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderShop();renderRecap();renderNext();renderRival();$('cam').style.borderColor=state.frame?'#'+state.frame:''}
 function renderToday(){const pt=planToday();
  if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="go" data-v="plans">Choose a program</button>`;return}
  const fin=state.prog.done;
@@ -681,7 +688,7 @@ function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0
  const isNew=!state.sk[ex],old=state.pr[ex],isPR=!!old&&(state.kg>old.kg||(state.kg===old.kg&&state.target>old.r));
  h.reps+=state.target;h.sets++;h.volume+=state.target*state.kg;state.sk[ex]=(state.sk[ex]||0)+state.target;
  if(!old||isPR)state.pr[ex]={kg:state.kg,r:state.target};if(isPR)h.prs=(h.prs||0)+1;
- bump();wLog(ex,state.kg,state.target,gs);T.fat=0;let gateOk=false;
+ bump();wLog(ex,state.kg,state.target,gs);rLog(ex,state.target,gs);if(!state.ob){state.ob=1;state.gold+=50;state.xp+=30;setTimeout(()=>toast('First gate cleared! +50 gold, +30 XP'),1200)}T.fat=0;let gateOk=false;
  if(state.trial&&ex===state.trial.ex&&state.target>=state.trial.n){state.gate[state.trial.lv]=1;state.trial=null;gateOk=true}
  cur=0;save();qProg('sets',1);if(isPR)qProg('pr',1);if(state.kg>0)qProg('wt',1);if(isNew)qProg('new',1);
  beep(523,.1);setTimeout(()=>beep(784,.18),110);vib([60,40,60]);say('Set done');
@@ -722,17 +729,37 @@ const bossPhase=()=>{const b=state.boss,p=b&&b.hp?(b.hp-b.dmg)/b.hp:1;return p>.
 const bossBonus=g=>{const b=state.boss;return b&&!b.dead&&g&&(g.l==='S'||g.l==='A')?bossPhase()-1:0};
 function bossArt(b){const k=b.dead?3:bossPhase()-1,c=b.dead?'#555':'#f02b4f',o=n=>k>=n?1:0;return`<svg viewBox="0 0 60 60" width="64" height="64" aria-hidden="true"><path d="M30 4L46 20L52 58H8L14 20Z" fill="#0a0d17" stroke="${c}" stroke-width="2"/><path d="M22 26l6 3M38 26l-6 3" stroke="${b.dead?'#555':'#ff8298'}" stroke-width="3"/><path d="M30 8L26 22L33 34L28 48" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(1)}"/><path d="M18 30L27 38L22 54M42 28L34 40L40 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(2)}"/><path d="M12 56L30 40L48 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(3)}"/></svg>`}
 function fl(t,cls){const c=$('cam'),e=document.createElement('div');e.className='fl '+(cls||'');e.textContent=t;e.style.left=(18+Math.random()*45)+'%';c.appendChild(e);setTimeout(()=>e.remove(),900)}
-function repFx(g){const dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g);state.gold+=1;hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
+function repFx(g){const dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0);state.gold+=1;hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
  if(g&&g.l==='S'){const c=$('cam');c.classList.remove('shk');void c.offsetWidth;c.classList.add('shk')}
  const o=state.pr[state.ex];if(state.target-cur===1)fl('LAST REP!','co');else if(state.target>=8&&cur===Math.ceil(state.target/2))fl('HALFWAY','co');else if(o&&cur===o.r&&state.kg>=o.kg)fl('MATCHED YOUR BEST','co')}
 function statPts(){return`<div class="item" style="border:0;padding-top:10px"><div><b>Stat points: ${state.sp}</b><span>STR: +1 boss damage per 5 · AGI: shorter rests, longer dungeons · VIT: +2% quest XP each. 3 points per level.</span></div></div><div class="row">${['STR','AGI','VIT'].map(k=>`<button class="btn sm" data-a="sp" data-v="${k}" ${state.sp>0?'':'disabled'}>${k} ${stB(k)} +</button>`).join('')}</div>`}
-const SHOP=[['frz','Streak freeze','Saves a streak (max 2)',150],['dxp','Double XP scroll','Quest XP x2 today',200],['au_ffd24a','Gold aura','Figure aura colour',300],['au_8b4fea','Violet aura','Figure aura colour',300],['au_55e6b0','Mint aura','Figure aura colour',300],['au_52d9ff','Cyan aura','Figure aura colour',300]];
-function renderShop(){$('goldct').textContent='🪙 '+state.gold;$('shop').innerHTML='<div class="grid">'+SHOP.map(s=>{const au=s[0].startsWith('au_'),own=au&&state.owned[s[0]],eq=au&&state.aura===s[0].slice(3);return`<button class="btn" data-a="buy" data-v="${s[0]}" style="text-align:left"><b>${s[1]}${eq?' ★':''}</b><br><small>${own?(eq?'Equipped. Tap to remove':'Owned. Tap to equip'):s[2]+' · 🪙'+s[3]}</small></button>`}).join('')+'</div>'}
+const SHOP=[['frz','Streak freeze','Saves a streak (max 2)',150],['dxp','Double XP scroll','Quest XP x2 today',200],['bst','Battle boost','+1 boss damage per rep today',150],['lck','Lucky chest','Random gold or a freeze',250],['au_ffd24a','Gold aura','Figure aura',300],['au_8b4fea','Violet aura','Figure aura',300],['au_55e6b0','Mint aura','Figure aura',300],['au_52d9ff','Cyan aura','Figure aura',300],['fr_ffd24a','Gold frame','Camera border',350],['fr_f02b4f','Blood frame','Camera border',350],['ox_cape','Shadow cape','Figure cape (free at C-Rank)',400],['ox_guard','Shoulder guards','Figure armour (free at A-Rank)',800],['ox_crown','Monarch crown','Figure crown (free at S-Rank)',1500]];
+function renderShop(){$('goldct').textContent='🪙 '+state.gold;$('mgold').textContent='· 🪙'+state.gold;$('shoplist').innerHTML='<div class="grid">'+SHOP.map(s=>{const k=s[0],pre=k.slice(0,3),eqp=pre==='au_'||pre==='fr_',eq=pre==='au_'?state.aura===k.slice(3):pre==='fr_'?state.frame===k.slice(3):false,own=!!state.owned[k];return`<button class="btn" data-a="buy" data-v="${k}" style="text-align:left"><b>${s[1]}${eq?' ★':''}</b><br><small>${own?(eqp?(eq?'Equipped. Tap to remove':'Owned. Tap to equip'):'Owned ✓'):s[2]+' · 🪙'+s[3]}</small></button>`}).join('')+'</div>'}
+function rLog(ex,r,gs){if(state.kg>0)return;const a=(state.rl[ex]=state.rl[ex]||[]);a.push({r,p:gs&&gs.length?gs.reduce((x,y)=>x+y,0)/gs.length:0});while(a.length>3)a.shift()}
+function rSug(){const a=state.rl[state.ex]||[];if(state.kg>0||a.length<3||!a.every(e=>e.r>=state.target&&e.p>=2.5))return null;const t=[5,8,10,12,15,20,30,40,60],i=t.indexOf(state.target);return i>=0&&i<t.length-1?t[i+1]:null}
+function rSugHtml(){const n=rSug();return n==null?'':`<div class="card cy" style="margin-top:10px"><b>Ready to level up</b><br><small>Three clean sets of ${state.target}. Try ${n} reps next.</small><br><button class="btn sm red" style="margin-top:8px" data-a="rapply">Use ${n} reps</button></div>`}
+function renderNext(){const L=[];
+ if(!state.ob){$('nxt').innerHTML='<div class="card danger"><span class="tag r">FIRST GATE</span><p class="sub" style="margin:6px 0 0">1) Pick a program in Plans. 2) Tap Start tracking and step back so your body is in frame. 3) Finish one set for +50 gold and +30 XP.</p></div>';return}
+ const q=state.quests.filter(x=>!x.bonus&&x.p<x.t)[0];if(q)L.push(q.n+': '+(q.t-q.p)+' to go (+'+Math.round(q.xp*xpMul())+' XP)');
+ const b=state.boss;if(b&&!b.dead){const ph=bossPhase(),lim=ph===1?.66:ph===2?.33:0;L.push(ph<3?'Boss phase '+(ph+1)+' in '+Math.ceil(b.hp-b.dmg-b.hp*lim)+' damage':'Boss down in '+(b.hp-b.dmg)+' damage')}
+ const cs=SHOP.filter(x=>/^(au|fr|ox)_/.test(x[0])&&!state.owned[x[0]]),af=cs.find(x=>x[3]<=state.gold),nx=cs.filter(x=>x[3]>state.gold).sort((a,c)=>a[3]-c[3])[0];
+ if(af)L.push('You can afford: '+af[1]+' (menu, Shop)');else if(nx)L.push(nx[1]+': 🪙'+(nx[3]-state.gold)+' more');
+ $('nxt').innerHTML=L.length?'<div class="card cy"><span class="tag">NEXT</span>'+L.map(x=>'<small style="display:block;margin-top:4px">› '+esc(x)+'</small>').join('')+'</div>':''}
+function renderRival(){const r=state.rival,me={lv:state.level,r:tot().reps,w:wk(0).r,b:state.bossWins,s:state.streak},row=(l,k)=>`<div class="item"><b>${l}</b><span>${me[k]} vs ${r[k]}${me[k]>r[k]?' ▲':me[k]<r[k]?' ▼':''}</span></div>`;
+ $('rival').innerHTML='<p class="sub">Swap codes with a friend and compare. Their numbers are a snapshot from when they shared it.</p><div class="row"><button class="btn" data-a="mycode">Copy my code</button></div><div class="row"><input id="rvin" placeholder="Paste friend code"><button class="btn red" data-a="rival" style="flex:none;width:90px">Add</button></div>'+(r?`<div class="card" style="margin-top:10px"><small>YOU vs RIVAL (saved ${r.d})</small>${row('Level','lv')}${row('Total reps','r')}${row('Reps this week','w')}${row('Bosses','b')}${row('Streak','s')}</div>`:'')}
 function chest(){const r=Math.random();if(r<.15&&state.freeze<2){state.freeze++;return'Streak freeze'}if(r<.4){state.gold+=120;return'🪙120 JACKPOT'}const g=20+Math.floor(Math.random()*40);state.gold+=g;return'🪙'+g}
 const tmrDg=()=>DGT[(Math.floor(Date.now()/864e5)+1)%DGT.length][0];
 function wk(o){let r=0,c=0,s=0;for(let i=0;i<7;i++){const h=state.hist[ago(i+o)]||{};r+=h.reps||0;s+=h.sets||0;if(h.reps)c++}return{r,s,c}}
 const recapTxt=()=>{const a=wk(0);return'ASCEND weekly: '+a.r+' reps, '+a.s+' sets, '+a.c+'/7 days · LV '+state.level+' '+rankOf(state.level)+' · best combo '+(state.bc||0)+' · '+state.bossWins+' bosses down'};
 function renderRecap(){const a=wk(0),b=wk(7),d=a.r-b.r;$('recap').innerHTML=`<div class="grid" style="margin:0 0 10px"><div class="stat"><b>${a.r}</b><span>Reps, last 7 days</span></div><div class="stat"><b>${d>=0?'+':''}${d}</b><span>vs the week before (${b.r})</span></div></div><small>${a.c} of 7 days trained · ${a.s} sets</small><br><button class="btn sm" style="margin-top:8px" data-a="share">Share recap</button>`}
+const GD=[['Welcome to ASCEND','Your workouts are a game. The camera counts your reps, and every set earns XP, gold, rank and shadow soldiers. This quick guide takes under a minute.'],
+['1. Pick a program','Open Plans and choose one. Not sure? Pick Full Body. ASCEND then tells you what to train each day and tracks your sets.'],
+['2. Set up the camera','Prop your phone up and step back until your whole body is in frame. Front, side or back all work. Tap Start tracking and allow camera access. Nothing is uploaded; it all stays on your phone.'],
+['3. Move with control','The rep counter sits on top of the camera. The bar on the right shows depth: go down to the red line, then come back up and the rep counts. Slow, deep reps get higher grades (S to C), and clean reps build combos that hit bosses harder.'],
+['4. Quests, XP and gold','On the Status tab, finish every daily quest to level up. You earn gold from reps, quests and dungeon chests. Spend it in the Shop (menu, top left) and spend stat points on Status.'],
+['5. Rest and stay safe','Set rest days in Plans so your streak never breaks. Stop if anything hurts, and back up your progress from time to time in Progress. You can replay this guide any time from the menu.']];
+let gi=0;
+function showGuide(i){gi=Math.max(0,Math.min(GD.length-1,i));const l=gi===GD.length-1;$('gdb').innerHTML=`<span class="tag r">${gi+1} / ${GD.length}</span><h3 style="margin-top:8px">${GD[gi][0]}</h3><p class="sub">${GD[gi][1]}</p><div class="row">${gi?'<button class="btn" data-a="gdprev">Back</button>':'<button class="btn" data-a="gdend">Skip</button>'}<button class="btn red" data-a="${l?'gdend':'gdnext'}">${l?'Start':'Next'}</button></div>`;$('gd').classList.add('on')}
 function dgSet(drop,amp,hit){
  const e=$('dg');if(!e)return;
  $('dgf').style.height=(Math.min(1.25,drop/amp)/1.25*100)+'%';
@@ -819,12 +846,12 @@ function cue(m){$('coach').innerHTML='<b>'+m+'</b>';say(m);vib(30)}
 async function startCam(){beep(20,.01);say('Tracking');
  if(typeof Pose==='undefined'){$('coach').textContent='Tracker failed to load. Check your internet connection and reload.';return}
  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:640,height:480}})}catch(e){$('coach').textContent='Camera blocked. Allow camera access (the page must be on HTTPS or localhost).';return}
- tracking=true;T={};wl(1);$('cam').classList.toggle('rear',facing!=='user');$('cam').classList.remove('hide');$('camb').textContent='Stop tracking';$('ro').textContent='LOADING MODEL…';
+ tracking=true;T={};wl(1);$('cam').classList.toggle('rear',facing!=='user');$('cidle').classList.add('hide');$('camb').textContent='Stop tracking';$('ro').textContent='LOADING MODEL…';
  $('coach').innerHTML=`Tracking <b>${esc(state.ex)}</b>. Start in the starting position, then move through the full range. Facing the camera, sideways or turned away all work.`;
  pose=new Pose({locateFile:f=>'https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/'+f});
  pose.setOptions({modelComplexity:1,smoothLandmarks:true,minDetectionConfidence:.4,minTrackingConfidence:.4});pose.onResults(onPose);
  const v=$('vid');v.srcObject=stream;await v.play();loop()}
-function stopCam(){tracking=false;wl(0);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}if(pose){try{pose.close()}catch(e){}pose=null}$('vid').srcObject=null;$('cam').classList.add('hide');$('camb').textContent='Start tracking';T={}}
+function stopCam(){tracking=false;wl(0);if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}if(pose){try{pose.close()}catch(e){}pose=null}$('vid').srcObject=null;$('cidle').classList.remove('hide');$('ro').textContent='';$('dg').classList.add('hide');$('camb').textContent='Start tracking';T={}}
 
 /* ===== ACTIONS ===== */
 let armReset=0,armQ=-1,skGrp='All';
@@ -872,14 +899,23 @@ const act={
  mset:b=>{const i=+b.dataset.v,all=b.dataset.all==='1',key='m'+i+(all?'a':'');if(armQ!==key){armQ=key;renderCheckin();setTimeout(()=>{if(armQ===key){armQ=-1;renderCheckin()}},3500);return}
   armQ=-1;const pt=planToday();if(!pt)return;const it=pt.items[i];if(!it||it.done>=it.s)return;const n=all?it.s-it.done:1;for(let k=0;k<n;k++)manualSet(it);toast(n+' set'+(n>1?'s':'')+' logged: '+it.n.replace(' (sec)',''));render()},
  sp:b=>{if(state.sp<1)return;state.sp--;state.st[b.dataset.v]=stB(b.dataset.v)+1;save();render()},
- buy:b=>{const s=SHOP.find(x=>x[0]===b.dataset.v);if(!s)return;const au=s[0].startsWith('au_'),col=au?s[0].slice(3):'';
-  if(au&&state.owned[s[0]]){state.aura=state.aura===col?'':col;save();render();return}
+ buy:b=>{const k=b.dataset.v,s=SHOP.find(x=>x[0]===k);if(!s)return;const pre=k.slice(0,3),col=k.slice(3);
+  if(state.owned[k]){if(pre==='au_')state.aura=state.aura===col?'':col;else if(pre==='fr_')state.frame=state.frame===col?'':col;else{toast('Already owned');return}save();render();return}
   if(state.gold<s[3]){toast('Not enough gold');return}
-  if(s[0]==='frz'){if(state.freeze>=2){toast('Freezes are full');return}state.freeze++}
-  else if(s[0]==='dxp'){if(state.dxp===dk()){toast('Already active');return}state.dxp=dk()}
-  else{state.owned[s[0]]=1;state.aura=col}
+  if(k==='frz'){if(state.freeze>=2){toast('Freezes are full');return}state.freeze++}
+  else if(k==='dxp'){if(state.dxp===dk()){toast('Already active');return}state.dxp=dk()}
+  else if(k==='bst'){if(state.bst===dk()){toast('Already active');return}state.bst=dk()}
+  else if(k==='lck'){state.gold-=s[3];const r=Math.random();let m;if(r<.05){state.gold+=600;m='🪙600 JACKPOT'}else if(r<.15&&state.freeze<2){state.freeze++;m='a streak freeze'}else{const g=80+Math.floor(Math.random()*220);state.gold+=g;m='🪙'+g}save();render();toast('Lucky chest: '+m);return}
+  else{state.owned[k]=1;if(pre==='au_')state.aura=col;if(pre==='fr_')state.frame=col}
   state.gold-=s[3];save();render();toast('Bought: '+s[1])},
+ rapply:()=>{const n=rSug();if(n==null)return;state.target=n;state.rl[state.ex]=[];cur=0;save();renderTrain();toast('Target set to '+n)},
+ mycode:()=>{const c='ASC1-'+btoa(JSON.stringify({lv:state.level,r:tot().reps,w:wk(0).r,b:state.bossWins,s:state.streak}));if(navigator.share)navigator.share({text:c}).catch(()=>{});else if(navigator.clipboard){navigator.clipboard.writeText(c);toast('Code copied')}else toast(c)},
+ rival:()=>{try{const o=JSON.parse(atob($('rvin').value.trim().replace(/^ASC1-/,'')));if(typeof o.lv!=='number'||typeof o.r!=='number')throw 0;state.rival={lv:o.lv|0,r:o.r|0,w:o.w|0,b:o.b|0,s:o.s|0,d:dk()};save();render();toast('Rival set')}catch(e){toast('That code is not valid')}},
  share:()=>{const t=recapTxt();if(navigator.share)navigator.share({text:t}).catch(()=>{});else if(navigator.clipboard){navigator.clipboard.writeText(t);toast('Recap copied')}else toast(t)},
+ shopgo:()=>{$('drawer').classList.remove('on');go('shop')},
+ guide:()=>{$('drawer').classList.remove('on');showGuide(0)},
+ gdnext:()=>showGuide(gi+1),gdprev:()=>showGuide(gi-1),
+ gdend:()=>{state.guide=1;save();$('gd').classList.remove('on')},
  undo:()=>{if(!undoSnap)return;state=JSON.parse(undoSnap);undoSnap=null;cur=0;clearInterval(restI);$('rest').classList.add('hide');syncCustom();save();render();toast('Last set undone')},
  unit:()=>{state.unit=state.unit==='kg'?'lb':'kg';save();render()},
  rng:b=>{state.rng=+b.dataset.v;save();renderProg()},
@@ -1049,7 +1085,7 @@ $('sksel').addEventListener('change', e => {
   skGrp = 'All';
   renderSkills();
 });
-function initFig(){$('fig').innerHTML=`<defs><radialGradient id="ag"><stop id="g1" offset="0" stop-opacity=".6"/><stop id="g2" offset="1" stop-opacity="0"/></radialGradient></defs><ellipse id="au" fill="url(#ag)"/><g id="sp">${'<circle r="2"/>'.repeat(14)}</g><line id="flr" x1="10" x2="190" stroke="#30394d" stroke-width="2"/><line id="eq" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="bl" fill="none" stroke="#8d97ad" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line id="e2" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="gl" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".6" style="filter:blur(3px)"/><path id="bd" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle id="hd" r="9" fill="#08090f" stroke="#fff" stroke-width="4"/><line id="pr" stroke="#cfd6e6" stroke-width="6" stroke-linecap="round"/>`;SP=[...document.querySelectorAll('#sp circle')]}
+function initFig(){$('fig').innerHTML=`<defs><radialGradient id="ag"><stop id="g1" offset="0" stop-opacity=".6"/><stop id="g2" offset="1" stop-opacity="0"/></radialGradient></defs><ellipse id="au" fill="url(#ag)"/><g id="sp">${'<circle r="2"/>'.repeat(14)}</g><line id="flr" x1="10" x2="190" stroke="#30394d" stroke-width="2"/><line id="eq" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="bl" fill="none" stroke="#8d97ad" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line id="e2" stroke="#6b7690" stroke-width="4" stroke-linecap="round"/><path id="gl" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".6" style="filter:blur(3px)"/><path id="bd" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle id="hd" r="9" fill="#08090f" stroke="#fff" stroke-width="4"/><line id="pr" stroke="#cfd6e6" stroke-width="6" stroke-linecap="round"/><path id="cpe" fill="none" stroke-width="7" stroke-linecap="round" opacity=".8"/><path id="arm" fill="none" stroke="#c9a8ff" stroke-width="9" stroke-linecap="round"/><path id="crn" fill="#ffd24a" stroke="#000" stroke-width="1"/>`;SP=[...document.querySelectorAll('#sp circle')]}
 const FRONT=new Set(['abd','press','facepull','jack','sumo','dbpress','arnold']),VIEWS=[['3/4',40,14],['Front',0,0],['Side',90,0],['Back',180,0],['Top',0,90]];
 let vi=0,spin=0,TH=40,PH=14;
 function views(){const e=$('views');if(!e)return;const an=SK[FK()][0],tp=TOPOK.has(an),sd=!FRONT.has(an);if((vi===4&&!tp)||(vi===2&&!sd))vi=0;
@@ -1062,7 +1098,7 @@ function rig(A,B,k,an){const n=A.length,q=A.map((a,i)=>a+(B[i]-a)*k),o=q.slice()
  const c=AN[an]!=null?[AN[an]]:HANG.has(an)?[8]:[8,12].concat(n>14?[16]:[]);let ai=c[0];c.forEach(i=>{if(A[i+1]>A[ai+1])ai=i});
  const dx=q[ai]-o[ai],dy=q[ai+1]-o[ai+1];for(let i=0;i<n;i+=2){o[i]+=dx;o[i+1]+=dy}return o}
 const eas=x=>(1-Math.cos(Math.PI*Math.min(1,Math.max(0,x))))/2,JK=h=>h<.4?eas(h/.4):h<.5?1-eas((h-.4)/.1):h<.75?0:h<.85?.6*eas((h-.75)/.1):.6*(1-eas((h-.85)/.15)),JL=h=>h>.5&&h<.75?16*Math.sin(Math.PI*(h-.5)/.25):0;
-function frame(t){const s=SK[FK()],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0]==='jumpsquat',jp=t/1000*.9%1,k=jm?JK(jp):(1-Math.cos(t/1000*Math.PI*1.3))/2,p=rig(A,B,k,s[0]),r=rankOf(state.level),c=state.aura||RC[r],ri=RK.findIndex(x=>x[1]===r);
+function frame(t){const s=SK[FK()],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0]==='jumpsquat',jp=t/1000*.9%1,k=jm?JK(jp):(1-Math.cos(t/1000*Math.PI*1.3))/2,p=rig(A,B,k,s[0]),r=rankOf(state.level),c=state.aura?'#'+state.aura:RC[r],ri=RK.findIndex(x=>x[1]===r);
  if(jm){const L=JL(jp);for(let i=1;i<p.length;i+=2)p[i]-=L}
  if(spin)TH=t/22%360;else{const g=VIEWS[vi][1];TH+=(g+360*Math.round((TH-g)/360)-TH)*.12}
  PH+=((spin?14:VIEWS[vi][2])-PH)*.12;
@@ -1080,6 +1116,10 @@ function frame(t){const s=SK[FK()],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0]==='j
  const C=[H,S,P,K1,A1].map(Pj),cx=C.reduce((a,v)=>a+v[0],0)/5,cy=C.reduce((a,v)=>a+v[1],0)/5;
  const Sx=(id,o)=>{const e=$(id);for(const a in o)e.setAttribute(a,o[a])},wob=Math.sin(t/300)*4;
  Sx('bd',{d});Sx('bl',{d:d2});Sx('gl',{d:d+d2,stroke:c});Sx('hd',{cx:hp[0],cy:hp[1]});
+ {const ox=n=>state.owned['ox_'+n],a=Pj(S),l1=Pj(SL),l2=Pj(SR),X=hp[0],Y=hp[1];
+  Sx('cpe',{d:ri>=2||ox('cape')?`M${a[0]} ${a[1]}Q${a[0]-8} ${a[1]+26} ${a[0]-16} ${a[1]+44}`:'',stroke:c});
+  Sx('arm',{d:ri>=4||ox('guard')?`M${l1[0]} ${l1[1]}L${l2[0]} ${l2[1]}`:''});
+  Sx('crn',{d:ri>=5||ox('crown')?`M${X-7} ${Y-11}L${X-7} ${Y-19}L${X-3.5} ${Y-14}L${X} ${Y-20}L${X+3.5} ${Y-14}L${X+7} ${Y-19}L${X+7} ${Y-11}Z`:''})}
  Sx('au',{cx,cy,rx:58+ri*5+wob,ry:72+ri*4+wob});Sx('g1',{'stop-color':c});Sx('g2',{'stop-color':c});
  const fy=FY[s[0]]||150;Sx('flr',{y1:fy,y2:fy});$('flr').style.display=PH>45?'none':'';
  const pr=$('pr');pr.style.display=s[1]?'':'none';
@@ -1096,6 +1136,7 @@ render();
 /* remember which Status sections are open */
 document.querySelectorAll('details.fold').forEach(d=>{if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
 $('aoab').addEventListener('pointerdown',e=>{e.preventDefault();aoaTap()});
+if(!state.guide)setTimeout(()=>showGuide(0),1100);
 </script>
 </body>
 </html>
