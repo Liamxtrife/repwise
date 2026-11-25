@@ -231,6 +231,13 @@ section.enter{animation:wipe .35s ease-out}
 .aoa-b:active{transform:scale(.93)}
 .aoa-m{width:min(80vw,320px);height:12px;background:#222;border:2px solid #fff;transform:skew(-10deg)}.aoa-m i{display:block;height:100%;background:#ffd24a}
 .aoa-r{font:2rem Anton,Impact,sans-serif;color:#fff;min-height:5rem}
+
+/* v4: rep juice, shop, boss art */
+.fl{position:absolute;top:55%;z-index:4;font:1.8rem Anton,Impact,sans-serif;color:#fff;text-shadow:3px 3px 0 #f02b4f;transform:skew(-10deg);pointer-events:none;animation:flo .9s ease-out forwards}
+.fl.crit{color:#ffd24a;font-size:2.6rem;text-shadow:3px 3px 0 #000,0 0 14px #f02b4f}
+.fl.co{left:50%!important;top:36%;font-size:1.5rem;white-space:nowrap;translate:-50% 0}
+@keyframes flo{to{opacity:0;margin-top:-90px}}
+.cam.shk{animation:shake .25s linear}
 </style>
 </head>
 <body>
@@ -271,6 +278,7 @@ section.enter{animation:wipe .35s ease-out}
   <details class="fold" id="fold-ladder"><summary class="hd">Rank ladder</summary><div id="ladder"></div></details>
   <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
   <details class="fold" id="fold-shadows" open><summary class="hd">Shadow army <small id="shcount"></small></summary><div class="card" id="shadows"></div></details>
+  <details class="fold" id="fold-shop"><summary class="hd">Shop <small id="goldct"></small></summary><p class="sub">Earn gold from reps, quests, dungeon chests and bosses.</p><div id="shop"></div></details>
   <details class="fold" id="fold-badges"><summary class="hd">Badges &amp; titles <small id="bgcount"></small></summary><p class="sub">Tap an unlocked badge to wear it as your title.</p><div id="badges"></div></details>
 </section>
 
@@ -315,6 +323,7 @@ section.enter{animation:wipe .35s ease-out}
   <div class="grid"><div class="stat"><b id="p1">0</b><span>Reps today</span></div><div class="stat"><b id="p2">0</b><span>Day streak</span></div><div class="stat"><b id="p3">0</b><span>Sets, last 7 days</span></div><div class="stat"><b id="p4">0 kg</b><span>Volume, last 7 days</span></div></div>
   <div class="card"><h3>Daily reps</h3><div class="chips" id="rng"></div><div class="bars" id="bars"></div></div>
   <div class="card"><h3>Training calendar</h3><div class="cal" id="cal"></div><small id="calt"></small><div class="calk" style="margin-top:6px">Less <i class="cd"></i><i class="cd l1"></i><i class="cd l2"></i><i class="cd l3"></i><i class="cd l4"></i> More</div></div>
+  <div class="card"><h3>Weekly recap</h3><div id="recap"></div></div>
   <div class="card"><h3>Personal records</h3><div id="prl"></div></div>
   <div class="card"><h3>Form</h3><div id="formc"></div></div>
   <div class="card"><h3>Body weight</h3><div id="bwc"></div><div class="row" style="margin-top:10px"><input id="bwin" type="number" inputmode="decimal" step="0.1" placeholder="Weight"><button class="btn red" data-a="bwadd">Log</button></div><small style="display:block;margin-top:8px">Optional. Weight moves around day to day, so look at the long trend, not single days. Your rank and rewards never depend on it.</small><button class="btn sm" style="margin-top:8px" data-a="bwdel">Remove last entry</button></div>
@@ -344,10 +353,11 @@ const $=id=>document.getElementById(id),KEY='repwise_v4';
 const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const ago=n=>{const d=new Date();d.setDate(d.getDate()-n);return dk(d)};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',food:{date:dk(),log:[],water:0,goal:2200}});
+const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',food:{date:dk(),log:[],water:0,goal:2200}});
 let state=(()=>{try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY))||{})}catch(e){return def()}})();
 if(!state.food||state.food.date!==dk())state.food=Object.assign(def().food,{goal:(state.food||{}).goal||2200});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+if(state.spInit===undefined){state.spInit=1;state.sp=(state.level-1)*3}
 /* older saves: the fixed rep/boss shadows became milestone shadows (every 500 reps, every boss) */
 (()=>{const mg={s3:'r500',s5:'r1000',s8:'r2500',s10:'r5000',s4:'b1',s9:'b5'};for(const o in mg)if(state.shadows[o]){if(!state.shadows[mg[o]])state.shadows[mg[o]]=state.shadows[o];delete state.shadows[o]}})();
 const fdT=()=>{if(state.fd.d!==dk())state.fd={d:dk(),S:0,A:0,B:0,C:0,bc:0};return state.fd};
@@ -362,7 +372,7 @@ function say(t){if(state.snd!=='voice'||!window.speechSynthesis)return;try{speec
 function fx(t,sub){$('sfxt').textContent=t;$('sfxs').textContent=sub||'';const e=$('sfx');e.classList.remove('on');void e.offsetWidth;e.classList.add('on');clearTimeout(fx.h);fx.h=setTimeout(()=>e.classList.remove('on'),1500)}
 
 /* ===== REST TIMER ===== */
-function startRest(){if(!state.restS)return;restT=Date.now()+state.restS*1000;clearInterval(restI);restI=setInterval(tickRest,250);tickRest()}
+function startRest(){if(!state.restS)return;restT=Date.now()+Math.max(10,state.restS-stB('AGI')*2)*1000;clearInterval(restI);restI=setInterval(tickRest,250);tickRest()}
 function tickRest(){const left=Math.ceil((restT-Date.now())/1000),e=$('rest');
  if(left<=0){clearInterval(restI);restI=null;e.classList.add('hide');beep(880,.2);vib([100,50,100]);say('Next set');toast('Rest over. Next set!');return}
  const pt=planToday();let nx='Same exercise again';
@@ -371,7 +381,7 @@ function tickRest(){const left=Math.ceil((restT-Date.now())/1000),e=$('rest');
 
 /* ===== STREAK, REST DAYS, FREEZES ===== */
 function gapMissed(){if(!state.last)return 0;let n=0;const d=new Date(state.last+'T00:00:00'),y=ago(1);d.setDate(d.getDate()+1);for(let i=0;i<90;i++){if(dk(d)>y)break;if(!state.restDays.includes(d.getDay()))n++;d.setDate(d.getDate()+1)}return n}
-function bump(){const t=dk();if(state.last===t)return;state.streak=state.last&&gapMissed()===0?state.streak+1:1;state.last=t;if(state.streak%7===0&&state.freeze<2){state.freeze++;toast('Streak freeze earned!')}}
+function bump(){const t=dk();if(state.last===t)return;state.streak=state.last&&gapMissed()===0?state.streak+1:1;state.last=t;if([7,14,30,60,100].includes(state.streak)){state.gold+=state.streak*5;setTimeout(()=>fx(state.streak+' DAY STREAK','+'+state.streak*5+' gold'),800)}if(state.streak%7===0&&state.freeze<2){state.freeze++;toast('Streak freeze earned!')}}
 function renderRestCard(){$('restcard').innerHTML=cb?'':`<div class="card"><h3>Rest days</h3><p class="sub" style="margin:0 0 8px">Pick the days you rest. Resting never breaks your streak or triggers a penalty.</p><div class="chips">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map((n,i)=>`<button class="chip" aria-pressed="${state.restDays.includes(i)}" data-a="restday" data-v="${i}">${n}</button>`).join('')}</div><small>Streak freezes: ${'❄'.repeat(state.freeze)||'none'} (max 2). One is used automatically if you miss a training day. You earn one for every 7-day streak and every boss you defeat.</small></div><div class="card"><h3>Daily reminder</h3><p class="sub" style="margin:0 0 8px">A web page can’t ring your phone by itself, so this makes a calendar reminder on your training days.</p><div class="row"><input id="remt" type="time" value="${state.remt||'18:00'}"><button class="btn" data-a="ics">Add to calendar</button></div></div>`}
 $('restcard').addEventListener('change',e=>{if(e.target.id==='remt'){state.remt=e.target.value;save()}});
 
@@ -385,10 +395,10 @@ function splitCard(){const pt=planToday();if(!pt)return'';return`<div class="car
 /* ===== WEEKLY BOSS ===== */
 const BOSSES=['Goblin Warden','Iron Golem','Shadow Knight','Frost Wyrm','Blood Monarch','Gate Keeper'];
 const monday=()=>{const d=new Date();d.setDate(d.getDate()-(d.getDay()+6)%7);return dk(d)};
-function syncBoss(){const w=monday();if(!state.boss||state.boss.wk!==w){const i=Math.floor(new Date(w+'T00:00:00')/6048e5)%BOSSES.length;state.boss={wk:w,name:BOSSES[i],hp:200+state.level*10,dmg:0,dead:false};save()}}
-function hitBoss(n){syncBoss();const b=state.boss;if(b.dead)return;b.dmg=Math.min(b.hp,b.dmg+n);if(b.dmg>=b.hp){b.dead=true;state.bossWins++;state.bn.push(b.name);state.xp+=100;state.freeze=Math.min(2,state.freeze+1);fx('BOSS DOWN',b.name);beep(880,.4,'square');vib([80,60,80,60,200]);toast('Boss defeated! +100 XP and a streak freeze');save();tryLevel()}}
+function syncBoss(){const w=monday();if(!state.boss||state.boss.wk!==w){const i=Math.floor(new Date(w+'T00:00:00')/6048e5)%BOSSES.length;state.boss={wk:w,name:BOSSES[i],hp:200+state.level*10,dmg:0,dead:false,ph:1};save()}}
+function hitBoss(n){syncBoss();const b=state.boss;if(b.dead)return;b.dmg=Math.min(b.hp,b.dmg+n);const ph=bossPhase();if(ph>(b.ph||1)&&b.dmg<b.hp){b.ph=ph;fx('PHASE '+ph,ph===2?'Enraged: clean reps hit harder':'Final form: clean reps hit hardest');beep(150,.4,'sawtooth');vib([60,40,120])}if(b.dmg>=b.hp){b.dead=true;state.bossWins++;state.bn.push(b.name);state.xp+=100;state.gold+=100;state.freeze=Math.min(2,state.freeze+1);fx('BOSS DOWN',b.name);beep(880,.4,'square');vib([80,60,80,60,200]);toast('Boss defeated! +100 XP and a streak freeze');save();tryLevel()}}
 function renderBoss(){syncBoss();const b=state.boss,left=7-(new Date().getDay()+6)%7,rd=state.restDays.includes(new Date().getDay());
- $('boss').innerHTML=(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><h3 style="margin-top:6px">${b.name}</h3><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at 5, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
+ $('boss').innerHTML=(critDay()?'<div class="card cy"><span class="tag g">SURGE DAY</span><small> Quest XP is doubled today!</small></div>':'')+(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><div style="display:flex;align-items:center;gap:10px">${bossArt(b)}<h3 style="margin:6px 0">${b.name}<br><small>${b.dead?'DEFEATED':'PHASE '+bossPhase()+' of 3'}</small></h3></div><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at 5, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
 
 /* ===== RANK TRIALS (GATES) ===== */
 const TRIALS={11:['Push-ups',20],21:['Squats',40],31:['Push-ups',35],41:['Squats',60],51:['Push-ups',50]};
@@ -450,7 +460,7 @@ const dgName=n=>{const lap=Math.floor((n-1)/DGP.length);return'Shade '+DGP[(n-1)
 let dgI=0;
 function dgGen(){if(state.dg&&state.dg.d===dk())return;const f=state.level<10?.75:state.level<25?1:1.25,i=Math.floor(Date.now()/864e5)%DGT.length,t=DGT[i];
  state.dg={d:dk(),i,st:'idle',t0:0,need:t[2].map(o=>Math.max(10,Math.round(o[1]*f/5)*5)),p:t[2].map(()=>0)};save()}
-const dgLeft=()=>DGT[state.dg.i][1]*60000-(Date.now()-state.dg.t0);
+const dgLeft=()=>DGT[state.dg.i][1]*60000+stB('AGI')*5000-(Date.now()-state.dg.t0);
 const dgFmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 function dgTick(){const g=state.dg;if(!g||g.st!=='run'){clearInterval(dgI);dgI=0;return}const l=dgLeft();
  if(l<=0){g.st='fail';save();clearInterval(dgI);dgI=0;fx('Gate closed','Time ran out');toast('The dungeon closed. A new gate opens tomorrow.');renderDungeon();return}
@@ -462,8 +472,8 @@ function renderDungeon(){dgGen();const g=state.dg,t=DGT[g.i],rest=state.restDays
  let b;
  if(g.st==='idle')b=`<p class="sub" style="margin:6px 0 8px">A gate opened. Clear it within ${t[1]} minutes for +40 XP and a chance at a rare shadow. It is optional, and skipping costs nothing. Move with control and stop if anything hurts.</p>${obj}<button class="btn red" style="margin-top:10px" data-a="dgenter">Enter the dungeon</button>`;
  else if(g.st==='run')b=`<div class="dgt" id="dgt">${dgFmt(dgLeft())}</div>${obj}<button class="btn sm" style="margin-top:10px" data-a="dgquit">Leave the dungeon</button>`;
- else if(g.st==='clear')b='<p class="sub" style="margin:6px 0 0">Cleared. A new gate opens tomorrow.</p>';
- else b='<p class="sub" style="margin:6px 0 0">The gate closed. A new one opens tomorrow.</p>';
+ else if(g.st==='clear')b='<p class="sub" style="margin:6px 0 0">Cleared. Tomorrow: '+tmrDg()+'.</p>';
+ else b='<p class="sub" style="margin:6px 0 0">The gate closed. Tomorrow: '+tmrDg()+'.</p>';
  $('dungeon').innerHTML=`<div class="card ${g.st==='run'?'danger':g.st==='clear'?'cy ok':''}"><span class="tag r">INSTANT DUNGEON</span> <small>${esc(t[0])}${g.st==='clear'?' · cleared':''}</small>${b}</div>`}
 function dgRep(){const g=state.dg;if(!g||g.st!=='run'||g.d!==dk())return;if(dgLeft()<=0){dgTick();return}
  const t=DGT[g.i],i=t[2].findIndex((o,j)=>o[0]===state.ex&&g.p[j]<g.need[j]);if(i<0)return;g.p[i]++;
@@ -471,9 +481,9 @@ function dgRep(){const g=state.dg;if(!g||g.st!=='run'||g.d!==dk())return;if(dgLe
 function dgAfter(){const g=state.dg;if(!g||g.st!=='run'||cur!==0)return;const t=DGT[g.i],c=t[2].findIndex(o=>o[0]===state.ex);
  if(c<0||g.p[c]<g.need[c])return;const j=t[2].findIndex((o,k)=>g.p[k]<g.need[k]);if(j<0)return;
  state.ex=t[2][j][0];state.target=g.need[j]-g.p[j];T={ready:T.ready};save();toast('Next: '+state.ex);renderTrain()}
-function dgClear(){const g=state.dg;g.st='clear';clearInterval(dgI);dgI=0;state.dgn=(state.dgn||0)+1;state.xp+=40;
+function dgClear(){const g=state.dg;g.st='clear';clearInterval(dgI);dgI=0;state.dgn=(state.dgn||0)+1;state.xp+=40;const ch=chest();
  let sh=null;if(state.dgn%5===0||Math.random()<.2){const id='d'+state.dgn;state.shadows[id]=dk();sh={id,k:'RARE',n:dgName(state.dgn)}}
- save();fx('Dungeon cleared',DGT[g.i][0]);toast('Dungeon cleared! +40 XP'+(sh?' and a rare shadow':''));tryLevel();
+ save();fx('Dungeon cleared',DGT[g.i][0]);toast('Dungeon cleared! +40 XP · Chest: '+ch+(sh?' + rare shadow':''));tryLevel();
  if(sh)setTimeout(()=>arise([sh]),1600);renderDungeon()}
 
 /* ===== ALL-OUT ATTACK: finisher when the boss is under 20% HP ===== */
@@ -567,7 +577,7 @@ const allDone=()=>state.quests.length>0&&state.quests.filter(q=>!q.bonus).every(
 function tryLevel(){if(!allDone())return;const r0=rankOf(state.level);let up=0;
  while(state.xp>=need(state.level)){const nx=state.level+1,tr=TRIALS[nx];
   if(tr&&!state.gate[nx]){if(!state.trial||state.trial.lv!==nx){state.trial={lv:nx,ex:tr[0],n:tr[1]};fx('RANK GATE','A trial awaits');beep(220,.5,'sawtooth');vib([120,60,120])}break}
-  state.xp-=need(state.level);state.level++;up=1}
+  state.xp-=need(state.level);state.level++;state.sp+=3;up=1}
  if(up)luFx(r0!==rankOf(state.level));save()}
 const MSG={E:'THE WEAKEST HUNTER RISES',D:'YOU ARE NO LONGER A BEGINNER',C:'THE GATE OPENS',B:'THE SHADOWS STIR',A:'NONE CAN STAND IN YOUR WAY',S:'ARISE. THE MONARCH AWAKENS'},PT={E:0,D:14,C:8,B:16,A:36,S:52};
 function luFx(promo){const r=rankOf(state.level),el=$('lu');el.dataset.r=r;$('lut').textContent=promo?'RANK UP':'LEVEL UP';$('lun').textContent='LV '+state.level+' · '+r+'-RANK';$('lum').textContent=MSG[r];
@@ -585,7 +595,7 @@ function genQuests(){const t=dk();if(state.qDate===t)return;state.qDate=t;syncPr
  state.quests.push(Object.assign(BON,{p:0,xp:15,bonus:1}));save();if(fr)toast('Streak freeze used. Your streak is safe.')}
 function refreshQuests(){const q=state.quests[2];if(!q||q.p>=q.t)return;const pt=planToday();
  Object.assign(q,pt?{n:'Today’s workout',d:'Finish every set of '+pt.name,t:pt.items.reduce((a,i)=>a+i.s,0),k:'plan'}:{n:'Free workout',d:'Finish 5 sets',t:5,k:'sets'});q.p=Math.min(q.p,q.t-1);save()}
-function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q.t,q.p+n);if(q.p>=q.t){state.xp+=q.xp;toast('Quest done: '+q.n+' +'+q.xp+' XP')}}});save();tryLevel()}
+function qProg(k,n){state.quests.forEach(q=>{if(q.k===k&&q.p<q.t){q.p=Math.min(q.t,q.p+n);if(q.p>=q.t){const x=Math.round(q.xp*xpMul());state.xp+=x;state.gold+=5;toast('Quest done: '+q.n+' +'+x+' XP')}}});save();tryLevel()}
 
 /* ===== UI ===== */
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
@@ -595,7 +605,7 @@ function render(){genQuests();checkBadges();checkShadows();const jc=jobClass(),b
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
 const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
  $('top').textContent='LV '+l+' '+r;$('lockb').textContent='Rank Unlocks: '+(state.lock?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
- $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP</small>`;
+ $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP · 🪙${state.gold}</small>`;
  $('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(jc.ok&&jc.cls!=='Hunter'?' · '+jc.name:'')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';
  $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
  const tot=Object.values(state.hist).reduce((a,h)=>a+(h.reps||0),0);
@@ -603,14 +613,15 @@ const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locke
  const streakDisplay = state.streak > 0 ? `<span class="flame-streak">🔥 ${state.streak}d</span>` : `${state.streak}d`;
 
  $('stats').innerHTML=`<div class="srow"><b>STR</b><div class="xp"><i style="width:${Math.min(100,l*2)}%"></i></div><span>${l}${bn('STR')}</span></div><div class="srow"><b>AGI</b><div class="xp"><i style="width:${Math.min(100,state.streak*5)}%"></i></div><span>${streakDisplay}${bn('AGI')}</span></div><div class="srow"><b>VIT</b><div class="xp"><i style="width:${Math.min(100,tot/200)}%"></i></div><span>${tot}${bn('VIT')}</span></div><div class="srow"><b>JOB</b><div class="xp"><i style="width:${jc.share}%"></i></div><span>${jc.ok?esc(jc.name):'Unclassed'}</span></div>`;
+ $('stats').innerHTML+=statPts();
  $('quests').innerHTML=state.quests.map(q=>`<div class="card ${q.p>=q.t?'cy ok':''} ${q.pen?'danger':''}"><b>${q.n} ${q.p>=q.t?'✓':''}</b><br><small>${q.d} · +${q.xp} XP</small><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="xp"><i style="width:${q.p/q.t*100}%"></i></div><small>${q.p}/${q.t}</small></div>${q.k==='plan'?planLines():''}</div>`).join('');
  $('ladder').innerHTML=RK.map((x,i)=>`<div class="card ${x[1]===r?'cy':''}" style="padding:10px 14px"><b style="font-family:Anton,Impact,sans-serif">${x[1]}-RANK</b> <small>Level ${x[0]}${RK[i+1]?'–'+(RK[i+1][0]-1):'+'}</small></div>`).join('');
- renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows()}
+ renderToday();renderTrain();renderPlans();renderProg();renderFood();renderSkills();renderCheckin();renderBoss();renderGate();renderDungeon();renderBadges();renderShadows();renderShop();renderRecap()}
 function renderToday(){const pt=planToday();
  if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="go" data-v="plans">Choose a program</button>`;return}
  const fin=state.prog.done;
  $('today').innerHTML=`<h3>Today: ${pt.pr.name} · ${pt.name}</h3>${fin?'<span class="tag g">WORKOUT COMPLETE</span><small> Rest up. Next session tomorrow.</small>':''}<div class="chips" style="margin:10px 0 0">${pt.items.map(i=>`<button class="chip" aria-pressed="${i.n===state.ex}" data-a="load" data-v="${esc(i.n)}" data-r="${i.r}">${i.done>=i.s?'✓ ':''}${esc(i.n.replace(' (sec)',''))} ${i.done}/${i.s}</button>`).join('')}</div>`}
-function renderTrain(){buildSel();const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps');
+function renderTrain(){buildSel();const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps')+(state.pr[state.ex]?' · best '+state.pr[state.ex].r:'');
  $('arc').style.strokeDashoffset=641-641*Math.min(1,cur/state.target);$('kgb').textContent='Weight: '+W(state.kg);$('undob').disabled=!undoSnap;$('restb').textContent='Rest: '+(state.restS?state.restS+'s':'Off');$('sensb').textContent='Detect: '+['Easy','Normal','Strict'][state.sens];$('tgt').textContent='Target: '+state.target;$('exsel').value=state.ex;renderWsug();
  if(!tracking)$('coach').innerHTML=`<b>${esc(state.ex)}</b>: 1) Prop your phone up. 2) Step back so your whole body is in frame. Front, side or back all work. 3) Tap Start tracking. Reps are counted by the camera only. Move with control, every rep is graded S to C on depth and tempo. Five clean reps in a row start a combo that multiplies boss damage. Stop if anything hurts.`}
 function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>`<option>${esc(n)}</option>`).join('')}</optgroup>`).join('');
@@ -662,7 +673,7 @@ function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;const c=$('cnt')
   T.combo=(g.l==='S'||g.l==='A')?(T.combo||0)+1:g.l==='B'?(T.combo||0):0;
   if(T.combo>(state.bc||0))state.bc=T.combo;if(T.combo>f.bc)f.bc=T.combo;
   showGrade(g);$('coach').innerHTML='<b>'+g.l+' rep</b> · '+repMsg(g)+(T.combo>1?' · Combo '+T.combo+(cmult(T.combo)>1?' · x'+cmult(T.combo)+' damage':''):'')}
- qProg('reps',1);hitBoss(cmult(T.combo||0)+armyBonus());if(state.snd==='voice')say(cur);else beep(660,.07);vib(15);
+ qProg('reps',1);repFx(g);if(state.snd==='voice')say(cur);else beep(660,.07);vib(15);
   if(g&&T.gs.length>=6&&!T.fat){const m=a=>a.reduce((x,y)=>x+y,0)/a.length;if(m(T.gs.slice(0,3))-m(T.gs.slice(-3))>=1.2&&m(T.gs.slice(-3))<=2.4){T.fat=1;setTimeout(()=>{$('coach').innerHTML='<b>Form is fading.</b> Finish this set, then rest or lower the weight.';say('Form fading')},900)}}
  dgRep();if(cur>=state.target)finishSet();dgAfter();renderTrain();renderBoss();renderDungeon()}
 function formLine(gs){const avg=gs.reduce((a,b)=>a+b,0)/gs.length,L=avg>=3.5?'S':avg>=2.75?'A':avg>=1.75?'B':'C',cl=Math.round(gs.filter(p=>p>=3).length/gs.length*100);return'Form '+L+' · '+cl+'% clean'}
@@ -706,6 +717,22 @@ function formOk(ex,L,ar){
  return !(r(s,h)>lim&&r(h,a)>lim)}
 /* REP GRADE: depth (how far past the target) + tempo (controlled, not rushed). Rewards control, never speed. */
 function gradeRep(mn,hT,lT,dur){const dp=mn!=null&&(hT-mn)/(hT-lT)>=1.1?2:1,tp=dur>=1400?2:dur>=900?1:0,p=dp+tp;return{p,d:dp,t:tp,l:p>=4?'S':p===3?'A':p===2?'B':'C'}}
+const stB=k=>(state.st&&state.st[k])||0,critDay=()=>Math.floor(Date.now()/864e5)%6===2,xpMul=()=>(1+.02*stB('VIT'))*((state.dxp===dk()||critDay())?2:1);
+const bossPhase=()=>{const b=state.boss,p=b&&b.hp?(b.hp-b.dmg)/b.hp:1;return p>.66?1:p>.33?2:3};
+const bossBonus=g=>{const b=state.boss;return b&&!b.dead&&g&&(g.l==='S'||g.l==='A')?bossPhase()-1:0};
+function bossArt(b){const k=b.dead?3:bossPhase()-1,c=b.dead?'#555':'#f02b4f',o=n=>k>=n?1:0;return`<svg viewBox="0 0 60 60" width="64" height="64" aria-hidden="true"><path d="M30 4L46 20L52 58H8L14 20Z" fill="#0a0d17" stroke="${c}" stroke-width="2"/><path d="M22 26l6 3M38 26l-6 3" stroke="${b.dead?'#555':'#ff8298'}" stroke-width="3"/><path d="M30 8L26 22L33 34L28 48" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(1)}"/><path d="M18 30L27 38L22 54M42 28L34 40L40 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(2)}"/><path d="M12 56L30 40L48 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(3)}"/></svg>`}
+function fl(t,cls){const c=$('cam'),e=document.createElement('div');e.className='fl '+(cls||'');e.textContent=t;e.style.left=(18+Math.random()*45)+'%';c.appendChild(e);setTimeout(()=>e.remove(),900)}
+function repFx(g){const dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g);state.gold+=1;hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
+ if(g&&g.l==='S'){const c=$('cam');c.classList.remove('shk');void c.offsetWidth;c.classList.add('shk')}
+ const o=state.pr[state.ex];if(state.target-cur===1)fl('LAST REP!','co');else if(state.target>=8&&cur===Math.ceil(state.target/2))fl('HALFWAY','co');else if(o&&cur===o.r&&state.kg>=o.kg)fl('MATCHED YOUR BEST','co')}
+function statPts(){return`<div class="item" style="border:0;padding-top:10px"><div><b>Stat points: ${state.sp}</b><span>STR: +1 boss damage per 5 · AGI: shorter rests, longer dungeons · VIT: +2% quest XP each. 3 points per level.</span></div></div><div class="row">${['STR','AGI','VIT'].map(k=>`<button class="btn sm" data-a="sp" data-v="${k}" ${state.sp>0?'':'disabled'}>${k} ${stB(k)} +</button>`).join('')}</div>`}
+const SHOP=[['frz','Streak freeze','Saves a streak (max 2)',150],['dxp','Double XP scroll','Quest XP x2 today',200],['au_ffd24a','Gold aura','Figure aura colour',300],['au_8b4fea','Violet aura','Figure aura colour',300],['au_55e6b0','Mint aura','Figure aura colour',300],['au_52d9ff','Cyan aura','Figure aura colour',300]];
+function renderShop(){$('goldct').textContent='🪙 '+state.gold;$('shop').innerHTML='<div class="grid">'+SHOP.map(s=>{const au=s[0].startsWith('au_'),own=au&&state.owned[s[0]],eq=au&&state.aura===s[0].slice(3);return`<button class="btn" data-a="buy" data-v="${s[0]}" style="text-align:left"><b>${s[1]}${eq?' ★':''}</b><br><small>${own?(eq?'Equipped. Tap to remove':'Owned. Tap to equip'):s[2]+' · 🪙'+s[3]}</small></button>`}).join('')+'</div>'}
+function chest(){const r=Math.random();if(r<.15&&state.freeze<2){state.freeze++;return'Streak freeze'}if(r<.4){state.gold+=120;return'🪙120 JACKPOT'}const g=20+Math.floor(Math.random()*40);state.gold+=g;return'🪙'+g}
+const tmrDg=()=>DGT[(Math.floor(Date.now()/864e5)+1)%DGT.length][0];
+function wk(o){let r=0,c=0,s=0;for(let i=0;i<7;i++){const h=state.hist[ago(i+o)]||{};r+=h.reps||0;s+=h.sets||0;if(h.reps)c++}return{r,s,c}}
+const recapTxt=()=>{const a=wk(0);return'ASCEND weekly: '+a.r+' reps, '+a.s+' sets, '+a.c+'/7 days · LV '+state.level+' '+rankOf(state.level)+' · best combo '+(state.bc||0)+' · '+state.bossWins+' bosses down'};
+function renderRecap(){const a=wk(0),b=wk(7),d=a.r-b.r;$('recap').innerHTML=`<div class="grid" style="margin:0 0 10px"><div class="stat"><b>${a.r}</b><span>Reps, last 7 days</span></div><div class="stat"><b>${d>=0?'+':''}${d}</b><span>vs the week before (${b.r})</span></div></div><small>${a.c} of 7 days trained · ${a.s} sets</small><br><button class="btn sm" style="margin-top:8px" data-a="share">Share recap</button>`}
 function dgSet(drop,amp,hit){
  const e=$('dg');if(!e)return;
  $('dgf').style.height=(Math.min(1.25,drop/amp)/1.25*100)+'%';
@@ -738,6 +765,7 @@ function feed(d,a,now){
  let [,,lo,hi,sh]=d;
  if(hi-lo>40){const [a,b]=[[22,12],[5,0],[-5,-8]][state.sens];lo+=a;hi-=b}
  const v=sh?a:-a,hT=sh?hi:-lo,lT=sh?lo:-hi;
+ dgSet(Math.max(0,(hT-v)/(hT-lT)),1,T.down);
 
  if(!T.lastRepTime) T.lastRepTime = 0;
  if(T.armed||T.down){T.mn=T.mn==null?v:Math.min(T.mn,v)}
@@ -770,7 +798,7 @@ const BONES=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[23
 let pose=null,stream=null,busy=false;
 function onPose(r){const cv=$('ov'),x=cv.getContext('2d'),vd=$('vid');cv.width=vd.videoWidth||640;cv.height=vd.videoHeight||480;x.clearRect(0,0,cv.width,cv.height);
  const L=r.poseLandmarks,W=r.poseWorldLandmarks,ro=$('ro');
- $('dg').classList.toggle('hide',!(T.ready&&PVX.has(state.ex)));
+ $('dg').classList.toggle('hide',!(T.ready&&!['hold','twist'].includes(EX[state.ex][1])));
  if(!T.ready){x.save();x.setLineDash([10,8]);x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=3;x.strokeRect(cv.width*.18,cv.height*.04,cv.width*.64,cv.height*.92);x.restore()}
  if(!L||!W){if(!T.ready)T.okc=0;T.okf=0;T.armed=0;T.down=0;T.part=0;ro.textContent='NO BODY FOUND. STEP BACK';T.sm=null;return}
  x.strokeStyle='#52d9ff';x.lineWidth=4;x.beginPath();BONES.forEach(([a,b])=>{x.moveTo(L[a].x*cv.width,L[a].y*cv.height);x.lineTo(L[b].x*cv.width,L[b].y*cv.height)});x.stroke();
@@ -810,7 +838,7 @@ const act={
   armQ=-1;const q=state.quests[i];if(!q||q.p>=q.t){render();return}const t=dk();
   bump();
   if(q.k==='plan'){const pt=planToday();if(pt){pt.items.forEach(x=>state.prog.sets[x.n]=x.s);if(!state.prog.done)state.wo++;state.prog.done=true}}
-  q.p=q.t;state.xp+=q.xp;toast('Quest done: '+q.n+' +'+q.xp+' XP');save();tryLevel();render()},
+  q.p=q.t;const xq=Math.round(q.xp*xpMul());state.xp+=xq;state.gold+=5;toast('Quest done: '+q.n+' +'+xq+' XP');save();tryLevel();render()},
  cbnew:()=>{cb={name:'My Split',d:0,days:[{name:'Day 1',ex:[]}]};renderPlans()},
  cbedit:()=>{cb=clone(state.custom);cb.d=0;renderPlans()},
  cbday:b=>{cb.d=+b.dataset.v;renderPlans()},
@@ -843,6 +871,15 @@ const act={
  bwdel:()=>{if(!state.bw.length)return;state.bw.pop();save();renderBW()},
  mset:b=>{const i=+b.dataset.v,all=b.dataset.all==='1',key='m'+i+(all?'a':'');if(armQ!==key){armQ=key;renderCheckin();setTimeout(()=>{if(armQ===key){armQ=-1;renderCheckin()}},3500);return}
   armQ=-1;const pt=planToday();if(!pt)return;const it=pt.items[i];if(!it||it.done>=it.s)return;const n=all?it.s-it.done:1;for(let k=0;k<n;k++)manualSet(it);toast(n+' set'+(n>1?'s':'')+' logged: '+it.n.replace(' (sec)',''));render()},
+ sp:b=>{if(state.sp<1)return;state.sp--;state.st[b.dataset.v]=stB(b.dataset.v)+1;save();render()},
+ buy:b=>{const s=SHOP.find(x=>x[0]===b.dataset.v);if(!s)return;const au=s[0].startsWith('au_'),col=au?s[0].slice(3):'';
+  if(au&&state.owned[s[0]]){state.aura=state.aura===col?'':col;save();render();return}
+  if(state.gold<s[3]){toast('Not enough gold');return}
+  if(s[0]==='frz'){if(state.freeze>=2){toast('Freezes are full');return}state.freeze++}
+  else if(s[0]==='dxp'){if(state.dxp===dk()){toast('Already active');return}state.dxp=dk()}
+  else{state.owned[s[0]]=1;state.aura=col}
+  state.gold-=s[3];save();render();toast('Bought: '+s[1])},
+ share:()=>{const t=recapTxt();if(navigator.share)navigator.share({text:t}).catch(()=>{});else if(navigator.clipboard){navigator.clipboard.writeText(t);toast('Recap copied')}else toast(t)},
  undo:()=>{if(!undoSnap)return;state=JSON.parse(undoSnap);undoSnap=null;cur=0;clearInterval(restI);$('rest').classList.add('hide');syncCustom();save();render();toast('Last set undone')},
  unit:()=>{state.unit=state.unit==='kg'?'lb':'kg';save();render()},
  rng:b=>{state.rng=+b.dataset.v;save();renderProg()},
@@ -1025,7 +1062,7 @@ function rig(A,B,k,an){const n=A.length,q=A.map((a,i)=>a+(B[i]-a)*k),o=q.slice()
  const c=AN[an]!=null?[AN[an]]:HANG.has(an)?[8]:[8,12].concat(n>14?[16]:[]);let ai=c[0];c.forEach(i=>{if(A[i+1]>A[ai+1])ai=i});
  const dx=q[ai]-o[ai],dy=q[ai+1]-o[ai+1];for(let i=0;i<n;i+=2){o[i]+=dx;o[i+1]+=dy}return o}
 const eas=x=>(1-Math.cos(Math.PI*Math.min(1,Math.max(0,x))))/2,JK=h=>h<.4?eas(h/.4):h<.5?1-eas((h-.4)/.1):h<.75?0:h<.85?.6*eas((h-.75)/.1):.6*(1-eas((h-.85)/.15)),JL=h=>h>.5&&h<.75?16*Math.sin(Math.PI*(h-.5)/.25):0;
-function frame(t){const s=SK[FK()],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0]==='jumpsquat',jp=t/1000*.9%1,k=jm?JK(jp):(1-Math.cos(t/1000*Math.PI*1.3))/2,p=rig(A,B,k,s[0]),r=rankOf(state.level),c=RC[r],ri=RK.findIndex(x=>x[1]===r);
+function frame(t){const s=SK[FK()],f=FRONT.has(s[0]),[A,B]=AR[s[0]],jm=s[0]==='jumpsquat',jp=t/1000*.9%1,k=jm?JK(jp):(1-Math.cos(t/1000*Math.PI*1.3))/2,p=rig(A,B,k,s[0]),r=rankOf(state.level),c=state.aura||RC[r],ri=RK.findIndex(x=>x[1]===r);
  if(jm){const L=JL(jp);for(let i=1;i<p.length;i+=2)p[i]-=L}
  if(spin)TH=t/22%360;else{const g=VIEWS[vi][1];TH+=(g+360*Math.round((TH-g)/360)-TH)*.12}
  PH+=((spin?14:VIEWS[vi][2])-PH)*.12;
