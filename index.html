@@ -357,10 +357,11 @@ section.enter{animation:wipe .35s ease-out}
 <nav aria-label="Main">
 <button data-a="go" data-v="train" aria-selected="true">Train</button><button data-a="go" data-v="hero">Status</button><button data-a="go" data-v="food">Food</button><button data-a="go" data-v="prog">Progress</button>
 </nav>
-<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="lockb" data-a="lock">Rank Unlocks: OFF</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small>ON: skills unlock as your rank rises (skills in your active program stay open). OFF: every skill is open.</small><button class="btn" data-a="menu">Close</button></div></div>
+<div class="drawer" id="drawer" data-a="menu"><div class="dp" data-a="none"><h3>Menu</h3><button class="btn red" data-a="skills">Skill Tree</button><button class="btn red" data-a="shopgo">Shop <small id="mgold"></small></button><button class="btn" data-a="guide">How to play</button><button class="btn red" data-a="checkin">Quest Check-in</button><button class="btn" id="rirb" data-a="rir">Auto-Stop: OFF</button><button class="btn" id="sndb" data-a="snd">Sound: Voice</button><button class="btn" id="vibb" data-a="vibr">Vibration: ON</button><button class="btn" id="unitb" data-a="unit">Units: kg</button><small id="pathn"></small><button class="btn" data-a="menu">Close</button></div></div>
 <div class="aoa hide" id="aoa"><div class="aoa-t">ALL-OUT ATTACK</div><div class="aoa-s" id="aoas">0 HITS</div><button class="aoa-b" id="aoab">TAP!</button><div class="aoa-m"><i id="aoam" style="width:100%"></i></div><div class="aoa-r" id="aoar"></div></div>
 <div class="sfx" id="sfx"><div class="band"></div><div class="tx"><div id="sfxt"></div><small id="sfxs"></small></div></div>
 <div class="modal" id="gd"><div class="card" id="gdb" style="width:100%;max-width:380px"></div></div>
+<div class="modal" id="lkq" data-a="none"><div class="card" id="lkb" data-a="none" style="width:100%;max-width:380px"></div></div>
 <div class="modal" id="shp" data-a="shpx"><div class="card" id="shpb" data-a="none" style="width:100%;max-width:360px;text-align:center"></div></div>
 <div class="modal" id="sum"><div class="card" id="sumb" style="width:100%;max-width:380px"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -633,7 +634,7 @@ function go(s){SEC.forEach(x=>$(x).classList.toggle('hide',x!==s));$(s).classLis
 function render(){genQuests();checkBadges();checkShadows();const jc=jobClass(),bn=s=>jc.s===s?`<small style="color:#52d9ff"> +${jc.b}</small>`:'';
  if(jc.ok&&jc.cls!=='Hunter'){if(state.cls!==jc.name){const had=!!state.cls;state.cls=jc.name;state.cb=jc.cls;save();setTimeout(()=>fx(had?'Job change':'Job awakened',jc.name),700)}else state.cb=jc.cls}
 const l=state.level,n=need(l),pct=Math.min(100,state.xp/n*100),r=rankOf(l),locked=state.xp>=n&&!allDone();
- $('top').textContent='LV '+l+' '+r;$('lockb').textContent='Rank Unlocks: '+(state.lock?'ON':'OFF');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
+ $('top').textContent='LV '+l+' '+r;$('pathn').textContent='Path: '+(state.lock?'Locked. Skills unlock as your rank rises.':'Open. Every skill is available.');$('rirb').textContent='Auto-Stop: '+(state.rir?'ON':'OFF');$('sndb').textContent='Sound: '+{voice:'Voice',beep:'Beeps',off:'Off'}[state.snd];$('vibb').textContent='Vibration: '+(state.vib?'ON':'OFF');$('unitb').textContent='Units: '+state.unit;
  $('hud').innerHTML=`<b>LV ${l}</b><div class="xp"><i style="width:${pct}%"></i></div><small>${state.xp}/${n} XP · 🪙${state.gold}</small>`;
  $('lv').textContent='LV '+l;const tt=BG.find(b=>b[0]===state.title);$('ttl').textContent=(r==='S'?'S-Rank Monarch':r+'-Rank Hunter')+(jc.ok&&jc.cls!=='Hunter'?' · '+jc.name:'')+(tt?' · '+tt[1]:'');$('xpf').style.width=pct+'%';
  $('xpt').textContent=state.xp+' / '+n+' XP'+(locked?' · LOCKED: finish all quests':'');
@@ -927,7 +928,10 @@ const act={
  flip:()=>{facing=facing==='user'?'environment':'user';$('flipb').textContent='Camera: '+(facing==='user'?'Front':'Rear');if(tracking){stopCam();startCam()}},
  view:b=>{vi=+b.dataset.v;spin=0;views()},spin:()=>{spin=spin?0:1;views()},
  rir:()=>{state.rir=!state.rir;save();toast(state.rir?'Auto-Stop ON: the set ends when you can no longer push through':'Auto-Stop OFF');render()},
- lock:()=>{state.lock=!state.lock;save();toast(state.lock?'Rank unlocks ON':'All skills are open');render()},
+ lkopen:()=>lkDone(false),
+ lkask:()=>askLock('sure'),
+ lkback:()=>askLock(),
+ lklock:()=>lkDone(true),
  checkin:()=>{$('drawer').classList.remove('on');go('checkin')},
  qdone:b=>{const i=+b.dataset.v;if(armQ!==i){armQ=i;renderCheckin();setTimeout(()=>{if(armQ===i){armQ=-1;renderCheckin()}},3500);return}
   armQ=-1;const q=state.quests[i];if(!q||q.p>=q.t){render();return}const t=dk();
@@ -1247,7 +1251,16 @@ render();
 /* remember which Status sections are open */
 document.querySelectorAll('details.fold').forEach(d=>{if(d.id==='fold-prog')return;if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
 $('aoab').addEventListener('pointerdown',e=>{e.preventDefault();aoaTap()});
-if(!state.guide)setTimeout(()=>showGuide(0),1100);
+if(!state.lockAsked&&!state.lock)setTimeout(askLock,900);else if(!state.guide)setTimeout(()=>showGuide(0),1100);
+/* ===== ONE-TIME PATH CHOICE (locked / open skills) ===== */
+function askLock(step){const c=$('lkb');
+ c.innerHTML=step==='sure'
+  ?`<span class="tag r">NO TURNING BACK</span><h3 style="margin-top:8px">Be careful what you wish for</h3><p class="sub">Most skills will stay sealed for weeks or months, and the hardest ones for years. You cannot switch back later. Skills in your active program stay open.</p><div class="row"><button class="btn" data-a="lkback">Go back</button><button class="btn red" data-a="lklock">I accept the grind</button></div>`
+  :`<span class="tag r">ONE-TIME CHOICE</span><h3 style="margin-top:8px">Choose your path</h3><p class="sub">Pick how skills unlock. You only choose once, and it cannot be changed later.</p><button class="btn" data-a="lkopen" style="width:100%;margin-bottom:4px">Open Path</button><small style="display:block;margin-bottom:14px;color:var(--mute)">Every skill is open from day one. Train however you like.</small><button class="btn red" data-a="lkask" style="width:100%;margin-bottom:4px">Locked Path</button><small style="display:block;color:var(--mute)">Skills start sealed and unlock only as your rank rises. It is a long road. Reaching S-Rank takes about three years of steady training.</small>`;
+ $('lkq').classList.add('on')}
+function lkDone(lock){state.lock=lock;state.lockAsked=1;save();$('lkq').classList.remove('on');selSig='';render();toast(lock?'Locked Path chosen. Earn every skill.':'Open Path chosen. All skills are open.');if(!state.guide)setTimeout(()=>showGuide(0),700)}
+if(state.lock&&!state.lockAsked)state.lockAsked=1;
+
 </script>
 </body>
 </html>
