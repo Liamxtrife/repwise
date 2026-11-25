@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ASCEND – your evolution starts here</title>
-<meta name="theme-color" content="#08090f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ASCEND"><link rel="apple-touch-icon" href="icon.png">
+<meta name="theme-color" content="#08090f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="ASCEND"><link rel="apple-touch-icon" href="icon.png"><link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700&display=swap">
 <style>
 :root{--ink:#f5f7ff;--mute:#aab2c6;--line:#30394d;--a:#f02b4f;--b:#52d9ff;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0)}
@@ -276,7 +276,7 @@ section.enter{animation:wipe .35s ease-out}
   </div>
   <div id="gatecard"></div>
   <details class="fold" id="fold-quests" open><summary class="hd">Daily quests</summary><div id="quests"></div>
-  <p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Reaching S takes about a year of steady training. Skip a day and a penalty quest appears.</p>
+  <p class="sub">XP comes from finishing quests: about 100 XP on a normal day, double on Surge Days. You level up only when every quest of the day is done. Each level costs more than the last, and reaching S takes about three years of steady training. Skip a day and a penalty quest appears.</p>
   </details>
   <details class="fold" id="fold-ladder"><summary class="hd">Rank ladder</summary><div id="ladder"></div></details>
   <details class="fold" id="fold-stats" open><summary class="hd">Stats</summary><div class="card" id="stats"></div></details>
@@ -359,7 +359,7 @@ const $=id=>document.getElementById(id),KEY='repwise_v4';
 const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const ago=n=>{const d=new Date();d.setDate(d.getDate()-n);return dk(d)};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',rl:{},rival:null,frame:'',bst:'',food:{date:dk(),log:[],water:0,goal:2200}});
+const def=()=>({level:1,xp:0,streak:0,last:null,kg:0,target:12,ex:'Push-ups',prog:null,sk:{},lock:false,custom:null,snd:'voice',vib:true,unit:'kg',rng:7,lastBackup:null,remt:'18:00',sens:1,restS:60,restDays:[],freeze:1,gate:{},trial:null,pr:{},badges:{},title:'',boss:null,bossWins:0,wo:0,hist:{},qDate:'',quests:[],shadows:{},fm:{S:0,A:0,B:0,C:0},fd:{d:'',S:0,A:0,B:0,C:0,bc:0},bc:0,bn:[],dg:null,dgn:0,wl:{},bw:[],cls:'',cb:'',gold:0,sp:0,st:{STR:0,AGI:0,VIT:0},owned:{},aura:'',dxp:'',rl:{},lw:{},rival:null,frame:'',bst:'',food:{date:dk(),log:[],water:0,goal:2200}});
 let state=(()=>{try{return Object.assign(def(),JSON.parse(localStorage.getItem(KEY))||{})}catch(e){return def()}})();
 if(!state.food||state.food.date!==dk())state.food=Object.assign(def().food,{goal:(state.food||{}).goal||2200});
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
@@ -408,8 +408,9 @@ function renderBoss(){syncBoss();const b=state.boss,left=7-(new Date().getDay()+
  $('boss').innerHTML=(critDay()?'<div class="card cy"><span class="tag g">SURGE DAY</span><small> Quest XP is doubled today!</small></div>':'')+(rd?'<div class="card cy"><b>Rest day</b><br><small>Your streak is safe today. Train only if you feel like it.</small></div>':'' )+`<div class="card danger"><span class="tag r">WEEKLY BOSS</span><small>${b.dead?'Defeated':left+' day'+(left>1?'s':'')+' left'}</small><div style="display:flex;align-items:center;gap:10px">${bossArt(b)}<h3 style="margin:6px 0">${b.name}<br><small>${b.dead?'DEFEATED':'PHASE '+bossPhase()+' of 3'}</small></h3></div><div style="display:flex;gap:10px;align-items:center"><div class="xp"><i style="width:${(b.hp-b.dmg)/b.hp*100}%;background:linear-gradient(90deg,#f02b4f,#ff8298)"></i></div><small>${b.hp-b.dmg} HP</small></div><small>Every rep the camera counts deals 1 damage. Clean-rep combos multiply it: x2 at 5, x3 at 10, x4 at 20, plus your army power.${(()=>{const m=cmult(T.combo||0);return m>1?' <b style="color:#ff8298">Combo x'+m+' active!</b>':''})()}</small></div>`+aoaCard()+(needBk()?'<div class="card"><b>Back up your progress</b><br><small>Your data lives only on this device. Save a backup file in case you clear your browser or switch phones.</small><button class="btn red" style="margin-top:10px" data-a="exp">Download backup</button></div>':'')}
 
 /* ===== RANK TRIALS (GATES) ===== */
-const TRIALS={11:['Push-ups',20],21:['Squats',40],31:['Push-ups',35],41:['Squats',60],51:['Push-ups',50]};
-function renderGate(){const t=state.trial,h=t?`<div class="card danger"><span class="tag r">RANK GATE</span><h3 style="margin-top:6px">Trial for ${rankOf(t.lv)}-Rank</h3><p class="sub" style="margin:0 0 10px">Do <b>${t.n} ${esc(t.ex)}</b> in one set with the camera to break through. Warm up first. If you fall short, rest and try again on another day.</p><button class="btn red" data-a="gate">Enter the gate</button></div>`:'';$('gate').innerHTML=h;$('gatecard').innerHTML=h}
+const TRIALS={11:['Push-ups',20],21:['Squats',40],31:['Push-ups',40],41:['Squats',80],51:['Push-ups',70]};
+const trialOk=ex=>{const t=state.trial;return !!t&&!!EX[ex]&&EX[ex][0]===EX[t.ex][0]&&state.target*(1+state.kg/10)>=t.n};
+function renderGate(){const t=state.trial,h=t?`<div class="card danger"><span class="tag r">RANK GATE</span><h3 style="margin-top:6px">Trial for ${rankOf(t.lv)}-Rank</h3><p class="sub" style="margin:0 0 10px">Do <b>${t.n} ${esc(t.ex)}</b> in one camera set, <b>or</b> lift heavy: any ${EX[t.ex][0]} exercise where reps × (1 + kg ÷ 10) reaches ${t.n} (for example 5 reps at ${Math.round((t.n/5-1)*10)} kg). Set the weight first. Warm up. If you fall short, rest and try again another day.</p><button class="btn red" data-a="gate">Enter the gate</button></div>`:'';$('gate').innerHTML=h;$('gatecard').innerHTML=h}
 
 /* ===== BADGES & TITLES ===== */
 const tot=()=>{let r=0,s=0;for(const k in state.hist){r+=state.hist[k].reps||0;s+=state.hist[k].sets||0}return{reps:r,sets:s}};
@@ -577,7 +578,7 @@ function syncProg(){const p=state.prog,pr=prOf(),t=dk();if(!p||!pr){state.prog=n
 function planToday(){syncProg();const pr=prOf();if(!pr)return null;const d=pr.days[state.prog.day%pr.days.length];return{pr,name:d.name,items:d.ex.map(e=>({...e,done:state.prog.sets[e.n]||0}))}}
 
 /* ===== LEVELS: slow, and gated by finishing every quest ===== */
-const need=l=>150+20*l;
+const need=l=>150+20*l+2*l*l;
 const RK=[[1,'E'],[11,'D'],[21,'C'],[31,'B'],[41,'A'],[51,'S']];
 const rankOf=l=>RK.filter(r=>l>=r[0]).pop()[1];
 const allDone=()=>state.quests.length>0&&state.quests.filter(q=>!q.bonus).every(q=>q.p>=q.t);
@@ -628,7 +629,7 @@ function renderToday(){const pt=planToday();
  if(!pt){$('today').innerHTML=`<h3>No program yet</h3><p class="sub" style="margin:0 0 10px">Pick a ready-made program and ASCEND tells you what to do each day.</p><button class="btn red" data-a="go" data-v="plans">Choose a program</button>`;return}
  const fin=state.prog.done;
  $('today').innerHTML=`<h3>Today: ${pt.pr.name} · ${pt.name}</h3>${fin?'<span class="tag g">WORKOUT COMPLETE</span><small> Rest up. Next session tomorrow.</small>':''}<div class="chips" style="margin:10px 0 0">${pt.items.map(i=>`<button class="chip" aria-pressed="${i.n===state.ex}" data-a="load" data-v="${esc(i.n)}" data-r="${i.r}">${i.done>=i.s?'✓ ':''}${esc(i.n.replace(' (sec)',''))} ${i.done}/${i.s}</button>`).join('')}</div>`}
-function renderTrain(){buildSel();const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps')+(state.pr[state.ex]?' · best '+state.pr[state.ex].r:'');
+function renderTrain(){buildSel();state.lw=state.lw||{};if(renderTrain.last!==state.ex){if(renderTrain.last===undefined){if(state.lw[state.ex]===undefined)state.lw[state.ex]=state.kg}else state.kg=state.lw[state.ex]||0;renderTrain.last=state.ex}const d=EX[state.ex],hold=d[1]==='hold';$('cnt').textContent=cur;$('of').textContent='of '+state.target+(hold?' sec':' reps')+(state.pr[state.ex]?' · best '+state.pr[state.ex].r:'');
  $('arc').style.strokeDashoffset=641-641*Math.min(1,cur/state.target);$('kgb').textContent='Weight: '+W(state.kg);$('undob').disabled=!undoSnap;$('restb').textContent='Rest: '+(state.restS?state.restS+'s':'Off');$('sensb').textContent='Detect: '+['Easy','Normal','Strict'][state.sens];$('tgt').textContent='Target: '+state.target;$('exsel').value=state.ex;renderWsug();
  if(!tracking)$('coach').innerHTML=`<b>${esc(state.ex)}</b>: 1) Prop your phone up. 2) Step back so your whole body is in frame. Front, side or back all work. 3) Tap Start tracking. Reps are counted by the camera only. Move with control, every rep is graded S to C on depth and tempo. Five clean reps in a row start a combo that multiplies boss damage. Stop if anything hurts.`}
 function renderBuilder(){const d=cb.days[cb.d],opts=GRP.map(g=>`<optgroup label="${g}">${Object.keys(EX).filter(n=>EX[n][0]===g).map(n=>`<option>${esc(n)}</option>`).join('')}</optgroup>`).join('');
@@ -680,7 +681,7 @@ function rep(g){if(cur===0)undoSnap=JSON.stringify(state);cur++;const c=$('cnt')
   T.combo=(g.l==='S'||g.l==='A')?(T.combo||0)+1:g.l==='B'?(T.combo||0):0;
   if(T.combo>(state.bc||0))state.bc=T.combo;if(T.combo>f.bc)f.bc=T.combo;
   showGrade(g);$('coach').innerHTML='<b>'+g.l+' rep</b> · '+repMsg(g)+(T.combo>1?' · Combo '+T.combo+(cmult(T.combo)>1?' · x'+cmult(T.combo)+' damage':''):'')}
- qProg('reps',1);repFx(g);if(state.snd==='voice')say(cur);else beep(660,.07);vib(15);
+ qProg('reps',1+Math.floor(state.kg/20));repFx(g);if(state.snd==='voice')say(cur);else beep(660,.07);vib(15);
   if(g&&T.gs.length>=6&&!T.fat){const m=a=>a.reduce((x,y)=>x+y,0)/a.length;if(m(T.gs.slice(0,3))-m(T.gs.slice(-3))>=1.2&&m(T.gs.slice(-3))<=2.4){T.fat=1;setTimeout(()=>{$('coach').innerHTML='<b>Form is fading.</b> Finish this set, then rest or lower the weight.';say('Form fading')},900)}}
  dgRep();if(cur>=state.target)finishSet();dgAfter();renderTrain();renderBoss();renderDungeon()}
 function formLine(gs){const avg=gs.reduce((a,b)=>a+b,0)/gs.length,L=avg>=3.5?'S':avg>=2.75?'A':avg>=1.75?'B':'C',cl=Math.round(gs.filter(p=>p>=3).length/gs.length*100);return'Form '+L+' · '+cl+'% clean'}
@@ -689,7 +690,7 @@ function finishSet(){const t=dk(),h=state.hist[t]||(state.hist[t]={reps:0,sets:0
  h.reps+=state.target;h.sets++;h.volume+=state.target*state.kg;state.sk[ex]=(state.sk[ex]||0)+state.target;
  if(!old||isPR)state.pr[ex]={kg:state.kg,r:state.target};if(isPR)h.prs=(h.prs||0)+1;
  bump();wLog(ex,state.kg,state.target,gs);rLog(ex,state.target,gs);if(!state.ob){state.ob=1;state.gold+=50;state.xp+=30;setTimeout(()=>toast('First gate cleared! +50 gold, +30 XP'),1200)}T.fat=0;let gateOk=false;
- if(state.trial&&ex===state.trial.ex&&state.target>=state.trial.n){state.gate[state.trial.lv]=1;state.trial=null;gateOk=true}
+ if(trialOk(ex)){state.gate[state.trial.lv]=1;state.trial=null;gateOk=true}
  cur=0;save();qProg('sets',1);if(isPR)qProg('pr',1);if(state.kg>0)qProg('wt',1);if(isNew)qProg('new',1);
  beep(523,.1);setTimeout(()=>beep(784,.18),110);vib([60,40,60]);say('Set done');
  const pt=planToday(),it=pt&&pt.items.find(i=>i.n===ex);let done=false;
@@ -729,7 +730,7 @@ const bossPhase=()=>{const b=state.boss,p=b&&b.hp?(b.hp-b.dmg)/b.hp:1;return p>.
 const bossBonus=g=>{const b=state.boss;return b&&!b.dead&&g&&(g.l==='S'||g.l==='A')?bossPhase()-1:0};
 function bossArt(b){const k=b.dead?3:bossPhase()-1,c=b.dead?'#555':'#f02b4f',o=n=>k>=n?1:0;return`<svg viewBox="0 0 60 60" width="64" height="64" aria-hidden="true"><path d="M30 4L46 20L52 58H8L14 20Z" fill="#0a0d17" stroke="${c}" stroke-width="2"/><path d="M22 26l6 3M38 26l-6 3" stroke="${b.dead?'#555':'#ff8298'}" stroke-width="3"/><path d="M30 8L26 22L33 34L28 48" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(1)}"/><path d="M18 30L27 38L22 54M42 28L34 40L40 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(2)}"/><path d="M12 56L30 40L48 56" fill="none" stroke="#fff" stroke-width="1.5" opacity="${o(3)}"/></svg>`}
 function fl(t,cls){const c=$('cam'),e=document.createElement('div');e.className='fl '+(cls||'');e.textContent=t;e.style.left=(18+Math.random()*45)+'%';c.appendChild(e);setTimeout(()=>e.remove(),900)}
-function repFx(g){const dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0);state.gold+=1;hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
+function repFx(g){const dm=cmult(T.combo||0)+armyBonus()+Math.floor(stB('STR')/5)+bossBonus(g)+(state.bst===dk()?1:0)+Math.floor(state.kg/20);state.gold+=1+Math.floor(state.kg/20);hitBoss(dm);fl('-'+dm,dm>=4?'crit':'');
  if(g&&g.l==='S'){const c=$('cam');c.classList.remove('shk');void c.offsetWidth;c.classList.add('shk')}
  const o=state.pr[state.ex];if(state.target-cur===1)fl('LAST REP!','co');else if(state.target>=8&&cur===Math.ceil(state.target/2))fl('HALFWAY','co');else if(o&&cur===o.r&&state.kg>=o.kg)fl('MATCHED YOUR BEST','co')}
 function statPts(){return`<div class="item" style="border:0;padding-top:10px"><div><b>Stat points: ${state.sp}</b><span>STR: +1 boss damage per 5 · AGI: shorter rests, longer dungeons · VIT: +2% quest XP each. 3 points per level.</span></div></div><div class="row">${['STR','AGI','VIT'].map(k=>`<button class="btn sm" data-a="sp" data-v="${k}" ${state.sp>0?'':'disabled'}>${k} ${stB(k)} +</button>`).join('')}</div>`}
@@ -929,7 +930,7 @@ const act={
  skgrp:b=>{skGrp=b.dataset.v;renderSkills()},
  trainsk:()=>{if(!isOpen(sk))return;state.ex=sk;cur=0;T={ready:T.ready};save();go('train')},
  cam:()=>{tracking?(stopCam(),render()):startCam()},
- kg:()=>{const s=state.unit==='lb'?[0,10,25,35,45,55,70,95,135,185,225].map(l=>l/2.2046):[0,5,10,15,20,30,40,50,60,80,100];let i=0,m=1e9;s.forEach((v,j)=>{const d=Math.abs(v-state.kg);if(d<m){m=d;i=j}});state.kg=s[(i+1)%s.length];save();renderTrain()},
+ kg:()=>{const s=state.unit==='lb'?[0,10,25,35,45,55,70,95,135,185,225,275,315,365,405,495,550].map(l=>l/2.2046):[0,5,10,15,20,30,40,50,60,80,100,120,140,160,180,200,250];let i=0,m=1e9;s.forEach((v,j)=>{const d=Math.abs(v-state.kg);if(d<m){m=d;i=j}});state.kg=s[(i+1)%s.length];state.lw=state.lw||{};state.lw[state.ex]=state.kg;save();renderTrain()},
  tgt:()=>{const s=[5,8,10,12,15,20,30,40,60];state.target=s[(s.indexOf(state.target)+1)%s.length];cur=0;save();renderTrain()},
  load:b=>{state.ex=b.dataset.v;state.target=+b.dataset.r||state.target;cur=0;T={ready:T.ready};save();toast('Loaded '+state.ex);go('train')},
  start:b=>{state.prog={id:b.dataset.v,day:0,sets:{},sd:dk(),done:false};refreshQuests();save();toast('Program started');render()},
@@ -1131,7 +1132,7 @@ initFig();
 
 document.addEventListener('click',e=>{const f=document.createElement('div');f.className='flash';f.style.left=e.clientX+'px';f.style.top=e.clientY+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),320)});
 $('boot').classList.add('on');setTimeout(()=>$('boot').classList.remove('on'),950);syncCustom();
-if(navigator.serviceWorker)navigator.serviceWorker.getRegistrations().then(r=>r.forEach(x=>x.unregister())).catch(()=>{});
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 render();
 /* remember which Status sections are open */
 document.querySelectorAll('details.fold').forEach(d=>{if(state.fold&&d.id in state.fold)d.open=state.fold[d.id];d.addEventListener('toggle',()=>{state.fold=state.fold||{};state.fold[d.id]=d.open;save()})});
